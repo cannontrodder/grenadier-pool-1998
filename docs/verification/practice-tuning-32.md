@@ -49,5 +49,14 @@ gestures continue to pass the interaction, tuning and native-touch suites.
 
 ## Deployment
 
-Publication uses the existing GitHub Pages workflow after merge to main.
-Hosted verification and the deployed revision are recorded below after publish.
+Merged and published revision `fa8d7a249d64141e904d1dbd821796fe576f2edd`.
+[Build/deploy run](https://github.com/cannontrodder/grenadier-pool-1998/actions/runs/35385060081)
+succeeded; anonymous HTTPS revision lookup matches that commit.
+
+Hosted WebKit 390×844 passed all 43 tuning and 40 side/corner-pot assertions.
+Hosted Chrome 412×839 passed all 19 native-touch assertions: 102 hosted checks.
+Every run reports the deployed revision above. JSON records start
+`hosted-tune-`, with referenced screenshots alongside them. CI also passed the
+45-test Node suite. These browser checks do not claim a new physical-phone test.
+
+Live: [practice table](https://cannontrodder.github.io/grenadier-pool-1998/).

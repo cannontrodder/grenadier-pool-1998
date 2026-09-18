@@ -59,3 +59,12 @@ public URL. No account, saved game, server or multiplayer session is involved.
 
 This verifies publication and browser behavior. Physical-phone acceptance of
 the completed Phase 3 remains #29, after #25–#28.
+
+
+## Friend-feedback tuning publication · #32
+
+The public preview now serves `fa8d7a249d64141e904d1dbd821796fe576f2edd`.
+[Deployment](https://github.com/cannontrodder/grenadier-pool-1998/actions/runs/35385060081)
+and 102 hosted checks passed (WebKit tuning/potting and Chrome native touch).
+See [tuning verification](verification/practice-tuning-32.md) for defaults,
+local coverage, retained failures and evidence. The live URL is unchanged.
