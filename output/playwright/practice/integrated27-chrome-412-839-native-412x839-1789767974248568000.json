@@ -1,0 +1,78 @@
+{
+  "result": {
+    "status": "PASS",
+    "input": "Chromium native CDP touch events",
+    "buildRevision": "e2ec370bbc500d4b61dd320c089cfab02f405cfd",
+    "viewport": {
+      "width": 412,
+      "height": 839
+    },
+    "assertions": 19,
+    "checks": [
+      "native Re-rack returns ready",
+      "native primary touch owns aim",
+      "native orbit remains unarmed at 0.00",
+      "native orbit remains unarmed at 1.57",
+      "native orbit remains unarmed at 3.14",
+      "native orbit remains unarmed at 4.71",
+      "native orbit remains unarmed at 6.28",
+      "native primary touch arms",
+      "native same-finger return aborts",
+      "native same-finger gesture rearms",
+      "native release commits exactly one shot",
+      "native Re-rack returns ready",
+      "native touchcancel disarms without a shot",
+      "native Re-rack returns ready",
+      "secondary contact cannot steal gesture ownership",
+      "owned primary keeps aim while secondary moves",
+      "extra contact is ignored and owned primary release shoots exactly once",
+      "native Re-rack returns ready",
+      "native journey emitted no browser errors"
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 534,
+      "returncode": 0,
+      "stdout": "Browser 'integrated27-chrome-412-839-native' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8765/practice/?harnessCase=native&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "chrome"
+      ],
+      "durationMs": 1367,
+      "returncode": 0,
+      "stdout": "### Browser `integrated27-chrome-412-839-native` opened with pid 6954.\n### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:8765/practice/?harnessCase=native&cornerAngle=-2.5722794624891314&cornerPull=69.5');\n```\n### Page\n- Page URL: http://127.0.0.1:8765/practice/?harnessCase=native&cornerAngle=-2.5722794624891314&cornerPull=69.5\n- Page Title: Grenadier 1998 \u00b7 Practice table\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T21-46-16-139Z.yml)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "resize",
+        "412",
+        "839"
+      ],
+      "durationMs": 564,
+      "returncode": 0,
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 412, height: 839 });\n```\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/practice/native-touch.js"
+      ],
+      "durationMs": 2064,
+      "returncode": 0,
+      "stdout": "### Result\n{\"status\":\"PASS\",\"input\":\"Chromium native CDP touch events\",\"buildRevision\":\"e2ec370bbc500d4b61dd320c089cfab02f405cfd\",\"viewport\":{\"width\":412,\"height\":839},\"assertions\":19,\"checks\":[\"native Re-rack returns ready\",\"native primary touch owns aim\",\"native orbit remains unarmed at 0.00\",\"native orbit remains unarmed at 1.57\",\"native orbit remains unarmed at 3.14\",\"native orbit remains unarmed at 4.71\",\"native orbit remains unarmed at 6.28\",\"native primary touch arms\",\"native same-finger return aborts\",\"native same-finger gesture rearms\",\"native release commits exactly one shot\",\"native Re-rack returns ready\",\"native touchcancel disarms without a shot\",\"native Re-rack returns ready\",\"secondary contact cannot steal gesture ownership\",\"owned primary keeps aim while secondary moves\",\"extra contact is ignored and owned primary release shoots exactly once\",\"native Re-rack returns ready\",\"native journey emitted no browser errors\"]}\n### Ran Playwright code\n```js\nawait (async (page) => {\n  const cdp = await page.context().newCDPSession(page);\n  const checks = [];\n  const history = [];\n  const errors = [];\n  let identity = null;\n  const artifactPrefix = `output/playwright/practice/native-${page.viewportSize().width}-${Date.now()}`;\n  page.setDefaultTimeout(3500);\n  page.on(\"pageerror\", (error) => errors.push(`pageerror: ${String(error)}`));\n  page.on(\"console\", (message) => {\n    if (message.type() === \"error\") errors.push(`console: ${message.text()}`);\n  });\n\n  const remember = (entry) => {\n    history.push({ at: Date.now(), ...entry });\n    if (history.length > 16) history.shift();\n  };\n  const check = (condition, name) => {\n    if (!condition) throw new Error(`GAME: ${name}`);\n    checks.push(name);\n  };\n  const observe = async () => {\n    let observation;\n    try {\n      observation = await page.evaluate(() => window.practice?.observe());\n    } catch (error) {\n      throw new Error(`HARNESS: browser observation failed: ${String(error)}`);\n    }\n    if (!observation || !Number.isFinite(observation.frame) || !observation.health) {\n      throw new Error(\"HARNESS: missing or malformed observation\");\n    }\n    identity = { buildRevision: observation.buildRevision, scenarioId: observation.scenarioId,\n      scenarioVersion: observation.scenarioVersion, epoch: observation.epoch };\n    remember({\n      kind: \"observation\",\n      frame: observation.frame,\n      tick: observation.tick,\n      epoch: observation.epoch,\n      phase: observation.phase,\n      shotId: observation.shotId,\n      gesture: observation.gesture,\n    });\n    return observation;\n  };\n  const waitFresh = async (before) => {\n    try {\n      await page.waitForFunction(\n        ({ frame, observedAt }) => {\n          const next = window.practice?.observe?.();\n          return next && next.frame > frame + 2 && next.observedAt > observedAt;\n        },\n        { frame: before.frame, observedAt: before.observedAt },\n        { timeout: 2000 },\n      );\n    } catch (error) {\n      throw new Error(`HARNESS: stale observation stream: ${String(error)}`);\n    }\n    return await observe();\n  };\n  const dispatch = async (name, type, points) => {\n    remember({ kind: \"action\", name, type, points });\n    const before = await observe();\n    await cdp.send(\"Input.dispatchTouchEvent\", {\n      type,\n      touchPoints: points.map((point) => ({\n        x: point.x,\n        y: point.y,\n        id: point.id,\n        radiusX: 9,\n        radiusY: 9,\n        force: 1,\n      })),\n    });\n    return await waitFresh(before);\n  };\n  const screenPoint = (x, y, matrix) => ({\n    x: matrix.a * x + matrix.c * y + matrix.e,\n    y: matrix.b * x + matrix.d * y + matrix.f,\n  });\n  const screenDirection = (angle, matrix) => {\n    const x = matrix.a * Math.cos(angle) + matrix.c * Math.sin(angle);\n    const y = matrix.b * Math.cos(angle) + matrix.d * Math.sin(angle);\n    const length = Math.hypot(x, y);\n    return { x: x / length, y: y / length };\n  };\n  const pointsFor = async (angle = -Math.PI / 2) => {\n    const observation = await observe();\n    const cue = observation.balls.find(\n      (candidate) => candidate.role === \"cue\" && candidate.status === \"live\",\n    );\n    if (!cue || !observation.geometry?.matrix) {\n      throw new Error(\"HARNESS: cue or shared matrix unavailable\");\n    }\n    const center = screenPoint(cue.x, cue.y, observation.geometry.matrix);\n    const direction = screenDirection(angle, observation.geometry.matrix);\n    const at = (radius, id = 0) => ({\n      x: center.x - direction.x * radius,\n      y: center.y - direction.y * radius,\n      id,\n    });\n    return { center, direction, start: at(18), armed: at(18 + 75), full: at(18 + 127.2), at };\n  };\n  const reset = async () => {\n    remember({ kind: \"action\", name: \"Re-rack\" });\n    await page.locator(\"#reset\").click();\n    const observation = await observe();\n    check(observation.phase === \"ready\", \"native Re-rack returns ready\");\n    return observation;\n  };\n\n  try {\n    await page.waitForFunction(\n      () => window.practice?.observe?.()?.health?.ok,\n      {},\n      { timeout: 5000 },\n    );\n    await reset();\n\n    let points = await pointsFor();\n    let observation = await dispatch(\"primary touch start\", \"touchStart\", [points.start]);\n    const owner = observation.gesture?.pointerId;\n    check(observation.phase === \"aiming\" && owner != null, \"native primary touch owns aim\");\n    for (const radians of [0, Math.PI / 2, Math.PI, Math.PI * 1.5, Math.PI * 2]) {\n      const orbit = {\n        x: points.center.x + Math.cos(radians) * 27,\n        y: points.center.y + Math.sin(radians) * 27,\n        id: 0,\n      };\n      observation = await dispatch(`unarmed orbit ${radians.toFixed(2)}`, \"touchMove\", [orbit]);\n      check(\n        observation.phase === \"aiming\" && observation.gesture?.armed === false,\n        `native orbit remains unarmed at ${radians.toFixed(2)}`,\n      );\n    }\n    observation = await dispatch(\"arm native primary touch\", \"touchMove\", [points.armed]);\n    check(observation.gesture?.armed === true, \"native primary touch arms\");\n    observation = await dispatch(\"return native touch inward\", \"touchMove\", [points.start]);\n    check(observation.gesture?.armed === false, \"native same-finger return aborts\");\n    observation = await dispatch(\"rearm native primary touch\", \"touchMove\", [points.full]);\n    check(observation.gesture?.armed === true, \"native same-finger gesture rearms\");\n    observation = await dispatch(\"release native primary touch\", \"touchEnd\", []);\n    check(\n      observation.shotId === 1 && observation.phase === \"rolling\",\n      \"native release commits exactly one shot\",\n    );\n\n    await reset();\n    points = await pointsFor();\n    observation = await dispatch(\"touch start before cancellation\", \"touchStart\", [points.start]);\n    await dispatch(\"arm before cancellation\", \"touchMove\", [points.armed]);\n    observation = await dispatch(\"native touch cancellation\", \"touchCancel\", []);\n    check(\n      observation.shotId === 0 && observation.phase === \"ready\" && !observation.gesture,\n      \"native touchcancel disarms without a shot\",\n    );\n\n    await reset();\n    points = await pointsFor();\n    observation = await dispatch(\"owned primary start\", \"touchStart\", [points.start]);\n    const primaryPointer = observation.gesture?.pointerId;\n    const secondary = { x: points.center.x + 80, y: points.center.y + 20, id: 1 };\n    observation = await dispatch(\"add secondary contact\", \"touchStart\", [points.start, secondary]);\n    check(\n      observation.gesture?.pointerId === primaryPointer && observation.shotId === 0,\n      \"secondary contact cannot steal gesture ownership\",\n    );\n    observation = await dispatch(\"move primary with secondary present\", \"touchMove\", [\n      points.full,\n      { ...secondary, x: secondary.x + 25 },\n    ]);\n    check(\n      observation.gesture?.pointerId === primaryPointer && observation.gesture?.armed,\n      \"owned primary keeps aim while secondary moves\",\n    );\n    observation = await dispatch(\"release contacts\", \"touchEnd\", []);\n    check(\n      observation.shotId === 1,\n      \"extra contact is ignored and owned primary release shoots exactly once\",\n    );\n    await reset();\n    check(errors.length === 0, \"native journey emitted no browser errors\");\n    const finalObservation = await observe();\n    return {\n      status: \"PASS\",\n      input: \"Chromium native CDP touch events\",\n      buildRevision: finalObservation.buildRevision,\n      viewport: page.viewportSize(),\n      assertions: checks.length,\n      checks,\n    };\n  } catch (error) {\n    const text = String(error);\n    const classification = text.includes(\"GAME:\")\n      ? \"game-failure\"\n      : text.includes(\"UNCERTAIN:\")\n        ? \"uncertain\"\n        : \"harness-failure\";\n    const diagnosticScreenshot = `${artifactPrefix}-failure.png`;\n    try {\n      await page.screenshot({ path: diagnosticScreenshot, timeout: 2000 });\n    } catch (screenshotError) {\n      errors.push(`diagnostic screenshot: ${String(screenshotError)}`);\n    }\n    return {\n      status: \"FAIL\",\n      identity,\n      classification,\n      error: text,\n      diagnosticScreenshot,\n      checks,\n      history,\n      errors,\n    };\n  } finally {\n    await cdp.detach().catch(() => {});\n  }\n}\n)(page);\n```\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -7,6 +7,7 @@ async (page) => {
   let injectedFrozenObservation = null;
   const checks = [];
   const history = [];
+  const recentActions = [], recentObservations = [];
   const errors = [];
   const screenshots = [];
   let identity = null;
@@ -25,9 +26,18 @@ async (page) => {
   const remember = (entry) => {
     history.push({ at: Date.now(), ...entry });
     if (history.length > 16) history.shift();
+    const entries = entry.kind === 'action' ? recentActions : recentObservations;
+    entries.push({ at: Date.now(), ...entry }); if (entries.length > 16) entries.shift();
+  };
+  const persistJournal = async () => {
+    if (!harnessParameters.harnessJournal) return;
+    await page.request.post(harnessParameters.harnessJournal, { data: { identity, suite, history,
+      recentActions, recentObservations,
+      errors, screenshots }, timeout: 1000, failOnStatusCode: true });
   };
   const action = async (name, operation) => {
     remember({ kind: "action", name });
+    await persistJournal();
     return await operation();
   };
   const check = (condition, name, detail) => {
@@ -81,6 +91,7 @@ async (page) => {
       events: observation.events,
       placement: observation.placement, aimAngle: observation.aimAngle, tuning: observation.tuning, gesture: observation.gesture,
     });
+    await persistJournal();
     return observation;
   };
   const waitForFreshness = async (before, timeout = 2000) => {
@@ -131,6 +142,7 @@ async (page) => {
     const path = `${artifactPrefix}-${label}.png`;
     await page.screenshot({ path, timeout: 2500 });
     screenshots.push(path);
+    await persistJournal();
   };
   const screenPoint = (x, y, matrix) => ({
     x: matrix.a * x + matrix.c * y + matrix.e,
@@ -207,6 +219,7 @@ async (page) => {
   try {
     const initial = await observe();
     identity = { buildRevision: initial.buildRevision, scenarioId: initial.scenarioId, epoch: initial.epoch };
+    await screenshot('initial');
     await waitForFreshness(initial);
     const placed = await scratch();
     check(placed.balls.find(b => b.role === 'cue').status === 'potted', 'white remains absent after scratch');
@@ -289,6 +302,22 @@ async (page) => {
       await page.locator('#reset').focus(); await page.keyboard.press('Enter'); await page.mouse.up();
       const reset = await observe();
       check(reset.phase === 'ready' && reset.epoch > placed.epoch && reset.shotId === 0 && reset.placement === null, 'Re-rack cancels placement epoch and delayed release');
+      const scratchedAgain = await scratch();
+      await atWorld(600, 250, 'down');
+      await page.locator('#menu-open').focus(); await page.keyboard.press('Enter');
+      await page.locator('#strength').fill('2.2');
+      await page.locator('#practice-layout').selectOption('cut-pots');
+      await page.mouse.up();
+      const changed = await observe();
+      check(changed.phase === 'ready' && changed.scenarioId === 'cut-pots' && changed.epoch === scratchedAgain.epoch + 1, 'layout selection during placement starts the requested fresh epoch');
+      check(changed.placement === null && changed.shotId === 0 && changed.events.length === 0 && changed.potCount === 0 && changed.strength === 2.2, 'layout reset clears placement and shot state while retaining strength');
+      check(JSON.stringify(changed.balls.map(b => [b.id, b.x, b.y, b.status, b.vx, b.vy])) === JSON.stringify([
+        ['cue',500,320,'live',0,0], ['object-1',550,180,'live',0,0],
+        ['object-2',120,76.8,'live',0,0], ['object-3',880,417.14,'live',0,0],
+      ]), 'placement reset restores exact Cut pots fixture');
+      await page.waitForTimeout(250);
+      const afterReset = await observe();
+      check(afterReset.shotId === 0 && afterReset.placement === null && afterReset.events.length === 0, 'delayed placement contact cannot affect new layout');
     } else {
       for (const [name, x, y, reason] of [['occupied', 500, 180, 'occupied'], ['cushion', 200, 5, 'cushion'], ['pocket', 20, 20, 'pocket']]) {
         const o = await atWorld(x, y);
@@ -345,7 +374,7 @@ async (page) => {
       error: text,
       diagnosticScreenshot,
       checks,
-      history,
+      history, recentActions, recentObservations,
       errors,
       screenshots,
     };

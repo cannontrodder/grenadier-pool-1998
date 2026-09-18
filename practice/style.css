@@ -1,7 +1,7 @@
 :root { font-family: "Arial Narrow", Arial, sans-serif; color: #f4f0df; background: #071b33; color-scheme: dark; }
 * { box-sizing: border-box; }
 body { margin: 0; overflow: hidden; overscroll-behavior: none; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button, summary { cursor: pointer; }
 button { min-height: 44px; border: 1px solid #64768a; border-radius: 3px; background: #0d2848; color: #f4f0df; padding: 8px 14px; font-weight: bold; }
 button:disabled { opacity: .45; cursor: default; }
@@ -59,3 +59,7 @@ details { margin-top: 16px; }
 #placement-title { font-size: 18px; margin: 0; }
 
 #layout-name { text-transform: uppercase; }
+
+select { -webkit-appearance: none; appearance: none; color: inherit; border-radius: 3px; padding-right: 34px;
+  background-image: linear-gradient(45deg, transparent 50%, #f4f0df 50%), linear-gradient(135deg, #f4f0df 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }

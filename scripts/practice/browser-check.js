@@ -813,6 +813,9 @@ async (page) => {
     const journey = JSON.parse(harnessParameters.journey || 'null');
     if (!journey?.shots?.length) throw new Error('HARNESS: missing versioned layout journey');
     await page.locator('#menu-open').click();
+    const layoutBounds = await page.locator('#practice-layout').boundingBox();
+    check(layoutBounds?.height >= 44, 'layout selector provides a 44px touch target');
+    await screenshot('layout-menu');
     const names = await page.locator('#practice-layout option').allTextContents();
     check(JSON.stringify(names) === JSON.stringify(['Straight pots', 'Cut pots', 'Cushion practice']), 'three named layouts are visible');
     await page.locator('#strength').fill('2.1');

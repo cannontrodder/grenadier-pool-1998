@@ -1,7 +1,10 @@
 async (page) => {
+  const harnessParameters = await page.evaluate(() => Object.fromEntries(new URLSearchParams(location.search)));
+  const screenshots = [];
   const cdp = await page.context().newCDPSession(page);
   const checks = [];
   const history = [];
+  const recentActions = [], recentObservations = [];
   const errors = [];
   let identity = null;
   const artifactPrefix = `output/playwright/practice/native-${page.viewportSize().width}-${Date.now()}`;
@@ -14,6 +17,14 @@ async (page) => {
   const remember = (entry) => {
     history.push({ at: Date.now(), ...entry });
     if (history.length > 16) history.shift();
+    const entries = entry.kind === 'action' ? recentActions : recentObservations;
+    entries.push({ at: Date.now(), ...entry }); if (entries.length > 16) entries.shift();
+  };
+  const persistJournal = async () => {
+    if (!harnessParameters.harnessJournal) return;
+    await page.request.post(harnessParameters.harnessJournal, { data: { identity, suite: 'native', history,
+      recentActions, recentObservations,
+      errors, screenshots }, timeout: 1000, failOnStatusCode: true });
   };
   const check = (condition, name) => {
     if (!condition) throw new Error(`GAME: ${name}`);
@@ -38,8 +49,9 @@ async (page) => {
       epoch: observation.epoch,
       phase: observation.phase,
       shotId: observation.shotId,
-      gesture: observation.gesture,
+      gesture: observation.gesture, balls: observation.balls, events: observation.events, health: observation.health,
     });
+    await persistJournal();
     return observation;
   };
   const waitFresh = async (before) => {
@@ -115,6 +127,9 @@ async (page) => {
       { timeout: 5000 },
     );
     await reset();
+    const initialScreenshot = `${artifactPrefix}-initial.png`;
+    await page.screenshot({ path: initialScreenshot, timeout: 2500 }); screenshots.push(initialScreenshot);
+    await persistJournal();
 
     let points = await pointsFor();
     let observation = await dispatch("primary touch start", "touchStart", [points.start]);
@@ -208,7 +223,7 @@ async (page) => {
       error: text,
       diagnosticScreenshot,
       checks,
-      history,
+      history, recentActions, recentObservations,
       errors,
     };
   } finally {
