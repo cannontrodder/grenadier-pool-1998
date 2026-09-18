@@ -1,50 +1,58 @@
-# Selected direction · S1.1 · issue #5
+# Selected direction · S1.2 · issue #5
 
-Decision source: [user's 18 September 2026 review](feedback/2026-09-18-direction-review.md). Reviewed B1/P1 source `4de961e3dc01e01fe67d5b644868990355b4d657`. Issues consulted: #1–#7, #10–#12, #14.
+Decision source: [user review and follow-ups, 18 September 2026](feedback/2026-09-18-direction-review.md). Initial reviewed B1/P1 source: `4de961e3dc01e01fe67d5b644868990355b4d657`. Issues: #1–#7, #10–#12, #14–#16. Later user instructions below supersede earlier S1/S1.1 assumptions.
 
-## Selection
+## Chosen look
 
-**1998 Sports Broadcast**, for both **G01 gameplay** and **O02 persona presentation**, explicitly selected by the user. The governing idea is **a 1998 sports broadcast of a match taking place in the Grenadier pub**.
+**1998 Sports Broadcast**, selected for **G01 gameplay** and **O02 persona presentation**. The game should feel like a period sports broadcast of friends playing in the Grenadier pub. Keep navy/red/cool-white captions, bold period sports typography, green felt, and featured-player framing. Pub light, rails, room ambience, friends and Betty give it a specific place. Do not reintroduce album layouts, desktop windows, neon/synthwave, or generic stadium crowds.
 
-Keep the clear score/turn captions, bold period sports typography, navy/red/cool-white graphics, green felt, and featured-player persona framing. Keep broadcasts restrained enough that the table and the next shot remain immediately legible. The later feedback explicitly rejects the persistent landscape control rail: the table should occupy the available viewport, with compact TV-style overlays positioned away from active touch and fading back during interaction. This is not a hybrid with the Pub Snapshot album layout or Home Computer windows.
+## Fullscreen table and broadcast overlays
 
-## Pub presence without compromising the shot
+The user rejected the fixed landscape control rail. Give the table the full available viewport, preserving roughly 2:1 playing-surface geometry and correctly positioned pockets. “Fullscreen” is a layout requirement, not a browser-permission/API dependency. Do not reserve a persistent right panel or bottom power deck.
 
-- Gameplay stays two-dimensional and top-down, with recognizable table rails and warm pub light/material accents. Preserve table aspect ratio within the full available viewport; no persistent right control rail or bottom power deck takes its place. “Fullscreen” describes layout, not a dependency on a browser fullscreen permission/API.
-- Score, active-player captions, update notices, and feedback use brief TV-style overlays. During aim/drag, reposition them away from the finger/cue/important ball region and fade nonessential chrome. Keep an intelligible abort/armed cue. Exact timing, opacity, and collision-avoidance rules need prototype testing; do not move targets under the finger. Provide a legible alternative when transparency or motion is reduced.
-- Between shots, allow character reactions, people seated nearby, the incoming player stepping up, and the social context of sharing a pub table.
-- Explore a skippable pullback to an isometric pub scene once the balls have settled. Use a labeled schematic or 2.5D stand-in in design work. No accurate Grenadier room model or 3D asset currently exists.
-- Do not move the camera while a shot is being aimed or balls are in motion. Do not delay every shot with a mandatory sequence. A reduced-motion/static alternative must retain turn ownership and the pub context.
-- Return to the same readable top-down shot view before input becomes available. Treat any transition timing as a prototype hypothesis, not a user-approved timing value.
+Use brief TV-style score, turn, reaction and update overlays. Avoid the active finger, cue and important ball/action region; fade nonessential chrome during interaction. Keep armed/abort feedback and indispensable turn ownership intelligible. Do not relocate a control while the finger is trying to use it. Exact opacity, timing and collision avoidance are prototype hypotheses. Reduced-transparency/motion alternatives retain readable feedback. Safe-area controls, 44px minimum targets, readable text and non-color-only information remain requirements.
 
-## Interaction direction superseding W1
+Portrait versus landscape remains unselected. The fullscreen rule applies to both candidates; actual thumb reach and obstruction need testing.
 
-The preferred study is **one-finger drag and release, with an abort route**. The user explicitly does not want the wireframe buttons to constrain the UX. G02 (aim), G03 (armed/power), and G04 (committed/motion) remain useful state names; they may occur within one continuous gesture, not three button-driven screens.
+## Cue gesture and spin: clarified preference, provisional mechanics
 
-The mockup/storyboard must show contact, aiming, changing shot strength, release, abort, motion, and feedback. Drag distance versus velocity, control origin, aim adjustment, dead zone, and cancel target remain hypotheses for #7. Show a candidate clearly rather than treating it as settled. An accessible button/keyboard mode can be offered separately; it must not replace the preferred direct gesture.
+The user describes touching the table and rotating the cue all the way around the cue ball. Pulling away from the cue ball is a candidate for power; they explicitly remain unsure whether pullback alone is enough and want a casual feel. Study this first, without freezing sensitivity, gain, start position, dead zone or power curve.
 
-A candidate safe abort is to return to a neutral zone or slide to a clearly signaled cancel region while maintaining the same finger contact, then lift. Test discoverability, accidental-release rate, and reach. Pointer cancellation, app backgrounding, interrupted gestures, and remote loss of turn must disarm rather than shoot. A second finger or a mandatory confirmation tap is not part of the preferred loop.
+- Prefer one-finger drag and release, with an abort option.
+- G02 aim and G03 armed/power may be phases within one contact; valid release enters G04. No mandatory Set power or Commit shot button screens.
+- Show a small cue-ball contact-point control which opens a touch-sized selector for topspin/backspin/side contact, with a clear centered reset. This is a spin design, not a claim that spin physics already exists.
+- Spin setting occurs outside the active shot drag; opening/changing it must not accidentally fire a shot. Collapse its overlay before the aiming gesture and retain a small status cue.
+- A candidate same-finger abort is returning to neutral or sliding to a clearly signaled cancel region then lifting. Compare discoverability and accidental release in #7. Do not require a second finger or confirmation tap in the main loop.
+- Pointer cancellation, interrupted contact, backgrounding or lost turn ownership disarms. Accessible button/keyboard alternatives may coexist separately.
 
-Orientation is **not selected**. Preserve portrait/landscape comparison in the touch study, alongside thumb obstruction and left/right-handed reach. “I prefer G01” selects the visual treatment, not a measured ergonomic result.
+## One live match; previous inbox deferred
+
+**One live active match for now.** The user explicitly withdrew the multiple-simultaneous-matches idea as too complex. E01 offers entry/resume for the current match, not an inbox. A live turn-based match may last a long time and still needs update/reload/reconnect restoration. Do not infer that “single mode” means single-player: the user still wants friends, 2 v 2 and winner-stays-on.
+
+A possible excessive-delay penalty is only an idea. Distinguish turn expiry, extra visits and whole-match forfeiture; duration, warnings, pauses and disconnect fairness are unresolved. Proposed casual default: no automatic shot clock until agreed. No accounts/networking/store is implemented by these mockups.
+
+## Pub scene and Betty
+
+After balls settle, explore a short, skippable/event-based pullback showing seated people and the incoming player stepping up. Return to stable top-down view before input. Never move the camera during aim or shot motion or force a long sequence after every shot. Use a static/cut alternative for reduced motion.
+
+The user supplied relative room layout: bottom/back-wall bar (middle third or longer), pool table to its left, seats/tables beyond the pool and around the bar, foyer/entrance immediately above the bar with toilets to its left and right, and a roughly mirrored right social area **without a second pool table**. See [pub-layout.svg](pub-layout.svg). This is a schematic interpretation, not a measured plan or finished 3D model. #16 retains that later asset work.
+
+**Betty** is the landlady, described by the user as a “battleaxe” who might bar you. Include a formidable, humorous character presence with a labeled placeholder until her likeness/voice is supplied. Any invented caption is proposed game writing, not a real quote. Barring is an optional between-shot/post-game interlude concept; triggers/effects remain open. Preserve the match rather than silently wiping progress or inventing a competitive penalty.
+
+## Formats and after-game play
+
+The user wants both **2 v 2 teams** and **winner stays on**. Their earlier “killer”/50p challenger description is a house-game idea, not adoption of a standardized Killer ruleset. Team membership, teammate rotation, foul/extra-visit handling, break exceptions and challenger queue need later #10/#12 rules work. No real payment system is specified.
+
+After a competitive result, allow **post-game knockabout**: leave remaining balls on the table, let either player nominate even a non-cue ball as the struck ball, and enjoy potting them without changing the recorded result. Expose an explicit **Re-rack** action for the next setup; do not reset automatically when the match ends. Return to normal cue-ball/rule constraints for the next competitive match. Multiple people's requests still need safe shot arbitration; no simultaneous-ball simulation/network policy is selected here.
+
+[House-rule options](house-rules-notes.md) explain the distinction between two visits and two shots, early black and legal winning black. These are guidance/proposals; the user's uncertainty is not recorded as an approved ruleset.
 
 ## Friends and sound
 
-Use the user-supplied identities Trod, Craig, Shacka, Maaaaark in that original left-to-right order when identifying the source photo (#14). Computer counterparts must remain explicitly identified as such. Individual traits and teams have not been assigned by the user; any team arrangement in a mockup must be labeled illustrative.
+Photo identities remain Trod, Craig, Shacka, Maaaaark, left to right (#14). Identify computer counterparts clearly. Do not invent individual traits, teams, or a Betty likeness from that photo.
 
-Audio should put ordinary pool sounds first: cue contact, ball contact, cushion contact, pocket drop/return, with a low pub-room bed and sparse between-shot human/material detail. Develop a reusable sound palette with asset provenance, mute/level controls, captions, and a silent fallback; no actual period recording is currently supplied. Do not assume a music track is required or that a broadcast visual style demands commentary/stings over every shot. See the #6 sound direction artifact when available.
+Pool sound leads: cue contact, ball clicks, cushions, pocket/return. Add a quiet room bed and sparse between-shot glass/chair/chalk/coin detail, not obligatory commentary or musical stings. [Sound direction](sound-direction.md) specifies the palette and acquisition path. No final recordings exist. Respect mute/levels, captions, reduced sensory load, and quiet resume without replaying old sounds.
 
-## Multiple matches and asynchronous play
+## Handoff
 
-The user explicitly likes returning to several in-progress games and taking turns across them, like playing correspondence chess with multiple people. Design an E01 match-list variant with clear “Your turn”, “Waiting”, and resume context for each match. Opening one match must not silently discard or reset another. Distinguish switching matches from updating the application; both need restoration, but their triggers differ.
-
-For later #10/#12 implementation, save and reconcile each match separately and show authoritative turn ownership on resume. Details such as notifications, live-mode coexistence, time limits, how to leave during a committed shot, and simultaneous turn arrivals remain open. No accounts, networking service, or production match storage is implemented by a design mockup.
-
-## Future play formats, not newly committed implementation
-
-The user is interested in 2 v 2 with turn-taking and a “killer”/winner-stays-on challenger mode with a 50p entry motif. Preserve that description until house rules are specified. Team composition, within-team rotation, foul/extra-shot treatment, challenger queue, and the meaning of 50p in the software remain open. Use #10 and #12 for rules/multiplayer planning; do not introduce a payment flow in the design preview.
-
-## Review status and downstream handoff
-
-The visual-direction decision is explicit and sufficient for #6 mockups/storyboard/tokens. The physical iPhone Safari check remains in #4 and future touch-study review #8; no hardware, orientation, contrast, or accessibility acceptance was implied by this choice. Carry those unresolved checks forward, without reopening the basic visual selection.
-
-Required #6 outputs: fullscreen broadcast gameplay and persona mockups, a multiple-match resume/turn-list concept, a labeled pub pullback/handover concept, one-finger gesture/abort storyboard with touch-aware translucent overlays, reusable visual/audio/accessibility notes, and phone-size verification. These are design artifacts, not a playable prototype or a completed 3D scene.
+#6 delivers fullscreen gameplay/persona mockups, a single-match resume concept, spin/abort storyboard, post-game knockabout/re-rack concept, pub/Betty scene study, tokens/audio/accessibility notes and targeted captures. These are design artifacts, not physics, a finished 3D scene or a full match implementation. #15 publishes them; #7 tests the touch feel next. Physical iPhone findings remain in #4/#8 and are not inferred from the user's visual choice.

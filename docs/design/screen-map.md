@@ -32,7 +32,7 @@ Issue #1. Stable IDs for #2–#4. States describe interface intent, not a settle
 
 The user-selected Sports Broadcast direction and one-finger drag/release preference in [S1](selected-direction.md) supersede the original staged-button assumption. G02 and G03 can be phases of one continuous gesture; a valid release commits G04, while abort/disrupted input returns to G01 without shooting. Exact aim/power mapping remains a #7 study. The historical W1 explorer illustrates states, not approved mechanics. Optional pub pullback/handover presentation belongs after G04 settles (G05/M03), returning to stable top-down G01 before input. Do not imply a model already exists or settle 2 v 2 rotation rules.
 
-S1.1 additionally rejects the fixed landscape control rail. The table fills the available viewport; transient broadcast overlays avoid active touch and fade during interaction. E01 gains a multiple-match list/resume variant with “Your turn” and “Waiting” states. These supersede the original fixed-panel/outside-table-only layout assumptions, while preserving clear recovery actions.
+S1.2 additionally rejects the fixed landscape control rail. The table fills the available viewport; transient broadcast overlays avoid active touch and fade during interaction. E01 resumes one active live match; the user withdrew the multi-match inbox. G02/G03 include cue rotation, provisional pull-away power and a separate cue-ball contact selector for spin. Z01 gains an unscored knockabout variant where either player may nominate a remaining ball to strike, with explicit Re-rack for the next setup and the competitive result preserved. These supersede the original fixed-panel/outside-table-only layout assumptions, while preserving clear recovery actions.
 
 ## Primary journey
 

@@ -10,17 +10,17 @@ The intended game supports both real friends playing against each other and comp
 
 ## Selected direction and interaction feedback (18 September 2026)
 
-The user selected **1998 Sports Broadcast** for both gameplay and persona presentation. Keep a clear broadcast identity while retaining the pub setting, especially between shots. A pullback to an isometric/3D pub view with seated friends and the next player stepping up is an exploratory presentation idea; no room model exists yet. Top-down shot play remains the baseline.
+The user selected **1998 Sports Broadcast** for gameplay and personas, grounded in the pub. Use a fullscreen top-down table with temporary TV overlays away from the active finger, fading nonessential chrome during interaction. The fixed landscape rail and mandatory power/commit buttons were rejected.
 
-The user prefers **single-finger drag and release with a way to abort**. Earlier “Set power”/“Commit” buttons were exploratory wireframes, not an approved control mechanic. Keep the gesture mapping and orientation open for a touch study; button alternatives can support accessibility without defining the main loop.
+Prefer **single-finger drag and release with abort**. The cue can rotate around the cue ball; pull-away distance is a candidate power control, still provisional and casual. Add a cue-ball contact-point selector for spin/backspin. Gesture calibration and orientation need a touch study.
 
-Future interests include 2 v 2 with players taking turns and a “killer”/winner-stays-on mode where the challenger pays 50p to play. Preserve the user's house-game description; exact rules and any in-game coin representation are unresolved. This is not authorization to build real payments.
+Scope is **one live active match**, turn-based and resumable even if it lasts a long time. The earlier multiple-game/asynchronous-inbox idea is explicitly deferred. Both **2 v 2** and **winner stays on** are wanted; exact fouls, team rotation, black-ball edge cases and optional timeout penalties remain unsettled. The earlier “killer”/50p challenger idea is not a specification for real payments.
 
-Sound should evoke a 1990s pub, led by typical pool sounds. See [selected direction](design/selected-direction.md) and the linked raw feedback for precise decisions and remaining questions.
+After the competitive result, allow an unscored knockabout with remaining balls, including nominating a non-cue ball to strike. Keep the result final and expose an explicit Re-rack action for the next setup.
 
-The user also wants several resumable matches with asynchronous turn-taking, like playing chess against multiple people. The match list should distinguish the user's turns from games waiting on someone else. Detailed live-mode coexistence and notification behavior remain to be designed.
+Explore pub pullbacks between shots, with people seated or stepping up; no finished 3D model exists. The user's relative room plan places the bar on the bottom/back wall, pool to its left, seats beyond/around it, foyer immediately above the bar with toilets either side, and seating without a pool table on the right. Betty is the formidable landlady, with a possible humorous barring interlude whose trigger/effect remain open.
 
-The table should fill the available viewport. The fixed landscape control panel was explicitly rejected. Use temporary TV-style overlays away from the user's finger and fade nonessential chrome during table interaction; retain a readable abort state. The original wireframe rail is not an approved UI layout.
+Sound should evoke a 1990s pub, led by normal pool sounds. See [selected direction S1.2](design/selected-direction.md) and raw feedback for precise decisions and superseded ideas.
 
 ## Feedback and delivery
 

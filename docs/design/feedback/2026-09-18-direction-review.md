@@ -38,3 +38,35 @@ Review surface: https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/bo
 > guidanceL the ui on the right in landscaep mode is too inrtustive and takes up tghe entire screen - make the ux ui work when the table is completel fullscreen with pop up overlays like on tv away from where the User is touching the wcreen and maybe it goes very transparent when interactive with teh tabekl -
 
 This explicitly adds multiple resumable matches/asynchronous turn-taking as a desired experience, and rejects the fixed landscape control rail. Use the available viewport for the table, with transient broadcast overlays away from active touch and reduced opacity during interaction. This updates S1's earlier framing; it does not establish a final gesture mapping, exact opacity, network protocol, or physical-device test result.
+
+## Later guidance: one live match, cue control, knockabout, and pub plan
+
+> On the field, I've had this before: you have the cue ball, and as you tap on that screen you're able to move the cue all the way around the screen and all the way around the cue ball. Pulling it away from the cue ball will set the power.
+>
+> There needs to be something on screen that allows you to change where on the cue ball you hit it, so you can set the spin and backspin. I'm not decided yet whether pulling back is enough to set the power. I think we will keep it casual
+>
+> House rules, we'll do them both:
+>
+> - Teams: 2v2
+> - The winner stays on
+>
+> On the fouls, I don't know what the proper rules are. The people who play in pubs just get two shots or something, don't they? I'm not sure. I think if you pot the black, you've lost
+>
+> If the game's finished but there are still balls on the table, you can both still wander on and smash the balls in. In fact you can even tap on a ball that isn't the cue ball and use it as the one you're going to smash in. At the end of the game, we used to ping the balls in for fun, but then you've got a button to properly re-rack and so on I tell you what: let's just stick to the live single mode, right? Let's not have the one where you can have lots of games going on at the same time. That's just too complicated for now. But it is turn-based so there's no reason why a game couldn't last a long time. But you could have a rule that says if someone takes so long to play, they forfeit and then you get two shots. Regarding the pub detail, I'm going to describe this to you. Imagine you are looking straight down the pub.
+>
+> At the bottom of the image is the bar, which runs along the back wall, pretty much all the way along it, or along the middle third anyway. To the left of that bar is the pool table, and beyond the pool table and around the bar, there are seats and tables.
+>
+> Immediately above the bar on this top-down plan is the entrance. People come through a foyer, and the toilets are to the left and right as they come in. Over on the right-hand side of the bar, there is essentially a mirror image, but this time it doesn't have a pool table. It just has people sitting and boozing.
+
+Latest follow-up:
+
+> The landlady's called Betty. She's an absolute battleaxe and she might bar you out as well
+
+### Current interpretation (S1.2 replaces S1.1 where they conflict)
+
+- One live active match, still turn-based and resumable. Multiple simultaneous matches/inbox are deferred explicitly.
+- Cue can rotate all the way around the cue ball from touch input; pull-away distance is a candidate power control, not a final mapping. Add cue-ball contact-point control for spin/backspin. Keep the feel casual and preserve same-finger abort.
+- Both 2 v 2 and winner-stays-on are desired game formats. Foul details, team rotation and optional time penalties remain unsettled.
+- After the competitive result, allow an unscored knockabout, including selecting a non-cue ball to strike. Preserve the final result; explicit re-rack starts the next setup. Both players can participate, but simultaneous shot resolution is not specified.
+- Room description provides relative zones, not measurements. Bar is along the bottom/back wall (extent uncertain), pool to its left, seats beyond/around it, foyer immediately above bar with toilets flanking it, and a right social side without a pool table.
+- Betty is the named formidable landlady. A barring interlude is a character idea; no likeness, voice, exact dialogue, trigger or gameplay penalty has been supplied.
