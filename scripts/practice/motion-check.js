@@ -57,11 +57,12 @@ async page => {
     const c = { x: m.a * cue.x + m.c * cue.y + m.e, y: m.b * cue.x + m.d * cue.y + m.f };
     actions.push({ name: 'one-finger pull/release toward side-pocket jaw', angle, at: Date.now() });
     await persistJournal();
-    await page.mouse.move(c.x - d.x * 35, c.y - d.y * 35); await page.mouse.down();
+    await bounded(() => page.mouse.move(c.x - d.x * 35, c.y - d.y * 35), 3500, 'position pointer');
+    await bounded(() => page.mouse.down(), 3500, 'start pointer contact');
     const radius = 35 + 12 + 115 * Math.sqrt(.12);
-    await page.mouse.move(c.x - d.x * radius, c.y - d.y * radius, { steps: 1 });
+    await bounded(() => page.mouse.move(c.x - d.x * radius, c.y - d.y * radius, { steps: 1 }), 3500, 'pull pointer');
     check((await observe()).gesture?.armed, 'normal pointer arms jaw-directed shot');
-    await page.mouse.up();
+    await bounded(() => page.mouse.up(), 3500, 'release pointer');
     const near = await wait('white approaches side-pocket jaw', j => {
       const b = window.practice.observe().balls.find(b => b.role === 'cue');
       return b.vy > 0 && Math.hypot(b.x - j.x, b.y - j.y) < 48;
@@ -95,7 +96,7 @@ async page => {
       if (!(await page.locator('#keyboard-settings').evaluate(e => e.open))) await page.locator('#keyboard-settings summary').click();
       await page.locator('#angle').fill('-90');
       await page.locator('#keyboard-power').fill('0.16');
-      await page.locator('#shoot').focus(); await page.keyboard.press('Enter');
+      await page.locator('#shoot').focus(); await bounded(() => page.keyboard.press('Enter'), 3500, 'commit keyboard shot');
       const start = await observe();
       check(start.phase === 'rolling', `${cadence} replay uses the normal keyboard shot`);
       const finish = await wait(`${cadence} replay settles`, () => window.practice.observe().phase !== 'rolling', null, 10000);

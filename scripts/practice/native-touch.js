@@ -75,7 +75,7 @@ async (page) => {
   const dispatch = async (name, type, points) => {
     remember({ kind: "action", name, type, points });
     const before = await observe();
-    await cdp.send("Input.dispatchTouchEvent", {
+    await bounded(() => cdp.send("Input.dispatchTouchEvent", {
       type,
       touchPoints: points.map((point) => ({
         x: point.x,
@@ -85,7 +85,7 @@ async (page) => {
         radiusY: 9,
         force: 1,
       })),
-    });
+    }), 3500, name);
     return await waitFresh(before);
   };
   const screenPoint = (x, y, matrix) => ({
