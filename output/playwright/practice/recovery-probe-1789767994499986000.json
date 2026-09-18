@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "ok": true,
+    "paused": false,
+    "fault": null
+  },
+  "originalEvidence": "/Users/neil/projects/grenadier-pool-27-faults/output/playwright/practice/practice-webkit-interaction-1789767994499986000-390x844-1789767994499986000.json",
+  "statusUnchanged": "FAIL"
+}

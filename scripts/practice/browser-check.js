@@ -5,8 +5,13 @@ async (page) => {
   const suite = harnessParameters.harnessCase || "interaction";
   const injectedFault = harnessParameters.harnessFault || null;
   let injectedFrozenObservation = null;
+  let faultActive = false;
+  const startedAt = Date.now();
+  const bounds = { actionMs: 3500, observationMs: 2000, freshnessMs: 2000, faultProgressMs: 1500 };
   const checks = [];
   const history = [];
+  const recentActions = [];
+  const recentObservations = [];
   const errors = [];
   const screenshots = [];
   let identity = null;
@@ -14,21 +19,44 @@ async (page) => {
   const artifactPrefix = `output/playwright/practice/${suite}-${page.viewportSize().width}-${Date.now()}`;
 
   page.setDefaultTimeout(3500);
-  page.on("pageerror", (error) => errors.push(`pageerror: ${String(error)}`));
+  const recordError = (message) => { errors.push(message); if (errors.length > 16) errors.shift(); };
+  page.context().browser().on("disconnected", () => recordError("browser disconnected"));
+  page.on("pageerror", (error) => recordError(`pageerror: ${String(error)}`));
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(`console: ${message.text()}`);
+    if (message.type() === "error") recordError(`console: ${message.text()}`);
   });
   page.on("requestfailed", (request) =>
-    errors.push(`requestfailed: ${request.url()} ${request.failure()?.errorText || ""}`),
+    recordError(`requestfailed: ${request.url()} ${request.failure()?.errorText || ""}`),
   );
 
-  const remember = (entry) => {
-    history.push({ at: Date.now(), ...entry });
-    if (history.length > 16) history.shift();
+  const persistJournal = async () => {
+    if (!harnessParameters.harnessJournal) return;
+    await page.request.post(harnessParameters.harnessJournal, {
+      data: { identity, suite, injectedFault, faultActive, bounds, history, recentActions, recentObservations, errors, screenshots },
+      timeout: 1000,
+      failOnStatusCode: true,
+    });
   };
+  const remember = async (entry) => {
+    const stamped = { at: Date.now(), ...entry };
+    history.push(stamped);
+    if (history.length > 16) history.shift();
+    const recent = entry.kind === "action" ? recentActions : recentObservations;
+    recent.push(stamped);
+    if (recent.length > 16) recent.shift();
+    await persistJournal();
+  };
+  const bounded = async (operation, timeout, label) => Promise.race([
+    operation(),
+    page.waitForTimeout(timeout).then(() => { throw new Error(`HARNESS: ${label} timed out within ${timeout}ms`); }),
+  ]);
   const action = async (name, operation) => {
-    remember({ kind: "action", name });
-    return await operation();
+    await remember({ kind: "action", name });
+    try {
+      return await bounded(operation, bounds.actionMs, `action ${name}`);
+    } catch (error) {
+      throw new Error(`HARNESS: action ${name} failed: ${String(error)}`);
+    }
   };
   const check = (condition, name, detail) => {
     if (!condition) {
@@ -39,9 +67,9 @@ async (page) => {
   const observe = async () => {
     let observation;
     try {
-      observation = await page.evaluate(() => window.practice?.observe());
-      if (injectedFault === "missing") observation = null;
-      if (injectedFault === "stale") {
+      observation = await bounded(() => page.evaluate(() => window.practice?.observe()), bounds.observationMs, "browser observation");
+      if (faultActive && injectedFault === "missing") observation = null;
+      if (faultActive && injectedFault === "stale") {
         if (!injectedFrozenObservation) injectedFrozenObservation = observation;
         observation = injectedFrozenObservation;
       }
@@ -56,7 +84,7 @@ async (page) => {
     ) {
       throw new Error("HARNESS: missing or malformed observation");
     }
-    remember({
+    await remember({
       kind: "observation",
       buildRevision: observation.buildRevision,
       scenarioId: observation.scenarioId,
@@ -83,28 +111,14 @@ async (page) => {
     });
     return observation;
   };
-  const waitForFreshness = async (before, timeout = 2000) => {
-    if (injectedFault === "stale") {
-      await page.waitForTimeout(Math.min(timeout, 100));
+  const waitForFreshness = async (before, timeout = bounds.freshnessMs) => {
+    const deadline = Date.now() + timeout;
+    do {
+      await page.waitForTimeout(50);
       const after = await observe();
-      if (after.frame <= before.frame || after.observedAt <= before.observedAt) {
-        throw new Error("HARNESS: stale observation stream: injected frozen sample");
-      }
-      return after;
-    }
-    try {
-      await page.waitForFunction(
-        ({ frame, observedAt }) => {
-          const next = window.practice?.observe?.();
-          return next && next.frame > frame + 1 && next.observedAt > observedAt;
-        },
-        { frame: before.frame, observedAt: before.observedAt },
-        { timeout },
-      );
-      return await observe();
-    } catch (error) {
-      throw new Error(`HARNESS: stale observation stream: ${String(error)}`);
-    }
+      if (after.frame > before.frame + 1 && after.observedAt > before.observedAt) return after;
+    } while (Date.now() < deadline);
+    throw new Error(`HARNESS: stale observation stream within ${timeout}ms`);
   };
   const waitForGame = async (name, predicate, argument, timeout = 5000) => {
     try {
@@ -131,6 +145,7 @@ async (page) => {
     const path = `${artifactPrefix}-${label}.png`;
     await page.screenshot({ path, timeout: 2500 });
     screenshots.push(path);
+    await persistJournal();
   };
   const ball = (observation, id) => observation.balls.find((item) => item.id === id);
   const closeEnough = (a, b, tolerance = 0.01) => Math.abs(a - b) <= tolerance;
@@ -944,9 +959,39 @@ async (page) => {
     await reset();
   };
 
+  const runFault = async (initial) => {
+    await remember({ kind: 'action', name: `inject ${injectedFault}` });
+    faultActive = true;
+    if (injectedFault === 'missing') await observe();
+    else if (injectedFault === 'stale') {
+      injectedFrozenObservation = initial;
+      await waitForFreshness(initial);
+    } else if (injectedFault === 'action-timeout') {
+      // An actual blocked locator action exercises the ordinary action deadline.
+      await page.locator('#reset').evaluate(element => { element.disabled = true; });
+      await action('blocked Re-rack', () => page.locator('#reset').click());
+    } else if (injectedFault === 'stalled-progress') {
+      // Swallow a real release at the input boundary; the animation/observer stays live.
+      await page.evaluate(() => window.addEventListener('pointerup', event => event.stopImmediatePropagation(), { capture: true, once: true }));
+      await action('release shot with swallowed pointerup', () => gesture(-Math.PI / 2, 58, true));
+      await waitForGame('released shot makes progress', () => window.practice.observe().shotId > 0, {}, bounds.faultProgressMs);
+    } else if (injectedFault === 'disconnect') {
+      // The CLI worker exits with the browser. Persist this checkpoint in the
+      // outer runner before it actually disconnects and exercises its boundary.
+      return { status: 'CHECKPOINT', identity, suite, injectedFault, faultActive, bounds,
+        history, recentActions, recentObservations, errors, screenshots };
+    } else throw new Error(`HARNESS: unknown injected fault ${injectedFault}`);
+    throw new Error(`HARNESS: injected fault ${injectedFault} escaped detection`);
+  };
+
   try {
     const initial = await validateContract();
-    if (suite === "interaction") await runInteraction(initial);
+    await screenshot("initial-checkpoint");
+    if (injectedFault) {
+      const checkpoint = await runFault(initial);
+      if (checkpoint) return checkpoint;
+    }
+    else if (suite === "interaction") await runInteraction(initial);
     else if (suite === "pot") await runPot();
     else if (suite === "tuning") await runTuning(initial);
     else if (suite === "keyboard") await runKeyboard();
@@ -969,26 +1014,32 @@ async (page) => {
     };
   } catch (error) {
     const text = String(error);
-    const classification = text.includes("GAME:")
-      ? "game-failure"
-      : text.includes("UNCERTAIN:")
-        ? "uncertain"
-        : "harness-failure";
-    const diagnosticScreenshot = `${artifactPrefix}-failure.png`;
+    const classification = text.startsWith("Error: UNCERTAIN:")
+      ? "uncertain"
+      : text.startsWith("Error: GAME:") ? "game-failure" : "harness-failure";
+    recordError(text);
+    let diagnosticScreenshot = `${artifactPrefix}-failure.png`;
     try {
       await page.screenshot({ path: diagnosticScreenshot, timeout: 2000 });
     } catch (screenshotError) {
-      errors.push(`diagnostic screenshot: ${String(screenshotError)}`);
+      recordError(`diagnostic screenshot: ${String(screenshotError)}`);
+      diagnosticScreenshot = null;
     }
     return {
       status: "FAIL",
       identity,
       suite,
+      injectedFault,
+      faultActive,
+      bounds,
+      elapsedMs: Date.now() - startedAt,
       classification,
       error: text,
       diagnosticScreenshot,
       checks,
       history,
+      recentActions,
+      recentObservations,
       errors,
       screenshots,
     };
