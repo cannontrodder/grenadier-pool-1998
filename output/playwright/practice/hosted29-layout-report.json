@@ -1,0 +1,147 @@
+{
+  "expectedRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+  "url": "https://cannontrodder.github.io/grenadier-pool-1998/",
+  "results": [
+    {
+      "name": "hosted29-fixed-layout-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 12.09,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"41a5002a8b21222e415eb82bf946a861a4424473\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-straight-pots-390x844-1789769292557547000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-straight-pots-390x844-1789769292557547000.json"
+      }
+    },
+    {
+      "name": "hosted29-fixed-layout-cut-pots",
+      "case": "layouts",
+      "layout": "cut-pots",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 13.75,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"41a5002a8b21222e415eb82bf946a861a4424473\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-cut-pots-390x844-1789769304654401000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-cut-pots-390x844-1789769304654401000.json"
+      }
+    },
+    {
+      "name": "hosted29-fixed-layout-cushion-practice",
+      "case": "layouts",
+      "layout": "cushion-practice",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 12.41,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"41a5002a8b21222e415eb82bf946a861a4424473\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-cushion-practice-390x844-1789769318409153000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-layout-cushion-practice-390x844-1789769318409153000.json"
+      }
+    },
+    {
+      "name": "hosted29-fixed-pot-landscape",
+      "case": "pot",
+      "layout": null,
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "returncode": 0,
+      "durationSeconds": 8.37,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"pot\", \"assertions\": 40, \"buildRevision\": \"41a5002a8b21222e415eb82bf946a861a4424473\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-pot-landscape-844x390-1789769330824242000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "pot",
+        "assertions": 40,
+        "buildRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-fixed-pot-landscape-844x390-1789769330824242000.json"
+      }
+    }
+  ],
+  "status": "PASS",
+  "identityIssue": {
+    "gameplayAssertionsPassed": 70,
+    "reportedFinalRevision": "local-unbuilt",
+    "journalInitialRevision": "41a5002a8b21222e415eb82bf946a861a4424473",
+    "cause": "Final reload waits for health.ok but not asynchronous revision fetch; two final frame1 observations show placeholder.",
+    "evidence": "output/playwright/practice/hosted29-layout-straight-pots-390x844-1789769201831187000.json",
+    "journal": "output/playwright/practice/journal-1789769201831187000.json",
+    "remainingCasesNotRun": 3
+  },
+  "originalIncompleteAttempt": [
+    {
+      "name": "hosted29-layout-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 12.14,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"local-unbuilt\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-layout-straight-pots-390x844-1789769201831187000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "local-unbuilt",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted29-layout-straight-pots-390x844-1789769201831187000.json"
+      }
+    }
+  ],
+  "summary": {
+    "cases": 4,
+    "assertions": 250,
+    "revision": "41a5002a8b21222e415eb82bf946a861a4424473",
+    "originalIncompleteAttemptsRetained": 1,
+    "maximumCaseSeconds": 13.75
+  },
+  "verifiedJournals": [
+    "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789769292557547000.json",
+    "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789769304654401000.json",
+    "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789769318409153000.json",
+    "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789769330824242000.json"
+  ],
+  "visualInspection": "Straight pots cleared screenshot shows3/3,Tablecleared,visibleRe-rack and41a5002stamp; representative correctedCushion screenshot inspected."
+}

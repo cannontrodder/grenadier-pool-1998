@@ -93,8 +93,8 @@ At that earlier boundary, the user limited work to planning and look-and-feel de
 
 Room correction approved in #18: entrance doors sit on the far/top wall, with toilets immediately left and right there. A long foyer extends down into the room and opens toward the bar on the opposite bottom/back wall. Pool and other seating remain as previously drawn.
 
-## Current phase planning — issue #9
+## Current phase — first playable table
 
-The touch study is accepted after the user's physical-device testing. The next slice is solo practice with three object balls in fixed layouts and manual white placement after a scratch, as selected in this chat. The [Phase 3 spec](phases/first-playable-table.md) records the concrete scope, accepted calibration, simulation boundary and harness checks; the user subsequently directed creation of the complete package ready to start work. This task produces planning artifacts and implementation tickets only.
+The touch study is accepted after the user's physical-device testing. The next slice is solo practice with three object balls in fixed layouts and manual white placement after a scratch, as selected in this chat. The [Phase 3 spec](phases/first-playable-table.md) records the concrete scope, accepted calibration, simulation boundary and harness checks; the user subsequently directed creation of the complete package ready to start work. Implementation, integrated verification and independent review are complete in #24–#28. #29 handles publication and physical-phone acceptance; #10 remains blocked until that feedback gate is complete.
 
 Full match rules, opponents, real spin and saved games remain later work. The saved-match/update requirements above are retained for #10; this explicitly temporary practice phase resets on reload. Historical #4/#20 design feedback does not reopen the accepted touch study. Keep the prototype on its existing branch as reference.

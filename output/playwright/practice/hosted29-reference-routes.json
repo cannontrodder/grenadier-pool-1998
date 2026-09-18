@@ -1,0 +1,18 @@
+[
+  {
+    "url": "http://127.0.0.1:8765/",
+    "status": 200
+  },
+  {
+    "url": "http://127.0.0.1:8765/touch-study/",
+    "status": 200
+  },
+  {
+    "url": "https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/",
+    "status": 403
+  },
+  {
+    "url": "https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/touch-study/",
+    "status": 403
+  }
+]

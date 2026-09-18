@@ -1,6 +1,6 @@
 # Phase 3 — First playable table
 
-Planning owner: [#9](https://github.com/cannontrodder/grenadier-pool-1998/issues/9). Status: agreed scope; #24 implements and verifies the first working table foundation. Layout completion, placement UI, integrated verification/review and phase delivery remain #25–#29.
+Planning owner: [#9](https://github.com/cannontrodder/grenadier-pool-1998/issues/9). Status: #24–#28 implementation, integrated verification and independent review are complete. #29 publishes the reviewed build and remains open for actual physical-phone acceptance; Phase 3 is not yet marked delivered.
 
 ## Problem and agreed direction
 

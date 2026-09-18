@@ -1,0 +1,100 @@
+{
+  "revision": "41a5002a8b21222e415eb82bf946a861a4424473",
+  "base": "https://cannontrodder.github.io/grenadier-pool-1998/",
+  "results": [
+    {
+      "path": "app.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "5acf82c09b488d9c1a0bba44876a3ab44a7bea0a2a63ecdd38c92dbcba88a286"
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "matchesBuild": true,
+      "sha256": "586f0d5c85ffbf01241d32ca7cb6c75178e5d3ad362da9f33c60b06090e56900"
+    },
+    {
+      "path": "geometry.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "0f1ff147d3b30032d0092aaa35f3262b8e154f452ca6e8ce65d5ebcf3e2dbb55"
+    },
+    {
+      "path": "guide.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "63b59e8d9b7b520d66a521bdc39b83bf316cb43d56e5bfbc5fdf36206434f617"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "8d3002ed1e2f8aaf40646bc7230727d42bf172ad7987cf536f114ef7d764fa9c"
+    },
+    {
+      "path": "input.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "29a4d9a92985bf0dd7673ee9a1a3bd1b1f1502f8a812f70faa1250d697dbe42f"
+    },
+    {
+      "path": "layouts.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "7aa9c5eddad560246195c1e1e6e10fa460613ea8544f1b9d179e83019d80aaf9"
+    },
+    {
+      "path": "model.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "05818aaafec3b8232fac1c41a7058bbc5bb43b946902af225703a0d11219d457"
+    },
+    {
+      "path": "revision.json",
+      "status": 200,
+      "type": "application/json; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "92d20b0f465510c57b27c28495cc7e21425db7e8dcb982e643267733eccb31a7"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "f76473d468d6deaaaf6b4144802045a3b3729eaef16e36011b59c588ba161add"
+    },
+    {
+      "path": "tuning.mjs",
+      "status": 200,
+      "type": "text/javascript; charset=utf-8",
+      "matchesBuild": true,
+      "sha256": "63827392ba749760331e4dde39316f77c4833cca6100e584da3440dd3d75990c"
+    },
+    {
+      "path": ".nojekyll",
+      "status": 404
+    },
+    {
+      "path": "docs/project-brief.md",
+      "status": 404
+    },
+    {
+      "path": "output/playwright/practice/",
+      "status": 404
+    },
+    {
+      "path": "docs/design/friends-source.jpg",
+      "status": 404
+    }
+  ],
+  "note": "Initial ad-hoc probe expected hidden .nojekyll marker to be publicly served and failed. GitHub Pages returns404 for that build marker; all11 application resources matched. This corrected probe excludes only the hidden build marker from200 assertions."
+}
