@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#071b33" />
+    <title>Touch study · Grenadier Pool 1998</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="stylesheet" href="study.css" />
+  </head>
+  <body>
+    <main id="game" aria-label="Grenadier Pool touch study">
+      <svg
+        id="table"
+        role="img"
+        aria-label="Pool table. Use one finger to orbit, pull away for power, return inward to abort, or open Shot controls."
+        viewBox="0 0 1100 600"
+      >
+        <g id="world" transform="translate(50 50)">
+          <rect
+            x="-35"
+            y="-35"
+            width="1070"
+            height="570"
+            rx="30"
+            fill="#3a2924"
+            stroke="#7b5c3d"
+            stroke-width="10"
+          />
+          <rect
+            width="1000"
+            height="500"
+            rx="16"
+            fill="#0f684f"
+            stroke="#063e30"
+            stroke-width="20"
+          />
+          <g fill="#061923" stroke="#b29760" stroke-width="3">
+            <circle cx="0" cy="0" r="23" />
+            <circle cx="500" cy="0" r="23" />
+            <circle cx="1000" cy="0" r="23" />
+            <circle cx="0" cy="500" r="23" />
+            <circle cx="500" cy="500" r="23" />
+            <circle cx="1000" cy="500" r="23" />
+          </g>
+          <path
+            d="M250 14V486"
+            stroke="#eee8ca"
+            stroke-opacity=".3"
+            stroke-width="2"
+          />
+          <g id="aim">
+            <line
+              id="aim-line"
+              stroke="#f4f0df"
+              stroke-opacity=".65"
+              stroke-dasharray="10 12"
+              stroke-width="3"
+            />
+            <line
+              id="cue"
+              stroke="#d7b377"
+              stroke-width="8"
+              stroke-linecap="round"
+            />
+            <circle
+              id="neutral"
+              r="35"
+              fill="none"
+              stroke="#f2c14e"
+              stroke-width="2"
+              stroke-dasharray="5 7"
+            />
+          </g>
+          <g id="balls"></g>
+        </g>
+      </svg>
+      <header class="broadcast chrome">
+        <span class="live">PROTOTYPE</span>
+        <h1>GRENADIER <span>1998</span></h1>
+        <span id="build">T1</span>
+      </header>
+      <div id="status" role="status" aria-live="polite">
+        YOUR SHOT · Touch, orbit, pull away
+      </div>
+      <div id="power" aria-hidden="true"><i></i></div>
+      <p id="hint" class="chrome">
+        Keep one finger down to aim. Pull farther to arm.<br />Return inward,
+        then lift to abort.
+      </p>
+      <nav class="tools chrome" aria-label="Study controls">
+        <button id="spin-open">Contact · centre</button
+        ><button id="controls-open">Shot controls</button
+        ><button id="reset">Reset</button>
+      </nav>
+      <dialog id="controls">
+        <form method="dialog">
+          <header>
+            <h2>Shot controls</h2>
+            <button aria-label="Close shot controls">×</button>
+          </header>
+        </form>
+        <p>Compare the feel, then close this panel and try a direct shot.</p>
+        <label
+          >Review power mapping
+          <select id="mapping">
+            <option value="linear">A · Linear pull</option>
+            <option value="gentle">B · Gentle start</option>
+          </select></label
+        >
+        <p class="small">
+          Both use pull distance. B gives finer control at low power.
+        </p>
+        <fieldset>
+          <legend>Button / keyboard alternative</legend>
+          <label
+            >Aim angle
+            <input id="angle" type="range" min="0" max="359" value="0" /><output
+              id="angle-value"
+              >0°</output
+            ></label
+          ><label
+            >Power
+            <input
+              id="alt-power"
+              type="range"
+              min="5"
+              max="100"
+              value="40"
+            /><output id="alt-power-value">40%</output></label
+          >
+          <div class="row">
+            <button id="arm">Arm shot</button
+            ><button id="shoot" disabled>Play shot</button
+            ><button id="abort">Abort</button>
+          </div>
+          <p class="small">
+            Arrow keys adjust aim. Shift + arrows adjust power. Arm first; Enter
+            on Play shot releases. Escape aborts.
+          </p>
+        </fieldset>
+        <button id="scheduled-loss">Lose turn in 3 seconds</button
+        ><button id="ownership">Simulate turn loss</button>
+        <p id="owner-note">You have the table.</p>
+        <p class="small">
+          Approximate rolling, cushion bounce and ball contacts. Pocket mouths
+          are visual only. Contact point is recorded but does not change the
+          simulation. No match rules or saves.
+        </p>
+        <a href="../selected/final-review.html">Open the design review</a>
+      </dialog>
+      <dialog id="spin">
+        <form method="dialog">
+          <header>
+            <h2>Cue contact</h2>
+            <button aria-label="Close cue contact">×</button>
+          </header>
+        </form>
+        <p>
+          Choose a contact point before aiming. This study records spin; it does
+          not simulate it.
+        </p>
+        <div id="contact-pad" role="img" aria-label="Cue contact selector">
+          <span id="contact-dot"></span>
+        </div>
+        <label
+          >Side contact
+          <input
+            id="contact-x"
+            type="range"
+            min="-100"
+            max="100"
+            value="0" /></label
+        ><label
+          >Top / backspin
+          <input
+            id="contact-y"
+            type="range"
+            min="-100"
+            max="100"
+            value="0" /></label
+        ><output id="contact-label">Centre</output
+        ><button id="contact-reset">Reset to centre</button>
+      </dialog>
+      <noscript
+        >This touch study needs JavaScript.
+        <a href="../selected/final-review.html"
+          >The static design review is still available.</a
+        ></noscript
+      >
+    </main>
+    <script type="module" src="study.js"></script>
+  </body>
+</html>
