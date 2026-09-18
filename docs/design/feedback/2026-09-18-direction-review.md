@@ -28,3 +28,13 @@ Review surface: https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/bo
 - Explicit audio direction: 1990s pub atmosphere and typical pool sounds; the user wants help developing this.
 - Interaction preference: single-finger drag and release with the ability to abort. The mechanic is deliberately still open. The earlier power/commit buttons are not an approved requirement.
 - Not supplied: preferred orientation, measured readability/accessibility findings, exact gesture-to-power mapping, final game rules, room geometry, individual personality traits, or recordings.
+
+## Follow-up feedback during this work
+
+> what elkse to be settled
+
+> I love tghe idea you can have a game in poroigress and resume into each and take turns like somenone playin chess with laods of peopel at once
+>
+> guidanceL the ui on the right in landscaep mode is too inrtustive and takes up tghe entire screen - make the ux ui work when the table is completel fullscreen with pop up overlays like on tv away from where the User is touching the wcreen and maybe it goes very transparent when interactive with teh tabekl -
+
+This explicitly adds multiple resumable matches/asynchronous turn-taking as a desired experience, and rejects the fixed landscape control rail. Use the available viewport for the table, with transient broadcast overlays away from active touch and reduced opacity during interaction. This updates S1's earlier framing; it does not establish a final gesture mapping, exact opacity, network protocol, or physical-device test result.

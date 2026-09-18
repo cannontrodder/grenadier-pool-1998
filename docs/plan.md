@@ -39,7 +39,7 @@ Keep the following under `docs/design/` so later work can reuse the decisions:
 
 ## Direction selected on 18 September 2026
 
-The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. 2 v 2 and the user's winner-stays-on/50p idea are future rules/multiplayer planning inputs, not added prototype scope.
+The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1.1](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. The table fills the available viewport, with touch-aware broadcast overlays rather than a permanent control rail. Multiple resumable asynchronous matches are a desired experience. 2 v 2 and the user's winner-stays-on/50p idea are future rules/multiplayer planning inputs, not added prototype scope.
 
 ## Original three direction boards
 

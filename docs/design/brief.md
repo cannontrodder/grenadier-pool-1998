@@ -18,7 +18,7 @@ Make taking a pool shot on a phone immediately satisfying while bringing the cre
 
 ## Interface priorities
 
-1. Table geometry and balls remain readable throughout aim and shot motion. Keep portraits, reaction captions, menu chrome, and update notices outside the playable field.
+1. Table geometry and balls remain readable throughout aim and shot motion. Under S1.1, use the full viewport for the table and temporary broadcast overlays away from the finger and important action; fade nonessential overlays during interaction. The original fixed control rail is rejected.
 2. Make whose turn it is, the next legal interface action, and the difference between aiming and committing a shot explicit. Rules are not settled; do not hard-code a ruleset into the visual specification.
 3. Study single-finger drag and release with a clear abort path (S1). Keep the armed/committed distinction legible, but do not require separate power/commit buttons. Exact mapping and orientation remain to be tested.
 4. Use larger persona moments in selection and results; during play use a small named portrait slot and short reactions between shots.
@@ -40,6 +40,10 @@ Target controls of at least 44 × 44 CSS pixels, visible focus, 16px or larger o
 | Real persona identities, permissions, audio, personal references | Media inventory; later content selection, no invented personal details |
 | Shot checkpoint timing and cross-version/network protocol | Show proposed safe-boundary UI now; prove the contract in later persistence/multiplayer work |
 | Engine, hosting for the game, networking, storage | Defer until the relevant playable slice. Preview hosting is a separate small decision. |
+
+## Later S1.1 requirements
+
+Include a multiple-match resume list with per-match turn ownership. Opening one in-progress match must preserve the others. This is a desired asynchronous experience; networking/storage and live-play coexistence remain later implementation decisions.
 
 ## Parallel handoff
 

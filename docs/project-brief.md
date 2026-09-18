@@ -18,6 +18,10 @@ Future interests include 2 v 2 with players taking turns and a “killer”/winn
 
 Sound should evoke a 1990s pub, led by typical pool sounds. See [selected direction](design/selected-direction.md) and the linked raw feedback for precise decisions and remaining questions.
 
+The user also wants several resumable matches with asynchronous turn-taking, like playing chess against multiple people. The match list should distinguish the user's turns from games waiting on someone else. Detailed live-mode coexistence and notification behavior remain to be designed.
+
+The table should fill the available viewport. The fixed landscape control panel was explicitly rejected. Use temporary TV-style overlays away from the user's finger and fade nonessential chrome during table interaction; retain a readable abort state. The original wireframe rail is not an approved UI layout.
+
 ## Feedback and delivery
 
 Quick feedback on the user's iPhone is a priority. A mobile browser game is the current recommendation, with Safari prioritized and Android compatibility retained. The user defines phases, starting with small vertical slices and expanding their scope as understanding grows. Plans, designs, and mock-ups establish what done looks like. Each phase ends with a tested deployment.
