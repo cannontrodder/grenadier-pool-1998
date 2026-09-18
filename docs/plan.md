@@ -39,7 +39,7 @@ Keep the following under `docs/design/` so later work can reuse the decisions:
 
 ## Direction selected on 18 September 2026
 
-The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1.4](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. The table fills the available viewport, with touch-aware broadcast overlays rather than a permanent control rail. The current scope is one live, turn-based, resumable match; the briefly proposed multi-match inbox is deferred. Add spin selection and post-game knockabout/re-rack to the design study. Both 2 v 2 and winner-stays-on are desired formats; their rules and the earlier 50p motif remain later match/multiplayer implementation work.
+The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1.4](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is now accepted through the T1.1 touch study: preserve nonlinear power, full pull range, adjustable strength and both orientations. See [accepted findings](prototypes/touch-study-findings.md). A labeled isometric pub/handover concept can precede a later room model. The table fills the available viewport, with touch-aware broadcast overlays rather than a permanent control rail. The intended match scope is one live, turn-based, resumable match; the briefly proposed multi-match inbox is deferred. Add spin selection and post-game knockabout/re-rack to the design study. Both 2 v 2 and winner-stays-on are desired formats; their rules and the earlier 50p motif remain later match/multiplayer implementation work.
 
 ## Original three direction boards
 
@@ -75,7 +75,7 @@ Basic computer play is proposed before human multiplayer because it allows the t
 
 - Which pool rules and match format define the first meaningful game.
 - How the selected broadcast direction represents the pub during brief between-shot moments, and what room references/model are needed.
-- Portrait, landscape, or responsive orientation and the exact aim/power control model.
+- Later additions such as real spin without disturbing the accepted responsive portrait/landscape aim, nonlinear pull, abort and strength model.
 - What “first complete” means: its minimum opponent, match, personality, persistence, and multiplayer scope.
 - When human multiplayer enters the sequence and whether its first form is same-device, remote, or another agreed model.
 - How updates behave during an active shot and how multiplayer proceeds when clients are on different versions.
@@ -87,8 +87,14 @@ Do not front-load these into an exhaustive questionnaire. Resolve the next decis
 
 Aim for useful deployed progress today. The amount achievable depends on the chosen scope, feedback, and technical findings; completion of the entire vision within one day is not yet established. Use completed, tested phases to assess progress rather than promising a date before investigating the work.
 
-## Current design-only boundary
+## Earlier design-only boundary (historical)
 
-The user confirmed that this work remains planning and look-and-feel design, not app implementation. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. Playable study #7 remains future work; this revision does not start it.
+At that earlier boundary, the user limited work to planning and look-and-feel design. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. That design revision preceded playable study #7, which is now complete and accepted through #8.
 
 Room correction approved in #18: entrance doors sit on the far/top wall, with toilets immediately left and right there. A long foyer extends down into the room and opens toward the bar on the opposite bottom/back wall. Pool and other seating remain as previously drawn.
+
+## Current phase planning — issue #9
+
+The touch study is accepted after the user's physical-device testing. The next slice is solo practice with three object balls in fixed layouts and manual white placement after a scratch, as selected in this chat. The [Phase 3 spec](phases/first-playable-table.md) records the concrete scope, accepted calibration, simulation boundary and harness checks; the user subsequently directed creation of the complete package ready to start work. This task produces planning artifacts and implementation tickets only.
+
+Full match rules, opponents, real spin and saved games remain later work. The saved-match/update requirements above are retained for #10; this explicitly temporary practice phase resets on reload. Historical #4/#20 design feedback does not reopen the accepted touch study. Keep the prototype on its existing branch as reference.

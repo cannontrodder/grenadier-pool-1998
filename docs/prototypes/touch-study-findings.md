@@ -1,6 +1,6 @@
 # Touch-study findings · T1.1 · 18 September 2026
 
-The focused prototype requested in the [handoff](../handoffs/next-agent-touch-study.md) is implemented, reviewed and privately deployed. The prototype remains on `prototype/touch-study-7`; main retains these findings and pointers, not the throwaway implementation. #7 is complete. #8 is complete following explicit user acceptance and confirmation of use on a physical device. #4 and #20 remain accurately open; #9 has not been started.
+The focused prototype requested in the [handoff](../handoffs/next-agent-touch-study.md) is implemented, reviewed and privately deployed. The prototype remains on `prototype/touch-study-7`; main retains these findings and pointers, not the throwaway implementation. #7 is complete. #8 is complete following explicit user acceptance and confirmation of use on a physical device. #4 and #20 remain accurately open; #9 now defines the [first playable table phase](../phases/first-playable-table.md).
 
 - [Open the private touch study](https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/touch-study/).
 - Exact application revision: `d4f83f24786a089113ffce74a3f4525c6be609d5` (T1.1). The existing design review is preserved alongside it. Sign into the owning account on the phone.
@@ -27,4 +27,4 @@ Following delivery of T1.1 (`d4f83f24786a089113ffce74a3f4525c6be609d5`), the use
 
 This is an approximate two-ball response, with simple rolling, contact and cushion reflection. Pocket mouths are visual only; spin contact is recorded but has no physical effect. No rules, match, persistence, AI, networking, payments, knockabout or 3D room was built.
 
-The user has accepted the study after physical-device use. Preserve the nonlinear response, full pull range, same-finger abort and menu tuning approach as inputs to #9. Exact device metadata, a preferred numeric strength and a single chosen orientation remain unspecified; they do not reopen the accepted study. #9 may now plan the later production slice, but no planning or implementation has started here.
+The user has accepted the study after physical-device use. Preserve the nonlinear response, full pull range, same-finger abort and menu tuning approach as inputs to #9. Exact device metadata, a preferred numeric strength and a single chosen orientation remain unspecified; they do not reopen the accepted study. The resulting planning work is recorded in the [Phase 3 spec](../phases/first-playable-table.md); no production gameplay is implemented by the study or its planning issue.

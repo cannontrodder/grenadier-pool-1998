@@ -12,9 +12,9 @@ The intended game supports both real friends playing against each other and comp
 
 The user selected **1998 Sports Broadcast** for gameplay and personas, grounded in the pub. Use a fullscreen top-down table with temporary TV overlays away from the active finger, fading nonessential chrome during interaction. The fixed landscape rail and mandatory power/commit buttons were rejected.
 
-Prefer **single-finger drag and release with abort**. The cue can rotate around the cue ball; pull-away distance is a candidate power control, still provisional and casual. Add a cue-ball contact-point selector for spin/backspin. Gesture calibration and orientation need a touch study.
+**Single-finger drag and release with same-finger abort is accepted** following the T1.1 touch study and physical-device use. Preserve nonlinear power, the full pull range and adjustable Menu strength, in portrait and landscape. See [accepted findings](prototypes/touch-study-findings.md). Spin/backspin remains a later product feature; the first practice phase uses centre-ball physics and no nonfunctional selector.
 
-Scope is **one live active match**, turn-based and resumable even if it lasts a long time. The earlier multiple-game/asynchronous-inbox idea is explicitly deferred. Both **2 v 2** and **winner stays on** are wanted; exact fouls, team rotation, black-ball edge cases and optional timeout penalties remain unsettled. The earlier “killer”/50p challenger idea is not a specification for real payments.
+The intended match scope is **one live active match**, turn-based and resumable even if it lasts a long time. The earlier multiple-game/asynchronous-inbox idea is explicitly deferred. Both **2 v 2** and **winner stays on** are wanted; exact fouls, team rotation, black-ball edge cases and optional timeout penalties remain unsettled. The earlier “killer”/50p challenger idea is not a specification for real payments.
 
 After the competitive result, allow an unscored knockabout with remaining balls, including nominating a non-cue ball to strike. Keep the result final and expose an explicit Re-rack action for the next setup.
 
@@ -50,8 +50,14 @@ Use bounded waits and recovery attempts. When safe recovery fails, stop the affe
 
 On failure, retain a bounded diagnostic bundle containing recent actions and observations, relevant errors, version and scenario identifiers, and targeted screenshots or browser traces when useful. Return a concise failure summary and artifact locations to the agent, which can inspect richer evidence on demand. Preserve the original failure evidence across recovery attempts.
 
-## Current design-only boundary
+## Earlier design-only boundary (historical)
 
-The user confirmed that this work remains planning and look-and-feel design, not app implementation. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. Playable study #7 remains future work; this revision does not start it.
+At that earlier boundary, the user limited work to planning and look-and-feel design. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. That design revision preceded playable study #7, which is now complete and accepted through #8.
 
 Room correction approved in #18: entrance doors sit on the far/top wall, with toilets immediately left and right there. A long foyer extends down into the room and opens toward the bar on the opposite bottom/back wall. Pool and other seating remain as previously drawn.
+
+## Current phase planning — issue #9
+
+The touch study is accepted after the user's physical-device testing. The next slice is solo practice with three object balls in fixed layouts and manual white placement after a scratch, as selected in this chat. The [Phase 3 spec](phases/first-playable-table.md) records the concrete scope, accepted calibration, simulation boundary and harness checks; the user subsequently directed creation of the complete package ready to start work. This task produces planning artifacts and implementation tickets only.
+
+Full match rules, opponents, real spin and saved games remain later work. The saved-match/update requirements above are retained for #10; this explicitly temporary practice phase resets on reload. Historical #4/#20 design feedback does not reopen the accepted touch study. Keep the prototype on its existing branch as reference.
