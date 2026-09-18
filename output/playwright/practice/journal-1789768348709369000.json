@@ -1,0 +1,2177 @@
+{
+  "identity": {
+    "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+    "contractVersion": 1,
+    "scenarioId": "straight-pots",
+    "scenarioVersion": 1,
+    "epoch": 1
+  },
+  "suite": "pot",
+  "injectedFault": null,
+  "faultActive": false,
+  "bounds": {
+    "actionMs": 3500,
+    "observationMs": 2000,
+    "freshnessMs": 2000,
+    "faultProgressMs": 1500
+  },
+  "history": [
+    {
+      "at": 1789768353013,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 153,
+      "observedAt": 2547,
+      "epoch": 2,
+      "tick": 124,
+      "stateRevision": 127,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 203.4229745920605,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "potted",
+          "x": 500,
+          "y": -14.337854530495676,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-middle"
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 2,
+          "tick": 123,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-1",
+          "pocketId": "top-middle"
+        }
+      ],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353244,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 167,
+      "observedAt": 2780,
+      "epoch": 2,
+      "tick": 152,
+      "stateRevision": 155,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 203.4229745920605,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "potted",
+          "x": 500,
+          "y": -14.337854530495676,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-middle"
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 2,
+          "tick": 123,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-1",
+          "pocketId": "top-middle"
+        }
+      ],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353275,
+      "kind": "action",
+      "name": "Re-rack"
+    },
+    {
+      "at": 1789768353315,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 173,
+      "observedAt": 2849,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353318,
+      "kind": "action",
+      "name": "set strength 1.8"
+    },
+    {
+      "at": 1789768353381,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 181,
+      "observedAt": 2916,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353386,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 181,
+      "observedAt": 2916,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353389,
+      "kind": "action",
+      "name": "corner pocket primary gesture"
+    },
+    {
+      "at": 1789768353395,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 182,
+      "observedAt": 2930,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353430,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 184,
+      "observedAt": 2964,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "aiming",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": {
+        "pointerId": 1,
+        "startRadius": 105.670826727285,
+        "epoch": 3,
+        "active": true,
+        "angle": -2.5722177537749107,
+        "lockAim": true,
+        "lockDistance": 28,
+        "locked": true,
+        "pull": 0.4985859027687935,
+        "power": 0.2485879024397728,
+        "armed": true
+      }
+    },
+    {
+      "at": 1789768353460,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 186,
+      "observedAt": 2997,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 157,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": -540.4605824604628,
+          "vy": -345.94178638099936,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353493,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 188,
+      "observedAt": 3030,
+      "epoch": 3,
+      "tick": 1,
+      "stateRevision": 158,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 495.505843108426,
+          "y": 317.123348651497,
+          "vx": -537.8070071772507,
+          "vy": -344.24326737043293,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353498,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 188,
+      "observedAt": 3030,
+      "epoch": 3,
+      "tick": 1,
+      "stateRevision": 158,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 495.505843108426,
+          "y": 317.123348651497,
+          "vx": -537.8070071772507,
+          "vy": -344.24326737043293,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768354779,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 265,
+      "observedAt": 4313,
+      "epoch": 3,
+      "tick": 155,
+      "stateRevision": 312,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768355027,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 280,
+      "observedAt": 4564,
+      "epoch": 3,
+      "tick": 184,
+      "stateRevision": 341,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768355056,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 281,
+      "observedAt": 4587,
+      "epoch": 3,
+      "tick": 184,
+      "stateRevision": 341,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    }
+  ],
+  "recentActions": [
+    {
+      "at": 1789768351777,
+      "kind": "action",
+      "name": "Re-rack"
+    },
+    {
+      "at": 1789768351820,
+      "kind": "action",
+      "name": "set strength 1.8"
+    },
+    {
+      "at": 1789768351904,
+      "kind": "action",
+      "name": "side pocket primary gesture"
+    },
+    {
+      "at": 1789768353275,
+      "kind": "action",
+      "name": "Re-rack"
+    },
+    {
+      "at": 1789768353318,
+      "kind": "action",
+      "name": "set strength 1.8"
+    },
+    {
+      "at": 1789768353389,
+      "kind": "action",
+      "name": "corner pocket primary gesture"
+    }
+  ],
+  "recentObservations": [
+    {
+      "at": 1789768351976,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 91,
+      "observedAt": 1513,
+      "epoch": 2,
+      "tick": 0,
+      "stateRevision": 3,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 3.1596785761578136e-13,
+          "vy": -434.40000000000003,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768351993,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 92,
+      "observedAt": 1529,
+      "epoch": 2,
+      "tick": 1,
+      "stateRevision": 4,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 316.3879220227427,
+          "vx": 3.1424048977533e-13,
+          "vy": -432.0251742960371,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768351998,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 92,
+      "observedAt": 1529,
+      "epoch": 2,
+      "tick": 1,
+      "stateRevision": 4,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 316.3879220227427,
+          "vx": 3.1424048977533e-13,
+          "vy": -432.0251742960371,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353013,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 153,
+      "observedAt": 2547,
+      "epoch": 2,
+      "tick": 124,
+      "stateRevision": 127,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 203.4229745920605,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "potted",
+          "x": 500,
+          "y": -14.337854530495676,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-middle"
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 2,
+          "tick": 123,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-1",
+          "pocketId": "top-middle"
+        }
+      ],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353244,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 167,
+      "observedAt": 2780,
+      "epoch": 2,
+      "tick": 152,
+      "stateRevision": 155,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 203.4229745920605,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "potted",
+          "x": 500,
+          "y": -14.337854530495676,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-middle"
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 2,
+          "tick": 123,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-1",
+          "pocketId": "top-middle"
+        }
+      ],
+      "aimAngle": -1.570796326794896,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353315,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 173,
+      "observedAt": 2849,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353381,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 181,
+      "observedAt": 2916,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353386,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 181,
+      "observedAt": 2916,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353395,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 182,
+      "observedAt": 2930,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "ready",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -1.5707963267948966,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353430,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 184,
+      "observedAt": 2964,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 156,
+      "phase": "aiming",
+      "shotId": 0,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": {
+        "pointerId": 1,
+        "startRadius": 105.670826727285,
+        "epoch": 3,
+        "active": true,
+        "angle": -2.5722177537749107,
+        "lockAim": true,
+        "lockDistance": 28,
+        "locked": true,
+        "pull": 0.4985859027687935,
+        "power": 0.2485879024397728,
+        "armed": true
+      }
+    },
+    {
+      "at": 1789768353460,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 186,
+      "observedAt": 2997,
+      "epoch": 3,
+      "tick": 0,
+      "stateRevision": 157,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": -540.4605824604628,
+          "vy": -345.94178638099936,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353493,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 188,
+      "observedAt": 3030,
+      "epoch": 3,
+      "tick": 1,
+      "stateRevision": 158,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 495.505843108426,
+          "y": 317.123348651497,
+          "vx": -537.8070071772507,
+          "vy": -344.24326737043293,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768353498,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 188,
+      "observedAt": 3030,
+      "epoch": 3,
+      "tick": 1,
+      "stateRevision": 158,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 495.505843108426,
+          "y": 317.123348651497,
+          "vx": -537.8070071772507,
+          "vy": -344.24326737043293,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768354779,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 265,
+      "observedAt": 4313,
+      "epoch": 3,
+      "tick": 155,
+      "stateRevision": 312,
+      "phase": "rolling",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768355027,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 280,
+      "observedAt": 4564,
+      "epoch": 3,
+      "tick": 184,
+      "stateRevision": 341,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    },
+    {
+      "at": 1789768355056,
+      "kind": "observation",
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "scenarioId": "straight-pots",
+      "scenarioVersion": 1,
+      "frame": 281,
+      "observedAt": 4587,
+      "epoch": 3,
+      "tick": 184,
+      "stateRevision": 341,
+      "phase": "ready",
+      "shotId": 1,
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "status": "live",
+          "x": 239.61180408330347,
+          "y": 153.30636183432338,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "status": "potted",
+          "x": 8.776591872431016,
+          "y": 5.859635839011273,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": "top-left"
+        },
+        {
+          "id": "object-3",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "pocketId": null
+        }
+      ],
+      "events": [
+        {
+          "seq": 1,
+          "epoch": 3,
+          "tick": 155,
+          "shotId": 1,
+          "type": "pot",
+          "ballId": "object-2",
+          "pocketId": "top-left"
+        }
+      ],
+      "aimAngle": -2.5722177537749107,
+      "tuning": {
+        "strength": 1.8,
+        "guideLength": 60,
+        "lockDistance": 28,
+        "pocketSize": 110,
+        "lockAim": true,
+        "contactMarker": true
+      },
+      "gesture": null
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "output/playwright/practice/pot-390-1789768351668-initial-checkpoint.png",
+    "output/playwright/practice/pot-390-1789768351668-side-armed.png",
+    "output/playwright/practice/pot-390-1789768351668-side-motion.png",
+    "output/playwright/practice/pot-390-1789768351668-side-pot-feedback.png",
+    "output/playwright/practice/pot-390-1789768351668-side-pot.png",
+    "output/playwright/practice/pot-390-1789768351668-corner-armed.png",
+    "output/playwright/practice/pot-390-1789768351668-corner-motion.png",
+    "output/playwright/practice/pot-390-1789768351668-corner-pot-feedback.png",
+    "output/playwright/practice/pot-390-1789768351668-corner-pot.png"
+  ]
+}

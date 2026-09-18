@@ -99,3 +99,12 @@ Earlier exact `e2ec370` build checks, before the journal refinement:
 - [action-timeout](../../output/playwright/practice/practice-webkit-interaction-1789768008548758000-390x844-1789768008548758000.json)
 - [stalled-progress](../../output/playwright/practice/practice-webkit-interaction-1789768017878168000-390x844-1789768017878168000.json)
 - [disconnect](../../output/playwright/practice/practice-webkit-interaction-1789768023597081000-390x844-1789768023597081000.json)
+
+## Integrated follow-through
+
+The parent applied the same bounded observation reads, separate 16-entry action
+and observation histories, durable local journal and initial screenshot to
+placement, native-touch and motion suites. Final integrated repetitions use
+`aa9781ec9c248ba7c1c8b43125c93c344a31eb54`; all five faults and an externally
+closed ordinary placement run retain original failures and diagnostics. See
+[complete matrix](practice-loop-27.md) and `final27-faults-index.json`.

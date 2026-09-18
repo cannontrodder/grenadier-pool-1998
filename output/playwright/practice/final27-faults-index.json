@@ -1,0 +1,90 @@
+[
+  {
+    "status": "EXPECTED FAILURE",
+    "originalStatus": "FAIL",
+    "fault": "missing",
+    "classification": "harness-failure",
+    "error": "Error: HARNESS: missing or malformed observation",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-missing-390x844-1789768357353149000.json",
+    "recovery": {
+      "probe": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-missing-390x844-1789768357353149000.json",
+      "statusUnchanged": "FAIL"
+    }
+  },
+  {
+    "status": "EXPECTED FAILURE",
+    "originalStatus": "FAIL",
+    "fault": "stale",
+    "classification": "harness-failure",
+    "error": "Error: HARNESS: stale observation stream within 2000ms",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-stale-390x844-1789768364252036000.json",
+    "recovery": {
+      "probe": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-stale-390x844-1789768364252036000.json",
+      "statusUnchanged": "FAIL"
+    }
+  },
+  {
+    "status": "EXPECTED FAILURE",
+    "originalStatus": "FAIL",
+    "fault": "action-timeout",
+    "classification": "harness-failure",
+    "error": "Error: HARNESS: action blocked Re-rack failed: TimeoutError: locator.click: Timeout 3500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#reset')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled id=\"reset\">Re-rack</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    6 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-action-timeout-390x844-1789768373335971000.json",
+    "recovery": {
+      "probe": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      },
+      "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-action-timeout-390x844-1789768373335971000.json",
+      "statusUnchanged": "FAIL"
+    }
+  },
+  {
+    "status": "EXPECTED FAILURE",
+    "originalStatus": "FAIL",
+    "fault": "stalled-progress",
+    "classification": "game-failure",
+    "error": "Error: GAME: released shot makes progress did not complete within 1500ms",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-stalled-progress-390x844-1789768383706694000.json",
+    "recovery": null
+  },
+  {
+    "status": "EXPECTED FAILURE",
+    "originalStatus": "FAIL",
+    "fault": "disconnect",
+    "classification": "harness-failure",
+    "error": "HARNESS: browser session disconnected: Playwright CLI failed: run-code",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-disconnect-390x844-1789768389864434000.json",
+    "recovery": {
+      "error": "Playwright CLI failed: reload",
+      "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-disconnect-390x844-1789768389864434000.json",
+      "statusUnchanged": "FAIL"
+    }
+  },
+  {
+    "status": "FAIL",
+    "originalStatus": "FAIL",
+    "fault": null,
+    "classification": "harness-failure",
+    "error": "Error: locator.evaluate: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('#placement-preview')\u001b[22m\n",
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-unexpected-placement-390x844-1789768413710526000.json",
+    "recovery": {
+      "error": "Playwright CLI failed: reload",
+      "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-unexpected-placement-390x844-1789768413710526000.json",
+      "statusUnchanged": "FAIL"
+    },
+    "externalClose": true,
+    "journalVerified": true
+  }
+]

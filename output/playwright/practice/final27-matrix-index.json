@@ -1,0 +1,1154 @@
+{
+  "expectedRevisionPrefix": "aa9781e",
+  "results": [
+    {
+      "name": "final27-webkit-390-844-interaction",
+      "case": "interaction",
+      "layout": null,
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 6.29,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"interaction\", \"assertions\": 64, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-interaction-390x844-1789768342420230000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "interaction",
+        "assertions": 64,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-interaction-390x844-1789768342420230000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-pot",
+      "case": "pot",
+      "layout": null,
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 7.62,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"pot\", \"assertions\": 40, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-pot-390x844-1789768348709369000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "pot",
+        "assertions": 40,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-pot-390x844-1789768348709369000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-keyboard",
+      "case": "keyboard",
+      "layout": null,
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 4.91,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"keyboard\", \"assertions\": 18, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-keyboard-390x844-1789768356325626000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "keyboard",
+        "assertions": 18,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-keyboard-390x844-1789768356325626000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-tuning",
+      "case": "tuning",
+      "layout": null,
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 6.05,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"tuning\", \"assertions\": 43, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-tuning-390x844-1789768361241975000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "tuning",
+        "assertions": 43,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-tuning-390x844-1789768361241975000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 12.21,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-straight-pots-390x844-1789768367322269000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-straight-pots-390x844-1789768367322269000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-cut-pots",
+      "case": "layouts",
+      "layout": "cut-pots",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 14.3,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cut-pots-390x844-1789768379514231000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cut-pots-390x844-1789768379514231000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-390-844-cushion-practice",
+      "case": "layouts",
+      "layout": "cushion-practice",
+      "browser": "webkit",
+      "width": 390,
+      "height": 844,
+      "returncode": 0,
+      "durationSeconds": 12.89,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cushion-practice-390x844-1789768393869331000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cushion-practice-390x844-1789768393869331000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-844-390-interaction",
+      "case": "interaction",
+      "layout": null,
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "returncode": 0,
+      "durationSeconds": 6.43,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"interaction\", \"assertions\": 64, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-interaction-844x390-1789768406708157000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "interaction",
+        "assertions": 64,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-interaction-844x390-1789768406708157000.json"
+      }
+    },
+    {
+      "name": "final27-webkit-844-390-pot",
+      "case": "pot",
+      "layout": null,
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "returncode": 1,
+      "durationSeconds": 6.6,
+      "stdout": "{\"status\": \"FAIL\", \"originalStatus\": \"FAIL\", \"fault\": null, \"classification\": \"game-failure\", \"error\": \"Error: GAME: rendered balls, rails, jaws and pocket mouths match shared observations ({\\\"ok\\\":false,\\\"matrixDelta\\\":0,\\\"maxBallDelta\\\":5.105843276632783,\\\"maxRailDelta\\\":0,\\\"maxJawDelta\\\":0,\\\"maxPocketDelta\\\":0})\", \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-pot-844x390-1789768413126237000.json\", \"recovery\": null}\n",
+      "stderr": "",
+      "summary": {
+        "status": "FAIL",
+        "originalStatus": "FAIL",
+        "fault": null,
+        "classification": "game-failure",
+        "error": "Error: GAME: rendered balls, rails, jaws and pocket mouths match shared observations ({\"ok\":false,\"matrixDelta\":0,\"maxBallDelta\":5.105843276632783,\"maxRailDelta\":0,\"maxJawDelta\":0,\"maxPocketDelta\":0})",
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-pot-844x390-1789768413126237000.json",
+        "recovery": null
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-844-390-keyboard",
+      "case": "keyboard",
+      "layout": null,
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 4.59,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"keyboard\", \"assertions\": 18, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-keyboard-844x390-1789768525281809000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "keyboard",
+        "assertions": 18,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-keyboard-844x390-1789768525281809000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-844-390-tuning",
+      "case": "tuning",
+      "layout": null,
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 5.5,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"tuning\", \"assertions\": 43, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-tuning-844x390-1789768529894235000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "tuning",
+        "assertions": 43,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-tuning-844x390-1789768529894235000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-844-390-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 12.31,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-straight-pots-844x390-1789768535382012000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-straight-pots-844x390-1789768535382012000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-844-390-cut-pots",
+      "case": "layouts",
+      "layout": "cut-pots",
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 13.79,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cut-pots-844x390-1789768547687073000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cut-pots-844x390-1789768547687073000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-844-390-cushion-practice",
+      "case": "layouts",
+      "layout": "cushion-practice",
+      "browser": "webkit",
+      "width": 844,
+      "height": 390,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 12.39,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cushion-practice-844x390-1789768561478721000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cushion-practice-844x390-1789768561478721000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-interaction",
+      "case": "interaction",
+      "layout": null,
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 6.56,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"interaction\", \"assertions\": 64, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-interaction-320x568-1789768573870434000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "interaction",
+        "assertions": 64,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-interaction-320x568-1789768573870434000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-pot",
+      "case": "pot",
+      "layout": null,
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 8.06,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"pot\", \"assertions\": 40, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-pot-320x568-1789768580429617000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "pot",
+        "assertions": 40,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-pot-320x568-1789768580429617000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-keyboard",
+      "case": "keyboard",
+      "layout": null,
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 5.37,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"keyboard\", \"assertions\": 18, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-keyboard-320x568-1789768588540301000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "keyboard",
+        "assertions": 18,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-keyboard-320x568-1789768588540301000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-tuning",
+      "case": "tuning",
+      "layout": null,
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 5.55,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"tuning\", \"assertions\": 43, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-tuning-320x568-1789768593867344000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "tuning",
+        "assertions": 43,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-tuning-320x568-1789768593867344000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 11.59,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-straight-pots-320x568-1789768599411056000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-straight-pots-320x568-1789768599411056000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-cut-pots",
+      "case": "layouts",
+      "layout": "cut-pots",
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 13.29,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cut-pots-320x568-1789768611000864000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cut-pots-320x568-1789768611000864000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-webkit-320-568-cushion-practice",
+      "case": "layouts",
+      "layout": "cushion-practice",
+      "browser": "webkit",
+      "width": 320,
+      "height": 568,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 11.9,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cushion-practice-320x568-1789768624291261000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cushion-practice-320x568-1789768624291261000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-interaction",
+      "case": "interaction",
+      "layout": null,
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 7.83,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"interaction\", \"assertions\": 64, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-interaction-412x839-1789768636195669000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "interaction",
+        "assertions": 64,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-interaction-412x839-1789768636195669000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-pot",
+      "case": "pot",
+      "layout": null,
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 7.68,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"pot\", \"assertions\": 40, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-pot-412x839-1789768644023209000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "pot",
+        "assertions": 40,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-pot-412x839-1789768644023209000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-keyboard",
+      "case": "keyboard",
+      "layout": null,
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 4.42,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"keyboard\", \"assertions\": 18, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-keyboard-412x839-1789768651702027000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "keyboard",
+        "assertions": 18,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-keyboard-412x839-1789768651702027000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-tuning",
+      "case": "tuning",
+      "layout": null,
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 5.87,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"tuning\", \"assertions\": 43, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-tuning-412x839-1789768656119700000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "tuning",
+        "assertions": 43,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-tuning-412x839-1789768656119700000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-straight-pots",
+      "case": "layouts",
+      "layout": "straight-pots",
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 12.35,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-straight-pots-412x839-1789768661991310000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-straight-pots-412x839-1789768661991310000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-cut-pots",
+      "case": "layouts",
+      "layout": "cut-pots",
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 14.19,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cut-pots-412x839-1789768674334813000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cut-pots-412x839-1789768674334813000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-cushion-practice",
+      "case": "layouts",
+      "layout": "cushion-practice",
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 12.4,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"layouts\", \"assertions\": 70, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cushion-practice-412x839-1789768688520734000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "layouts",
+        "assertions": 70,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cushion-practice-412x839-1789768688520734000.json"
+      }
+    },
+    {
+      "name": "final27-fixed-chrome-412-839-native",
+      "case": "native",
+      "layout": null,
+      "browser": "chrome",
+      "width": 412,
+      "height": 839,
+      "harnessRevision": "f2d324f",
+      "returncode": 0,
+      "durationSeconds": 5.14,
+      "stdout": "{\"status\": \"PASS\", \"case\": \"native\", \"assertions\": 19, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-native-412x839-1789768700921836000.json\"}\n",
+      "stderr": "",
+      "summary": {
+        "status": "PASS",
+        "case": "native",
+        "assertions": 19,
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "viewport": {
+          "width": 412,
+          "height": 839
+        },
+        "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-native-412x839-1789768700921836000.json"
+      }
+    }
+  ],
+  "summary": {
+    "requiredCases": 29,
+    "successfulCases": 29,
+    "successfulAssertions": 1519,
+    "preservedFailedAttempts": 1,
+    "failureCause": "Cross-frame comparison in harness after new awaited journal write; fixed by atomic in-page observation/DOM sampling in f2d324f.",
+    "successfulReplacement": "WebKit844x390 pot40 independently rerun by parent after fix",
+    "runtimeRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+    "journalBundlesValidated": 30,
+    "maxDurationSeconds": 14.3,
+    "allCasesUnder50Seconds": true
+  },
+  "failureAnalysis": {
+    "reportedClassification": "game-failure",
+    "investigatedClassification": "harness-failure",
+    "reason": "Moving ball snapshot is sampled before awaited journal HTTP write; later DOM evaluation can compare a later frame. Failure maxBallDelta5.105843px while static geometry deltas0 is consistent with ~one frame at current cue velocity. Parent confirmed atomic in-page snapshot/DOM comparison fix required.",
+    "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-pot-844x390-1789768413126237000.json",
+    "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768413126237000.json",
+    "diagnosticScreenshot": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/pot-844-1789768416433-failure.png"
+  },
+  "harnessFixRevision": "f2d324f",
+  "successfulReplacement": {
+    "case": "pot",
+    "browser": "webkit",
+    "width": 844,
+    "height": 390,
+    "harnessRevision": "f2d324f",
+    "summary": {
+      "status": "PASS",
+      "assertions": 40,
+      "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-geometry-atomic-844x390-1789768472674381000.json"
+    }
+  },
+  "journalValidation": [
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-interaction-390x844-1789768342420230000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768342420230000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 16,
+      "observations": 16,
+      "screenshots": 3
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-pot-390x844-1789768348709369000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768348709369000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 6,
+      "observations": 16,
+      "screenshots": 9
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-keyboard-390x844-1789768356325626000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768356325626000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 4,
+      "observations": 7,
+      "screenshots": 1
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-tuning-390x844-1789768361241975000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768361241975000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 1,
+      "observations": 16,
+      "screenshots": 4
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-straight-pots-390x844-1789768367322269000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768367322269000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cut-pots-390x844-1789768379514231000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768379514231000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-390-844-cushion-practice-390x844-1789768393869331000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768393869331000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-interaction-844x390-1789768406708157000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768406708157000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 16,
+      "observations": 16,
+      "screenshots": 3
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-webkit-844-390-pot-844x390-1789768413126237000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768413126237000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 6,
+      "observations": 16,
+      "screenshots": 6
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-keyboard-844x390-1789768525281809000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768525281809000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 4,
+      "observations": 7,
+      "screenshots": 1
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-tuning-844x390-1789768529894235000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768529894235000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 1,
+      "observations": 16,
+      "screenshots": 4
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-straight-pots-844x390-1789768535382012000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768535382012000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cut-pots-844x390-1789768547687073000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768547687073000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-844-390-cushion-practice-844x390-1789768561478721000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768561478721000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-interaction-320x568-1789768573870434000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768573870434000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 16,
+      "observations": 16,
+      "screenshots": 3
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-pot-320x568-1789768580429617000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768580429617000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 6,
+      "observations": 16,
+      "screenshots": 9
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-keyboard-320x568-1789768588540301000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768588540301000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 4,
+      "observations": 7,
+      "screenshots": 1
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-tuning-320x568-1789768593867344000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768593867344000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 1,
+      "observations": 16,
+      "screenshots": 4
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-straight-pots-320x568-1789768599411056000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768599411056000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cut-pots-320x568-1789768611000864000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768611000864000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-webkit-320-568-cushion-practice-320x568-1789768624291261000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768624291261000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-interaction-412x839-1789768636195669000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768636195669000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 16,
+      "observations": 16,
+      "screenshots": 3
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-pot-412x839-1789768644023209000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768644023209000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 6,
+      "observations": 16,
+      "screenshots": 9
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-keyboard-412x839-1789768651702027000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768651702027000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 4,
+      "observations": 7,
+      "screenshots": 1
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-tuning-412x839-1789768656119700000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768656119700000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 1,
+      "observations": 16,
+      "screenshots": 4
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-straight-pots-412x839-1789768661991310000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768661991310000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cut-pots-412x839-1789768674334813000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768674334813000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-cushion-practice-412x839-1789768688520734000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768688520734000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 7,
+      "observations": 16,
+      "screenshots": 5
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fixed-chrome-412-839-native-412x839-1789768700921836000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768700921836000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 5
+      },
+      "actions": 16,
+      "observations": 16,
+      "screenshots": 1
+    },
+    {
+      "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-geometry-atomic-844x390-1789768472674381000.json",
+      "journal": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/journal-1789768472674381000.json",
+      "identity": {
+        "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+        "contractVersion": 1,
+        "scenarioId": "straight-pots",
+        "scenarioVersion": 1,
+        "epoch": 1
+      },
+      "actions": 6,
+      "observations": 16,
+      "screenshots": 9
+    }
+  ],
+  "visualInspection": {
+    "newSelector": "44px target visibly enlarged and legible at390x844 and320x568; no horizontal overflow",
+    "inspectedScreenshots": [
+      "output/playwright/practice/layouts-390-1789768370706-layout-menu.png",
+      "output/playwright/practice/layouts-320-1789768602294-layout-menu.png"
+    ],
+    "priorRuntimeVisualBaseline": "12 screenshots from e2ec370 matrix; gameplay runtime unchanged apart from selector CSS in aa9781e",
+    "failureScreenshotInspected": "output/playwright/practice/pot-844-1789768416433-failure.png"
+  }
+}

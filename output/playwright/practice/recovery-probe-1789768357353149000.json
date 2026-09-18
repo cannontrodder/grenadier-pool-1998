@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "ok": true,
+    "paused": false,
+    "fault": null
+  },
+  "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-fault-missing-390x844-1789768357353149000.json",
+  "statusUnchanged": "FAIL"
+}

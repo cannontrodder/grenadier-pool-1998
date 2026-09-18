@@ -1,0 +1,138 @@
+[
+  {
+    "case": "placement",
+    "browser": "webkit",
+    "width": 390,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement\", \"assertions\": 23, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-webkit-390-390x844-1789768336385285000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-keyboard",
+    "browser": "webkit",
+    "width": 390,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-keyboard\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-keyboard-webkit-390-390x844-1789768341880236000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-cancel",
+    "browser": "webkit",
+    "width": 390,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-cancel\", \"assertions\": 26, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-cancel-webkit-390-390x844-1789768347216650000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "motion",
+    "browser": "webkit",
+    "width": 390,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"motion\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-motion-webkit-390-390x844-1789768353919189000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement",
+    "browser": "webkit",
+    "width": 844,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement\", \"assertions\": 23, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-webkit-844-844x390-1789768360592099000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-keyboard",
+    "browser": "webkit",
+    "width": 844,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-keyboard\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-keyboard-webkit-844-844x390-1789768366810549000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-cancel",
+    "browser": "webkit",
+    "width": 844,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-cancel\", \"assertions\": 26, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 390, \"height\": 844}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-cancel-webkit-844-844x390-1789768372935061000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "motion",
+    "browser": "webkit",
+    "width": 844,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"motion\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 844, \"height\": 390}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-motion-webkit-844-844x390-1789768380065052000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement",
+    "browser": "webkit",
+    "width": 320,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement\", \"assertions\": 23, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-webkit-320-320x568-1789768386852154000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-keyboard",
+    "browser": "webkit",
+    "width": 320,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-keyboard\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-keyboard-webkit-320-320x568-1789768392676473000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-cancel",
+    "browser": "webkit",
+    "width": 320,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-cancel\", \"assertions\": 26, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 568, \"height\": 320}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-cancel-webkit-320-320x568-1789768398655214000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "motion",
+    "browser": "webkit",
+    "width": 320,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"motion\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 320, \"height\": 568}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-motion-webkit-320-320x568-1789768405599186000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement",
+    "browser": "chrome",
+    "width": 412,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement\", \"assertions\": 23, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-chrome-412-412x839-1789768412189893000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-keyboard",
+    "browser": "chrome",
+    "width": 412,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-keyboard\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-keyboard-chrome-412-412x839-1789768419120743000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-cancel",
+    "browser": "chrome",
+    "width": 412,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-cancel\", \"assertions\": 26, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 839, \"height\": 412}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-cancel-chrome-412-412x839-1789768424950523000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "motion",
+    "browser": "chrome",
+    "width": 412,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"motion\", \"assertions\": 15, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-motion-chrome-412-412x839-1789768432161099000.json\"}\n",
+    "stderr": ""
+  },
+  {
+    "case": "placement-native",
+    "browser": "chrome",
+    "width": 412,
+    "returncode": 0,
+    "output": "{\"status\": \"PASS\", \"case\": \"placement-native\", \"assertions\": 11, \"buildRevision\": \"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\", \"viewport\": {\"width\": 412, \"height\": 839}, \"evidence\": \"/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/final27-placement-native-chrome-412-412x839-1789768438657382000.json\"}\n",
+    "stderr": ""
+  }
+]

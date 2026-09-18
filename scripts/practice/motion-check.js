@@ -81,6 +81,31 @@ async page => {
     check(later.tick > rebound.tick && moved.y < white.y - 1, 'timed observations confirm rebound away from mouth');
     const settled = await wait('jaw shot settles', () => window.practice.observe().phase !== 'rolling', null, 10000);
     check(settled.phase === 'ready' && settled.balls.every(b => b.vx === 0 && b.vy === 0), 'jaw rebound settles naturally and allows next shot');
+    const replays = [];
+    for (const cadence of ['normal', 'alternate-frames']) {
+      actions.push({ name: `keyboard replay with ${cadence} rendering`, at: Date.now() });
+      await persistJournal();
+      await page.locator('#reset').click();
+      if (cadence === 'alternate-frames') await page.evaluate(() => {
+        // Harness-only scheduling perturbation; no game state or shot setters.
+        window.__practiceOriginalRAF = window.requestAnimationFrame;
+        window.requestAnimationFrame = callback => window.__practiceOriginalRAF(() => window.__practiceOriginalRAF(callback));
+      });
+      await page.locator('#menu-open').click();
+      if (!(await page.locator('#keyboard-settings').evaluate(e => e.open))) await page.locator('#keyboard-settings summary').click();
+      await page.locator('#angle').fill('-90');
+      await page.locator('#keyboard-power').fill('0.16');
+      await page.locator('#shoot').focus(); await page.keyboard.press('Enter');
+      const start = await observe();
+      check(start.phase === 'rolling', `${cadence} replay uses the normal keyboard shot`);
+      const finish = await wait(`${cadence} replay settles`, () => window.practice.observe().phase !== 'rolling', null, 10000);
+      check(finish.phase === 'ready' && finish.potCount === 1, `${cadence} replay pots one object and settles`);
+      replays.push({ frames: finish.frame - start.frame, balls: finish.balls, tick: finish.tick,
+        events: finish.events.map(({ epoch, ...event }) => event) });
+    }
+    await page.evaluate(() => { window.requestAnimationFrame = window.__practiceOriginalRAF; delete window.__practiceOriginalRAF; });
+    check(replays[1].frames < replays[0].frames * .8, 'alternate-frame scheduling materially reduces rendered frame count');
+    check(replays[0].tick === replays[1].tick && JSON.stringify(replays[0].balls) === JSON.stringify(replays[1].balls) && JSON.stringify(replays[0].events) === JSON.stringify(replays[1].events), 'identical committed shots retain exact events and final state across browser render cadence');
     check(errors.length === 0, 'motion check has no browser errors');
     return { status: 'PASS', suite: 'motion', ...identity, viewport: page.viewportSize(), assertions: checks.length, checks, screenshots };
   } catch (error) {

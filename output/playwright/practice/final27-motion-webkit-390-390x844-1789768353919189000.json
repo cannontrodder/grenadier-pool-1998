@@ -1,0 +1,82 @@
+{
+  "result": {
+    "status": "PASS",
+    "suite": "motion",
+    "buildRevision": "aa9781ec9c248ba7c1c8b43125c93c344a31eb54",
+    "scenarioId": "straight-pots",
+    "scenarioVersion": 1,
+    "epoch": 1,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assertions": 15,
+    "checks": [
+      "observer reports healthy motion",
+      "observer reports healthy motion",
+      "normal pointer arms jaw-directed shot",
+      "observer reports healthy motion",
+      "approach exposes rolling velocities",
+      "moving ball centers and jaw geometry agree with rendered state",
+      "observer reports healthy motion",
+      "jaw rebound is not reported as a pot",
+      "jaw keeps the white on the playable side",
+      "moving ball centers and jaw geometry agree with rendered state",
+      "observer reports healthy motion",
+      "timed observations confirm rebound away from mouth",
+      "observer reports healthy motion",
+      "jaw rebound settles naturally and allows next shot",
+      "motion check has no browser errors"
+    ],
+    "screenshots": [
+      "output/playwright/practice/motion27-390-1789768356957-initial.png",
+      "output/playwright/practice/motion27-390-1789768356957-jaw-approach.png",
+      "output/playwright/practice/motion27-390-1789768356957-jaw-rebound.png"
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 551,
+      "returncode": 0,
+      "stdout": "Browser 'final27-motion-webkit-390' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8765/practice/?harnessCase=motion&harnessJournal=http%3A%2F%2F127.0.0.1%3A60668%2FOb0eqDb27Gk6iZibGRuTpI9BKJAtUT82&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "webkit"
+      ],
+      "durationMs": 1268,
+      "returncode": 0,
+      "stdout": "### Browser `final27-motion-webkit-390` opened with pid 18678.\n### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:8765/practice/?harnessCase=motion&harnessJournal=http%3A%2F%2F127.0.0.1%3A60668%2FOb0eqDb27Gk6iZibGRuTpI9BKJAtUT82&cornerAngle=-2.5722794624891314&cornerPull=69.5');\n```\n### Page\n- Page URL: http://127.0.0.1:8765/practice/?harnessCase=motion&harnessJournal=http%3A%2F%2F127.0.0.1%3A60668%2FOb0eqDb27Gk6iZibGRuTpI9BKJAtUT82&cornerAngle=-2.5722794624891314&cornerPull=69.5\n- Page Title: Grenadier 1998 \u00b7 Practice table\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T21-52-35-732Z.yml)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "resize",
+        "390",
+        "844"
+      ],
+      "durationMs": 628,
+      "returncode": 0,
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 390, height: 844 });\n```\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/practice/motion-check.js"
+      ],
+      "durationMs": 3383,
+      "returncode": 0,
+      "stdout": "### Result\n{\"status\":\"PASS\",\"suite\":\"motion\",\"buildRevision\":\"aa9781ec9c248ba7c1c8b43125c93c344a31eb54\",\"scenarioId\":\"straight-pots\",\"scenarioVersion\":1,\"epoch\":1,\"viewport\":{\"width\":390,\"height\":844},\"assertions\":15,\"checks\":[\"observer reports healthy motion\",\"observer reports healthy motion\",\"normal pointer arms jaw-directed shot\",\"observer reports healthy motion\",\"approach exposes rolling velocities\",\"moving ball centers and jaw geometry agree with rendered state\",\"observer reports healthy motion\",\"jaw rebound is not reported as a pot\",\"jaw keeps the white on the playable side\",\"moving ball centers and jaw geometry agree with rendered state\",\"observer reports healthy motion\",\"timed observations confirm rebound away from mouth\",\"observer reports healthy motion\",\"jaw rebound settles naturally and allows next shot\",\"motion check has no browser errors\"],\"screenshots\":[\"output/playwright/practice/motion27-390-1789768356957-initial.png\",\"output/playwright/practice/motion27-390-1789768356957-jaw-approach.png\",\"output/playwright/practice/motion27-390-1789768356957-jaw-rebound.png\"]}\n### Ran Playwright code\n```js\nawait (async page => {\n  const harnessParameters = await page.evaluate(() => Object.fromEntries(new URLSearchParams(location.search)));\n  page.setDefaultTimeout(3500);\n  const checks = [], actions = [], observations = [], errors = [], screenshots = [];\n  const prefix = `output/playwright/practice/motion27-${page.viewportSize().width}-${Date.now()}`;\n  let identity;\n  page.on('pageerror', e => errors.push(String(e)));\n  const bounded = async (operation, timeout, label) => Promise.race([\n    operation(), page.waitForTimeout(timeout).then(() => { throw new Error(`HARNESS: ${label} exceeded ${timeout}ms`); }),\n  ]);\n  const persistJournal = async () => {\n    if (!harnessParameters.harnessJournal) return;\n    await page.request.post(harnessParameters.harnessJournal, { data: { identity, suite: 'motion',\n      recentActions: actions, recentObservations: observations, errors, screenshots }, timeout: 1000, failOnStatusCode: true });\n  };\n  const check = (ok, name) => { if (!ok) throw new Error(`GAME: ${name}`); checks.push(name); };\n  const observe = async () => {\n    const o = await bounded(() => page.evaluate(() => window.practice?.observe?.()), 2000, 'observation');\n    if (!o?.health || !Number.isFinite(o.observedAt)) throw new Error('HARNESS: missing observation');\n    identity = { buildRevision: o.buildRevision, scenarioId: o.scenarioId, scenarioVersion: o.scenarioVersion, epoch: o.epoch };\n    const { balls, events, epoch, tick, frame, phase, observedAt, health } = o;\n    observations.push({ balls, events, epoch, tick, frame, phase, observedAt, health }); if (observations.length > 16) observations.shift();\n    await persistJournal();\n    check(o.health.ok, 'observer reports healthy motion'); return o;\n  };\n  const wait = async (name, predicate, arg, timeout = 5000) => {\n    actions.push({ name, at: Date.now() }); if (actions.length > 16) actions.shift();\n    await persistJournal();\n    try { await page.waitForFunction(predicate, arg, { timeout }); }\n    catch (e) { throw new Error(`UNCERTAIN: ${name} deadline: ${String(e)}`); }\n    return await observe();\n  };\n  const correlate = async () => {\n    const result = await page.evaluate(() => {\n      const o = window.practice.observe(), matrix = document.querySelector('#world').getScreenCTM();\n      const deltas = o.balls.filter(b => b.status === 'live').map(b => {\n        const e = document.getElementById(`ball-${b.id}`), bounds = e.getBoundingClientRect();\n        const p = new DOMPoint(b.x, b.y).matrixTransform(matrix);\n        return Math.hypot(p.x - bounds.x - bounds.width / 2, p.y - bounds.y - bounds.height / 2);\n      });\n      const jaw = o.geometry.jaws.find(j => j.id === 'bottom-right-a');\n      const e = document.getElementById(`jaw-${jaw.id}`);\n      return { maxBallDelta: Math.max(...deltas), jawDelta: Math.max(Math.abs(Number(e.getAttribute('cx')) - jaw.x), Math.abs(Number(e.getAttribute('cy')) - jaw.y), Math.abs(Number(e.getAttribute('r')) - jaw.r)) };\n    });\n    check(result.maxBallDelta <= 1 && result.jawDelta < .001, 'moving ball centers and jaw geometry agree with rendered state');\n    return result;\n  };\n  const screenshot = async name => { const path = `${prefix}-${name}.png`; await page.screenshot({ path, timeout: 2500 }); screenshots.push(path); await persistJournal(); };\n  try {\n    const initial = await observe();\n    await screenshot('initial');\n    const jaw = initial.geometry.jaws.find(j => j.id === 'bottom-right-a');\n    const cue = initial.balls.find(b => b.role === 'cue'), m = initial.geometry.matrix;\n    const angle = Math.atan2(jaw.y - cue.y, jaw.x - cue.x);\n    const length = Math.hypot(m.a * Math.cos(angle) + m.c * Math.sin(angle), m.b * Math.cos(angle) + m.d * Math.sin(angle));\n    const d = { x: (m.a * Math.cos(angle) + m.c * Math.sin(angle)) / length, y: (m.b * Math.cos(angle) + m.d * Math.sin(angle)) / length };\n    const c = { x: m.a * cue.x + m.c * cue.y + m.e, y: m.b * cue.x + m.d * cue.y + m.f };\n    actions.push({ name: 'one-finger pull/release toward side-pocket jaw', angle, at: Date.now() });\n    await persistJournal();\n    await page.mouse.move(c.x - d.x * 35, c.y - d.y * 35); await page.mouse.down();\n    const radius = 35 + 12 + 115 * Math.sqrt(.12);\n    await page.mouse.move(c.x - d.x * radius, c.y - d.y * radius, { steps: 1 });\n    check((await observe()).gesture?.armed, 'normal pointer arms jaw-directed shot');\n    await page.mouse.up();\n    const near = await wait('white approaches side-pocket jaw', j => {\n      const b = window.practice.observe().balls.find(b => b.role === 'cue');\n      return b.vy > 0 && Math.hypot(b.x - j.x, b.y - j.y) < 48;\n    }, jaw);\n    check(near.phase === 'rolling' && near.shotId === 1, 'approach exposes rolling velocities');\n    await correlate(); await screenshot('jaw-approach');\n    const rebound = await wait('white rebounds from jaw', () => {\n      const b = window.practice.observe().balls.find(b => b.role === 'cue');\n      return b.vy < -20;\n    }, null, 3000);\n    check(rebound.potCount === 0 && rebound.events.length === 0, 'jaw rebound is not reported as a pot');\n    const white = rebound.balls.find(b => b.role === 'cue');\n    check(white.status === 'live' && white.y < 500, 'jaw keeps the white on the playable side');\n    await correlate(); await screenshot('jaw-rebound');\n    await page.waitForTimeout(150);\n    const later = await observe(), moved = later.balls.find(b => b.role === 'cue');\n    check(later.tick > rebound.tick && moved.y < white.y - 1, 'timed observations confirm rebound away from mouth');\n    const settled = await wait('jaw shot settles', () => window.practice.observe().phase !== 'rolling', null, 10000);\n    check(settled.phase === 'ready' && settled.balls.every(b => b.vx === 0 && b.vy === 0), 'jaw rebound settles naturally and allows next shot');\n    check(errors.length === 0, 'motion check has no browser errors');\n    return { status: 'PASS', suite: 'motion', ...identity, viewport: page.viewportSize(), assertions: checks.length, checks, screenshots };\n  } catch (error) {\n    const path = `${prefix}-failure.png`;\n    try { await page.screenshot({ path, timeout: 2000 }); screenshots.push(path); } catch (e) { errors.push(String(e)); }\n    const message = String(error);\n    return { status: 'FAIL', classification: message.includes('GAME:') ? 'game-failure' : message.includes('UNCERTAIN:') ? 'uncertain' : 'harness-failure', error: message, identity, checks, actions, observations, errors, screenshots };\n  }\n}\n)(page);\n```\n",
+      "stderr": ""
+    }
+  ]
+}
