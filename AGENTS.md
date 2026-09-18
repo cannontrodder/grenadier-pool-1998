@@ -10,6 +10,10 @@ Before planning a phase, read `docs/project-brief.md` for the captured product i
 
 The user defines work in phases, beginning with small vertical slices and increasing scope as understanding grows. Use agreed plans, designs, and mock-ups to establish what done looks like for each phase.
 
+Track every discrete piece of work in its own GitHub issue, including briefs, visual designs, wireframes, prototypes, reviews, and deployments. Group issues by phase milestone and link genuine blockers. Give each issue enough context, acceptance checks, artifact references, and model/effort guidance for a fresh agent to take it on. An issue marked ready-for-agent can start only when its blockers are complete.
+
+Keep changes and commits scoped to the issue being worked. Use separate branches or worktrees for concurrent implementation. Record outputs and verification in the issue before handing off. Treat later phase planning issues as planning work; expand them into separate implementation issues once the scope is agreed.
+
 Every phase ends with a tested deployment and a working link the user can open on their phone. Deployment is part of completing an agreed phase and is already authorized. Prioritize quick feedback on iPhone/Safari while retaining Android compatibility.
 
 ## Testing

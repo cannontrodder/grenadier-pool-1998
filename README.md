@@ -6,6 +6,7 @@ A retro, top-down pool game inspired by playing with friends at the Grenadier pu
 
 - [Project brief](docs/project-brief.md): captured vision and requirements.
 - [Initial plan](docs/plan.md): proposed delivery sequence and design artifacts.
+- [Work index](docs/work-index.md): separate GitHub issues grouped into phases for fresh agents.
 - [Domain glossary](CONTEXT.md): shared terminology.
 - [Agent instructions](AGENTS.md): delegation, delivery, and testing conventions.
 

@@ -2,6 +2,10 @@
 
 Status: working plan. It separates the accepted product vision from a proposed delivery order. The user defines and agrees each phase scope before work begins.
 
+## Work tracking
+
+Every discrete step, including design and review, is a separate GitHub issue grouped by phase milestone. Use the [work index](work-index.md) to select an issue for a fresh agent. GitHub holds the current scope, acceptance checks, recommended model/effort, and native blockers. Later phase planning issues produce their own smaller implementation issues once decisions are settled.
+
 ## Accepted product requirements
 
 - A two-dimensional, top-down pool game rooted in the Grenadier pub and the people who played there in 1998.
