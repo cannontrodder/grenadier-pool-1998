@@ -5,6 +5,9 @@ async page => {
   const prefix = `output/playwright/practice/motion27-${page.viewportSize().width}-${Date.now()}`;
   let identity;
   page.on('pageerror', e => errors.push(String(e)));
+  const bounded = async (operation, timeout, label) => Promise.race([
+    operation(), page.waitForTimeout(timeout).then(() => { throw new Error(`HARNESS: ${label} exceeded ${timeout}ms`); }),
+  ]);
   const persistJournal = async () => {
     if (!harnessParameters.harnessJournal) return;
     await page.request.post(harnessParameters.harnessJournal, { data: { identity, suite: 'motion',
@@ -12,7 +15,7 @@ async page => {
   };
   const check = (ok, name) => { if (!ok) throw new Error(`GAME: ${name}`); checks.push(name); };
   const observe = async () => {
-    const o = await page.evaluate(() => window.practice?.observe?.());
+    const o = await bounded(() => page.evaluate(() => window.practice?.observe?.()), 2000, 'observation');
     if (!o?.health || !Number.isFinite(o.observedAt)) throw new Error('HARNESS: missing observation');
     identity = { buildRevision: o.buildRevision, scenarioId: o.scenarioId, scenarioVersion: o.scenarioVersion, epoch: o.epoch };
     const { balls, events, epoch, tick, frame, phase, observedAt, health } = o;

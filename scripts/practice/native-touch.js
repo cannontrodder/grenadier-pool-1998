@@ -20,6 +20,9 @@ async (page) => {
     const entries = entry.kind === 'action' ? recentActions : recentObservations;
     entries.push({ at: Date.now(), ...entry }); if (entries.length > 16) entries.shift();
   };
+  const bounded = async (operation, timeout, label) => Promise.race([
+    operation(), page.waitForTimeout(timeout).then(() => { throw new Error(`HARNESS: ${label} exceeded ${timeout}ms`); }),
+  ]);
   const persistJournal = async () => {
     if (!harnessParameters.harnessJournal) return;
     await page.request.post(harnessParameters.harnessJournal, { data: { identity, suite: 'native', history,
@@ -33,7 +36,7 @@ async (page) => {
   const observe = async () => {
     let observation;
     try {
-      observation = await page.evaluate(() => window.practice?.observe());
+      observation = await bounded(() => page.evaluate(() => window.practice?.observe()), 2000, 'observation');
     } catch (error) {
       throw new Error(`HARNESS: browser observation failed: ${String(error)}`);
     }
