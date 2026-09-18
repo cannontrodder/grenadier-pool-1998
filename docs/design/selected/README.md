@@ -1,6 +1,6 @@
 # Selected mockups · issue #6
 
-Artifact **M1.1**, revision **S1.3**, translates the selected **1998 Sports Broadcast** direction into static, high-fidelity design artifacts. The governing idea is a broadcast of pub pool at the Grenadier: table-first play, compact television captions, friends and pub context between shots, and no album, desktop-window, or neon treatment.
+Artifact **M1.2**, revision **S1.4**, translates the selected **1998 Sports Broadcast** direction into static, high-fidelity design artifacts. The governing idea is a broadcast of pub pool at the Grenadier: table-first play, compact television captions, friends and pub context between shots, and no album, desktop-window, or neon treatment.
 
 ## Artifacts
 
@@ -21,3 +21,5 @@ Browser evidence is recorded in [`output/playwright/selected/`](../../../output/
 ## Current scope
 
 The user explicitly confirmed this is planning and look-and-feel design. No playable application or touch prototype is being implemented in this revision. Historical M1 captures predate C1; `output/playwright/selected/pixel-*` captures show the current persona treatment.
+
+A1 individual avatars are `assets/avatar-{trod,craig,shacka,maaaaark}-v1.png`. They are generated isolations from approved C1, with prompts in `assets/avatars-v1.md`; included in the O02 lineup.

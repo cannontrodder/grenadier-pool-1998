@@ -1,8 +1,8 @@
 # Friends pixel caricatures · concept C1
 
-Issue #17. Generated with the built-in image-generation tool on 18 September 2026, using the supplied `assets/source/friends-group-01.jpg` as reference. Original source remains intact. This image is a proposed illustrated treatment, not an approved final likeness or historical photograph. Its pub background is invented atmosphere, not evidence of the Grenadier interior.
+Issue #17. Generated with the built-in image-generation tool on 18 September 2026, using the supplied `assets/source/friends-group-01.jpg` as reference. Original source remains intact. This image is a proposed illustrated treatment, not a historical photograph. Its pub background is invented atmosphere, not evidence of the Grenadier interior.
 
-Left to right, as supplied: **Trod, Craig, Shacka, Maaaaark**. Visual review confirmed four figures in that order, clothing cues, square pixel clusters, moderate caricature and no screenshot chrome. User likeness approval remains open; do not infer individual personality traits.
+Left to right, as supplied: **Trod, Craig, Shacka, Maaaaark**. Visual review confirmed four figures in that order, clothing cues, square pixel clusters, moderate caricature and no screenshot chrome. The user subsequently said the pixelated group shot is great and requested individual avatars from it. The separate avatars are the remaining review item; do not infer individual personality traits.
 
 Project asset: `friends-pixel-caricatures-v1.png`. Copied unchanged from the tool output. Used on O02, E01 and storyboard; optional photo remains reference material.
 

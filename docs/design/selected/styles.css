@@ -189,3 +189,14 @@ body.presentation { width:100vw; height:100vh; overflow:hidden; background:#000;
 .o02 .archive-note{font-size:11px;color:#b9c8d2}
 .o02 .lineup b{font-family:"Courier New",monospace;font-weight:900}
 .o02 .lineup li{border-bottom:2px solid #d92e3d}
+
+/* A1 individual player avatars, retaining the approved pixel treatment. */
+.lineup img{display:block;width:100%;max-height:128px;aspect-ratio:1;object-fit:contain;image-rendering:pixelated;background:#071b33}
+.o02 .lineup{top:43%;gap:8px}
+.o02 .lineup li{padding:5px 6px}
+.compact .o02 .lineup{top:40%;gap:5px}
+.compact .lineup img{max-height:91px}
+.landscape .o02 .lineup{top:auto;bottom:48px;gap:5px}
+.landscape .lineup img{max-height:85px}
+.landscape .o02-title{top:62px}
+.landscape .o02-title h2{font-size:30px}
