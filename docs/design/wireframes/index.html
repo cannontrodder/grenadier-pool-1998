@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#e7e5df">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+    <title>Grenadier Pool 1998 · Touch-layout wireframes W1</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#wireframe">Skip to wireframe</a>
+    <main class="workbench">
+      <header class="workbench__header">
+        <div>
+          <p class="eyebrow">Issue #3 · Revision W1 · neutral structure study</p>
+          <h1>Phone touch-layout candidates</h1>
+          <p class="lede">Compare two nonplayable interface layouts across every D1 screen state. The diagrams test reach, table visibility, and recovery paths; they do not select an orientation, visual direction, ruleset, or physics model.</p>
+        </div>
+        <nav class="doc-links" aria-label="Wireframe documents">
+          <a href="../index.html">← Design preview</a>
+          <a href="rationale.md">Rationale &amp; flow map</a>
+          <a href="state-coverage.md">State coverage</a>
+        </nav>
+      </header>
+
+      <section class="toolbar" aria-label="Wireframe controls">
+        <fieldset class="segmented">
+          <legend>Candidate</legend>
+          <button type="button" class="segment is-active" data-layout="portrait" aria-pressed="true">
+            <strong>A · Portrait</strong><span>390 × 844</span>
+          </button>
+          <button type="button" class="segment" data-layout="landscape" aria-pressed="false">
+            <strong>B · Landscape</strong><span>844 × 390</span>
+          </button>
+        </fieldset>
+
+        <label class="state-picker">
+          <span>Screen / state</span>
+          <select id="state-select"></select>
+        </label>
+
+        <div class="stepper" aria-label="Move between states">
+          <button type="button" id="previous-state" aria-label="Previous state">←</button>
+          <output id="state-count">1 / 26</output>
+          <button type="button" id="next-state" aria-label="Next state">→</button>
+        </div>
+      </section>
+
+      <section class="stage" aria-labelledby="preview-title">
+        <div class="stage__heading">
+          <div>
+            <p class="eyebrow" id="preview-kicker">Candidate A · Portrait</p>
+            <h2 id="preview-title">E01 · Entry</h2>
+          </div>
+          <p id="preview-note">One-handed entry actions; existing save remains visible.</p>
+        </div>
+        <p class="landscape-hint" id="landscape-hint" hidden>Landscape stays at its actual 844 × 390 CSS px reference size. Scroll sideways on a narrow portrait screen, or rotate the device.</p>
+
+        <div class="device-wrap">
+          <article class="device device--portrait" id="wireframe" aria-label="Interactive phone wireframe">
+            <div class="safe safe--top" aria-hidden="true"><span>top safe area</span></div>
+            <div class="phone-app" id="phone-app" aria-live="polite">
+              <section class="screen">
+                <header class="screen__bar">
+                  <div class="screen__title"><strong>Grenadier Pool 1998</strong><span>Static fallback</span></div>
+                </header>
+                <div class="screen__body screen__body--center">
+                  <div class="hero-copy">
+                    <p class="eyebrow">Wireframes W1</p>
+                    <h3>Preview controls unavailable</h3>
+                    <p>The interactive state selector did not load. The complete state mapping and navigation remain available as documents.</p>
+                  </div>
+                  <div class="action-stack">
+                    <a class="action" href="state-coverage.md"><span>Open state coverage</span><small>23 D1 IDs</small></a>
+                    <a class="action action--secondary" href="rationale.md"><span>Open flow map</span></a>
+                    <a class="action action--secondary" href="../index.html"><span>Back to Design preview</span></a>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="safe safe--bottom" aria-hidden="true"><span>home safe area</span></div>
+          </article>
+          <aside class="annotations" id="annotations" aria-label="Layout annotations"></aside>
+        </div>
+      </section>
+
+      <section class="flow-review" aria-labelledby="flow-title">
+        <div class="flow-review__head">
+          <div>
+            <p class="eyebrow">Interactive review</p>
+            <h2 id="flow-title">Primary opponent-to-shot journey</h2>
+          </div>
+          <button type="button" id="walk-flow">Walk the flow</button>
+        </div>
+        <ol id="flow-list" class="flow-list"></ol>
+        <p class="flow-note" id="flow-note">Every step has a visible next action. Use “Walk the flow” to move through the states in order.</p>
+      </section>
+
+      <footer>
+        <p><strong>Reading key:</strong> solid controls are primary actions; outlined controls are secondary or cancel; hatched panels are missing-media placeholders; dashed outlines mark touch/reach guidance.</p>
+        <p>Foundation D1 · issue #1. Wireframes W1 · issue #3. Browser preview only; no physical-device findings are claimed.</p>
+      </footer>
+    </main>
+    <noscript>
+      <div class="noscript-note">JavaScript is unavailable. The static wireframe fallback and linked state-coverage document remain usable.</div>
+    </noscript>
+    <script src="app.js"></script>
+  </body>
+</html>
