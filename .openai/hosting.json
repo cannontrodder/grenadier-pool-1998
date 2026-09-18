@@ -1,6 +1,7 @@
 {
   "project_id": "appgprj_6aad3e659eb881918044c10dc3336580",
   "static": {
-    "directory": "docs/design"
+    "directory": "out",
+    "not_found_handling": "404-page"
   }
 }

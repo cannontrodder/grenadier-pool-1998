@@ -6,7 +6,7 @@ Issue #4. Artifacts: foundation D1, boards B1, wireframes W1. This file distingu
 
 - WebKit 26.6 through Playwright CLI, using the iPhone 13 emulation profile. Initial effective viewport 390 × 664 CSS pixels; also check narrow 320px and landscape 844 × 390 compositions.
 - Chrome using the Pixel 7 emulation profile, 412 × 839 CSS pixels.
-- Local HTTP server serves exactly `docs/design/`, the static directory configured for publication. No external runtime assets are required.
+- Local HTTP server serves exactly `docs/design/`, the source directory copied unchanged into the configured `out/` publication directory. No external runtime assets are required.
 - No connected physical iPhone was tested. `xcrun simctl` is unavailable, so there is no iOS Simulator result either. WebKit emulation is not physical iPhone Safari evidence.
 
 ## Evidence recorded so far
