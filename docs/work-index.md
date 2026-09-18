@@ -16,7 +16,9 @@ Each issue is a separate piece of work suitable for a fresh agent. Read its bloc
 
 ## Starting work
 
-Start with [#1 — Design brief, screen/state map, and media inventory](https://github.com/cannontrodder/grenadier-pool-1998/issues/1). When it closes, visual directions and wireframes can proceed in parallel.
+The design foundation (#1), direction boards (#2), wireframes (#3), selected direction (#5), and photo intake (#14) are complete. #4 retains the outstanding physical iPhone check. Selected mockups (#6) and their publication (#15) follow S1.2; the playable touch study is tracked separately in #7.
+
+Additional work: [#14 — Supplied photo and names](https://github.com/cannontrodder/grenadier-pool-1998/issues/14), [#15 — Selected-direction publication](https://github.com/cannontrodder/grenadier-pool-1998/issues/15), and [#16 — Pub-room reference and handover planning](https://github.com/cannontrodder/grenadier-pool-1998/issues/16).
 
 Issues #1–#8 deliver design artifacts, previews, the touch study, and user review. Issues #9–#13 are bounded planning tasks for later phases. They must create smaller implementation issues after resolving the relevant decisions; completing a planning issue does not mean its phase has been delivered.
 

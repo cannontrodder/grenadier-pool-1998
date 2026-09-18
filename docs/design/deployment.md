@@ -1,4 +1,4 @@
-# Design preview deployment · P1 · issue #4
+# Design preview deployment · P2 · issues #4 and #15
 
 This preview publishes the contents of `docs/design/` as a dependency-free static site. It contains design artifacts and clearly labeled placeholders, not gameplay. Game-engine, production-game hosting, storage, and networking choices remain open.
 
@@ -8,7 +8,7 @@ GitHub Pages creation returned HTTP 422: the current account plan does not suppo
 
 A small copy step (`python3 scripts/build-design-preview.py`) copies `docs/design/` to the ignored `out/` directory because the Sites packager accepts a fixed set of output roots. No asset transformation occurs.
 
-The Site identity and static directory are recorded in `.openai/hosting.json`. Preserve that identity for future updates. Do not create a second Site or broaden its audience as a redeployment shortcut. No real friend media is included.
+The Site identity and static directory are recorded in `.openai/hosting.json`. Preserve that identity for future updates. Do not create a second Site or broaden its audience as a redeployment shortcut. The selected mockups include the user-supplied group photograph, presented with CSS crops; the original pixels and user-provided name order are preserved. The Site remains owner-private.
 
 ## Reproduce locally
 
@@ -22,4 +22,4 @@ For this environment the helper is `/Users/neil/.codex/plugins/cache/openai-cura
 
 ## Review identity
 
-The visible design identifiers are P1 / D1 / B1 / W1. The exact source commit, deployment identity, browser captures, and known limitations are recorded in `verification.md` and the issue #4 handoff. Revision labels identify artifacts; only explicit user feedback in #5 can choose a visual direction.
+The current visible identifiers are P2 / S1.2 / M1. The historical D1 / B1 / W1 artifacts remain available with superseded-control notices. The exact source commit and successful deployment identity are recorded in the issue #15 handoff; initial publication evidence remains in #4. Browser captures and limitations are recorded in `verification.md`. The selected direction comes from explicit user feedback captured in #5.

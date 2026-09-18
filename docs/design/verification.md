@@ -1,8 +1,20 @@
-# Preview verification · P1
+# Preview verification · P2
 
-Issue #4. Artifacts: foundation D1, boards B1, wireframes W1. This file distinguishes browser evidence from physical-device feedback.
+Historical P1 evidence for issue #4. Artifacts: foundation D1, boards B1, wireframes W1. This file distinguishes browser evidence from physical-device feedback.
 
-## Environment and scope
+
+## P2 / S1.2 selected-direction publication · issue #15
+
+- The user-selected Sports Broadcast direction replaces the open-choice homepage. Historical boards and wireframes visibly link to the current mockups and label their old controls as superseded.
+- Primary-session WebKit checks: overview, historical comparison and wireframe explorer at 390px, 320px and 844px widths. Fixed document overflow in the historical comparison and landscape explorer at 844px; oversized reference content now scrolls within its own region. Final affected checks passed with cache disabled.
+- Primary-session Chrome / Pixel 7 at 412px: those same three entry points load without document overflow.
+- Current overview capture: `output/playwright/preview-p2-webkit.png`. The supplied relative room plan was rendered in WebKit and visually inspected in `output/playwright/pub-layout-review.png`.
+- An SVG-document-specific Playwright CLI automatic snapshot operation timed out. One bounded retry also failed; no pass was inferred. HTML navigation worked immediately, and explicit SVG navigation with `domcontentloaded` plus a screenshot succeeded. Diagnostic note: `output/playwright/selected-review-harness.txt`.
+- The mockups remain static review states. They do not implement shot physics, spin physics, persistence, networking, sound playback, house rules, or a finished venue model.
+- Primary-session WebKit selected mockups: 27 scene/orientation combinations (nine states at 390×844, 844×390 and 320×568) kept key overlays and buttons inside the viewport. All review controls measured at least 44px tall at 320px; no document overflow. Landscape spin was visually inspected in `output/playwright/selected-spin-webkit-review.png`. Companion M1 evidence is in `selected/README.md` and `output/playwright/selected/`.
+- No physical iPhone Safari result is claimed. #4 and #8 retain that evidence requirement.
+
+## P1 historical environment and scope
 
 - WebKit 26.6 through Playwright CLI, using the iPhone 13 emulation profile. Initial effective viewport 390 × 664 CSS pixels; also check narrow 320px and landscape 844 × 390 compositions.
 - Chrome using the Pixel 7 emulation profile, 412 × 839 CSS pixels.
@@ -45,4 +57,4 @@ All checks above used the local HTTP preview of the published static source. Hos
 
 Open the deployed preview in Safari on a physical iPhone while signed into the owning account. Inspect boards, compare both wireframe orientations, check browser chrome and safe areas, zoom text, and judge thumb reach and table legibility. Record the model, iOS/Safari version, viewport/orientation, exact preview revision, screenshots where useful, and the user's actual observations.
 
-Issue #4 remains open until its direct iPhone Safari check is complete. Issue #5 requires the user's explicit direction/persona/layout feedback; no selection or approval has been inferred. Final mockups and the touch study remain downstream of that decision.
+Issue #4 remains open until its direct iPhone Safari check is complete. Issue #5 is complete: the user explicitly selected Sports Broadcast for gameplay and personas. S1.2 records subsequent fullscreen, single-live-match, spin, knockabout, pub-layout and Betty feedback. The playable touch study remains separate work in #7; these mockups do not implement game physics or persistence.

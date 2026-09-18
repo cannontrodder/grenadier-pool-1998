@@ -1,0 +1,3 @@
+P2 parent harness attempt, 18 September 2026
+WebKit iPhone13 open/navigation to local pub-layout.svg timed out (30s); one navigation retry also timed out. Chrome Pixel7 launch/navigation timed out (30s). HTTP server independently returned 200. Affected runs stopped; no pass inferred. Agent captures and separate checks, if available, are identified in verification.md. No physical iPhone was tested.
+Recovery: WebKit navigation to HTML overview succeeded immediately. SVG-only Playwright CLI automatic snapshot path is the affected operation. A direct bounded run-code navigation using domcontentloaded and screenshot successfully rendered pub-layout.svg; captured pub-layout-review.png. Integrated HTML testing can continue.
