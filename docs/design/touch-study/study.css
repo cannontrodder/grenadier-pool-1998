@@ -210,6 +210,8 @@ label {
   font-size: 16px;
 }
 select {
+  appearance: none;
+  height: 44px;
   display: block;
   width: 100%;
   margin-top: 8px;
