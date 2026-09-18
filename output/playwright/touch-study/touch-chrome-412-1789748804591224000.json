@@ -1,0 +1,48 @@
+{
+  "result": {
+    "status": "PASS",
+    "input": "Chromium native CDP touch events",
+    "checks": [
+      "orbit remains unarmed 0.00",
+      "orbit remains unarmed 1.57",
+      "orbit remains unarmed 3.14",
+      "orbit remains unarmed 4.71",
+      "orbit remains unarmed 6.28",
+      "native touch arms",
+      "native touch release",
+      "native same-finger abort",
+      "native touchcancel"
+    ],
+    "revision": "d4f83f24786a089113ffce74a3f4525c6be609d5"
+  },
+  "commands": [
+    {
+      "command": [
+        "resize",
+        "412",
+        "839"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 412, height: 839 });\n```\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "reload"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.reload();\n```\n### Page\n- Page URL: http://127.0.0.1:8128/touch-study/\n- Page Title: Touch study \u00b7 Grenadier Pool 1998\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T16-26-45-874Z.yml)\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/touch-study/native-touch.js"
+      ],
+      "stdout": "### Result\n{\"status\":\"PASS\",\"input\":\"Chromium native CDP touch events\",\"checks\":[\"orbit remains unarmed 0.00\",\"orbit remains unarmed 1.57\",\"orbit remains unarmed 3.14\",\"orbit remains unarmed 4.71\",\"orbit remains unarmed 6.28\",\"native touch arms\",\"native touch release\",\"native same-finger abort\",\"native touchcancel\"],\"revision\":\"d4f83f24786a089113ffce74a3f4525c6be609d5\"}\n### Ran Playwright code\n```js\nawait (async (page) => {\n  const cdp = await page.context().newCDPSession(page),\n    checks = [],\n    recent = [];\n  const check = (ok, name) => {\n    if (!ok) throw new Error(\"GAME: \" + name);\n    checks.push(name);\n  };\n  const observe = async () => {\n    const o = await page.evaluate(() => touchStudy.observe());\n    recent.push(o);\n    if (recent.length > 12) recent.shift();\n    return o;\n  };\n  const touch = async (type, p) => {\n    const frame = (await observe()).frame;\n    await cdp.send(\"Input.dispatchTouchEvent\", {\n      type,\n      touchPoints: p ? [{ x: p.x, y: p.y, id: 0, radiusX: 9, radiusY: 9 }] : [],\n    });\n    await page.waitForFunction(\n      (f) => touchStudy.observe().frame > f + 2,\n      frame,\n      { timeout: 2000 },\n    );\n  };\n  try {\n    await page.locator(\"#reset\").click();\n    const c = (await page.evaluate(() => touchStudy.geometry())).cue;\n    await touch(\"touchStart\", { x: c.x, y: c.y - 40 });\n    for (const a of [0, Math.PI / 2, Math.PI, Math.PI * 1.5, Math.PI * 2]) {\n      const p = { x: c.x + 40 * Math.cos(a), y: c.y + 40 * Math.sin(a) };\n      await touch(\"touchMove\", p);\n      check(\n        (await observe()).phase === \"aiming\",\n        \"orbit remains unarmed \" + a.toFixed(2),\n      );\n    }\n    await touch(\"touchMove\", { x: c.x, y: c.y - 135 });\n    check((await observe()).phase === \"armed\", \"native touch arms\");\n    await touch(\"touchEnd\");\n    check((await observe()).shots === 1, \"native touch release\");\n    await page.locator(\"#reset\").click();\n    await touch(\"touchStart\", { x: c.x, y: c.y - 40 });\n    await touch(\"touchMove\", { x: c.x, y: c.y - 135 });\n    await touch(\"touchMove\", { x: c.x, y: c.y - 40 });\n    await touch(\"touchEnd\");\n    check((await observe()).shots === 0, \"native same-finger abort\");\n    await touch(\"touchStart\", { x: c.x, y: c.y - 40 });\n    await touch(\"touchMove\", { x: c.x, y: c.y - 135 });\n    await touch(\"touchCancel\");\n    check(\n      (await observe()).shots === 0 && !(await observe()).gesture,\n      \"native touchcancel\",\n    );\n    await page.locator(\"#reset\").click();\n    return {\n      status: \"PASS\",\n      input: \"Chromium native CDP touch events\",\n      checks,\n      revision: (await observe()).revision,\n    };\n  } catch (e) {\n    const path =\n      \"output/playwright/touch-study/native-failure-\" + Date.now() + \".png\";\n    await page.screenshot({ path });\n    return {\n      status: \"FAIL\",\n      classification: String(e).includes(\"GAME:\")\n        ? \"game-failure\"\n        : \"harness-failure\",\n      error: String(e),\n      recent,\n      checks,\n      path,\n    };\n  } finally {\n    await cdp.detach();\n  }\n}\n)(page);\n```\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ]
+}

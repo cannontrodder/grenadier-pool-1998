@@ -1,0 +1,122 @@
+{
+  "result": {
+    "status": "FAIL",
+    "classification": "game-failure",
+    "error": "Error: GAME: exact committed build identity",
+    "diagnosticScreenshot": "output/playwright/touch-study/failure-1789748580924.png",
+    "checks": [],
+    "recent": [
+      {
+        "version": "T1",
+        "revision": "development",
+        "scenario": "two-ball-centre-v1",
+        "frame": 40,
+        "observedAt": 5473.89999999851,
+        "phase": "ready",
+        "gesture": null,
+        "cueAngle": 0,
+        "power": 0,
+        "mapping": "linear",
+        "contact": {
+          "x": 0,
+          "y": 0
+        },
+        "shotReady": false,
+        "owner": true,
+        "last": "YOUR SHOT \u00b7 touch, orbit, pull away",
+        "shots": 0,
+        "reducedMotion": false,
+        "balls": [
+          {
+            "id": "cue",
+            "x": 270,
+            "y": 250,
+            "vx": 0,
+            "vy": 0,
+            "r": 12
+          },
+          {
+            "id": "red",
+            "x": 690,
+            "y": 250,
+            "vx": 0,
+            "vy": 0,
+            "r": 12
+          }
+        ],
+        "events": []
+      },
+      {
+        "version": "T1",
+        "revision": "development",
+        "scenario": "two-ball-centre-v1",
+        "frame": 43,
+        "observedAt": 5514.39999999851,
+        "phase": "ready",
+        "gesture": null,
+        "cueAngle": 0,
+        "power": 0,
+        "mapping": "linear",
+        "contact": {
+          "x": 0,
+          "y": 0
+        },
+        "shotReady": false,
+        "owner": true,
+        "last": "YOUR SHOT \u00b7 touch, orbit, pull away",
+        "shots": 0,
+        "reducedMotion": false,
+        "balls": [
+          {
+            "id": "cue",
+            "x": 270,
+            "y": 250,
+            "vx": 0,
+            "vy": 0,
+            "r": 12
+          },
+          {
+            "id": "red",
+            "x": 690,
+            "y": 250,
+            "vx": 0,
+            "vy": 0,
+            "r": 12
+          }
+        ],
+        "events": []
+      }
+    ],
+    "errors": []
+  },
+  "commands": [
+    {
+      "command": [
+        "resize",
+        "412",
+        "839"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 412, height: 839 });\n```\n### Page\n- Page URL: https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/touch-study/\n- Page Title: Touch study \u00b7 Grenadier Pool 1998\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "reload"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.reload();\n```\n### Page\n- Page URL: https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/touch-study/\n- Page Title: Touch study \u00b7 Grenadier Pool 1998\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T16-23-00-253Z.yml)\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/touch-study/browser-check.js"
+      ],
+      "stdout": "### Result\n{\"status\":\"FAIL\",\"classification\":\"game-failure\",\"error\":\"Error: GAME: exact committed build identity\",\"diagnosticScreenshot\":\"output/playwright/touch-study/failure-1789748580924.png\",\"checks\":[],\"recent\":[{\"version\":\"T1\",\"revision\":\"development\",\"scenario\":\"two-ball-centre-v1\",\"frame\":40,\"observedAt\":5473.89999999851,\"phase\":\"ready\",\"gesture\":null,\"cueAngle\":0,\"power\":0,\"mapping\":\"linear\",\"contact\":{\"x\":0,\"y\":0},\"shotReady\":false,\"owner\":true,\"last\":\"YOUR SHOT \u00b7 touch, orbit, pull away\",\"shots\":0,\"reducedMotion\":false,\"balls\":[{\"id\":\"cue\",\"x\":270,\"y\":250,\"vx\":0,\"vy\":0,\"r\":12},{\"id\":\"red\",\"x\":690,\"y\":250,\"vx\":0,\"vy\":0,\"r\":12}],\"events\":[]},{\"version\":\"T1\",\"revision\":\"development\",\"scenario\":\"two-ball-centre-v1\",\"frame\":43,\"observedAt\":5514.39999999851,\"phase\":\"ready\",\"gesture\":null,\"cueAngle\":0,\"power\":0,\"mapping\":\"linear\",\"contact\":{\"x\":0,\"y\":0},\"shotReady\":false,\"owner\":true,\"last\":\"YOUR SHOT \u00b7 touch, orbit, pull away\",\"shots\":0,\"reducedMotion\":false,\"balls\":[{\"id\":\"cue\",\"x\":270,\"y\":250,\"vx\":0,\"vy\":0,\"r\":12},{\"id\":\"red\",\"x\":690,\"y\":250,\"vx\":0,\"vy\":0,\"r\":12}],\"events\":[]}],\"errors\":[]}\n### Ran Playwright code\n```js\nawait (async (page) => {\n  const results = [],\n    recent = [],\n    errors = [];\n  page.on(\"pageerror\", (e) => errors.push(String(e)));\n  page.setDefaultTimeout(3500);\n  const check = (ok, name) => {\n    if (!ok) throw new Error(\"GAME: \" + name);\n    results.push(name);\n  };\n  const observe = async () => {\n    const o = await page.evaluate(() => window.touchStudy?.observe());\n    if (!o || !Number.isFinite(o.frame))\n      throw new Error(\"HARNESS: missing observation\");\n    recent.push(o);\n    if (recent.length > 16) recent.shift();\n    return o;\n  };\n  const waitGame = async (name, predicate, arg, timeout) => {\n    try { await page.waitForFunction(predicate, arg, {timeout}); }\n    catch (original) {\n      // A healthy, advancing observation stream lets us attribute a missed game deadline.\n      try {\n        const before = await observe();\n        await page.waitForFunction(f => touchStudy.health().ok && touchStudy.observe().frame > f + 2, before.frame, {timeout:1000});\n        await observe();\n      } catch (healthError) { throw new Error('UNCERTAIN: '+name+' timed out; observation health could not be proved. '+String(original)); }\n      throw new Error('GAME: '+name+' did not complete within '+timeout+'ms');\n    }\n  };\n  const checkTargets = async (selector, label) => {\n    const sizes=await page.locator(selector).evaluateAll(es=>es.map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})));\n    check(sizes.length>0&&sizes.every(r=>r.w>=44&&r.h>=44),label);\n  };\n  const action = async (name, fn) => {\n    recent.push({ action: name });\n    return await fn();\n  };\n  const reset = async () => {\n    await page.locator(\"#reset\").click();\n    return observe();\n  };\n  const down = async () => {\n    const { cue } = await page.evaluate(() => touchStudy.geometry());\n    const portrait =\n      (await page.viewportSize()).height > (await page.viewportSize()).width;\n    const start = {\n      x: cue.x + (portrait ? 0 : -35),\n      y: cue.y + (portrait ? -35 : 0),\n    };\n    await page.mouse.move(start.x, start.y);\n    await page.mouse.down();\n    return { cue, start, portrait };\n  };\n  const arm = async () => {\n    const g = await down();\n    await page.mouse.move(\n      g.start.x + (g.portrait ? 0 : -85),\n      g.start.y + (g.portrait ? -85 : 0),\n      { steps: 6 },\n    );\n    return g;\n  };\n  try {\n    await page.waitForFunction(\n      () => window.touchStudy?.health().ok,\n      {},\n      { timeout: 4000 },\n    );\n    const a = await observe();\n    await page.waitForFunction(\n      (f) => touchStudy.observe().frame > f + 2,\n      a.frame,\n      { timeout: 2000 },\n    );\n    const b = await observe();\n    if (b.observedAt <= a.observedAt)\n      throw new Error(\"HARNESS: stale observations\");\n    check(/^[a-f0-9]{40}$/.test(a.revision), \"exact committed build identity\");\n    check(a.scenario === \"two-ball-centre-v1\", \"scenario identity\");\n    check(\n      await page.evaluate(\n        () => document.documentElement.scrollWidth <= innerWidth,\n      ),\n      \"no document overflow\",\n    );\n    const targets = await page\n      .locator(\".tools button\")\n      .evaluateAll((es) =>\n        es.map((e) => ({\n          w: e.getBoundingClientRect().width,\n          h: e.getBoundingClientRect().height,\n        })),\n      );\n    check(\n      targets.every((r) => r.w >= 44 && r.h >= 44),\n      \"44px primary controls\",\n    );\n    const g = await action(\"aim and pull\", arm);\n    check((await observe()).phase === \"armed\", \"armed after pull\");\n    await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector(\".tools\")).opacity)<.2, {}, {timeout:1000});\n    await page.screenshot({\n      path:\n        \"output/playwright/touch-study/armed-\" +\n        page.viewportSize().width +\n        \".png\",\n    });\n    await action(\"release\", () => page.mouse.up());\n    const moving = await observe();\n    check(\n      moving.shots === 1 && moving.phase === \"rolling\",\n      \"release exactly one shot\",\n    );\n    await waitGame(\"ball progress\", (x)=>Math.abs(touchStudy.observe().balls[0].x-x)>3, moving.balls[0].x, 1800);\n    const progressed = await observe();\n    check(\n      progressed.balls.some((b) => Math.hypot(b.vx, b.vy) > 0),\n      \"motion observation has velocity\",\n    );\n    const match = await page.evaluate(() =>\n      touchStudy.observe().balls.every((b) => {\n        const e = document.getElementById(\"ball-\" + b.id),\n          p = new DOMPoint(b.x, b.y).matrixTransform(\n            document.getElementById(\"world\").getScreenCTM(),\n          ),\n          r = e.getBoundingClientRect();\n        return (\n          Math.abs(r.x + r.width / 2 - p.x) < 1 &&\n          Math.abs(r.y + r.height / 2 - p.y) < 1 &&\n          Math.abs(Number(e.getAttribute(\"cx\")) - b.x) < 0.01\n        );\n      }),\n    );\n    check(match, \"moving SVG positions match observations\");\n    await page.screenshot({\n      path:\n        \"output/playwright/touch-study/motion-\" +\n        page.viewportSize().width +\n        \".png\",\n    });\n    await waitGame(\"ball settling\", ()=>touchStudy.observe().phase===\"ready\", {}, 7000);\n    check(\n      (await observe()).balls.every((b) => b.vx === 0 && b.vy === 0),\n      \"motion settles within bound\",\n    );\n    const first = await reset();\n    check(\n      first.shots === 0 && first.balls[0].x === 270 && first.balls[0].y === 250,\n      \"deterministic reset\",\n    );\n    const abort = await arm();\n    await page.mouse.move(abort.start.x, abort.start.y, { steps: 5 });\n    check((await observe()).phase === \"aiming\", \"inward return disarms\");\n    await page.mouse.up();\n    check((await observe()).shots === 0, \"same-finger abort releases no shot\");\n    for (const kind of [\n      \"pointercancel\",\n      \"lostpointercapture\",\n      \"blur\",\n      \"background\",\n      \"orientation\",\n    ]) {\n      await reset();\n      await arm();\n      if (kind === \"orientation\") {\n        const v = page.viewportSize();\n        await page.setViewportSize({ width: v.height, height: v.width });\n        await page.setViewportSize(v);\n      } else\n        await page.evaluate((kind) => {\n          const table = document.getElementById(\"table\"),\n            id = touchStudy.observe().gesture.id;\n          if (kind === \"background\") {\n            Object.defineProperty(document, \"hidden\", {\n              configurable: true,\n              value: true,\n            });\n            document.dispatchEvent(new Event(\"visibilitychange\"));\n            delete document.hidden;\n          } else if (kind === \"blur\") window.dispatchEvent(new Event(\"blur\"));\n          else table.dispatchEvent(new PointerEvent(kind, { pointerId: id }));\n        }, kind);\n      await page.mouse.up();\n      const s = await observe();\n      check(\n        s.shots === 0 && s.phase === \"ready\" && !s.gesture,\n        \"interruption disarms: \" + kind,\n      );\n    }\n    await page.locator(\"#controls-open\").click();\n    await checkTargets(\"#controls button, #controls select, #controls input\", \"44px shot-sheet controls\");\n    await page.locator(\"#scheduled-loss\").click();\n    await arm();\n    await waitGame(\"scheduled turn loss\", ()=>!touchStudy.observe().owner, {}, 4000);\n    await page.mouse.up();\n    check(\n      (await observe()).shots === 0 && !(await observe()).gesture,\n      \"timed ownership loss during direct gesture\",\n    );\n    await reset();\n    await page.locator(\"#controls-open\").click();\n    await page.locator(\"#arm\").click();\n    check((await observe()).shotReady, \"button alternative arms\");\n    await page.locator(\"#ownership\").click();\n    check(\n      !(await observe()).shotReady && !(await observe()).owner,\n      \"ownership loss disarms\",\n    );\n    await page.locator(\"#ownership\").click();\n    await page.locator(\"#mapping\").selectOption(\"gentle\");\n    check((await observe()).mapping === \"gentle\", \"review mapping selector\");\n    await page.locator(\"#arm\").click();\n    await page.locator(\"#shoot\").focus();\n    await page.keyboard.press(\"Enter\");\n    check((await observe()).shots === 1, \"keyboard release from armed\");\n    await reset();\n    await page.locator(\"#spin-open\").click();\n    await checkTargets(\"#spin button, #spin input\", \"44px contact-sheet controls\");\n    await page.locator(\"#contact-y\").fill(\"70\");\n    check(\n      (await observe()).contact.y > 0.6 && (await observe()).shots === 0,\n      \"spin control is separate\",\n    );\n    await page.locator(\"#contact-reset\").click();\n    check(\n      (await observe()).contact.x === 0 && (await observe()).contact.y === 0,\n      \"centre contact reset\",\n    );\n    await page.keyboard.press(\"Escape\");\n    await page.emulateMedia({ reducedMotion: \"reduce\" });\n    await waitGame(\"reduced motion preference\", ()=>touchStudy.observe().reducedMotion, {}, 2000);\n    check((await observe()).reducedMotion, \"reduced motion preference\");\n    await page.emulateMedia({ reducedMotion: \"no-preference\" });\n    await reset();\n    await page.screenshot({\n      path:\n        \"output/playwright/touch-study/ready-\" +\n        page.viewportSize().width +\n        \".png\",\n    });\n    check(errors.length === 0, \"no browser errors\");\n    return {\n      status: \"PASS\",\n      revision: (await observe()).revision,\n      viewport: page.viewportSize(),\n      assertions: results.length,\n      checks: results,\n    };\n  } catch (error) {\n    const classification = String(error).includes(\"GAME:\")\n      ? \"game-failure\"\n      : String(error).includes(\"UNCERTAIN:\") ? \"uncertain\" : \"harness-failure\";\n    const path = \"output/playwright/touch-study/failure-\" + Date.now() + \".png\";\n    try {\n      await page.screenshot({ path, timeout: 2000 });\n    } catch {}\n    return {\n      status: \"FAIL\",\n      classification,\n      error: String(error),\n      diagnosticScreenshot: path,\n      checks: results,\n      recent,\n      errors,\n    };\n  }\n}\n)(page);\n```\n",
+      "stderr": "",
+      "returncode": 0
+    }
+  ]
+}

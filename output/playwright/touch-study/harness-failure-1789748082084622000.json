@@ -1,0 +1,35 @@
+{
+  "status": "FAIL",
+  "classification": "harness-failure",
+  "error": "CLI failed: run-code",
+  "commands": [
+    {
+      "command": [
+        "resize",
+        "412",
+        "839"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 412, height: 839 });\n```\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "reload"
+      ],
+      "stdout": "### Ran Playwright code\n```js\nawait page.reload();\n```\n### Page\n- Page URL: http://127.0.0.1:8127/touch-study/\n- Page Title: Touch study \u00b7 Grenadier Pool 1998\n- Console: 1 errors, 0 warnings\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T16-14-43-411Z.yml)\n### Events\n- New console entries: .playwright-cli/console-2026-09-18T16-14-41-915Z.log#L2\n",
+      "stderr": "",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/touch-study/browser-check.js"
+      ],
+      "stdout": "### Error\nSyntaxError: Unexpected token ';'\n",
+      "stderr": "",
+      "returncode": 1
+    }
+  ]
+}
