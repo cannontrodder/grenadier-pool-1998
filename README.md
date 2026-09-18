@@ -2,6 +2,10 @@
 
 A retro, top-down pool game inspired by playing with friends at the Grenadier public house in 1998.
 
+[Play the practice table](https://cannontrodder.github.io/grenadier-pool-1998/) — a public, phone-friendly solo practice preview. Drag away from the white and release to shoot; return inward before lifting to abort. Menu adjusts strength. Re-rack starts again, including after potting the white.
+
+[Hosting and publishing](docs/practice-hosting.md). This early preview is the #24 foundation; the full three-layout phase and physical-phone acceptance remain in progress.
+
 ## Project documents
 
 - [Project brief](docs/project-brief.md): captured vision and requirements.

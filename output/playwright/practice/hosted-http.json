@@ -1,0 +1,54 @@
+{
+  "revision": "a6065eb16c516312d2b56c91052f0748458b529d",
+  "publicHTTP": {
+    "/": {
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3533
+    },
+    "app.js": {
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 12714
+    },
+    "model.mjs": {
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 11928
+    },
+    "geometry.mjs": {
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 2000
+    },
+    "input.mjs": {
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8",
+      "bytes": 1171
+    },
+    "style.css": {
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "bytes": 4359
+    },
+    "favicon.svg": {
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "bytes": 274
+    },
+    "revision.json": {
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 57
+    },
+    "docs/design/index.html": {
+      "status": 404
+    },
+    "docs/design/selected/assets/friends-group-01.jpg": {
+      "status": 404
+    },
+    "output/playwright/": {
+      "status": 404
+    }
+  }
+}

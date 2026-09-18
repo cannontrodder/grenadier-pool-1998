@@ -34,6 +34,11 @@ Native GitHub blocking relationships describe the current graph. Later planning 
 
 ## Phase 3 foundation
 
+[#30 — Friends' preview](https://github.com/cannontrodder/grenadier-pool-1998/issues/30)
+publishes the #24 foundation early on [GitHub Pages](https://cannontrodder.github.io/grenadier-pool-1998/)
+at the owner's request. See [hosting and verification](practice-hosting.md).
+This public preview does not complete the remaining Phase 3 work or phone acceptance.
+
 [#9](https://github.com/cannontrodder/grenadier-pool-1998/issues/9) records the agreed [first playable table spec](phases/first-playable-table.md): three object balls in repeatable practice layouts, accepted touch controls, real pockets, manual white replacement, and a normal-action harness. The [research](research/phase3-simulation-harness.md) records the simulation/render boundary and collision risks. This planning package contains no gameplay implementation.
 
 [#24](https://github.com/cannontrodder/grenadier-pool-1998/issues/24) supplies the [working foundation](../practice/README.md) and [verification evidence](verification/practice-table-24.md). Next, [#25](https://github.com/cannontrodder/grenadier-pool-1998/issues/25) and [#26](https://github.com/cannontrodder/grenadier-pool-1998/issues/26) can proceed independently in separate worktrees once #24 is closed. Both block [#27](https://github.com/cannontrodder/grenadier-pool-1998/issues/27); then [#28](https://github.com/cannontrodder/grenadier-pool-1998/issues/28) reviews and [#29](https://github.com/cannontrodder/grenadier-pool-1998/issues/29) deploys and obtains physical-phone acceptance. These are native GitHub blockers, not just a checklist. #10 waits on #29. Ready-for-agent means fully specified; blocked issues must still wait.
