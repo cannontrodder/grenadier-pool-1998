@@ -37,13 +37,17 @@ Keep the following under `docs/design/` so later work can reuse the decisions:
 - reusable design notes for tokens, image treatment, type, controls, motion, sound, and accessibility;
 - screenshots and findings from real-device reviews, linked to the design version they evaluate.
 
-## Three direction boards to explore
+## Direction selected on 18 September 2026
+
+The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. 2 v 2 and the user's winner-stays-on/50p idea are future rules/multiplayer planning inputs, not added prototype scope.
+
+## Original three direction boards
 
 1. **Pub Snapshot** — Warm, intimate, and photographic: flash-lit friend portraits, worn pub materials, handwritten annotations, compact late-1990s editorial type. It fails if nostalgia overwhelms table legibility or real people feel like decoration.
 2. **1998 Sports Broadcast** — Crisp table-first play with score captions, instant-replay energy, restrained broadcast graphics, and contemporary broadcast typography. It fails if it becomes generic television sports and loses the Grenadier's personality.
 3. **Home Computer Pool Night** — A late-1990s desktop/game-menu language with compressed photos, period UI details, practical bitmap accents, and tactile sound. It fails if it becomes parody, obstructive skeuomorphism, or a false “neon 1980s” shorthand.
 
-These are starting theses, not palette variations. The preview should make their tradeoffs visible enough for one direction, or a deliberate hybrid, to be chosen.
+These were the original comparison theses. Sports Broadcast is now selected; retain B1 boards as review history and use S1 for subsequent design.
 
 ## Proposed delivery order
 
@@ -70,7 +74,7 @@ Basic computer play is proposed before human multiplayer because it allows the t
 ## Decisions to make as evidence arrives
 
 - Which pool rules and match format define the first meaningful game.
-- Which reference direction, or explicit hybrid, best matches the real 1998 memory.
+- How the selected broadcast direction represents the pub during brief between-shot moments, and what room references/model are needed.
 - Portrait, landscape, or responsive orientation and the exact aim/power control model.
 - What “first complete” means: its minimum opponent, match, personality, persistence, and multiplayer scope.
 - When human multiplayer enters the sequence and whether its first form is same-device, remote, or another agreed model.

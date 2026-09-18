@@ -28,6 +28,10 @@ Issue #1. Stable IDs for #2–#4. States describe interface intent, not a settle
 | X01 | App / asset load failure | Retry; essential asset failure blocks Start clearly | Optional portrait/audio failure uses fallback and keeps navigation usable |
 | X02 | Save / storage failure | Retry save → U02 or P01; continue current session | Explain reload risk; no automatic destructive reload |
 
+## S1 control and presentation update
+
+The user-selected Sports Broadcast direction and one-finger drag/release preference in [S1](selected-direction.md) supersede the original staged-button assumption. G02 and G03 can be phases of one continuous gesture; a valid release commits G04, while abort/disrupted input returns to G01 without shooting. Exact aim/power mapping remains a #7 study. The historical W1 explorer illustrates states, not approved mechanics. Optional pub pullback/handover presentation belongs after G04 settles (G05/M03), returning to stable top-down G01 before input. Do not imply a model already exists or settle 2 v 2 rotation rules.
+
 ## Primary journey
 
 E01 → O01 → O02 → G01 → G02 → G03 → G04 → G05 → G01. Cancel G03 → G02 → G01; pause G01 → P01 → G01; results G05 → Z01 → O01. No primary screen depends on a supplied photograph.

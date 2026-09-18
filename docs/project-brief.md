@@ -8,6 +8,16 @@ A two-dimensional, top-down pool game for the creator and his friends, inspired 
 
 The intended game supports both real friends playing against each other and computer opponents based on their personas. Computer counterparts have exaggerated personalities, such as angry or cool. Basic computer play should require modest effort; especially skilled “ultimate” counterparts are a possible later addition.
 
+## Selected direction and interaction feedback (18 September 2026)
+
+The user selected **1998 Sports Broadcast** for both gameplay and persona presentation. Keep a clear broadcast identity while retaining the pub setting, especially between shots. A pullback to an isometric/3D pub view with seated friends and the next player stepping up is an exploratory presentation idea; no room model exists yet. Top-down shot play remains the baseline.
+
+The user prefers **single-finger drag and release with a way to abort**. Earlier “Set power”/“Commit” buttons were exploratory wireframes, not an approved control mechanic. Keep the gesture mapping and orientation open for a touch study; button alternatives can support accessibility without defining the main loop.
+
+Future interests include 2 v 2 with players taking turns and a “killer”/winner-stays-on mode where the challenger pays 50p to play. Preserve the user's house-game description; exact rules and any in-game coin representation are unresolved. This is not authorization to build real payments.
+
+Sound should evoke a 1990s pub, led by typical pool sounds. See [selected direction](design/selected-direction.md) and the linked raw feedback for precise decisions and remaining questions.
+
 ## Feedback and delivery
 
 Quick feedback on the user's iPhone is a priority. A mobile browser game is the current recommendation, with Safari prioritized and Android compatibility retained. The user defines phases, starting with small vertical slices and expanding their scope as understanding grows. Plans, designs, and mock-ups establish what done looks like. Each phase ends with a tested deployment.
