@@ -18,7 +18,11 @@ async (page) => {
       type,
       touchPoints: p ? [{ x: p.x, y: p.y, id: 0, radiusX: 9, radiusY: 9 }] : [],
     });
-    await page.waitForFunction(f => touchStudy.observe().frame > f + 2, frame, {timeout: 2000});
+    await page.waitForFunction(
+      (f) => touchStudy.observe().frame > f + 2,
+      frame,
+      { timeout: 2000 },
+    );
   };
   try {
     await page.locator("#reset").click();
@@ -60,7 +64,16 @@ async (page) => {
     const path =
       "output/playwright/touch-study/native-failure-" + Date.now() + ".png";
     await page.screenshot({ path });
-    return { status: "FAIL", classification: String(e).includes("GAME:")?"game-failure":"harness-failure", error: String(e), recent, checks, path };
+    return {
+      status: "FAIL",
+      classification: String(e).includes("GAME:")
+        ? "game-failure"
+        : "harness-failure",
+      error: String(e),
+      recent,
+      checks,
+      path,
+    };
   } finally {
     await cdp.detach();
   }

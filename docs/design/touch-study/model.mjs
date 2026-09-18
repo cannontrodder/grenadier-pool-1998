@@ -6,7 +6,8 @@ export function initial() {
     phase: "ready",
     angle: 0,
     power: 0,
-    mapping: "linear",
+    mapping: "gentle",
+    strength: 1.8,
     contact: { x: 0, y: 0 },
     owner: true,
     gesture: null,
@@ -49,8 +50,9 @@ export function shoot(s) {
   s.phase = "rolling";
   s.shots++;
   s.time = 0;
-  s.balls[0].vx = Math.cos(s.angle) * (180 + 900 * s.power);
-  s.balls[0].vy = Math.sin(s.angle) * (180 + 900 * s.power);
+  const speed = 60 + 1300 * s.power * s.strength;
+  s.balls[0].vx = Math.cos(s.angle) * speed;
+  s.balls[0].vy = Math.sin(s.angle) * speed;
   s.last = "Shot away";
   return true;
 }
@@ -61,6 +63,16 @@ export function release(s, id) {
   return false;
 }
 export function step(s, dt) {
+  if (s.phase !== "rolling") return;
+  // Keep relative travel small enough for this approximate contact model at maximum strength.
+  const speed = s.balls.reduce(
+    (sum, ball) => sum + Math.hypot(ball.vx, ball.vy),
+    0,
+  );
+  const count = Math.max(1, Math.ceil((speed * dt) / 6));
+  for (let i = 0; i < count; i++) advance(s, dt / count);
+}
+function advance(s, dt) {
   if (s.phase !== "rolling") return;
   s.time += dt;
   for (const b of s.balls) {

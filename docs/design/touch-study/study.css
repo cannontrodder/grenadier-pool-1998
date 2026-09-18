@@ -343,3 +343,11 @@ noscript {
 #power {
   transition: opacity 0.15s;
 }
+
+summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+  font-weight: bold;
+  color: var(--gold);
+}

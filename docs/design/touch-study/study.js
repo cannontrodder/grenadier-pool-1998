@@ -26,7 +26,7 @@ fetch("./revision.json", { cache: "no-store" })
   .then((v) => {
     if (v) {
       revision = v.revision;
-      $("build").textContent = `T1 · ${revision.slice(0, 7)}`;
+      $("build").textContent = `T1.1 · ${revision.slice(0, 7)}`;
     }
   })
   .catch(() => {});
@@ -217,8 +217,9 @@ screen.orientation?.addEventListener("change", layout);
 $("reset").onclick = () => {
   clearTimeout(lossTimer);
   lossTimer = null;
-  state = initial();
-  $("mapping").value = "linear";
+  const settings = { mapping: state.mapping, strength: state.strength };
+  state = { ...initial(), ...settings };
+  $("mapping").value = state.mapping;
   $("angle").value = 0;
   $("alt-power").value = 40;
   syncAlternative();
@@ -246,6 +247,11 @@ for (const id of ["controls", "spin"]) {
 $("mapping").onchange = () => {
   cancel("Power mapping changed");
   state.mapping = $("mapping").value;
+};
+$("strength").oninput = () => {
+  cancel("Strength changed · arm again");
+  state.strength = Number($("strength").value);
+  $("strength-value").textContent = state.strength.toFixed(1) + "×";
 };
 function syncAlternative() {
   state.angle = (Number($("angle").value) * Math.PI) / 180;
@@ -298,7 +304,8 @@ $("controls").addEventListener("keydown", (e) => {
   if (e.key === "Escape") cancel("Aborted");
   if (
     !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key) ||
-    e.target.tagName === "SELECT"
+    e.target.tagName === "SELECT" ||
+    e.target.id === "strength"
   )
     return;
   e.preventDefault();
@@ -306,7 +313,7 @@ $("controls").addEventListener("keydown", (e) => {
   if (e.shiftKey)
     $("alt-power").value = clamp(
       Number($("alt-power").value) + delta * 5,
-      5,
+      0.5,
       100,
     );
   else $("angle").value = (Number($("angle").value) + delta * 5 + 360) % 360;
@@ -377,7 +384,7 @@ function tick(now) {
 }
 window.touchStudy = Object.freeze({
   observe: () => ({
-    version: "T1",
+    version: "T1.1",
     revision,
     scenario: SCENARIO,
     frame,
@@ -387,6 +394,7 @@ window.touchStudy = Object.freeze({
     cueAngle: state.angle,
     power: state.power,
     mapping: state.mapping,
+    strength: state.strength,
     contact: { ...state.contact },
     shotReady: state.phase === "armed" && state.owner,
     owner: state.owner,

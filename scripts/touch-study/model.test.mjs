@@ -109,3 +109,73 @@ test("bounded deterministic motion and reset", () => {
   assert.deepEqual(run(), run());
   assert.deepEqual(initial(), initial());
 });
+
+test("gentle default retains soft taps and scales the full-power endpoint", () => {
+  const tap = initial();
+  assert.equal(tap.mapping, "gentle");
+  begin(tap, 1, 30);
+  move(tap, 1, 0, 50);
+  shoot(tap);
+  assert.ok(tap.balls[0].vx < 80, "soft tap stays gentle");
+  const smash = initial();
+  begin(smash, 1, 30);
+  move(smash, 1, 0, 157);
+  assert.equal(smash.power, 1);
+  shoot(smash);
+  assert.ok(
+    smash.balls[0].vx > 2200,
+    "default smash exceeds twice original full power",
+  );
+  const stronger = initial();
+  stronger.strength = 3;
+  begin(stronger, 1, 30);
+  move(stronger, 1, 0, 157);
+  shoot(stronger);
+  assert.ok(stronger.balls[0].vx > smash.balls[0].vx);
+  let hit = false;
+  for (let i = 0; i < 700; i++) {
+    step(stronger, 1 / 120);
+    hit ||= Math.abs(stronger.balls[1].vx) > 0;
+    assert.ok(
+      stronger.balls.every(
+        (b) =>
+          Number.isFinite(b.x) &&
+          b.x >= b.r &&
+          b.x <= 1000 - b.r &&
+          b.y >= b.r &&
+          b.y <= 500 - b.r,
+      ),
+    );
+  }
+  assert.ok(hit, "maximum strength still contacts the object ball");
+  assert.equal(stronger.phase, "ready");
+});
+
+test("strength preserves normalized travel and oblique maximum shots stay bounded", () => {
+  let previous = 0;
+  for (const strength of [0.5, 1.8, 3]) {
+    const s = initial();
+    s.strength = strength;
+    begin(s, 1, 30);
+    move(s, 1, 0.18, 100);
+    assert.ok(Math.abs(s.power - (58 / 115) ** 2) < 1e-10);
+    shoot(s);
+    const speed = Math.hypot(s.balls[0].vx, s.balls[0].vy);
+    assert.ok(speed > previous);
+    previous = speed;
+    for (let i = 0; i < 700; i++) {
+      step(s, 1 / 120);
+      assert.ok(
+        s.balls.every(
+          (b) =>
+            Number.isFinite(b.x) &&
+            b.x >= b.r &&
+            b.x <= 1000 - b.r &&
+            b.y >= b.r &&
+            b.y <= 500 - b.r,
+        ),
+      );
+    }
+    assert.equal(s.phase, "ready");
+  }
+});
