@@ -10,7 +10,7 @@ A retro, top-down pool game inspired by playing with friends at the Grenadier pu
 - [Domain glossary](CONTEXT.md): shared terminology.
 - [Agent instructions](AGENTS.md): delegation, delivery, and testing conventions.
 
-Track implementation work in [GitHub Issues](https://github.com/cannontrodder/grenadier-pool-1998/issues). The current deliverable is a design preview, not a playable game.
+Track implementation work in [GitHub Issues](https://github.com/cannontrodder/grenadier-pool-1998/issues). The first working practice-table slice is in [practice/](practice/README.md): one repeatable four-ball layout, accepted drag/release controls, real pockets and Re-rack. The three-layout flow, placement UI and phase deployment follow in #25–#29.
 
 - [Open the phone-friendly design preview](https://grenadier-pool-1998-design.cannontrodder.chatgpt.site) (owner-only access; sign in with the matching account).
 - [Selected Sports Broadcast direction](docs/design/selected-direction.md), [mockups](docs/design/selected/index.html), [pub plan](docs/design/pub-layout.svg), and [sound direction](docs/design/sound-direction.md).

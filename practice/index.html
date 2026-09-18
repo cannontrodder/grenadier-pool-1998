@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071b33">
+  <title>Grenadier 1998 · Practice table</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main id="game">
+  <header class="broadcast"><b class="badge">G</b><div>GRENADIER <span>1998</span><small>THREE-BALL PRACTICE</small></div><output id="count" aria-label="Object balls potted">0/3</output></header>
+  <nav aria-label="Practice controls"><button id="reset">Re-rack</button><button id="menu-open" aria-haspopup="dialog">Menu</button></nav>
+  <svg id="table" viewBox="0 0 1100 600" role="img" aria-label="Pool practice table. Drag away from the white and release to shoot. Keyboard shot controls are in Menu.">
+    <defs>
+      <radialGradient id="felt"><stop stop-color="#16735b"/><stop offset="1" stop-color="#09513d"/></radialGradient>
+      <radialGradient id="white-ball" cx="32%" cy="26%"><stop stop-color="#fffef5"/><stop offset=".7" stop-color="#f4f0df"/><stop offset="1" stop-color="#c4c2b5"/></radialGradient>
+      <radialGradient id="red-ball" cx="32%" cy="26%"><stop stop-color="#fb7078"/><stop offset=".55" stop-color="#d92e3d"/><stop offset="1" stop-color="#831b2b"/></radialGradient>
+    </defs>
+    <g id="world"><rect class="wood" x="-34" y="-34" width="1068" height="568" rx="32"/>
+      <rect x="0" y="0" width="1000" height="500" fill="url(#felt)"/>
+      <g id="pockets"></g><g id="rails"></g><g id="jaws"></g>
+      <g id="aim" pointer-events="none"><line id="aim-line" stroke="#f4f0df" stroke-width="2" stroke-dasharray="7 8" opacity=".65"/><line id="cue" stroke="#d5b477" stroke-width="5" stroke-linecap="round"/><circle id="neutral" fill="none" stroke="#f2c14e" stroke-width="1.5" stroke-dasharray="5 5"/></g>
+      <g id="balls"></g>
+      <text x="500" y="280" class="table-mark" text-anchor="middle" pointer-events="none">GRENADIER · 1998</text>
+    </g>
+  </svg>
+  <div id="feedback" role="status" aria-live="polite"><strong id="status">Straight pots</strong><span id="hint">Drag away from the white · release to shoot</span><div id="power" aria-hidden="true"><i></i></div></div>
+  <footer><span>STRAIGHT POTS</span><small id="build">P1 · local</small></footer>
+  <dialog id="menu" aria-labelledby="menu-title">
+    <div class="menu-heading"><h1 id="menu-title">Practice menu</h1><button id="menu-close" aria-label="Close menu">Close</button></div>
+    <label for="strength">Shot strength <output id="strength-value">1.8×</output></label>
+    <input id="strength" type="range" min="0.5" max="3" step="0.1" value="1.8">
+    <p>Full pull stays the same distance. Return your finger inward before lifting to abort.</p>
+    <details><summary>Keyboard shot controls</summary>
+      <label for="angle">Aim angle (degrees)</label><input id="angle" type="number" min="-360" max="360" step="1" value="-90">
+      <small>0° right · 90° down · 180° left · −90° up, along the long table.</small>
+      <label for="keyboard-power">Shot power <output id="keyboard-power-value">25%</output></label>
+      <input id="keyboard-power" type="range" min="0" max="1" step="0.01" value="0.25">
+      <button id="shoot" class="primary">Shoot</button>
+    </details>
+    <p class="session-note">A temporary practice table. Reload starts again.</p>
+  </dialog>
+</main>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

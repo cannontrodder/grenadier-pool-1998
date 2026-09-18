@@ -1,0 +1,48 @@
+:root { font-family: "Arial Narrow", Arial, sans-serif; color: #f4f0df; background: #071b33; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; overflow: hidden; overscroll-behavior: none; }
+button, input { font: inherit; }
+button, summary { cursor: pointer; }
+button { min-height: 44px; border: 1px solid #64768a; border-radius: 3px; background: #0d2848; color: #f4f0df; padding: 8px 14px; font-weight: bold; }
+button:disabled { opacity: .45; cursor: default; }
+:focus-visible { outline: 3px solid #f2c14e; outline-offset: 3px; }
+#game { position: fixed; inset: 0; background: radial-gradient(ellipse, #233342, #06111f); }
+#table { position: absolute; top: max(64px, calc(env(safe-area-inset-top) + 54px)); bottom: max(22px, env(safe-area-inset-bottom)); width: 100%; height: calc(100% - max(64px, calc(env(safe-area-inset-top) + 54px)) - max(22px, env(safe-area-inset-bottom))); display: block; touch-action: none; user-select: none; -webkit-user-select: none; }
+.wood { fill: #55351f; stroke: #bd8746; stroke-width: 3; }
+.table-mark { fill: #f4f0df; opacity: .10; font: bold 18px Arial; letter-spacing: 5px; }
+.broadcast { position: absolute; left: max(12px, env(safe-area-inset-left)); top: max(12px, env(safe-area-inset-top)); display: flex; align-items: stretch; z-index: 2; background: #071b33ee; pointer-events: none; box-shadow: 0 4px 16px #0005; }
+.badge { background: #d92e3d; font: italic 32px Impact, sans-serif; padding: 3px 9px; }
+.broadcast > div { padding: 7px 9px; font: 18px Impact, "Arial Narrow", sans-serif; letter-spacing: .04em; }
+.broadcast span { color: #f2c14e; }
+.broadcast small { display: block; margin-top: 3px; font: 8px Arial; letter-spacing: .14em; }
+#count { display: grid; place-items: center; padding: 8px 10px; border-left: 1px solid #ffffff30; font-weight: bold; }
+nav { position: absolute; z-index: 3; right: max(12px, env(safe-area-inset-right)); top: max(12px, env(safe-area-inset-top)); display: flex; gap: 6px; }
+#feedback { position: absolute; left: 12px; bottom: max(44px, calc(env(safe-area-inset-bottom) + 28px)); max-width: min(310px, calc(100vw - 24px)); padding: 10px 14px; background: #071b33e8; border-left: 4px solid #d92e3d; pointer-events: none; transition: opacity .2s; }
+#status { display: block; font-size: 15px; }
+#hint { display: block; margin-top: 4px; color: #c1cfda; font-size: 12px; line-height: 1.35; }
+#power { height: 4px; background: #ffffff24; margin-top: 7px; display: none; }
+#power i { display: block; height: 100%; width: 0; background: #f2c14e; }
+.holding #power { display: block; }
+.holding .broadcast, .holding footer, .rolling .broadcast, .rolling footer { opacity: .25; }
+.quiet #feedback { opacity: 0; }
+footer { position: absolute; bottom: max(12px, env(safe-area-inset-bottom)); left: 12px; right: 12px; display: flex; justify-content: space-between; color: #a6b7c7; font-size: 9px; letter-spacing: .1em; pointer-events: none; }
+dialog { width: min(420px, calc(100% - 24px)); max-height: calc(100% - 24px); overflow: auto; padding: 22px; border: 1px solid #64768a; background: #071b33; color: #f4f0df; box-shadow: 0 20px 80px #0009; }
+dialog::backdrop { background: #020b15b8; }
+.menu-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 22px; }
+h1 { margin: 0; font-size: 22px; }
+label { display: flex; justify-content: space-between; margin: 18px 0 8px; font-size: 14px; font-weight: bold; }
+input[type="range"] { width: 100%; min-height: 44px; accent-color: #f2c14e; }
+input[type="number"] { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #64768a; background: #0d2848; }
+p, details small { font-size: 12px; line-height: 1.6; color: #b4c6d6; }
+details { border-top: 1px solid #ffffff30; padding-top: 15px; }
+summary { min-height: 44px; font-weight: bold; }
+.primary { width: 100%; background: #b92739; margin-top: 10px; }
+.session-note { border-top: 1px solid #ffffff30; padding-top: 15px; margin-bottom: 0; }
+@media (max-width: 580px) and (orientation: portrait) {
+  .badge { display: none; }
+  .broadcast > div { font-size: 14px; padding: 7px; }
+  .broadcast small { font-size: 6px; letter-spacing: .08em; }
+  #count { padding: 7px; font-size: 13px; }
+  nav button { padding: 8px 10px; font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
