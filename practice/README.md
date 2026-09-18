@@ -37,7 +37,7 @@ Browser harness commands and exact verification results are recorded in
 - `model.mjs` owns command admission, deterministic fixed ticks, ball motion,
   contacts, capture events and post-settle precedence. It uses no browser or
   clock APIs. [`PHYSICS.md`](PHYSICS.md) documents numerical bounds and evidence.
-- `input.mjs` owns one pointer's gesture and the accepted screen-pixel curve.
+- `input.mjs` owns the first pointer's shot gesture, optional second-touch angle hold, and the accepted screen-pixel curve.
 - `app.js` adapts DOM input, advances ticks, renders SVG and publishes a
   read-only observation. It never resolves collisions or decides post-settle
   state independently.

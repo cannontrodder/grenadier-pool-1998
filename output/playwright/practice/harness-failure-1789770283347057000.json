@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "classification": "harness-failure",
+  "error": "Playwright CLI failed: open",
+  "journal": null,
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 939,
+      "returncode": 0,
+      "stdout": "Browser 'aim33-pot' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8765/practice/?harnessCase=pot&harnessJournal=http%3A%2F%2F127.0.0.1%3A50305%2FIUSD9-l-BFNP2KCRf_VNhKgufbgnn3J9&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "webkit"
+      ],
+      "durationMs": 1788,
+      "returncode": 1,
+      "stdout": "### Browser `aim33-pot` opened with pid 73134.\n### Error\nError: Could not connect to the server.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8765/practice/?harnessCase=pot&harnessJournal=http%3A%2F%2F127.0.0.1%3A50305%2FIUSD9-l-BFNP2KCRf_VNhKgufbgnn3J9&cornerAngle=-2.5722794624891314&cornerPull=69.5\", waiting until \"domcontentloaded\"\u001b[22m\n\n",
+      "stderr": ""
+    }
+  ]
+}

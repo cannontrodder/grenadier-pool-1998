@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "classification": "harness-failure",
+  "error": "Playwright CLI failed: open",
+  "journal": null,
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 905,
+      "returncode": 0,
+      "stdout": "Browser 'aim33-placement' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8765/practice/?harnessCase=placement&harnessJournal=http%3A%2F%2F127.0.0.1%3A50307%2FRIvkOblrpM3BixuZo7Mp1rTow43_Nvwi&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "webkit"
+      ],
+      "durationMs": 1791,
+      "returncode": 1,
+      "stdout": "### Browser `aim33-placement` opened with pid 73136.\n### Error\nError: Could not connect to the server.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8765/practice/?harnessCase=placement&harnessJournal=http%3A%2F%2F127.0.0.1%3A50307%2FRIvkOblrpM3BixuZo7Mp1rTow43_Nvwi&cornerAngle=-2.5722794624891314&cornerPull=69.5\", waiting until \"domcontentloaded\"\u001b[22m\n\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-straight-pots-390x844-1789770564838966000.json",
+    "layout": "straight-pots"
+  },
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-cut-pots-390x844-1789770564856244000.json",
+    "layout": "cut-pots"
+  },
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-cushion-practice-390x844-1789770564825564000.json",
+    "layout": "cushion-practice"
+  }
+]

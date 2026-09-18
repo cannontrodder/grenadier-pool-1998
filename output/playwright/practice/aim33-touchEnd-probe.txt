@@ -1,0 +1,18 @@
+### Result
+{"start":[{"type":"pointerdown","id":2,"primary":true},{"type":"pointerdown","id":3,"primary":false}],"end":[{"type":"pointerup","id":2,"primary":true},{"type":"lostpointercapture","id":2,"primary":true}],"cancel":[{"type":"pointercancel","id":3,"primary":false}]}
+### Ran Playwright code
+```js
+await (async (page) => {
+ await page.setViewportSize({width:412,height:839});
+ await page.evaluate(() => { window.touchProbe=[]; for(const type of ['pointerdown','pointerup','pointercancel','lostpointercapture']) document.addEventListener(type,e=>window.touchProbe.push({type,id:e.pointerId,primary:e.isPrimary}),true); });
+ const c=await page.context().newCDPSession(page);
+ const p=[{x:200,y:400,id:0},{x:250,y:450,id:1}];
+ await c.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:p});
+ const start=await page.evaluate(()=>window.touchProbe.splice(0));
+ await c.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[p[0]]});
+ const end=await page.evaluate(()=>window.touchProbe.splice(0));
+ await c.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});
+ const cancel=await page.evaluate(()=>window.touchProbe.splice(0));
+ await c.detach();return {start,end,cancel};
+})(page);
+```

@@ -1,0 +1,1 @@
+{"status": "FAIL", "originalStatus": "FAIL", "fault": null, "classification": "game-failure", "error": "Error: GAME: shot 3 pots object-3", "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-layout-cut-390x844-1789770366440893000.json", "recovery": null}

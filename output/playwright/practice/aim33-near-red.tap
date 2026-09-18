@@ -1,0 +1,92 @@
+TAP version 13
+# Subtest: menu defaults are bounded and invalid numeric settings fall back safely
+ok 1 - menu defaults are bounded and invalid numeric settings fall back safely
+  ---
+  duration_ms: 0.857917
+  type: 'test'
+  ...
+# Subtest: wide-radius aim remains free; moving near the white preserves the last direction
+not ok 2 - wide-radius aim remains free; moving near the white preserves the last direction
+  ---
+  duration_ms: 0.519292
+  type: 'test'
+  location: '/Users/neil/projects/grenadier-pool-1998/scripts/practice/tuning.test.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/neil/projects/grenadier-pool-1998/scripts/practice/tuning.test.mjs:20:29)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: inside start retains preview, outside re-aims, and inward release still aborts
+not ok 3 - inside start retains preview, outside re-aims, and inward release still aborts
+  ---
+  duration_ms: 0.176667
+  type: 'test'
+  location: '/Users/neil/projects/grenadier-pool-1998/scripts/practice/tuning.test.mjs:27:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    -2 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: -2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/neil/projects/grenadier-pool-1998/scripts/practice/tuning.test.mjs:30:29)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: turning lock off preserves free aim even at maximum pull
+ok 4 - turning lock off preserves free aim even at maximum pull
+  ---
+  duration_ms: 0.086416
+  type: 'test'
+  ...
+# Subtest: guide stops cue centre at first ball contact, skips potted balls, obeys length
+ok 5 - guide stops cue centre at first ball contact, skips potted balls, obeys length
+  ---
+  duration_ms: 0.402125
+  type: 'test'
+  ...
+# Subtest: guide sees cushion faces and jaws while clear pocket mouths remain open
+ok 6 - guide sees cushion faces and jaws while clear pocket mouths remain open
+  ---
+  duration_ms: 0.350459
+  type: 'test'
+  ...
+# Subtest: a cushion-touching cue can aim away, but towards the cushion contacts immediately
+ok 7 - a cushion-touching cue can aim away, but towards the cushion contacts immediately
+  ---
+  duration_ms: 0.186666
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 5
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.663542

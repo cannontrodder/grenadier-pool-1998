@@ -44,3 +44,9 @@ This public preview does not complete the remaining Phase 3 work or phone accept
 [#24](https://github.com/cannontrodder/grenadier-pool-1998/issues/24) supplies the working foundation. [#26](https://github.com/cannontrodder/grenadier-pool-1998/issues/26) adds white replacement after a scratch; [#25](https://github.com/cannontrodder/grenadier-pool-1998/issues/25) adds Straight pots, Cut pots and Cushion practice with clear/re-rack. Both are complete. [#27](verification/practice-loop-27.md) records the integrated automated checks and [#28](verification/practice-review-28.md) the completed independent review. [#29](https://github.com/cannontrodder/grenadier-pool-1998/issues/29) publishes the reviewed phase to the [friends' link](https://cannontrodder.github.io/grenadier-pool-1998/) and remains open for actual physical-phone feedback. Phase 3 is not yet marked delivered; #10 remains blocked by #29. Ready-for-agent means fully specified; blocked issues must still wait.
 
 [#32 — Practice tuning](https://github.com/cannontrodder/grenadier-pool-1998/issues/32) responds to friends’ feedback with adjustable aiming help, aim locking and shared pocket geometry. It is a bounded feedback slice before #25/#26, not completion of the phase.
+
+[#33 — Aiming correction](https://github.com/cannontrodder/grenadier-pool-1998/issues/33)
+responds to the owner's #29 feedback: free aiming outside a fixed precision
+circle, angle protection close to the white, and a momentary second-finger hold.
+It supersedes #32's outward-pull aim lock. #29 remains the phone-feedback gate
+for the revised controls.
