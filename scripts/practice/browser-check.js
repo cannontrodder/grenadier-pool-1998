@@ -335,7 +335,11 @@ async (page) => {
     return second;
   };
   const validateRenderedGeometry = async (observation) => {
-    const match = await page.evaluate((expected) => {
+    const match = await page.evaluate((before) => {
+      // Capture the rendered observation and SVG atomically; journal I/O may
+      // allow physics to advance after the caller's earlier observation.
+      const expected = window.practice.observe();
+      if (expected.epoch !== before.epoch || expected.frame < before.frame) return { ok: false, reason: 'observation epoch/frame changed unexpectedly' };
       const world = document.querySelector("#world");
       const actualMatrix = world?.getScreenCTM();
       if (!actualMatrix) return { ok: false, reason: "missing #world matrix" };
@@ -419,7 +423,7 @@ async (page) => {
         maxJawDelta: Math.max(...jawDeltas),
         maxPocketDelta: Math.max(...pocketDeltas),
       };
-    }, observation);
+    }, { epoch: observation.epoch, frame: observation.frame });
     check(
       match.ok,
       "rendered balls, rails, jaws and pocket mouths match shared observations",
