@@ -1,6 +1,6 @@
 # Individual player avatars · A1
 
-Issue #19. Built-in image generation isolated and completed head-and-shoulder portraits from the user-approved C1 pixel-art group. These are generated derivations, not exact pixel crops. Source remains intact. Four figures were visually inspected for identity order, characteristic hair, smiles and clothing. No traits or player skill are inferred. Individual portraits await final review.
+Issue #19. Built-in image generation isolated and completed head-and-shoulder portraits from the user-approved C1 pixel-art group. These are generated derivations, not exact pixel crops. Source remains intact. Four figures were visually inspected for identity order, characteristic hair, smiles and clothing. No traits or player skill are inferred. The owner gave final approval on 18 September 2026 with “I approve it all”; Mark's subsequently approved A2 glasses variant is linked below.
 
 ## trod
 
@@ -28,7 +28,9 @@ Use case: background-extraction / identity-preserve. Extract ONE standalone squa
 
 ## maaaaark
 
-Asset: `avatar-maaaaark-v1.png`. Copied unchanged from generated output.
+Original asset: `avatar-maaaaark-v1.png`. Copied unchanged from generated output.
+The current individual-avatar views use the approved glasses variant
+[`avatar-maaaaark-v2.png`](avatar-maaaaark-v2.png); see [A2 provenance](avatar-maaaaark-v2.md).
 
 Exact prompt:
 

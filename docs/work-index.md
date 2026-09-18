@@ -28,7 +28,7 @@ Native GitHub blocking relationships describe the current graph. Later planning 
 
 #17 adds the approved pixel-caricature group direction; #18 corrects the pub entrance/foyer; #19 provides individual avatars. The user requests final review of these latest changes only, with no further blocking design choices. This historical review preceded #7/#8, which are now complete; #20 is separate non-blocking visual feedback.
 
-[#20 — Final visual design sign-off](https://github.com/cannontrodder/grenadier-pool-1998/issues/20) covers only the individual avatars and corrected room plan.
+[#20 — Final visual design sign-off](https://github.com/cannontrodder/grenadier-pool-1998/issues/20) covers only the individual avatars and corrected room plan. The owner gave broad final approval on 18 September 2026: “I approve it all.” [#31](https://github.com/cannontrodder/grenadier-pool-1998/issues/31) adopts Mark's approved NHS-glasses avatar. This visual sign-off does not establish a physical-device test or accept unfinished Phase 3 work.
 
 [#21 — Preservation audit and implementation handoff](https://github.com/cannontrodder/grenadier-pool-1998/issues/21) records closeout. Its [next-agent prompt](handoffs/next-agent-touch-study.md) is historical; #7 and #8 are now complete. Use the current phase spec and live issue blockers for new work.
 

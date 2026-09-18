@@ -23,3 +23,7 @@ Browser evidence is recorded in [`output/playwright/selected/`](../../../output/
 The user explicitly confirmed this is planning and look-and-feel design. No playable application or touch prototype is being implemented in this revision. Historical M1 captures predate C1; `output/playwright/selected/pixel-*` captures show the current persona treatment.
 
 A1 individual avatars are `assets/avatar-{trod,craig,shacka,maaaaark}-v1.png`. They are generated isolations from approved C1, with prompts in `assets/avatars-v1.md`; included in the O02 lineup.
+
+Mark now uses the approved [A2 NHS-glasses variant](assets/avatar-maaaaark-v2.png)
+in the lineup and individual review. [Provenance and approval](assets/avatar-maaaaark-v2.md)
+are recorded in #31; the A1 original remains available.
