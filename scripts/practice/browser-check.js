@@ -242,12 +242,16 @@ async (page) => {
     );
     return observation;
   };
+  const waitForBuild = async (expected = null) => {
+    await page.waitForFunction(expectedRevision => {
+      const o = window.practice?.observe?.();
+      return o?.health?.ok && typeof o.buildRevision === 'string' &&
+        o.buildRevision !== 'local-unbuilt' && o.buildRevision.length > 0 &&
+        (!expectedRevision || o.buildRevision === expectedRevision);
+    }, expected, { timeout: bounds.observationMs });
+  };
   const validateContract = async () => {
-    await page.waitForFunction(
-      () => window.practice?.observe?.()?.health?.ok,
-      {},
-      { timeout: 5000 },
-    );
+    await waitForBuild();
     identity = await page.evaluate(() => {
       const o = window.practice?.observe?.();
       return o ? { buildRevision: o.buildRevision, contractVersion: o.contractVersion,
@@ -823,7 +827,7 @@ async (page) => {
     await screenshot('defaults-table');
     await page.locator('#menu-open').click(); await page.locator('#guide-length').fill('10'); await page.locator('#menu-close').click();
     await page.reload();
-    await page.waitForFunction(() => window.practice?.observe()?.health?.ok);
+    await waitForBuild(initial.buildRevision);
     check((await observe()).tuning.guideLength === 60, 'reload returns to session defaults');
   };
 
@@ -918,7 +922,7 @@ async (page) => {
     state = await observe();
     check(state.shotId === 0 && state.events.length === 0 && sameFixture(fixture, state.balls), 'old motion cannot leak events into selected layout');
     await page.reload();
-    await page.waitForFunction(() => window.practice?.observe()?.health?.ok);
+    await waitForBuild(initial.buildRevision);
     state = await observe();
     check(state.scenarioId === 'straight-pots' && state.strength === 1.8 && sameFixture(initial.balls, state.balls), 'reload restores default layout and strength');
   };
