@@ -10,7 +10,7 @@ No device/browser metadata was supplied.
 
 Outside the fixed precision circle, the original pointer can re-aim at any power.
 Inside, it retains the last angle; starting inside inherits the displayed aim.
-The circle defaults to60 CSS pixels, adjustable20–100, and can be disabled.
+The circle defaults to 60 CSS pixels, adjustable 20–100, and can be disabled.
 A second touch holds angle independently of that setting. The original finger
 still changes power and releases the shot. Lifting the second restores free aim
 outside the circle. A third contact cannot steal the hold; releasing the original
@@ -25,15 +25,15 @@ and normal browser input/read-only observation remain the agreed testing seams.
 ## Verification
 
 Red/green tests first reproduced outward locking and missing second-touch hold.
-All52 model/input tests then passed. Red records and the final TAP are retained
+All 52 model/input tests then passed. Red records and the final TAP are retained
 under `output/playwright/practice/aim33-*.tap`.
 
-WebKit390×844 and844×390 tuning checks passed48 assertions each, including free
+WebKit 390×844 and 844×390 tuning checks passed 48 assertions each, including free
 wide aiming, protected gentle shots, circle/abort-ring geometry, inner abort,
 outer re-aim, disabled protection and unchanged defaults/reset semantics.
-Portrait side/corner pots passed40, white placement23, and landscape interaction
-and lifecycle cancellation64. Targeted menu/near-protected screenshots were
-inspected; the visible circle matches the observed60CSS-pixel radius.
+Portrait side/corner pots passed 40, white placement 23, and landscape interaction
+and lifecycle cancellation 64. Targeted menu/near-protected screenshots were
+inspected; the visible circle matches the observed 60 CSS-pixel radius.
 
 ## Retained diagnostic corrections
 
@@ -53,7 +53,7 @@ With free aiming, WebKit's rounded release coordinates matter. Its original
 failed attempt is retained separately from corrected normal-input verification.
 
 
-The corrected native suite passed37 assertions on Chromium412×839: wide aiming,
+The corrected native suite passed 37 assertions on Chromium 412×839: wide aiming,
 second-finger angle hold while changing power, second-only lift, both release
 orders, ignored third contact, remaining-touch isolation, near-setting independence,
 whole-sequence cancellation, Menu and Re-rack cancellation. The explicit DOM
@@ -70,12 +70,33 @@ waits retain their declared bounds and durable journals.
 The precise WebKit fixture now chooses integer release coordinates and a
 reachable initial contact radius that supplies the requested power travel.
 It uses ordinary mouse input and rejects a fixture before release if angle error
-exceeds0.002rad or power error exceeds0.004. Three final layout runs passed70
+exceeds 0.002rad or power error exceeds 0.004. Three final layout runs passed 70
 assertions each; index: `aim33-layout-release-summary.json`. Final successful
-local coverage is nine cases/470 assertions, excluding superseded attempts.
+local coverage is nine cases / 470 assertions, excluding superseded attempts.
 The runtime remains `2e7b399`; later commits change harness/evidence only.
 
 The final endpoint fixture (`1797b54...26def42`) also received independent
 Standards approval with zero findings: search bounds are finite, observations
 remain read-only, and executed input is checked before release. The compact
 final nine-case index is `aim33-final-index.json`.
+
+## Publication
+
+Published source: `9b60834be40a7686be80ae8b2717773f2c61617f`.
+[Deployment workflow](https://github.com/cannontrodder/grenadier-pool-1998/actions/runs/35401924110).
+The runtime matches the independently reviewed/tested `2e7b399`; later changes
+are harness, documentation and evidence. The established public link is
+https://cannontrodder.github.io/grenadier-pool-1998/.
+
+Momentary hold was the stated default for the optional clarification; no toggle
+preference was supplied. #29 remains open for hands-on acceptance of this revised
+feel. The owner’s previous positive response included this correction, so it
+was not treated as unconditional phase acceptance.
+
+
+Publication succeeded; CI passed all 52 tests. Hosted verification on exact
+`9b60834` passed **155 assertions**: tuning 48, native multi-touch 37 and Cut pots
+clear/re-rack 70. All 11 application resources match the public build bytes.
+Evidence: `hosted33-*-summary.json`, linked journals/screenshots,
+`hosted33-http.json` and `hosted33-deployment.json`. This closes implementation
+issue #33; the phone-feedback gate remains #29.

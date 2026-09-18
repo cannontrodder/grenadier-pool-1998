@@ -156,6 +156,6 @@ near-white angle protection and a second-finger lock. This supersedes #32's
 automatic outward-pull lock and earlier blanket ignoring of secondary contacts.
 A second touch now holds angle only, while the first retains exclusive shot and
 power ownership. Hold is momentary; lifting frees aim outside the precision
-circle. The inner protection radius defaults to60 CSS pixels (Menu20–100).
+circle. The inner protection radius defaults to 60 CSS pixels (Menu 20–100).
 Calibration, inward abort, epoch safety and placement isolation remain intact.
 #29 stays open for acceptance of the revised feel; no device metadata is inferred.

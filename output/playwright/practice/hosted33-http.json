@@ -1,0 +1,72 @@
+{
+  "revision": "9b60834be40a7686be80ae8b2717773f2c61617f",
+  "base": "https://cannontrodder.github.io/grenadier-pool-1998/",
+  "results": [
+    {
+      "path": "app.js",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "d90d63c2bc59cf26019e778da1fa3ecef08c1e06c528d766c98d7e05392b471e"
+    },
+    {
+      "path": "favicon.svg",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "586f0d5c85ffbf01241d32ca7cb6c75178e5d3ad362da9f33c60b06090e56900"
+    },
+    {
+      "path": "geometry.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "0f1ff147d3b30032d0092aaa35f3262b8e154f452ca6e8ce65d5ebcf3e2dbb55"
+    },
+    {
+      "path": "guide.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "63b59e8d9b7b520d66a521bdc39b83bf316cb43d56e5bfbc5fdf36206434f617"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "52511afe623f4f98d3453dffc1f49e2738b9a6286e3bec140c01745e38ad6102"
+    },
+    {
+      "path": "input.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "ecad462272011ecb3c09e178139fd98dfbdeaa1d5b0d927310c1029de72dcb41"
+    },
+    {
+      "path": "layouts.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "7aa9c5eddad560246195c1e1e6e10fa460613ea8544f1b9d179e83019d80aaf9"
+    },
+    {
+      "path": "model.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "05818aaafec3b8232fac1c41a7058bbc5bb43b946902af225703a0d11219d457"
+    },
+    {
+      "path": "revision.json",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "0999530d7cf8c8fdb8eb9cedcb159fb8c3433edf57f6282d72bb55efdc673e1b"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "f76473d468d6deaaaf6b4144802045a3b3729eaef16e36011b59c588ba161add"
+    },
+    {
+      "path": "tuning.mjs",
+      "status": 200,
+      "matchesBuild": true,
+      "sha256": "c02fd11fedb9b1f46dcb3e6964a0c686e40652c5aa0f017d9451c2edafc0dd95"
+    }
+  ]
+}

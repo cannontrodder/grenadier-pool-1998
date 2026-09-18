@@ -83,3 +83,14 @@ exact identities, revision-readiness correction and excluded incomplete attempt.
 #25–#28 are complete. #29 remains open for actual physical-phone feedback;
 Phase 3 is not yet marked delivered and #10 remains blocked. Later documentation
 commits do not deploy a new runtime; the live revision above is authoritative.
+
+
+## Aim-control correction · #33
+
+The current preview serves `9b60834be40a7686be80ae8b2717773f2c61617f`:
+[successful deployment](https://github.com/cannontrodder/grenadier-pool-1998/actions/runs/35401924110).
+Free wide-radius aiming replaces outward locking. Near-white protection and a
+momentary second-finger angle hold are available. CI passed 52 tests and hosted
+checks passed 155 assertions. [Verification and review](verification/practice-aim-33.md)
+retain the local matrix, diagnostic fixture corrections and exact build identity.
+#29 awaits acceptance of this revised feel; #10 remains blocked.
