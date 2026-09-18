@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "ok": true,
+    "paused": false,
+    "fault": null
+  },
+  "originalEvidence": "/private/tmp/grenadier-harness-24/output/playwright/practice/harness24-fault-missing-390x844-1789756288228901000.json",
+  "statusUnchanged": "FAIL"
+}

@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "ok": true,
+    "paused": false,
+    "fault": null
+  },
+  "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/verify-identity-stale-390x844-1789756795933566000.json",
+  "statusUnchanged": "FAIL"
+}

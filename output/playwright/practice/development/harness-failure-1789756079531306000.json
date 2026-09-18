@@ -1,0 +1,50 @@
+{
+  "status": "FAIL",
+  "classification": "harness-failure",
+  "error": "Playwright CLI failed: run-code",
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 552,
+      "returncode": 0,
+      "stdout": "Browser 'harness24-interaction' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8765/practice/?harnessCase=interaction&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "webkit"
+      ],
+      "durationMs": 1351,
+      "returncode": 0,
+      "stdout": "### Browser `harness24-interaction` opened with pid 22468.\n### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:8765/practice/?harnessCase=interaction&cornerAngle=-2.5722794624891314&cornerPull=69.5');\n```\n### Page\n- Page URL: http://127.0.0.1:8765/practice/?harnessCase=interaction&cornerAngle=-2.5722794624891314&cornerPull=69.5\n- Page Title: Grenadier 1998 \u00b7 Practice table\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T18-28-01-425Z.yml)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "resize",
+        "390",
+        "844"
+      ],
+      "durationMs": 583,
+      "returncode": 0,
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 390, height: 844 });\n```\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/practice/browser-check.js"
+      ],
+      "durationMs": 560,
+      "returncode": 1,
+      "stdout": "### Error\nReferenceError: URL is not defined\n",
+      "stderr": ""
+    }
+  ]
+}
