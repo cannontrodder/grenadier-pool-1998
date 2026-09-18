@@ -176,26 +176,109 @@ async (page) => {
     points = await pointsFor();
     observation = await dispatch("owned primary start", "touchStart", [points.start]);
     const primaryPointer = observation.gesture?.pointerId;
-    const secondary = { x: points.center.x + 80, y: points.center.y + 20, id: 1 };
-    observation = await dispatch("add secondary contact", "touchStart", [points.start, secondary]);
-    check(
-      observation.gesture?.pointerId === primaryPointer && observation.shotId === 0,
-      "secondary contact cannot steal gesture ownership",
-    );
-    observation = await dispatch("move primary with secondary present", "touchMove", [
-      points.full,
-      { ...secondary, x: secondary.x + 25 },
-    ]);
-    check(
-      observation.gesture?.pointerId === primaryPointer && observation.gesture?.armed,
-      "owned primary keeps aim while secondary moves",
-    );
-    observation = await dispatch("release contacts", "touchEnd", []);
-    check(
-      observation.shotId === 1,
-      "extra contact is ignored and owned primary release shoots exactly once",
-    );
+    const angled = async (angle, radius, id = 0) => (await pointsFor(angle)).at(radius, id);
+    let primary = points.armed;
+    observation = await dispatch("wide primary aiming", "touchMove", [primary]);
+    const firstAngle = observation.aimAngle;
+    primary = await angled(-Math.PI / 2 + .3, 93);
+    observation = await dispatch("rotate at wide radius", "touchMove", [primary]);
+    const distance = (a, b) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
+    check(!observation.gesture.locked && distance(observation.aimAngle, firstAngle) > .2,
+      "native primary rotates freely at wide radius");
+    let secondary = { x: points.center.x + 60, y: points.center.y - 40, id: 1 };
+    observation = await dispatch("add angle-holding second touch", "touchStart", [primary, secondary]);
+    const heldAngle = observation.aimAngle;
+    const secondPointer = observation.gesture?.lockPointerId;
+    const heldPower = observation.power;
+    check(observation.gesture?.pointerId === primaryPointer && secondPointer != null && secondPointer !== primaryPointer && observation.gesture.locked,
+      "second touch holds angle without taking primary ownership");
+    primary = await angled(-Math.PI / 2 + .7, 125);
+    secondary = { ...secondary, x: secondary.x + 15 };
+    observation = await dispatch("change primary radius and move second touch", "touchMove", [primary, secondary]);
+    check(distance(observation.aimAngle, heldAngle) < 1e-9 && observation.power > heldPower && observation.gesture.armed,
+      "second touch freezes angle while primary radius changes power");
+    secondary = { ...secondary, y: secondary.y + 25 };
+    observation = await dispatch("move only second touch", "touchMove", [primary, secondary]);
+    check(distance(observation.aimAngle, heldAngle) < 1e-9 && observation.gesture.pointerId === primaryPointer,
+      "second-touch movement cannot rotate aim or steal ownership");
+    const heldScreenshot = `${artifactPrefix}-second-finger-lock.png`;
+    await page.screenshot({ path: heldScreenshot, timeout: 2500 }); screenshots.push(heldScreenshot);
+    observation = await dispatch("lift second touch only", "touchEnd", [primary]);
+    check(observation.gesture?.lockPointerId === null && !observation.gesture.locked && observation.shotId === 0,
+      "second lift releases angle hold without shooting");
+    primary = await angled(-Math.PI / 2 + .5, 110);
+    observation = await dispatch("resume wide aiming after second lift", "touchMove", [primary]);
+    check(distance(observation.aimAngle, heldAngle) > .1 && observation.gesture.pointerId === primaryPointer,
+      "original primary resumes free aiming after second lift");
+
+    observation = await dispatch("restore second touch hold", "touchStart", [primary, secondary]);
+    const trackedSecond = observation.gesture.lockPointerId;
+    const third = { x: points.center.x - 60, y: points.center.y - 30, id: 2 };
+    observation = await dispatch("introduce third touch", "touchStart", [primary, secondary, third]);
+    check(observation.gesture.lockPointerId === trackedSecond && observation.gesture.pointerId === primaryPointer,
+      "third touch cannot replace tracked angle-holding second touch");
+    observation = await dispatch("lift third touch only", "touchEnd", [primary, secondary]);
+    check(observation.gesture.lockPointerId === trackedSecond && observation.gesture.locked,
+      "third lift does not release second-touch hold");
+    observation = await dispatch("release primary while second remains", "touchEnd", [secondary]);
+    check(observation.shotId === 1 && observation.phase === "rolling" && !observation.gesture,
+      "primary-first release shoots exactly once and ends ownership");
+    secondary = { ...secondary, x: secondary.x - 20 };
+    observation = await dispatch("move remaining second touch", "touchMove", [secondary]);
+    check(observation.shotId === 1 && !observation.gesture,
+      "remaining second touch cannot inherit shot ownership");
+    observation = await dispatch("lift remaining second touch", "touchEnd", []);
+    check(observation.shotId === 1 && !observation.gesture,
+      "remaining second-touch release cannot shoot again");
+
     await reset();
+    points = await pointsFor();
+    await dispatch("primary before capture lifecycle probe", "touchStart", [points.start]);
+    primary = points.armed;
+    await dispatch("arm primary before capture lifecycle probe", "touchMove", [primary]);
+    secondary = { x: points.center.x + 60, y: points.center.y - 40, id: 1 };
+    observation = await dispatch("second before capture lifecycle probe", "touchStart", [primary, secondary]);
+    const captureOwner = observation.gesture.pointerId;
+    const captureSecond = observation.gesture.lockPointerId;
+    check(captureSecond != null, "second pointer is tracked before capture lifecycle probe");
+    remember({ kind: "action", name: "DOM lifecycle probe: release second pointer capture", pointerId: captureSecond });
+    await bounded(() => page.locator('#table').evaluate((table, id) => table.releasePointerCapture(id), captureSecond), 3500, 'release second capture');
+    observation = await dispatch("process second capture loss", "touchMove", [primary, secondary]);
+    check(observation.gesture?.pointerId === captureOwner && observation.gesture.lockPointerId === null && !observation.gesture.locked && observation.shotId === 0,
+      "second lost-capture releases hold while primary continues");
+    primary = await angled(-Math.PI / 2 + .4, 100);
+    observation = await dispatch("rotate primary after second capture loss", "touchMove", [primary, secondary]);
+    check(distance(observation.aimAngle, -Math.PI / 2) > .3,
+      "primary can rotate after second lost-capture");
+    observation = await dispatch("cancel remaining touch sequence", "touchCancel", []);
+    check(!observation.gesture && observation.shotId === 0 && observation.phase === "ready",
+      "native whole-sequence touchcancel safely cancels primary and second");
+
+    // A second-finger hold is independent of the optional near-white protection.
+    await page.locator('#menu-open').click();
+    await page.locator('#lock-aim').uncheck();
+    await page.locator('#menu-close').click();
+    await dispatch("primary with near protection disabled", "touchStart", [points.start]);
+    await dispatch("arm without near protection", "touchMove", [points.armed]);
+    observation = await dispatch("hold without near protection", "touchStart", [points.armed, secondary]);
+    check(!observation.tuning.lockAim && observation.gesture.locked && observation.gesture.lockPointerId != null,
+      "second touch locks independently of near-white protection setting");
+    await page.locator('#menu-open').click();
+    observation = await observe();
+    check(!observation.gesture && observation.shotId === 0,
+      "Menu cancels primary ownership and second-touch hold");
+    await dispatch("release touches cancelled by Menu", "touchEnd", []);
+    await page.locator('#menu-close').click();
+    check((await observe()).shotId === 0, "Menu-cancelled releases cannot shoot");
+    await dispatch("primary before Re-rack cancellation", "touchStart", [points.start]);
+    await dispatch("arm before Re-rack cancellation", "touchMove", [points.armed]);
+    await dispatch("second before Re-rack cancellation", "touchStart", [points.armed, secondary]);
+    observation = await reset();
+    check(!observation.gesture && observation.shotId === 0,
+      "Re-rack cancels primary ownership and second-touch hold");
+    observation = await dispatch("release touches cancelled by Re-rack", "touchEnd", []);
+    check(!observation.gesture && observation.shotId === 0,
+      "Re-rack-cancelled contacts cannot commit a stale shot");
     check(errors.length === 0, "native journey emitted no browser errors");
     const finalObservation = await observe();
     return {
