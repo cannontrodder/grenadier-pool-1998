@@ -94,3 +94,14 @@ momentary second-finger angle hold are available. CI passed 52 tests and hosted
 checks passed 155 assertions. [Verification and review](verification/practice-aim-33.md)
 retain the local matrix, diagnostic fixture corrections and exact build identity.
 #29 awaits acceptance of this revised feel; #10 remains blocked.
+
+
+## Optional locking circle · #34
+
+The preview now serves `82a789f1ce31ff471da0cedb70dcd6a476b20ffc`.
+[Deployment](https://github.com/cannontrodder/grenadier-pool-1998/actions/runs/35403020231)
+succeeded with 52 tests; 90 hosted browser assertions and all 11 public resource
+byte checks passed. The precision locking circle defaults to off and can be
+re-enabled in Menu. Second-finger hold remains available.
+[Evidence](verification/practice-circle-34.md). #29 still awaits phone feedback;
+the owner has explicitly requested that #10 planning proceed in a new chat.

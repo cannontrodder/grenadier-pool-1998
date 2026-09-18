@@ -1,0 +1,326 @@
+TAP version 13
+# Subtest: CSS travel preserves arm/saturation and squared response
+ok 1 - CSS travel preserves arm/saturation and squared response
+  ---
+  duration_ms: 0.485917
+  type: 'test'
+  ...
+# Subtest: exclusive pointer ownership, abort/rearm and epoch invalidation
+ok 2 - exclusive pointer ownership, abort/rearm and epoch invalidation
+  ---
+  duration_ms: 0.435208
+  type: 'test'
+  ...
+# Subtest: second contact holds angle while the owner changes power; lifting resumes free aim
+ok 3 - second contact holds angle while the owner changes power; lifting resumes free aim
+  ---
+  duration_ms: 0.160792
+  type: 'test'
+  ...
+# Subtest: held angle ends with owner release or cancellation and cannot transfer ownership
+ok 4 - held angle ends with owner release or cancellation and cannot transfer ownership
+  ---
+  duration_ms: 0.124834
+  type: 'test'
+  ...
+# Subtest: three named practice layouts reset deterministically and reject stale shots
+ok 5 - three named practice layouts reset deterministically and reject stale shots
+  ---
+  duration_ms: 18.03925
+  type: 'test'
+  ...
+# Subtest: Straight pots supports its named shot and a full clear
+ok 6 - Straight pots supports its named shot and a full clear
+  ---
+  duration_ms: 37.30625
+  type: 'test'
+  ...
+# Subtest: Cut pots supports its named shot and a full clear
+ok 7 - Cut pots supports its named shot and a full clear
+  ---
+  duration_ms: 35.415542
+  type: 'test'
+  ...
+# Subtest: Cushion practice supports its named shot and a full clear
+ok 8 - Cushion practice supports its named shot and a full clear
+  ---
+  duration_ms: 30.740625
+  type: 'test'
+  ...
+# Subtest: public command admission, immutable snapshots, calibration and epoch invalidation
+ok 9 - public command admission, immutable snapshots, calibration and epoch invalidation
+  ---
+  duration_ms: 10.570916
+  type: 'test'
+  ...
+# Subtest: default fixture has normal side and corner object pots and continues after settling
+ok 10 - default fixture has normal side and corner object pots and continues after settling
+  ---
+  duration_ms: 31.891917
+  type: 'test'
+  ...
+# Subtest: full 3× head-on contact transfers velocity without tunnelling
+ok 11 - full 3× head-on contact transfers velocity without tunnelling
+  ---
+  duration_ms: 40.134167
+  type: 'test'
+  ...
+# Subtest: full 3× grazing contact deflects and exchanges momentum
+ok 12 - full 3× grazing contact deflects and exchanges momentum
+  ---
+  duration_ms: 42.865958
+  type: 'test'
+  ...
+# Subtest: full 3× symmetric simultaneous contacts are stable and independent of storage order
+ok 13 - full 3× symmetric simultaneous contacts are stable and independent of storage order
+  ---
+  duration_ms: 85.960709
+  type: 'test'
+  ...
+# Subtest: full 3× collinear touching simultaneous contacts are stable and independent of storage order
+ok 14 - full 3× collinear touching simultaneous contacts are stable and independent of storage order
+  ---
+  duration_ms: 235.94225
+  type: 'test'
+  ...
+# Subtest: full 3× top cushion cannot be tunnelled
+ok 15 - full 3× top cushion cannot be tunnelled
+  ---
+  duration_ms: 30.573084
+  type: 'test'
+  ...
+# Subtest: full 3× bottom cushion cannot be tunnelled
+ok 16 - full 3× bottom cushion cannot be tunnelled
+  ---
+  duration_ms: 26.049625
+  type: 'test'
+  ...
+# Subtest: full 3× left cushion cannot be tunnelled
+ok 17 - full 3× left cushion cannot be tunnelled
+  ---
+  duration_ms: 34.592958
+  type: 'test'
+  ...
+# Subtest: full 3× right cushion cannot be tunnelled
+ok 18 - full 3× right cushion cannot be tunnelled
+  ---
+  duration_ms: 31.414625
+  type: 'test'
+  ...
+# Subtest: full 3× top-left mouth offset matrix: capture / jaw / rail
+ok 19 - full 3× top-left mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 88.478791
+  type: 'test'
+  ...
+# Subtest: full 3× top-middle mouth offset matrix: capture / jaw / rail
+ok 20 - full 3× top-middle mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 98.755209
+  type: 'test'
+  ...
+# Subtest: full 3× top-right mouth offset matrix: capture / jaw / rail
+ok 21 - full 3× top-right mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 92.291
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-left mouth offset matrix: capture / jaw / rail
+ok 22 - full 3× bottom-left mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 93.043708
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-middle mouth offset matrix: capture / jaw / rail
+ok 23 - full 3× bottom-middle mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 104.972917
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-right mouth offset matrix: capture / jaw / rail
+ok 24 - full 3× bottom-right mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 93.177708
+  type: 'test'
+  ...
+# Subtest: dark-pocket overlap outside capture boundary is not a pot
+ok 25 - dark-pocket overlap outside capture boundary is not a pot
+  ---
+  duration_ms: 0.913958
+  type: 'test'
+  ...
+# Subtest: free roll monotonically damps and settles for 30 fixed ticks with no five-second stop
+ok 26 - free roll monotonically damps and settles for 30 fixed ticks with no five-second stop
+  ---
+  duration_ms: 1.108083
+  type: 'test'
+  ...
+# Subtest: scratch waits for all motion and only then allows legal placement
+ok 27 - scratch waits for all motion and only then allows legal placement
+  ---
+  duration_ms: 4.249125
+  type: 'test'
+  ...
+# Subtest: scratch and final pot in one rolling interval resolve only to cleared
+ok 28 - scratch and final pot in one rolling interval resolve only to cleared
+  ---
+  duration_ms: 0.633792
+  type: 'test'
+  ...
+# Subtest: tick batching / repeat runs produce identical snapshots and event order
+ok 29 - tick batching / repeat runs produce identical snapshots and event order
+  ---
+  duration_ms: 39.596375
+  type: 'test'
+  ...
+# Subtest: reset during motion restores fixture and clears old shot and event state
+ok 30 - reset during motion restores fixture and clears old shot and event state
+  ---
+  duration_ms: 5.775208
+  type: 'test'
+  ...
+# Subtest: shallow full-speed corner entries cannot escape behind a jaw
+ok 31 - shallow full-speed corner entries cannot escape behind a jaw
+  ---
+  duration_ms: 94.792625
+  type: 'test'
+  ...
+# Subtest: unrecoverable invalid state reports a fault instead of readiness
+ok 32 - unrecoverable invalid state reports a fault instead of readiness
+  ---
+  duration_ms: 0.28475
+  type: 'test'
+  ...
+# Subtest: a real maximum shot remains rolling beyond five seconds and settles naturally
+ok 33 - a real maximum shot remains rolling beyond five seconds and settles naturally
+  ---
+  duration_ms: 69.985583
+  type: 'test'
+  ...
+# Subtest: bounded full-speed angle sweep has no escape, fault or missed settle
+ok 34 - bounded full-speed angle sweep has no escape, fault or missed settle
+  ---
+  duration_ms: 1521.102917
+  type: 'test'
+  ...
+# 32 full-3960 shots; no faults/escapes/energy growth; maximum settle 654 ticks
+# Subtest: pocket size is finite, bounded, immutable and retained by re-racking
+ok 35 - pocket size is finite, bounded, immutable and retained by re-racking
+  ---
+  duration_ms: 6.907333
+  type: 'test'
+  ...
+# Subtest: 0.9× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 36 - 0.9× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 540.073792
+  type: 'test'
+  ...
+# Subtest: 0.9× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 37 - 0.9× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 3262.907625
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 655 ticks
+# Subtest: 1.1× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 38 - 1.1× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 579.779542
+  type: 'test'
+  ...
+# Subtest: 1.1× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 39 - 1.1× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 3411.916791
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 654 ticks
+# Subtest: 1.3× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 40 - 1.3× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 505.266875
+  type: 'test'
+  ...
+# Subtest: 1.3× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 41 - 1.3× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 2654.81175
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 654 ticks
+# Subtest: widening each pocket admits an off-centre shot previously rejected by its jaw
+ok 42 - widening each pocket admits an off-centre shot previously rejected by its jaw
+  ---
+  duration_ms: 136.846708
+  type: 'test'
+  ...
+# Subtest: white placement respects the currently enlarged corner mouths
+ok 43 - white placement respects the currently enlarged corner mouths
+  ---
+  duration_ms: 0.249916
+  type: 'test'
+  ...
+# Subtest: 1.1× practice default preserves the straight side and corner example shots
+ok 44 - 1.1× practice default preserves the straight side and corner example shots
+  ---
+  duration_ms: 17.266625
+  type: 'test'
+  ...
+# Subtest: placement requires 0.01 world units of clearance from cushions, pockets and balls
+ok 45 - placement requires 0.01 world units of clearance from cushions, pockets and balls
+  ---
+  duration_ms: 1.920791
+  type: 'test'
+  ...
+# Subtest: menu defaults are bounded and invalid numeric settings fall back safely
+ok 46 - menu defaults are bounded and invalid numeric settings fall back safely
+  ---
+  duration_ms: 0.92175
+  type: 'test'
+  ...
+# Subtest: wide-radius aim remains free; moving near the white preserves the last direction
+ok 47 - wide-radius aim remains free; moving near the white preserves the last direction
+  ---
+  duration_ms: 0.189834
+  type: 'test'
+  ...
+# Subtest: inside start retains preview, outside re-aims, and inward release still aborts
+ok 48 - inside start retains preview, outside re-aims, and inward release still aborts
+  ---
+  duration_ms: 0.133
+  type: 'test'
+  ...
+# Subtest: turning lock off preserves free aim even at maximum pull
+ok 49 - turning lock off preserves free aim even at maximum pull
+  ---
+  duration_ms: 0.068292
+  type: 'test'
+  ...
+# Subtest: guide stops cue centre at first ball contact, skips potted balls, obeys length
+ok 50 - guide stops cue centre at first ball contact, skips potted balls, obeys length
+  ---
+  duration_ms: 0.450125
+  type: 'test'
+  ...
+# Subtest: guide sees cushion faces and jaws while clear pocket mouths remain open
+ok 51 - guide sees cushion faces and jaws while clear pocket mouths remain open
+  ---
+  duration_ms: 0.395833
+  type: 'test'
+  ...
+# Subtest: a cushion-touching cue can aim away, but towards the cushion contacts immediately
+ok 52 - a cushion-touching cue can aim away, but towards the cushion contacts immediately
+  ---
+  duration_ms: 0.207375
+  type: 'test'
+  ...
+1..52
+# tests 52
+# suites 0
+# pass 52
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14054.690459

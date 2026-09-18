@@ -55,3 +55,10 @@ for the revised controls.
 makes the circle off by default following further owner feedback. It can be
 enabled again in Menu; second-finger hold remains available. See
 [verification](verification/practice-circle-34.md). #29 remains the phone-feedback gate.
+
+
+Latest owner direction after #34: begin #10 planning in a forked chat once the
+circle-off change is on main. Propose simple house rules suited to old mates,
+using the remembered “two shots” convention, and resolve routine questions with
+explicit recommendations. This supersedes the earlier instruction to wait
+before starting planning; #29 remains open for physical-phone acceptance.

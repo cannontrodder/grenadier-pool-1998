@@ -1,0 +1,2123 @@
+{
+  "identity": {
+    "buildRevision": "82a789f1ce31ff471da0cedb70dcd6a476b20ffc",
+    "scenarioId": "straight-pots",
+    "scenarioVersion": 1,
+    "epoch": 6
+  },
+  "suite": "native",
+  "history": [
+    {
+      "at": 1789771704877,
+      "kind": "observation",
+      "frame": 215,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704880,
+      "kind": "action",
+      "name": "primary before Re-rack cancellation",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 141.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704882,
+      "kind": "observation",
+      "frame": 215,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704925,
+      "kind": "observation",
+      "frame": 218,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0,
+        "power": 0,
+        "armed": false
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704929,
+      "kind": "action",
+      "name": "arm before Re-rack cancellation",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704931,
+      "kind": "observation",
+      "frame": 218,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0,
+        "power": 0,
+        "armed": false
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704973,
+      "kind": "observation",
+      "frame": 221,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704977,
+      "kind": "action",
+      "name": "second before Re-rack cancellation",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 220.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704979,
+      "kind": "observation",
+      "frame": 221,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705026,
+      "kind": "observation",
+      "frame": 224,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": 13,
+        "nearLocked": false,
+        "locked": true,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705031,
+      "kind": "action",
+      "name": "Re-rack"
+    },
+    {
+      "at": 1789771705062,
+      "kind": "observation",
+      "frame": 226,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705066,
+      "kind": "action",
+      "name": "release touches cancelled by Re-rack",
+      "type": "touchEnd",
+      "points": []
+    },
+    {
+      "at": 1789771705067,
+      "kind": "observation",
+      "frame": 226,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705107,
+      "kind": "observation",
+      "frame": 229,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705112,
+      "kind": "observation",
+      "frame": 229,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    }
+  ],
+  "recentActions": [
+    {
+      "at": 1789771704245,
+      "kind": "action",
+      "name": "arm primary before capture lifecycle probe",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704295,
+      "kind": "action",
+      "name": "second before capture lifecycle probe",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 219.48387096774192,
+          "y": 400.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704345,
+      "kind": "action",
+      "name": "establish second capture with movement",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 219.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704395,
+      "kind": "action",
+      "name": "DOM lifecycle probe: release second pointer capture",
+      "pointerId": 9
+    },
+    {
+      "at": 1789771704400,
+      "kind": "action",
+      "name": "process second capture loss",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 220.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704452,
+      "kind": "action",
+      "name": "rotate primary after second capture loss",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 67.3777715674534,
+          "y": 401.5581657691349,
+          "id": 0
+        },
+        {
+          "x": 220.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704497,
+      "kind": "action",
+      "name": "cancel remaining touch sequence",
+      "type": "touchCancel",
+      "points": []
+    },
+    {
+      "at": 1789771704610,
+      "kind": "action",
+      "name": "primary with near protection disabled",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 141.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704662,
+      "kind": "action",
+      "name": "arm without near protection",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704711,
+      "kind": "action",
+      "name": "hold without near protection",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 220.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771704800,
+      "kind": "action",
+      "name": "release touches cancelled by Menu",
+      "type": "touchEnd",
+      "points": []
+    },
+    {
+      "at": 1789771704880,
+      "kind": "action",
+      "name": "primary before Re-rack cancellation",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 141.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704929,
+      "kind": "action",
+      "name": "arm before Re-rack cancellation",
+      "type": "touchMove",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        }
+      ]
+    },
+    {
+      "at": 1789771704977,
+      "kind": "action",
+      "name": "second before Re-rack cancellation",
+      "type": "touchStart",
+      "points": [
+        {
+          "x": 66.48387096774192,
+          "y": 440.5,
+          "id": 0
+        },
+        {
+          "x": 220.48387096774192,
+          "y": 401.5,
+          "id": 1
+        }
+      ]
+    },
+    {
+      "at": 1789771705031,
+      "kind": "action",
+      "name": "Re-rack"
+    },
+    {
+      "at": 1789771705066,
+      "kind": "action",
+      "name": "release touches cancelled by Re-rack",
+      "type": "touchEnd",
+      "points": []
+    }
+  ],
+  "recentObservations": [
+    {
+      "at": 1789771704712,
+      "kind": "observation",
+      "frame": 205,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 10,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704757,
+      "kind": "observation",
+      "frame": 208,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 10,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": 11,
+        "nearLocked": false,
+        "locked": true,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704795,
+      "kind": "observation",
+      "frame": 210,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704804,
+      "kind": "observation",
+      "frame": 210,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704841,
+      "kind": "observation",
+      "frame": 213,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704877,
+      "kind": "observation",
+      "frame": 215,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704882,
+      "kind": "observation",
+      "frame": 215,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704925,
+      "kind": "observation",
+      "frame": 218,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0,
+        "power": 0,
+        "armed": false
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704931,
+      "kind": "observation",
+      "frame": 218,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0,
+        "power": 0,
+        "armed": false
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704973,
+      "kind": "observation",
+      "frame": 221,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771704979,
+      "kind": "observation",
+      "frame": 221,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": null,
+        "nearLocked": false,
+        "locked": false,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705026,
+      "kind": "observation",
+      "frame": 224,
+      "tick": 0,
+      "epoch": 5,
+      "phase": "aiming",
+      "shotId": 0,
+      "gesture": {
+        "pointerId": 12,
+        "startRadius": 17.999999507780984,
+        "epoch": 5,
+        "active": true,
+        "angle": -1.5707963267948966,
+        "lockAim": false,
+        "lockDistance": 60,
+        "lockPointerId": 13,
+        "nearLocked": false,
+        "locked": true,
+        "pull": 0.5478260869565217,
+        "power": 0.30011342155009446,
+        "armed": true
+      },
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705062,
+      "kind": "observation",
+      "frame": 226,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705067,
+      "kind": "observation",
+      "frame": 226,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705107,
+      "kind": "observation",
+      "frame": 229,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    },
+    {
+      "at": 1789771705112,
+      "kind": "observation",
+      "frame": 229,
+      "tick": 0,
+      "epoch": 6,
+      "phase": "ready",
+      "shotId": 0,
+      "gesture": null,
+      "balls": [
+        {
+          "id": "cue",
+          "role": "cue",
+          "status": "live",
+          "x": 500,
+          "y": 320,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-1",
+          "role": "object",
+          "status": "live",
+          "x": 500,
+          "y": 180,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-2",
+          "role": "object",
+          "status": "live",
+          "x": 220,
+          "y": 140.8,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        },
+        {
+          "id": "object-3",
+          "role": "object",
+          "status": "live",
+          "x": 790,
+          "y": 355,
+          "vx": 0,
+          "vy": 0,
+          "r": 12,
+          "pocketId": null
+        }
+      ],
+      "events": [],
+      "health": {
+        "ok": true,
+        "paused": false,
+        "fault": null
+      }
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "output/playwright/practice/native-412-1789771702539-initial.png",
+    "output/playwright/practice/native-412-1789771702539-second-finger-lock.png"
+  ]
+}

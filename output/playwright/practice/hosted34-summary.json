@@ -1,0 +1,24 @@
+[
+  {
+    "status": "PASS",
+    "case": "tuning",
+    "assertions": 53,
+    "buildRevision": "82a789f1ce31ff471da0cedb70dcd6a476b20ffc",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted34-tuning-390x844-1789771698716261000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "native",
+    "assertions": 37,
+    "buildRevision": "82a789f1ce31ff471da0cedb70dcd6a476b20ffc",
+    "viewport": {
+      "width": 412,
+      "height": 839
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/hosted34-native-412x839-1789771698702485000.json"
+  }
+]

@@ -98,3 +98,10 @@ Room correction approved in #18: entrance doors sit on the far/top wall, with to
 The touch study is accepted after the user's physical-device testing. The next slice is solo practice with three object balls in fixed layouts and manual white placement after a scratch, as selected in this chat. The [Phase 3 spec](phases/first-playable-table.md) records the concrete scope, accepted calibration, simulation boundary and harness checks; the user subsequently directed creation of the complete package ready to start work. Implementation, integrated verification and independent review are complete in #24–#28. #29 handles publication and physical-phone acceptance; #10 remains blocked until that feedback gate is complete.
 
 Full match rules, opponents, real spin and saved games remain later work. The saved-match/update requirements above are retained for #10; this explicitly temporary practice phase resets on reload. Historical #4/#20 design feedback does not reopen the accepted touch study. Keep the prototype on its existing branch as reference.
+
+
+Latest owner direction after #34: begin #10 planning in a forked chat once the
+circle-off change is on main. Propose simple house rules suited to old mates,
+using the remembered “two shots” convention, and resolve routine questions with
+explicit recommendations. This supersedes the earlier instruction to wait
+before starting planning; #29 remains open for physical-phone acceptance.
