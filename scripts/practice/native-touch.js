@@ -3,6 +3,7 @@ async (page) => {
   const checks = [];
   const history = [];
   const errors = [];
+  let identity = null;
   const artifactPrefix = `output/playwright/practice/native-${page.viewportSize().width}-${Date.now()}`;
   page.setDefaultTimeout(3500);
   page.on("pageerror", (error) => errors.push(`pageerror: ${String(error)}`));
@@ -28,6 +29,8 @@ async (page) => {
     if (!observation || !Number.isFinite(observation.frame) || !observation.health) {
       throw new Error("HARNESS: missing or malformed observation");
     }
+    identity = { buildRevision: observation.buildRevision, scenarioId: observation.scenarioId,
+      scenarioVersion: observation.scenarioVersion, epoch: observation.epoch };
     remember({
       kind: "observation",
       frame: observation.frame,
@@ -200,6 +203,7 @@ async (page) => {
     }
     return {
       status: "FAIL",
+      identity,
       classification,
       error: text,
       diagnosticScreenshot,

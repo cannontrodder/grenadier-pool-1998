@@ -9,6 +9,7 @@ async (page) => {
   const history = [];
   const errors = [];
   const screenshots = [];
+  let identity = null;
   const pointerStartRadius = 18;
   const artifactPrefix = `output/playwright/practice/${suite}-${page.viewportSize().width}-${Date.now()}`;
 
@@ -57,6 +58,9 @@ async (page) => {
     }
     remember({
       kind: "observation",
+      buildRevision: observation.buildRevision,
+      scenarioId: observation.scenarioId,
+      scenarioVersion: observation.scenarioVersion,
       frame: observation.frame,
       observedAt: observation.observedAt,
       epoch: observation.epoch,
@@ -208,6 +212,11 @@ async (page) => {
       {},
       { timeout: 5000 },
     );
+    identity = await page.evaluate(() => {
+      const o = window.practice?.observe?.();
+      return o ? { buildRevision: o.buildRevision, contractVersion: o.contractVersion,
+        scenarioId: o.scenarioId, scenarioVersion: o.scenarioVersion, epoch: o.epoch } : null;
+    });
     const first = await observe();
     const requiredNumbers = [
       "epoch",
@@ -773,6 +782,7 @@ async (page) => {
     }
     return {
       status: "FAIL",
+      identity,
       suite,
       classification,
       error: text,
