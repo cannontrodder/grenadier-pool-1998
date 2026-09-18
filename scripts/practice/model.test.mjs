@@ -1,22 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPractice, DEFAULT_SCENARIO, PHYSICS, TABLE } from '../../practice/model.mjs';
-import { nearestOnRail, pocketCoordinates } from '../../practice/geometry.mjs';
+import { createTable, POCKET_SCALE, nearestOnRail, pocketCoordinates } from '../../practice/geometry.mjs';
 
 const ball = (id, x, y, extra = {}) => ({ id, role: id === 'cue' ? 'cue' : 'object', x, y, ...extra });
 const fixture = balls => ({ id: 'test-fixture', version: 1, balls });
 const energy = snapshot => snapshot.balls.reduce((sum, b) => sum + b.vx ** 2 + b.vy ** 2, 0);
-function valid(snapshot) {
+function valid(snapshot, table = TABLE) {
   assert.equal(snapshot.fault, null);
   const live = snapshot.balls.filter(b => b.status === 'live');
   for (const b of live) {
     assert.ok([b.x, b.y, b.vx, b.vy].every(Number.isFinite));
     assert.ok(b.x >= -50 && b.x <= 1050 && b.y >= -50 && b.y <= 550);
-    for (const rail of TABLE.rails) {
+    for (const rail of table.rails) {
       const p = nearestOnRail(b.x, b.y, rail);
       assert.ok(Math.hypot(b.x - p.x, b.y - p.y) >= b.r - 1e-5, `${b.id} penetrated ${rail.id}`);
     }
-    for (const jaw of TABLE.jaws) assert.ok(Math.hypot(b.x - jaw.x, b.y - jaw.y) >= b.r + jaw.r - 1e-5);
+    for (const jaw of table.jaws) assert.ok(Math.hypot(b.x - jaw.x, b.y - jaw.y) >= b.r + jaw.r - 1e-5);
   }
   for (let a = 0; a < live.length; a++) for (let b = a + 1; b < live.length; b++) {
     assert.ok(Math.hypot(live[a].x - live[b].x, live[a].y - live[b].y) >= 24 - 1e-5, 'sustained ball overlap');
@@ -25,7 +25,7 @@ function valid(snapshot) {
 function run(model, ticks = 1200) {
   let previous = model.snapshot();
   for (let n = 0; n < ticks && previous.phase === 'rolling'; n++) {
-    const next = model.step(); valid(next);
+    const next = model.step(); valid(next, model.table);
     assert.ok(energy(next) <= energy(previous) + Math.max(1e-6, energy(previous) * 1e-9), 'energy increased');
     previous = next;
   }
@@ -267,4 +267,122 @@ test('bounded full-speed angle sweep has no escape, fault or missed settle', t =
     longest = Math.max(longest, settled.tick);
   }
   t.diagnostic(`${count} full-3960 shots; no faults/escapes/energy growth; maximum settle ${longest} ticks`);
+});
+
+
+test('pocket size is finite, bounded, immutable and retained by re-racking', () => {
+  assert.deepEqual(POCKET_SCALE, { min: 0.9, max: 1.3, default: 1 });
+  for (const [requested, expected] of [[-1, 0.9], [9, 1.3], [0.9, 0.9], [1.1, 1.1],
+    [NaN, 1], [Infinity, 1], [-Infinity, 1], ['1.2', 1], [undefined, 1]]) {
+    const table = createTable(requested), model = createPractice({ pocketScale: requested });
+    assert.equal(table.pocketScale, expected);
+    assert.equal(model.snapshot().pocketScale, expected);
+    assert.deepEqual(model.table, table);
+    assert.ok(Object.isFrozen(table) && Object.isFrozen(table.rails) && Object.isFrozen(table.pockets[0].mouth));
+    assert.throws(() => { model.table.pockets[0].mouth.halfWidth = 100; }, TypeError);
+    assert.throws(() => { model.table = TABLE; }, TypeError);
+    model.resetScenario(); assert.equal(model.snapshot().pocketScale, expected);
+  }
+  const model = createPractice(); const original = model.snapshot();
+  model.shoot({ angle: -Math.PI / 2, power: 0.16 }); model.step(140);
+  assert.equal(model.snapshot().events.length, 1);
+  const oldTable = model.table;
+  model.resetScenario(undefined, { pocketScale: 1.1 });
+  const reset = model.snapshot();
+  assert.equal(reset.epoch, original.epoch + 1);
+  assert.equal(reset.phase, 'ready'); assert.equal(reset.pocketScale, 1.1);
+  assert.equal(reset.shotId, 0); assert.equal(reset.tick, 0); assert.deepEqual(reset.events, []);
+  assert.deepEqual(reset.balls, original.balls);
+  assert.equal(oldTable.pocketScale, 1, 'old geometry remains immutable');
+  assert.equal(model.shoot({ angle: 0, power: 1, epoch: original.epoch }), false);
+  model.resetScenario(); assert.equal(model.snapshot().pocketScale, 1.1);
+});
+
+for (const pocketScale of [0.9, 1.1, 1.3]) {
+  const table = createTable(pocketScale);
+  test(`${pocketScale}× pockets: all six mouths capture centrally and reject jaw / rail near misses`, () => {
+    for (const pocket of table.pockets) {
+      for (const offset of [0, -(pocket.mouth.halfWidth - 3), pocket.mouth.halfWidth - 3,
+        -(pocket.mouth.halfWidth + 25), pocket.mouth.halfWidth + 25]) {
+        const { x, y, nx, ny, tx, ty } = pocket.mouth;
+        const position = distance => ({ x: x - nx * distance + tx * offset, y: y - ny * distance + ty * offset });
+        const cue = position(150), object = position(70);
+        const model = createPractice({ pocketScale,
+          scenario: fixture([ball('cue', cue.x, cue.y), ball('a', object.x, object.y)]) });
+        model.shoot({ angle: Math.atan2(ny, nx), power: 1, strength: 3 });
+        for (let n = 0; n < 20; n++) valid(model.step(), table);
+        const early = model.snapshot(), target = early.balls.find(b => b.id === 'a');
+        if (offset === 0) {
+          assert.equal(target.status, 'potted', pocket.id); assert.equal(target.pocketId, pocket.id);
+          assert.equal(early.events.length, 1); assert.equal(early.events[0].ballId, 'a');
+        } else {
+          assert.equal(target.status, 'live', `${pocket.id}: jaw / near miss does not capture`);
+          assert.ok(pocketCoordinates(target.x, target.y, pocket).depth < 0);
+        }
+        const settled = run(model);
+        if (offset === 0) assert.equal(settled.events.filter(e => e.ballId === 'a').length, 1);
+      }
+    }
+  });
+  test(`${pocketScale}× pockets: bounded full-speed sweep preserves collision and energy safety`, t => {
+    const count = Number(process.env.PRACTICE_POCKET_SWEEP ?? 64);
+    assert.ok(Number.isInteger(count) && count >= 1 && count <= 1000, 'PRACTICE_POCKET_SWEEP must be 1–1000');
+    const deadline = performance.now() + 90000;
+    let longest = 0;
+    for (let n = 0; n < count; n++) {
+      assert.ok(performance.now() < deadline, `sweep wall-time bound at angle ${n}/${count}`);
+      const model = createPractice({ pocketScale });
+      model.shoot({ angle: n * Math.PI * 2 / count, power: 1, strength: 3 });
+      const settled = run(model);
+      longest = Math.max(longest, settled.tick);
+    }
+    t.diagnostic(`${count} angles at 3960 world units/s; longest settle ${longest} ticks`);
+  });
+}
+
+test('widening each pocket admits an off-centre shot previously rejected by its jaw', () => {
+  for (const id of TABLE.pockets.map(pocket => pocket.id)) {
+    for (const pocketScale of [0.9, 1.3]) {
+      const table = createTable(pocketScale), pocket = table.pockets.find(pocket => pocket.id === id);
+      const { x, y, nx, ny, tx, ty } = pocket.mouth;
+      const offset = 20;
+      const position = distance => ({ x: x - nx * distance + tx * offset, y: y - ny * distance + ty * offset });
+      const cue = position(150), object = position(70);
+      const model = createPractice({ pocketScale,
+        scenario: fixture([ball('cue', cue.x, cue.y), ball('a', object.x, object.y)]) });
+      model.shoot({ angle: Math.atan2(ny, nx), power: 1, strength: 3 });
+      for (let n = 0; n < 20; n++) valid(model.step(), table);
+      const target = model.snapshot().balls.find(b => b.id === 'a');
+      assert.equal(target.status, pocketScale === 1.3 ? 'potted' : 'live', `${id} at ${pocketScale}×`);
+      if (target.status === 'potted') assert.equal(target.pocketId, id);
+      run(model);
+    }
+  }
+});
+
+test('white placement respects the currently enlarged corner mouths', () => {
+  const model = createPractice({ pocketScale: 0.9, scenario: fixture([
+    ball('cue', 0, 0, { status: 'potted', pocketId: 'top-left' }), ball('a', 700, 250),
+  ]) });
+  assert.equal(model.placementValidity({ x: 40, y: 20 }).valid, true);
+  const oldEpoch = model.snapshot().epoch;
+  model.resetScenario(undefined, { pocketScale: 1.3 });
+  assert.deepEqual(model.placementValidity({ x: 40, y: 20 }), { valid: false, reason: 'pocket' });
+  assert.equal(model.placeWhite({ x: 40, y: 20 }), false);
+  assert.equal(model.placeWhite({ x: 500, y: 250, epoch: oldEpoch }), false);
+  assert.equal(model.placeWhite({ x: 500, y: 250 }), true);
+});
+
+
+test('1.1× practice default preserves the straight side and corner example shots', () => {
+  for (const [angle, power, pocketId, object] of [
+    [-Math.PI / 2, 0.16, 'top-middle', 'object-1'],
+    [Math.atan2(-320, -500), 0.25, 'top-left', 'object-2'],
+  ]) {
+    const model = createPractice({ pocketScale: 1.1 });
+    assert.ok(model.shoot({ angle, power, strength: 1.8 }));
+    const settled = run(model);
+    assert.equal(settled.phase, 'ready'); assert.equal(settled.potCount, 1);
+    assert.deepEqual(settled.events.map(e => [e.type, e.ballId, e.pocketId]), [['pot', object, pocketId]]);
+  }
 });

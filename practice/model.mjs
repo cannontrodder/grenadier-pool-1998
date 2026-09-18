@@ -1,4 +1,4 @@
-import { TABLE, nearestOnRail, pocketCoordinates } from './geometry.mjs';
+import { TABLE, createTable, nearestOnRail, pocketCoordinates } from './geometry.mjs';
 
 export { TABLE } from './geometry.mjs';
 export const PHYSICS = Object.freeze({ tickSeconds: 1 / 120, maxTravel: 0.75,
@@ -42,16 +42,18 @@ function loadScenario(scenario) {
 }
 
 /** Pure, fixed-tick four-ball simulation. Explicit fixture velocities are model-test inputs only. */
-export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
+export function createPractice({ scenario = DEFAULT_SCENARIO, pocketScale = 1 } = {}) {
   let fixture, balls, epoch = 0, tick, stateRevision = 0, phase, shotId, events, eventSequence;
   let quietTicks, shotTicks, fault, mouthEntries;
+  let table = createTable(pocketScale);
   const liveBalls = () => balls.filter(ball => ball.status === 'live');
   const remaining = () => balls.filter(ball => ball.role === 'object' && ball.status === 'live').length;
   const postSettle = () => remaining() === 0 ? 'cleared' :
     balls.find(ball => ball.role === 'cue').status === 'potted' ? 'placing-white' : 'ready';
   function fail(reason) { fault = reason; phase = 'fault'; stateRevision++; }
-  function resetScenario(next = fixture) {
+  function resetScenario(next = fixture, { pocketScale = table.pocketScale } = {}) {
     const loaded = loadScenario(next);
+    table = createTable(pocketScale);
     fixture = structuredClone(next);
     balls = loaded.balls;
     epoch++; tick = 0; stateRevision++; shotId = 0; events = []; eventSequence = 0;
@@ -61,7 +63,7 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
   }
   resetScenario(scenario);
   function snapshot() {
-    return deepFreeze({ scenarioId: fixture.id, scenarioVersion: fixture.version, epoch,
+    return deepFreeze({ pocketScale: table.pocketScale, scenarioId: fixture.id, scenarioVersion: fixture.version, epoch,
       tick, stateRevision, phase, shotId, balls: balls.map(ball => ({ ...ball })),
       events: events.map(event => ({ ...event })),
       potCount: balls.filter(ball => ball.role === 'object' && ball.status === 'potted').length,
@@ -79,18 +81,18 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
   }
   function placementValidity({ x, y } = {}) {
     if (![x, y].every(Number.isFinite)) return { valid: false, reason: 'invalid-coordinate' };
-    if (x < TABLE.ballRadius || x > TABLE.width - TABLE.ballRadius ||
-        y < TABLE.ballRadius || y > TABLE.height - TABLE.ballRadius) return { valid: false, reason: 'cushion' };
-    for (const pocket of TABLE.pockets) {
+    if (x < table.ballRadius || x > table.width - table.ballRadius ||
+        y < table.ballRadius || y > table.height - table.ballRadius) return { valid: false, reason: 'cushion' };
+    for (const pocket of table.pockets) {
       const local = pocketCoordinates(x, y, pocket);
-      if (local.depth > -TABLE.ballRadius && Math.abs(local.lateral) < pocket.mouth.halfWidth + TABLE.ballRadius) {
+      if (local.depth > -table.ballRadius && Math.abs(local.lateral) < pocket.mouth.halfWidth + table.ballRadius) {
         return { valid: false, reason: 'pocket' };
       }
     }
-    if (TABLE.jaws.some(jaw => Math.hypot(x - jaw.x, y - jaw.y) < TABLE.ballRadius + jaw.r)) {
+    if (table.jaws.some(jaw => Math.hypot(x - jaw.x, y - jaw.y) < table.ballRadius + jaw.r)) {
       return { valid: false, reason: 'cushion' };
     }
-    if (liveBalls().some(ball => ball.role !== 'cue' && Math.hypot(x - ball.x, y - ball.y) < 2 * TABLE.ballRadius + 0.01)) {
+    if (liveBalls().some(ball => ball.role !== 'cue' && Math.hypot(x - ball.x, y - ball.y) < 2 * table.ballRadius + 0.01)) {
       return { valid: false, reason: 'occupied' };
     }
     return { valid: true, reason: null };
@@ -116,11 +118,11 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
       for (let j = i + 1; j < active.length; j++) {
         const b = active[j]; add(b, b.x, b.y, a.r + b.r, PHYSICS.ballRestitution, `ball:${a.id}:${b.id}`);
       }
-      for (const rail of TABLE.rails) {
+      for (const rail of table.rails) {
         const point = nearestOnRail(a.x, a.y, rail);
         add(null, point.x, point.y, a.r, PHYSICS.cushionRestitution, `rail:${a.id}:${rail.id}`);
       }
-      for (const jaw of TABLE.jaws) add(null, jaw.x, jaw.y, a.r + jaw.r, PHYSICS.cushionRestitution, `jaw:${a.id}:${jaw.id}`);
+      for (const jaw of table.jaws) add(null, jaw.x, jaw.y, a.r + jaw.r, PHYSICS.cushionRestitution, `jaw:${a.id}:${jaw.id}`);
     }
     return result.sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
   }
@@ -162,7 +164,7 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
     if (contacts(active).some(contact => contact.overlap > 1e-5)) fail('contact-position-iterations-exhausted');
   }
   function capture(ball, from) {
-    for (const pocket of TABLE.pockets) {
+    for (const pocket of table.pockets) {
       const previous = pocketCoordinates(from.x, from.y, pocket);
       const now = pocketCoordinates(ball.x, ball.y, pocket);
       // Remember entry through the aperture. Capture planes extend behind its jaws,
@@ -202,7 +204,7 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
         const scale = current > 0 ? next / current : 0;
         ball.vx *= scale; ball.vy *= scale;
         if (![ball.x, ball.y, ball.vx, ball.vy].every(Number.isFinite) ||
-            ball.x < -50 || ball.x > TABLE.width + 50 || ball.y < -50 || ball.y > TABLE.height + 50) fail('invalid-or-escaped-ball');
+            ball.x < -50 || ball.x > table.width + 50 || ball.y < -50 || ball.y > table.height + 50) fail('invalid-or-escaped-ball');
       }
     }
     if (phase !== 'rolling') return;
@@ -217,5 +219,5 @@ export function createPractice({ scenario = DEFAULT_SCENARIO } = {}) {
     for (let n = 0; n < ticks && phase === 'rolling'; n++) advanceTick();
     return snapshot();
   }
-  return Object.freeze({ snapshot, shoot, step, resetScenario, placementValidity, placeWhite });
+  return Object.freeze({ get table() { return table; }, snapshot, shoot, step, resetScenario, placementValidity, placeWhite });
 }
