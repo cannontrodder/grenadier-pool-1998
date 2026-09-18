@@ -10,7 +10,7 @@ Make taking a pool shot on a phone immediately satisfying while bringing the cre
 
 - Two-dimensional, top-down pool; iPhone Safari first, Android browsers retained.
 - Both real friends and computer counterparts belong in the eventual product. A persona represents a friend; a computer counterpart is an exaggerated computer-controlled version, never a claim that the real friend is online.
-- Personal photography, sound, and Easter eggs belong in the experience. None has been supplied yet. Clearly labeled placeholders unblock design.
+- Personal photography, sound, and Easter eggs belong in the experience. At the D1 baseline none had been supplied. A subsequent group photo identifies Trod, Craig, Shacka, and Maaaaark (see media inventory, issue #14); other missing media still uses clearly labeled placeholders.
 - A 1998 identity: compact printed sports captions, flash-photo albums, pub materials, or practical home-computer UI are credible candidates. Do not substitute neon grids, synthwave, or an undifferentiated 1980s arcade mood.
 - During play, announce deployed updates and offer a path to reload and restore the existing match across application versions. Never imply that browser hot reload fulfills this.
 - Design alongside compact programmatic observations and ordinary gameplay actions. Targeted screenshots and motion checks must establish that observations match the rendered table; uncertain harness runs stop with bounded diagnostics.
