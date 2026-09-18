@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071b33">
+  <title>Selected broadcast mockups · Grenadier Pool 1998</title>
+  <link rel="icon" href="../favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-scene="g01">
+  <a class="skip-link" href="#mockup">Skip to mockup</a>
+  <header class="review-header">
+    <div>
+      <p class="eyebrow">S1.2 · Issue #6 · visual study</p>
+      <h1>Grenadier Pool ’98<br><span>On air from the pub</span></h1>
+    </div>
+    <nav aria-label="Design artifact links">
+      <a href="../index.html">Design home</a>
+      <a href="../selected-direction.md">Decision S1.2</a>
+      <a id="storyboard" href="storyboard.html">Storyboard</a>
+      <a href="tokens.html">Tokens + notes</a>
+      <a href="../pub-layout.svg">Pub plan</a>
+      <a href="../sound-direction.md">Sound direction</a>
+    </nav>
+  </header>
+
+  <main class="review-layout">
+    <aside class="review-controls" aria-label="Mockup review controls">
+      <p class="control-label">Review controls · outside mockup</p>
+      <div class="scene-picker" role="group" aria-label="Select a mockup state">
+        <button class="scene-button is-active" data-scene-button="g01"><b>G01</b><span>Ready</span></button>
+        <button class="scene-button" data-scene-button="s01"><b>S01</b><span>Cue contact</span></button>
+        <button class="scene-button" data-scene-button="g02"><b>G02</b><span>Aim held</span></button>
+        <button class="scene-button" data-scene-button="g03"><b>G03</b><span>Power held</span></button>
+        <button class="scene-button" data-scene-button="g04"><b>G04</b><span>Shot feedback</span></button>
+        <button class="scene-button" data-scene-button="o02"><b>O02</b><span>Persona card</span></button>
+        <button class="scene-button" data-scene-button="e01"><b>E01</b><span>Resume match</span></button>
+        <button class="scene-button" data-scene-button="g05"><b>G05</b><span>Pub handover</span></button>
+        <button class="scene-button" data-scene-button="z01"><b>Z01</b><span>Knockabout</span></button>
+      </div>
+      <div class="orientation-picker" role="group" aria-label="Select mockup dimensions">
+        <button class="orientation-button is-active" data-size="portrait">390 × 844</button>
+        <button class="orientation-button" data-size="landscape">844 × 390</button>
+        <button class="orientation-button" data-size="compact">320 × 568</button>
+      </div>
+      <div class="scene-note" aria-live="polite">
+        <span id="scene-code">G01</span>
+        <p id="scene-description">Ready state. The table owns the viewport; score and turn captions sit on the rails, away from the shot line.</p>
+      </div>
+      <p class="review-warning">These controls switch static review states. They are not proposed gameplay controls.</p>
+    </aside>
+
+    <section class="mockup-wrap" id="mockup" aria-label="Phone mockup">
+      <div class="device portrait" id="device">
+        <div class="screen" id="screen">
+          <div class="broadcast-bug" aria-label="Grenadier Pool 98 live">
+            <span class="bug-g">G</span><span class="bug-copy">POOL ’98<small>THE GRENADIER · LIVE</small></span>
+          </div>
+
+          <section class="scene gameplay g01" aria-label="G01 ready to shoot">
+            <div class="table portrait-table" aria-label="Top-down pool table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <div class="baulk-line"></div>
+              <i class="ball cue"></i><i class="ball red r1"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+            </div>
+            <div class="scorebar">
+              <span><small>FRAME 03</small>TROD <b>2</b></span><i>LIVE</i><span><b>1</b> CRAIG<small>RACE TO 5</small></span>
+            </div>
+            <div class="lower-third turn-card"><small>AT THE TABLE</small><strong>TROD</strong><span>Reds · 04:12</span></div>
+            <button class="spin-status" aria-label="Open cue contact control, currently centre"><span class="mini-contact"></span><b>CUE CONTACT</b><small>Centre</small></button>
+            <p class="tap-hint">Touch behind the cue ball to begin</p>
+          </section>
+
+          <section class="scene gameplay s01" aria-label="S01 cue-ball contact point control">
+            <div class="table portrait-table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <div class="baulk-line"></div><i class="ball cue"></i><i class="ball red r1"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+            </div>
+            <div class="scorebar faded"><span>TROD <b>2</b></span><i>LIVE</i><span><b>1</b> CRAIG</span></div>
+            <div class="spin-sheet"><small>SET BEFORE AIMING</small><h2>Cue contact</h2><p>Drag the red point for topspin, backspin or side contact. This overlay closes before the shot gesture.</p><span class="spin-ball large"><i></i></span><div class="spin-readout"><b>CENTRE</b><span>No spin</span></div><button>Reset centre</button><button class="done">Done</button></div>
+          </section>
+
+          <section class="scene gameplay g02" aria-label="G02 aiming with one finger held">
+            <div class="table portrait-table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <div class="baulk-line"></div>
+              <i class="ball cue"></i><i class="ball red r1"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+              <div class="orbit-ring" aria-hidden="true"></div><div class="aim-line"><i></i></div><div class="cue-stick"></div>
+              <div class="touch-point"><span>HOLD</span></div>
+            </div>
+            <div class="scorebar faded"><span>TROD <b>2</b></span><i>LIVE</i><span><b>1</b> CRAIG</span></div>
+            <div class="gesture-cue"><b>AIMING · 24°</b><span>Orbit cue around ball · slide toward <em>ABORT</em> to cancel</span></div>
+            <div class="abort-zone"><b>ABORT</b><span>same finger</span></div>
+            <div class="spin-status during-touch"><span class="mini-contact"></span><b>CONTACT</b><small>Centre · locked</small></div>
+          </section>
+
+          <section class="scene gameplay g03" aria-label="G03 powered shot with one finger held">
+            <div class="table portrait-table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <div class="baulk-line"></div>
+              <i class="ball cue"></i><i class="ball red r1"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+              <div class="orbit-ring" aria-hidden="true"></div><div class="aim-line strong"><i></i></div><div class="cue-stick pulled"></div>
+              <div class="touch-point strong-touch"><span>HOLD</span></div>
+            </div>
+            <div class="scorebar faded"><span>TROD <b>2</b></span><i>LIVE</i><span><b>1</b> CRAIG</span></div>
+            <div class="gesture-cue armed"><b>ARMED · 68% CANDIDATE</b><span>Pull away for power · lift to play · return to <em>ABORT</em> to disarm</span></div>
+            <div class="abort-zone"><b>ABORT</b><span>same finger</span></div>
+            <div class="spin-status during-touch"><span class="mini-contact low"></span><b>CONTACT</b><small>Backspin · locked</small></div>
+          </section>
+
+          <section class="scene gameplay g04" aria-label="G04 balls in motion and shot feedback">
+            <div class="table portrait-table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <div class="baulk-line"></div>
+              <i class="ball cue moving-cue"></i><i class="ball red r1 moving-red"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+              <i class="motion-trail trail-one"></i><i class="motion-trail trail-two"></i>
+            </div>
+            <div class="scorebar compact-score"><span>TROD <b>2</b></span><i>SHOT 04</i><span><b>1</b> CRAIG</span></div>
+            <div class="shot-feedback"><span>POT</span><b>RED · LEFT CENTRE</b><small>table locked while balls move</small></div>
+          </section>
+
+          <section class="scene o02" aria-label="O02 featured friends broadcast card">
+            <img class="group-photo" src="assets/friends-group-01.jpg" alt="Trod, Craig, Shacka and Maaaaark together in the supplied group photograph">
+            <div class="photo-vignette"></div>
+            <div class="o02-title"><small>THE LINE-UP</small><h2>BACK AT THE TABLE</h2><p>Four friends. One live match. Pick up where you left off.</p></div>
+            <ol class="lineup" aria-label="Friends in source photo, left to right">
+              <li><b>01</b><span>TROD</span></li><li><b>02</b><span>CRAIG</span></li><li><b>03</b><span>SHACKA</span></li><li><b>04</b><span>MAAAAARK</span></li>
+            </ol>
+            <div class="archive-note">Names follow the supplied photo left → right. No traits or teams assigned.</div>
+          </section>
+
+          <section class="scene e01" aria-label="E01 resume the one live active match">
+            <div class="resume-photo"><img src="assets/friends-group-01.jpg" alt="Supplied group photo of Trod, Craig, Shacka and Maaaaark"><span>LIVE MATCH</span></div>
+            <div class="desk-header"><p class="eyebrow">ONE ACTIVE MATCH · SAVED</p><h2>Back to<br>the table.</h2><p>A turn-based match can continue over a long time. This is the only live match.</p></div>
+            <article class="match-card active single-match"><span class="status your-turn">Your turn</span><small>THE GRENADIER · FRAME 3</small><h3>You <b>2–1</b> Craig</h3><p>Reds · cue ball in hand · saved 21:47</p><button>Resume live match <span>›</span></button></article>
+            <div class="desk-foot">Resume restores this match <span>•</span> App update available</div>
+          </section>
+
+          <section class="scene g05" aria-label="G05 schematic isometric pub handover">
+            <div class="spatial-label">SPATIAL PLACEHOLDER · <a href="../pub-layout.svg">OPEN CANONICAL PLAN</a></div>
+            <svg class="pub-scene" viewBox="0 0 390 560" role="img" aria-label="Schematic isometric pub scene with a pool table, chairs, seated people and next player stepping up">
+              <defs>
+                <linearGradient id="floor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#613a22"/><stop offset="1" stop-color="#271811"/></linearGradient>
+                <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-opacity=".5"/></filter>
+              </defs>
+              <path d="M16 170 195 66 374 170 195 274Z" fill="url(#floor)"/>
+              <g opacity=".25" stroke="#e0af65"><path d="m52 150 179 104M88 129l179 104M124 108l179 104M160 87l179 104"/><path d="m338 149-179 104M302 128 123 232M266 107 87 211M230 86 51 190"/></g>
+              <g filter="url(#shadow)"><path d="m40 154 113-65 88 51-113 65Z" fill="#171411"/><path d="m50 152 103-58 78 45-103 59Z" fill="#13684e" stroke="#d7a54b" stroke-width="7"/><circle cx="54" cy="152" r="7"/><circle cx="153" cy="96" r="7"/><circle cx="231" cy="139" r="7"/><circle cx="128" cy="195" r="7"/><circle cx="105" cy="121" r="4" fill="#f4ecd8"/><circle cx="171" cy="150" r="4" fill="#c92b37"/></g>
+              <g class="person seated"><circle cx="73" cy="244" r="13"/><path d="m60 264 13-19 13 19 9 31H51Z"/><path d="m52 295 43 0 8 12H45Z"/></g>
+              <g class="person seated two"><circle cx="302" cy="239" r="13"/><path d="m289 259 13-19 13 19 9 31h-44Z"/><path d="m281 290h43l8 12h-59Z"/></g>
+              <g class="person standing"><circle cx="198" cy="316" r="15"/><path d="m180 346 18-28 18 28 7 60h-50Z"/><path d="m177 350-28-24M218 350l31-34" stroke="#dcb178" stroke-width="9" stroke-linecap="round"/><path d="m184 404-8 50M212 404l10 50" stroke="#10233a" stroke-width="12"/></g>
+              <path d="M120 250h174v47H120z" fill="#38251a" stroke="#c8a56d" stroke-width="4"/><path d="M134 260h145v13H134z" fill="#c8a56d" opacity=".6"/><text x="207" y="287" text-anchor="middle" fill="#ead3a9" font-size="9" font-family="Arial">BAR · BACK WALL</text>
+              <path d="M194 183h72l19 34H175Z" fill="#162536" stroke="#8ea0ad" stroke-width="2"/><text x="230" y="207" text-anchor="middle" fill="#e8eff3" font-size="7" font-family="Arial">ENTRANCE / FOYER</text>
+              <path d="M153 185h38v28h-38zM271 185h38v28h-38z" fill="#27394a" stroke="#8ea0ad"/><text x="172" y="202" text-anchor="middle" fill="#e8eff3" font-size="7" font-family="Arial">WC</text><text x="290" y="202" text-anchor="middle" fill="#e8eff3" font-size="7" font-family="Arial">WC</text>
+              <g transform="translate(308 191)"><circle cx="0" cy="0" r="12" fill="#d2a071"/><path d="M-14 17 0 7l14 10 5 42h-38Z" fill="#8c2637"/><text x="0" y="73" text-anchor="middle" fill="#f4f0df" font-size="9" font-family="Arial" font-weight="bold">BETTY</text></g>
+              <g fill="#5c3d27" stroke="#bd8a52"><circle cx="304" cy="116" r="20"/><circle cx="343" cy="148" r="16"/><circle cx="64" cy="226" r="17"/></g>
+            </svg>
+            <div class="handover-card"><small>BALLS SETTLED · OPTIONAL CUTAWAY</small><h2>Next up: Craig</h2><p>Betty’s watching. Best behaviour.</p><span>Skip cutaway</span></div>
+            <div class="format-chips"><span>2 v 2 · illustrative</span><span>Winner stays on / 50p · rules unresolved</span></div>
+          </section>
+
+          <section class="scene gameplay z01" aria-label="Z01 postgame knockabout variant">
+            <div class="table portrait-table">
+              <i class="pocket tl"></i><i class="pocket tr"></i><i class="pocket ml"></i><i class="pocket mr"></i><i class="pocket bl"></i><i class="pocket br"></i>
+              <i class="ball cue"></i><i class="ball red r1 selected-ball"></i><i class="ball red r2"></i><i class="ball yellow y1"></i><i class="ball yellow y2"></i><i class="ball black"></i>
+              <div class="select-ring"><span>STRUCK BALL</span></div>
+            </div>
+            <div class="final-score"><small>FINAL · RESULT LOCKED</small><b>TROD 3–2 CRAIG</b><span>Winner stays on</span></div>
+            <div class="knockabout-card"><small>POSTGAME KNOCKABOUT · OPTIONAL</small><h2>Smash what’s left.</h2><p>Either player may select any remaining ball as the struck ball. This does not change the final result.</p><button>Re-rack — start fresh</button></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="review-footer">
+    <p><b>Selected direction:</b> 1998 Sports Broadcast — a live match from the Grenadier, not a desktop skin or photo album.</p>
+    <p>Static high-fidelity mockups for review. Gesture mapping, timing, fouls/two-shots/early-black rules, and room geometry remain open for later study.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071b33"><title>Tokens and implementation notes · Grenadier Pool 1998</title><link rel="stylesheet" href="artifacts.css"></head><body>
+<header class="artifact-head"><nav class="crumbs"><a href="index.html">Mockup explorer</a><a href="storyboard.html">Storyboard</a><a href="../selected-direction.md">Decision S1.2</a><a href="../sound-direction.md">Sound direction</a><a href="../index.html">Design home</a></nav><p class="kicker">Reusable system · artifact S2</p><h1>Broadcast,<br>from the pub.</h1><p class="intro">Concrete visual, layout, behavior, photo, and accessibility notes for a future prototype agent. These tokens describe the mockup, not production code or settled pool rules.</p></header>
+<main class="artifact-main">
+  <h2>Design job</h2><p>The phone must make a direct pool shot feel obvious and satisfying while always reading as a 1998 sports broadcast of friends playing inside the Grenadier. The next action is usually to touch the table, resume the one saved live match, skip a handover, or intentionally start a fresh rack.</p>
+  <div class="swatches" aria-label="Navy, red, gold, green felt and warm white color swatches"><i></i><i></i><i></i><i></i><i></i></div>
+  <table class="token-table"><thead><tr><th>Token</th><th>Value</th><th>Use</th><th>Evidence / constraint</th></tr></thead><tbody>
+    <tr><td>broadcast.navy</td><td>#071B33</td><td>Opaque captions, score, resume background</td><td>White 16.47:1; gold 10.31:1</td></tr>
+    <tr><td>broadcast.red</td><td>#D92E3D</td><td>Live bug, active edge, urgent abort field</td><td>White 4.53:1</td></tr>
+    <tr><td>broadcast.gold</td><td>#F2C14E</td><td>State emphasis and focus, never sole status signal</td><td>Navy 10.31:1</td></tr>
+    <tr><td>table.felt</td><td>#0F684F</td><td>Playing surface</td><td>Warm white 5.90:1; balls also differ by hue and position</td></tr>
+    <tr><td>paper.warm</td><td>#F4F0DF</td><td>Primary light copy, cue ball, archival warmth</td><td>Navy 15.14:1</td></tr>
+    <tr><td>type.display</td><td>Impact → Arial Narrow Bold</td><td>Scores, player names, state words</td><td>Condensed late-1990s broadcast silhouette; avoid sci-fi/neon forms</td></tr>
+    <tr><td>type.utility</td><td>Arial Narrow → Arial</td><td>Instructions, metadata, captions</td><td>System-safe, readable fallback; production may license a suitable condensed family</td></tr>
+    <tr><td>table.ratio</td><td>2:1 landscape / 1:2 portrait</td><td>Rail outer bounds</td><td>Six pockets at four corners and midpoints of the two long rails</td></tr>
+    <tr><td>space.safe</td><td>max(10px, env(safe-area-inset-* ))</td><td>Critical overlays and abort</td><td>Keep captions clear of notches and home indicator</td></tr>
+    <tr><td>target.minimum</td><td>44×44 CSS px</td><td>Buttons and cue-contact alternative</td><td>Visual ball may be smaller; its hit target must not be</td></tr>
+  </tbody></table>
+
+  <h2>Component rules</h2>
+  <div class="token-grid">
+    <article class="token-card"><h3>Table first</h3><ul><li>Use the entire available play viewport, preserving table ratio.</li><li>No permanent right rail or bottom control deck.</li><li>Score and turn captions hug safe rails, not ball paths.</li><li>Do not pan or zoom during aim or motion.</li></ul></article>
+    <article class="token-card"><h3>Touch state</h3><ul><li>On contact, nonessential chrome fades toward 26%.</li><li>Armed status and same-finger abort remain fully opaque.</li><li>Never move the aim target under the active finger.</li><li>All interruption paths disarm without shooting.</li></ul></article>
+    <article class="token-card"><h3>Cue contact</h3><ul><li>Expand the cue ball into a remote popover away from the touch.</li><li>Show crosshairs and a visible contact dot for spin/backspin.</li><li>Announce position textually: center, high, low, left, right.</li><li>The exact combination with orbit/power needs touch testing.</li></ul></article>
+    <article class="token-card"><h3>Captions</h3><ul><li>Opaque navy base, red live edge, gold state highlight.</li><li>One message per caption; dismiss when understood.</li><li>Use plain verbs: Aiming, Armed, Abort, Pot, Foul.</li><li>Foul/two-shot/early-black semantics remain undefined.</li></ul></article>
+    <article class="token-card"><h3>Friends photo</h3><ul><li>Asset is the byte-identical supplied 1280×720 original.</li><li>CSS crop only; never bake labels into the pixels.</li><li>Names left to right: Trod, Craig, Shacka, Maaaaark.</li><li>No traits, teams, or individual personalities have been assigned.</li></ul></article>
+    <article class="token-card"><h3>Pub cutaway</h3><ul><li>Optional and skippable after balls settle.</li><li>Table left of a back-wall bar; entrance above bar, toilets left/right; social seating on both sides, no second table.</li><li>Original CSS/SVG 2.5D spatial placeholder; use the <a href="../pub-layout.svg">canonical schematic plan</a> for layout.</li><li>Betty is a named stern landlady cameo with no supplied likeness.</li></ul></article>
+    <article class="token-card"><h3>Match + final</h3><ul><li>Only one live active match; it may remain turn-based for a long time.</li><li>Resume restores that match and does not imply a concurrent inbox.</li><li>Z01 knockabout never changes the final result.</li><li>Re-rack is an explicit fresh start.</li></ul></article>
+    <article class="token-card"><h3>Formats</h3><ul><li>Both 2 v 2 and winner-stays-on are desired.</li><li>Team order, fouls, two-shots, early-black, queues, and 50p meaning are unresolved.</li><li>Show the 50p motif only as future flavor, never payment UI.</li><li>No timeout/forfeit behavior is defined.</li></ul></article>
+    <article class="token-card"><h3>Motion + sound</h3><ul><li>Pool contacts lead; use the companion sound artifact.</li><li>Motion communicates state change, never decoration.</li><li>Reduce motion: static cut between states and keep turn text.</li><li>Reduced transparency: use fully opaque captions.</li></ul></article>
+  </div>
+
+  <h2>Accessible non-drag path</h2><p>A clearly named “Shot controls” action may open a separate sheet with 44px controls for cue angle, power, cue-contact point, Preview, Abort, and Play shot. Keyboard mapping may use arrows for angle, Shift+arrows for power/contact, Escape to abort, and Enter to play only after an explicit armed state. This route is an accessibility proposal and must preserve the same game state; it does not replace direct one-finger play.</p>
+  <div class="callout"><b>Reduced motion and transparency</b><p>With reduced motion, G05 becomes a static pub/location card and immediately returns to the same top-down table. With reduced transparency or increased contrast, score, armed, abort, and feedback fields use solid navy/red backgrounds; no state depends on translucency.</p></div>
+
+  <h2>Verification checklist</h2>
+  <ul class="checklist"><li>Portrait layout reviewed at 390×844.</li><li>Landscape layout reviewed at 844×390.</li><li>Compact pressure check at 320×568.</li><li>2:1 / 1:2 table geometry measured in browser.</li><li>Six pockets occupy corners and long-rail midpoints.</li><li>Source photo hash matches supplied original.</li><li>Critical text contrast meets WCAG AA target.</li><li>Armed and abort remain legible during touch.</li><li><code>pointercancel</code> returns mockup to G01.</li><li>No physical iPhone or Android device claim is made.</li></ul>
+
+  <h2>Safe simplifications for the prototype</h2><p>A prototype may use circles for balls, a flat top-down table, static captions, the system type fallbacks above, a still pub card instead of G05, and deterministic object positions. It must preserve table geometry, cue orbit visibility, the away-from-touch contact control, same-finger abort, interruption disarm, one-live-match wording, and a separate final/knockabout state.</p>
+</main>
+<footer class="artifact-foot">Trace: issue #6, direction decision S1.2, user feedback dated 18 September 2026. Companion artifacts: <a href="storyboard.html">touch storyboard</a>, <a href="index.html">mockup explorer</a>, and <a href="../sound-direction.md">sound direction</a>. These are static artifacts, not a playable prototype.</footer>
+</body></html>
