@@ -20,9 +20,10 @@ parser.add_argument("--url", default="http://127.0.0.1:8765/practice/")
 parser.add_argument("--browser", choices=["webkit", "chrome"], default="webkit")
 parser.add_argument(
     "--case",
-    choices=["interaction", "pot", "keyboard", "native", "tuning", "placement", "placement-keyboard", "placement-cancel", "placement-native"],
+    choices=["interaction", "pot", "keyboard", "native", "tuning", "placement", "placement-keyboard", "placement-cancel", "placement-native", "layouts"],
     default="interaction",
 )
+parser.add_argument("--layout", choices=["straight-pots", "cut-pots", "cushion-practice"], default="straight-pots")
 parser.add_argument("--session")
 parser.add_argument("--width", type=int, default=390)
 parser.add_argument("--height", type=int, default=844)
@@ -100,6 +101,10 @@ def with_harness_query(url):
             "cornerPull": str(args.corner_pull),
         }
     )
+    if args.case == "layouts":
+        journeys = json.loads((root / "scripts/practice/layout-journeys.json").read_text())
+        query["layout"] = args.layout
+        query["journey"] = json.dumps(journeys[args.layout], separators=(",", ":"))
     if args.fault:
         query["harnessFault"] = args.fault
     return urllib.parse.urlunsplit(

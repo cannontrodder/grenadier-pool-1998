@@ -32,7 +32,7 @@ dialog::backdrop { background: #020b15b8; }
 h1 { margin: 0; font-size: 22px; }
 label { display: flex; justify-content: space-between; margin: 18px 0 8px; font-size: 14px; font-weight: bold; }
 input[type="range"] { width: 100%; min-height: 44px; accent-color: #f2c14e; }
-input[type="number"] { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #64768a; background: #0d2848; }
+select, input[type="number"] { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #64768a; background: #0d2848; }
 p, details small { font-size: 12px; line-height: 1.6; color: #b4c6d6; }
 details { border-top: 1px solid #ffffff30; padding-top: 15px; }
 summary { min-height: 44px; font-weight: bold; }
@@ -57,3 +57,5 @@ details { margin-top: 16px; }
 #placement-preview.invalid { fill: #d92e3d88; stroke: #ff8590; }
 #placement-controls { border-bottom: 1px solid #ffffff30; padding-bottom: 20px; }
 #placement-title { font-size: 18px; margin: 0; }
+
+#layout-name { text-transform: uppercase; }

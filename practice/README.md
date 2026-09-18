@@ -1,9 +1,9 @@
 # Working practice table · issue #24
 
-One fixed, versioned four-ball layout, real pockets, the accepted single-finger
-shot, and explicit Re-rack recovery. This is the foundation for the three-layout
-flow (#25). White placement after a scratch is implemented in #26. The model
-owns placement validity and clear-state admission.
+Three fixed, versioned four-ball layouts, real pockets, the accepted single-finger
+shot, manual white placement after a scratch and explicit Re-rack. The model
+owns placement validity and clear-state admission; #25 and #26 provide the
+complete practice loop.
 
 ## Run
 
@@ -182,3 +182,24 @@ reason, epoch, pointerId, committed}`. `pending` means the model awaits placemen
 contains the accepted `{x,y,epoch}` until reset or the next scratch. A candidate
 with an empty numeric field is invalid and its preview is hidden. The interface
 remains read-only. Verification: [placement evidence](../docs/verification/practice-placement-26.md).
+
+## Repeatable layouts · issue #25
+
+Choose **Straight pots**, **Cut pots**, or **Cushion practice** in Menu to start
+that setup immediately. Straight pots is the reload default. Each version-1
+fixture has three object balls and the white; `layouts.mjs` freezes their world
+coordinates. Re-rack restores the selected fixture and retains all current
+tuning. Selection and Re-rack cancel held input, motion and events through a
+fresh model epoch. The footer names the current layout.
+
+The count progresses from 0/3 to 3/3. After the final shot settles, **Table
+cleared** remains visible until an explicit Re-rack or layout change. Shots are
+blocked while cleared. Final-object plus white capture uses the model's same
+clear precedence.
+
+`scripts/practice/layout-journeys.json` records three ordinary shots per setup,
+with explicit target balls/pockets and powers. Later shots aim from observed
+settled positions at a ghost-ball contact point; no browser state setter is
+used. Cushion practice begins with an object bank off the top cushion into the
+bottom-middle pocket. Cut pots begins with roughly a 40-degree cut. The fixture
+version must change if its coordinates change.

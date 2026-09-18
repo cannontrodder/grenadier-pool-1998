@@ -1,4 +1,5 @@
 import { createPractice } from './model.mjs';
+import { PRACTICE_LAYOUTS } from './layouts.mjs';
 import { TUNING, DEFAULT_TUNING, boundedSetting } from './tuning.mjs';
 import { aimGuide } from './guide.mjs';
 import { createGesture } from './input.mjs';
@@ -6,7 +7,8 @@ import { createGesture } from './input.mjs';
 const $ = (id) => document.getElementById(id);
 const table = $('table'), world = $('world'), game = $('game');
 const settings = { ...DEFAULT_TUNING };
-const simulation = createPractice({ pocketScale: settings.pocketSize / 100 }), gesture = createGesture();
+let selectedLayout = PRACTICE_LAYOUTS[0];
+const simulation = createPractice({ scenario: selectedLayout, pocketScale: settings.pocketSize / 100 }), gesture = createGesture();
 let TABLE = simulation.table;
 let strength = settings.strength, aimAngle = -Math.PI / 2;
 let frame = 0, observedAt = performance.now(), buildRevision = 'local-unbuilt';
@@ -157,6 +159,7 @@ function render() {
   $('aim').style.display = state.phase === 'ready' && !fault ? '' : 'none';
   $('neutral').style.display = active ? '' : 'none';
   $('count').textContent = `${state.potCount}/3`;
+  $('layout-name').textContent = selectedLayout.name;
   for (const event of state.events) {
     if (event.seq <= seenEvent) continue;
     seenEvent = event.seq;
@@ -167,7 +170,7 @@ function render() {
   }
   const phase = fault ? 'fault' : state.phase;
   const messages = {
-    ready: ['Straight pots', 'Drag away from the white · release to shoot'],
+    ready: [selectedLayout.name, 'Drag away from the white · release to shoot'],
     rolling: ['Balls rolling', 'Wait for the table to settle'],
     'placing-white': ['Place the white', placementHint()],
     cleared: ['Table cleared', 'Re-rack when you’re ready'],
@@ -318,12 +321,16 @@ $('shoot').addEventListener('click', () => {
   }
 });
 function rerack() {
-  cancel(); simulation.resetScenario(undefined, { pocketScale: settings.pocketSize / 100 });
+  cancel(); simulation.resetScenario(selectedLayout, { pocketScale: settings.pocketSize / 100 });
   TABLE = simulation.table; drawGeometry(); fault = null; previous = null; accumulator = 0;
   aimAngle = -Math.PI / 2; $('angle').value = '-90'; seenEvent = 0; feedback = null; feedbackUntil = performance.now() + 5000;
   positionFeedback(); render();
 }
 $('reset').addEventListener('click', rerack);
+$('practice-layout').addEventListener('change', () => {
+  selectedLayout = PRACTICE_LAYOUTS.find(layout => layout.id === $('practice-layout').value) || PRACTICE_LAYOUTS[0];
+  rerack(); $('menu').close();
+});
 Object.defineProperty(window, 'practice', { value: Object.freeze({ observe: () => observation }), writable: false, configurable: false });
 fetch('./revision.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(value => {
   if (value?.revision) { buildRevision = value.revision; $('build').textContent = `P1 · ${buildRevision.slice(0, 7)}`; render(); }

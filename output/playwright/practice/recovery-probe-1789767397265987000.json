@@ -1,0 +1,9 @@
+{
+  "probe": {
+    "ok": true,
+    "paused": false,
+    "fault": null
+  },
+  "originalEvidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/layout25-final-chrome-412-straight-pots-412x839-1789767397265987000.json",
+  "statusUnchanged": "FAIL"
+}

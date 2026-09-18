@@ -1,0 +1,95 @@
+{
+  "straight-pots": {
+    "version": 1,
+    "shots": [
+      {
+        "ball": "object-1",
+        "pocket": "top-middle",
+        "target": {
+          "x": 500,
+          "y": -12
+        },
+        "power": 0.15
+      },
+      {
+        "ball": "object-2",
+        "pocket": "top-left",
+        "target": {
+          "x": 0,
+          "y": 0
+        },
+        "power": 0.2
+      },
+      {
+        "ball": "object-3",
+        "pocket": "bottom-right",
+        "target": {
+          "x": 1000,
+          "y": 500
+        },
+        "power": 0.3
+      }
+    ]
+  },
+  "cut-pots": {
+    "version": 1,
+    "shots": [
+      {
+        "ball": "object-1",
+        "pocket": "top-middle",
+        "target": {
+          "x": 500,
+          "y": -12
+        },
+        "power": 0.2
+      },
+      {
+        "ball": "object-2",
+        "pocket": "top-left",
+        "target": {
+          "x": 0,
+          "y": 0
+        },
+        "power": 0.3
+      },
+      {
+        "ball": "object-3",
+        "pocket": "bottom-right",
+        "target": {
+          "x": 1000,
+          "y": 500
+        },
+        "power": 0.34
+      }
+    ]
+  },
+  "cushion-practice": {
+    "version": 1,
+    "shots": [
+      {
+        "ball": "object-1",
+        "pocket": "bottom-middle",
+        "angle": -1.7707892834010779,
+        "power": 0.33
+      },
+      {
+        "ball": "object-3",
+        "pocket": "bottom-right",
+        "target": {
+          "x": 1000,
+          "y": 500
+        },
+        "power": 0.2
+      },
+      {
+        "ball": "object-2",
+        "pocket": "top-left",
+        "target": {
+          "x": 0,
+          "y": 0
+        },
+        "power": 0.3
+      }
+    ]
+  }
+}

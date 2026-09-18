@@ -177,15 +177,15 @@ async (page) => {
       x: center.x - direction.x * initialRadius,
       y: center.y - direction.y * initialRadius,
     };
-    if (precise) {
+    if (precise && page.context().browser().browserType().name() === 'webkit') {
       // WebKit rounds mouse coordinates to screen pixels. Choose a reachable
-      // aiming point further from the white, avoiding subpixel angle assumptions.
+      // aiming point on the felt, allowing short radii when the white is near a rail.
       let best = Infinity;
       const viewport = page.viewportSize();
       for (let x = Math.max(1, Math.ceil(center.x - 110)); x <= Math.min(viewport.width - 1, center.x + 110); x++) {
         for (let y = Math.max(65, Math.ceil(center.y - 110)); y <= Math.min(viewport.height - 23, center.y + 110); y++) {
           const radius = Math.hypot(x - center.x, y - center.y);
-          if (radius < 60 || radius > 110) continue;
+          if (radius < 10 || radius > 110) continue;
           const alignment = ((center.x - x) * direction.x + (center.y - y) * direction.y) / radius;
           const det = matrix.a * matrix.d - matrix.b * matrix.c;
           const wx = (matrix.d * (x - matrix.e) - matrix.c * (y - matrix.f)) / det;
@@ -195,7 +195,7 @@ async (page) => {
           if (error < best) { best = error; start = { x, y }; initialRadius = radius; }
         }
       }
-      if (!Number.isFinite(best)) throw new Error('HARNESS: no reachable aiming point');
+      if (!Number.isFinite(best) || best > 0.000002) throw new Error('HARNESS: no sufficiently aligned reachable aiming point');
     }
     const end = {
       x: center.x + (start.x - center.x) * (initialRadius + pullDistance) / initialRadius,
@@ -808,6 +808,99 @@ async (page) => {
     check((await observe()).tuning.guideLength === 60, 'reload returns to session defaults');
   };
 
+  const runLayouts = async (initial) => {
+    const layoutId = harnessParameters.layout || 'straight-pots';
+    const journey = JSON.parse(harnessParameters.journey || 'null');
+    if (!journey?.shots?.length) throw new Error('HARNESS: missing versioned layout journey');
+    await page.locator('#menu-open').click();
+    const names = await page.locator('#practice-layout option').allTextContents();
+    check(JSON.stringify(names) === JSON.stringify(['Straight pots', 'Cut pots', 'Cushion practice']), 'three named layouts are visible');
+    await page.locator('#strength').fill('2.1');
+    await page.locator('#practice-layout').selectOption(layoutId);
+    if (await page.locator('#menu').evaluate(e => e.open)) await page.locator('#menu-close').click();
+    let state = await observe();
+    check(state.scenarioId === layoutId && state.scenarioVersion === journey.version, 'selected layout identity is versioned');
+    check(state.strength === 2.1, 'layout selection preserves strength');
+    const fixture = state.balls;
+    check(state.remaining === 3 && state.potCount === 0 && state.shotReady, 'layout starts with three objects and a ready white');
+    await validateRenderedGeometry(state);
+    await screenshot('layout-ready');
+    await setStrength(1.8);
+    for (const [index, shot] of journey.shots.entries()) {
+      state = await observe();
+      const cue = ball(state, 'cue'), target = ball(state, shot.ball);
+      let angle = shot.angle;
+      if (shot.target) {
+        const length = Math.hypot(shot.target.x - target.x, shot.target.y - target.y);
+        const ghost = { x: target.x - 24 * (shot.target.x - target.x) / length,
+          y: target.y - 24 * (shot.target.y - target.y) / length };
+        angle = Math.atan2(ghost.y - cue.y, ghost.x - cue.x);
+      }
+      await action(`${layoutId} shot ${index + 1}`, () => gesture(angle, 12 + 115 * Math.sqrt(shot.power), false, true));
+      const armed = await observe();
+      check(armed.gesture?.armed, `shot ${index + 1} arms through primary pointer`);
+      if (index === 0) await screenshot('layout-armed');
+      await page.mouse.up();
+      check((await observe()).shotId === index + 1, `shot ${index + 1} commits exactly once`);
+      const settled = await waitForGame(`${layoutId} shot ${index + 1} settles`, () => window.practice.observe().phase !== 'rolling', {}, 10000);
+      check(settled.health.ok, `shot ${index + 1} remains healthy`);
+      check(ball(settled, shot.ball).status === 'potted', `shot ${index + 1} pots ${shot.ball}`);
+      check(ball(settled, shot.ball).pocketId === shot.pocket, `shot ${index + 1} enters ${shot.pocket}`);
+      check(settled.potCount === index + 1 && settled.remaining === 2 - index, `shot ${index + 1} count remains truthful`);
+      check(await page.locator('#count').textContent() === `${index + 1}/3`, `shot ${index + 1} count is rendered`);
+      check(settled.events.filter(e => e.type === 'pot').length === index + 1, 'one event per potted object');
+      check(settled.balls.filter(b => b.status === 'live').every(b => b.vx === 0 && b.vy === 0), 'settling leaves zero velocities');
+      if (index < journey.shots.length - 1) check(settled.shotReady, 'remaining balls continue from settled positions');
+    }
+    state = await observe();
+    check(state.phase === 'cleared' && !state.shotReady, 'complete clear blocks another shot');
+    check(await page.locator('#status').textContent() === 'Table cleared', 'Table cleared is visible');
+    await validateRenderedGeometry(state);
+    await screenshot('layout-cleared');
+    await page.waitForTimeout(150);
+    check((await observe()).phase === 'cleared', 'clear does not automatically reset');
+    await gesture(0, 50, true);
+    check((await observe()).shotId === 3, 'cleared table rejects pointer shots');
+    const epoch = state.epoch;
+    const reracked = await reset();
+    check(reracked.epoch === epoch + 1 && sameFixture(fixture, reracked.balls), 'Re-rack after clear restores exact selected layout');
+    check(reracked.events.length === 0 && reracked.potCount === 0 && reracked.shotId === 0, 'Re-rack clears counts and event history');
+    await gesture(-Math.PI / 2, 55);
+    await page.evaluate(() => document.querySelector('#reset').click());
+    await page.mouse.up();
+    state = await observe();
+    check(state.shotId === 0 && !state.gesture && sameFixture(fixture, state.balls), 'Re-rack during aim consumes delayed release');
+    await gesture(-Math.PI / 2, 55, true);
+    check((await observe()).phase === 'rolling', 'ordinary shot starts motion before reset');
+    await reset();
+    state = await observe();
+    check(state.shotId === 0 && state.events.length === 0 && sameFixture(fixture, state.balls), 'Re-rack during motion restores selected fixture');
+    await gesture(-Math.PI / 2, 55);
+    await page.evaluate(() => document.querySelector('#menu-open').click());
+    const nextId = layoutId === 'cut-pots' ? 'cushion-practice' : 'cut-pots';
+    await page.locator('#practice-layout').selectOption(nextId);
+    await page.mouse.up();
+    state = await observe();
+    check(state.scenarioId === nextId && state.shotId === 0 && !state.gesture && state.events.length === 0, 'layout change during aim consumes delayed release');
+    check(state.strength === 1.8, 'layout changes retain current strength');
+    await setStrength(2.1);
+    await gesture(0, 55, true);
+    const movingEpoch = (await observe()).epoch;
+    check((await observe()).phase === 'rolling', 'motion begins before layout selection');
+    await page.locator('#menu-open').click();
+    await page.locator('#practice-layout').selectOption(layoutId);
+    state = await observe();
+    check(state.epoch === movingEpoch + 1 && sameFixture(fixture, state.balls), 'layout selection during motion restores exact destination fixture in a fresh epoch');
+    check(state.strength === 2.1 && state.shotId === 0 && state.potCount === 0 && state.events.length === 0 && state.aimAngle === -Math.PI / 2, 'layout selection resets shot/count/aim/events and retains nondefault strength');
+    await page.waitForTimeout(250);
+    state = await observe();
+    check(state.shotId === 0 && state.events.length === 0 && sameFixture(fixture, state.balls), 'old motion cannot leak events into selected layout');
+    await page.reload();
+    await page.waitForFunction(() => window.practice?.observe()?.health?.ok);
+    state = await observe();
+    check(state.scenarioId === 'straight-pots' && state.strength === 1.8 && sameFixture(initial.balls, state.balls), 'reload restores default layout and strength');
+  };
+
   const runKeyboard = async () => {
     await reset();
     await action("open keyboard shot controls", async () => {
@@ -854,6 +947,7 @@ async (page) => {
     else if (suite === "pot") await runPot();
     else if (suite === "tuning") await runTuning(initial);
     else if (suite === "keyboard") await runKeyboard();
+    else if (suite === "layouts") await runLayouts(initial);
     else throw new Error(`HARNESS: unknown browser suite ${suite}`);
     check(errors.length === 0, "browser emitted no errors", errors.join("; "));
     const finalObservation = await observe();

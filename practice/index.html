@@ -27,7 +27,7 @@
     </g>
   </svg>
   <div id="feedback" role="status" aria-live="polite"><strong id="status">Straight pots</strong><span id="hint">Drag away from the white · release to shoot</span><div id="power" aria-hidden="true"><i></i></div></div>
-  <footer><span>STRAIGHT POTS</span><small id="build">P1 · local</small></footer>
+  <footer><span id="layout-name">Straight pots</span><small id="build">P1 · local</small></footer>
   <dialog id="menu" aria-labelledby="menu-title">
     <div class="menu-heading"><h1 id="menu-title">Practice menu</h1><button id="menu-close" aria-label="Close menu">Close</button></div>
     <section id="placement-controls" hidden aria-labelledby="placement-title">
@@ -38,6 +38,14 @@
       <p id="placement-feedback" role="status" aria-live="polite"></p>
       <button id="placement-confirm" class="primary">Place white</button>
     </section>
+
+    <label for="practice-layout">Practice layout</label>
+    <select id="practice-layout" aria-describedby="layout-help">
+      <option value="straight-pots">Straight pots</option>
+      <option value="cut-pots">Cut pots</option>
+      <option value="cushion-practice">Cushion practice</option>
+    </select>
+    <p id="layout-help">Choosing a layout starts a fresh table. Re-rack repeats your current layout.</p>
     <label for="strength">Shot strength <output id="strength-value">1.8×</output></label>
     <input id="strength" type="range" min="0.5" max="3" step="0.1" value="1.8">
     <p>0.5–3×. Default 1.8×. Full pull stays the same distance. Return your finger inward before lifting to abort.</p>
