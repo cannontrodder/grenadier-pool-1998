@@ -20,7 +20,7 @@ After the competitive result, allow an unscored knockabout with remaining balls,
 
 Explore pub pullbacks between shots, with people seated or stepping up; no finished 3D model exists. The user's relative room plan places the bar on the bottom/back wall, pool to its left, seats beyond/around it, foyer immediately above the bar with toilets either side, and seating without a pool table on the right. Betty is the formidable landlady, with a possible humorous barring interlude whose trigger/effect remain open.
 
-Sound should evoke a 1990s pub, led by normal pool sounds. See [selected direction S1.2](design/selected-direction.md) and raw feedback for precise decisions and superseded ideas.
+Sound should evoke a 1990s pub, led by normal pool sounds. See [selected direction S1.3](design/selected-direction.md) and raw feedback for precise decisions and superseded ideas.
 
 ## Feedback and delivery
 
@@ -49,3 +49,7 @@ The harness must detect problems in its own operation and signal when its observ
 Use bounded waits and recovery attempts. When safe recovery fails, stop the affected run and report that investigation is required; an incomplete or unreliable run must not count as a pass. Distinguish a harness failure from a game assertion failure where evidence permits, and explicitly report uncertainty otherwise.
 
 On failure, retain a bounded diagnostic bundle containing recent actions and observations, relevant errors, version and scenario identifiers, and targeted screenshots or browser traces when useful. Return a concise failure summary and artifact locations to the agent, which can inspect richer evidence on demand. Preserve the original failure evidence across recovery attempts.
+
+## Current design-only boundary
+
+The user confirmed that this work remains planning and look-and-feel design, not app implementation. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. Playable study #7 remains future work; this revision does not start it.

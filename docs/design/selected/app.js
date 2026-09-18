@@ -4,7 +4,7 @@ const scenes = {
   g02: ['G02', 'Candidate aim state. One finger stays down behind the cue ball; chrome fades and the abort route remains readable.'],
   g03: ['G03', 'Candidate armed state. Drag distance is illustrated as power, but remains a touch-study hypothesis.'],
   g04: ['G04', 'Committed state. Input is locked while balls move and a compact broadcast caption reports the result.'],
-  o02: ['O02', 'Persona broadcast card using the supplied group photo and left-to-right names without invented traits.'],
+  o02: ['O02', 'Persona broadcast card using a generated pixel-caricature study from the supplied photo, retaining left-to-right names.'],
   e01: ['E01', 'Resume the one saved live match. It may last a long time, but no concurrent match inbox is shown.'],
   g05: ['G05', 'Optional between-shot pub cutaway. This original SVG follows the supplied spatial description but is not a measured or faithful Grenadier model.'],
   z01: ['Z01', 'Postgame knockabout variant. The result stays final; either player may choose any remaining struck ball, while Re-rack starts fresh.']

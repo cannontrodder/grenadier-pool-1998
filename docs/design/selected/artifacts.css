@@ -158,7 +158,7 @@ body {
 }
 .mini-screen.photo {
   border: 0;
-  background: url(assets/friends-group-01.jpg) center 43% / cover;
+  background: url(assets/friends-pixel-caricatures-v1.png) center 43% / cover;
 }
 .mini-screen.photo::after {
   content: "BACK AT THE TABLE";
@@ -448,3 +448,5 @@ body {
     padding: 9px 5px;
   }
 }
+
+.mini-screen.photo{image-rendering:pixelated;background-size:contain;background-repeat:no-repeat;background-color:#071b33}

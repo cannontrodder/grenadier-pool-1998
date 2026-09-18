@@ -70,3 +70,11 @@ Latest follow-up:
 - After the competitive result, allow an unscored knockabout, including selecting a non-cue ball to strike. Preserve the final result; explicit re-rack starts the next setup. Both players can participate, but simultaneous shot resolution is not specified.
 - Room description provides relative zones, not measurements. Bar is along the bottom/back wall (extent uncertain), pool to its left, seats beyond/around it, foyer immediately above bar with toilets flanking it, and a right social side without a pool table.
 - Betty is the named formidable landlady. A barring interlude is a character idea; no likeness, voice, exact dialogue, trigger or gameplay penalty has been supplied.
+
+## Subsequent clarification: design-only scope and pixel caricatures
+
+User: “So right now can we just be clear: are you still in the planning phase, right? You're designing the look and the feel but we're not building an app yet.”
+
+User: “I really would like it to have almost a pixelated look at times, not just for the pool table itself, but definitely for our photos. They need to be caricatures”.
+
+Interpretation: remain in planning/look-and-feel design; no app implementation in this revision. Adopt selective pixelation and recognisable caricature portraits, retaining the selected broadcast framing. First generated concept C1 is a proposal, not approved final likeness. Supersedes straight photo crops in M1.

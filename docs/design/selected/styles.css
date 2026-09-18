@@ -179,3 +179,13 @@ body.presentation { width:100vw; height:100vh; overflow:hidden; background:#000;
 
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; } }
 @media (prefers-contrast: more) { .scorebar,.lower-third,.gesture-cue,.handover-card,.shot-feedback{background:#071b33}.scorebar.faded{opacity:1}.screen::after{display:none}.archive-note,.desk-foot{color:#dce5ea}.match-card.active p{color:#263b4d} }
+
+/* C1 caricature treatment: full group, crisp pixel edges, broadcast text stays sharp. */
+.group-photo,.resume-photo img{image-rendering:pixelated;filter:none}
+.group-photo{height:auto;aspect-ratio:16/9;object-fit:contain;object-position:center}
+.landscape .group-photo{height:100%;aspect-ratio:auto;clip-path:none;transform:none;object-fit:contain}
+.compact .group-photo{height:auto}
+.landscape .resume-photo img{object-fit:contain}
+.o02 .archive-note{font-size:11px;color:#b9c8d2}
+.o02 .lineup b{font-family:"Courier New",monospace;font-weight:900}
+.o02 .lineup li{border-bottom:2px solid #d92e3d}

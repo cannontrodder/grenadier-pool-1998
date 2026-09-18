@@ -39,7 +39,7 @@ Keep the following under `docs/design/` so later work can reuse the decisions:
 
 ## Direction selected on 18 September 2026
 
-The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1.2](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. The table fills the available viewport, with touch-aware broadcast overlays rather than a permanent control rail. The current scope is one live, turn-based, resumable match; the briefly proposed multi-match inbox is deferred. Add spin selection and post-game knockabout/re-rack to the design study. Both 2 v 2 and winner-stays-on are desired formats; their rules and the earlier 50p motif remain later match/multiplayer implementation work.
+The user chose **1998 Sports Broadcast for G01 and O02**, with the pub's social setting between shots. [S1.3](design/selected-direction.md) supersedes the previously open visual-direction decision and the W1 button-driven shot sequence. Single-finger drag/release plus abort is the preferred interaction study; gesture details and orientation remain open. A labeled isometric pub/handover concept can precede a later room model. The table fills the available viewport, with touch-aware broadcast overlays rather than a permanent control rail. The current scope is one live, turn-based, resumable match; the briefly proposed multi-match inbox is deferred. Add spin selection and post-game knockabout/re-rack to the design study. Both 2 v 2 and winner-stays-on are desired formats; their rules and the earlier 50p motif remain later match/multiplayer implementation work.
 
 ## Original three direction boards
 
@@ -86,3 +86,7 @@ Do not front-load these into an exhaustive questionnaire. Resolve the next decis
 ## Pace and feasibility
 
 Aim for useful deployed progress today. The amount achievable depends on the chosen scope, feedback, and technical findings; completion of the entire vision within one day is not yet established. Use completed, tested phases to assess progress rather than promising a date before investigating the work.
+
+## Current design-only boundary
+
+The user confirmed that this work remains planning and look-and-feel design, not app implementation. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. Playable study #7 remains future work; this revision does not start it.

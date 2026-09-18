@@ -1,4 +1,4 @@
-# Selected direction · S1.2 · issue #5
+# Selected direction · S1.3 · issue #5
 
 Decision source: [user review and follow-ups, 18 September 2026](feedback/2026-09-18-direction-review.md). Initial reviewed B1/P1 source: `4de961e3dc01e01fe67d5b644868990355b4d657`. Issues: #1–#7, #10–#12, #14–#16. Later user instructions below supersede earlier S1/S1.1 assumptions.
 
@@ -56,3 +56,9 @@ Pool sound leads: cue contact, ball clicks, cushions, pocket/return. Add a quiet
 ## Handoff
 
 #6 delivers fullscreen gameplay/persona mockups, a single-match resume concept, spin/abort storyboard, post-game knockabout/re-rack concept, pub/Betty scene study, tokens/audio/accessibility notes and targeted captures. These are design artifacts, not physics, a finished 3D scene or a full match implementation. #15 publishes them; #7 tests the touch feel next. Physical iPhone findings remain in #4/#8 and are not inferred from the user's visual choice.
+
+## Pixel caricatures and design-only scope
+
+The user explicitly confirmed that current work is planning and designing the look/feel, not building the app. Do not advance to playable implementation as part of this design revision.
+
+Use selective pixelation, definitely on friend portraits, which must be caricatures rather than straight photo crops. C1 in `selected/assets/friends-pixel-caricatures-v1.png` is the first generated design sample using the supplied photograph, preserving Trod, Craig, Shacka, Maaaaark left to right. Its background is invented atmosphere. Likeness and exaggeration remain subject to design feedback. Maintain Sports Broadcast framing; pixel texture can extend to pub/table art and transitions while aiming cues and labels stay readable.
