@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "status": "design-slots-only-no-audio-supplied",
+  "mixReference": "pool-impact-0dB-relative",
+  "cues": [
+    {
+      "id": "pool.cue_contact",
+      "priority": "P0",
+      "status": "missing",
+      "trigger": "physics cue contact with striking ball (cue ball in competitive play; nominated ball in knockabout)",
+      "timingMs": 0,
+      "variations": { "minimumPerVelocityBand": 6, "bands": ["soft", "medium", "firm"], "noImmediateRepeat": true },
+      "relativeGainDb": 0,
+      "duckRoomDb": 6,
+      "caption": "[cue strike]",
+      "acquisition": "original recording preferred; CC0 or CC BY isolated fallback"
+    },
+    {
+      "id": "pool.ball_contact",
+      "priority": "P0",
+      "status": "missing",
+      "trigger": "physics ball-ball collision",
+      "timingMs": 0,
+      "variations": { "minimumPerVelocityBand": 8, "bands": ["soft", "medium", "hard"], "noImmediateRepeat": true },
+      "relativeGainDb": 0,
+      "duckRoomDb": 6,
+      "caption": "[balls collide]",
+      "captionCoalescing": "one caption per collision burst",
+      "playback": "retain first and strongest impacts; tune rate limit using real break tests",
+      "acquisition": "original recording preferred; CC0 or CC BY isolated fallback"
+    },
+    {
+      "id": "pool.cushion_contact",
+      "priority": "P0",
+      "status": "missing",
+      "trigger": "physics ball-cushion collision",
+      "timingMs": 0,
+      "variations": { "minimumPerVelocityBand": 6, "bands": ["soft", "medium", "hard"], "noImmediateRepeat": true },
+      "relativeGainDb": 0,
+      "duckRoomDb": 6,
+      "caption": "[ball hits cushion]",
+      "acquisition": "original recording preferred; CC0 or CC BY isolated fallback"
+    },
+    {
+      "id": "pool.pocket_drop",
+      "priority": "P0",
+      "status": "missing",
+      "trigger": "authoritative pot confirmed",
+      "timingMs": 0,
+      "variations": { "minimumPerPocketType": 5, "types": ["corner", "side"], "noImmediateRepeat": true },
+      "relativeGainDb": -3,
+      "duckRoomDb": 6,
+      "caption": "[ball pocketed]",
+      "acquisition": "original recording preferred; CC0 or CC BY isolated fallback"
+    },
+    {
+      "id": "pool.return_tray",
+      "priority": "P1",
+      "status": "missing-conditional",
+      "trigger": "between shots, only when table design/state supports a return tray",
+      "timingMs": "after final ball settles; synchronize to visible mechanism if shown",
+      "variations": { "minimum": 4, "noImmediateRepeat": true },
+      "relativeGainDb": -8,
+      "caption": "[ball return]",
+      "acquisition": "original recording from confirmed table preferred"
+    },
+    {
+      "id": "room.pub_bed",
+      "priority": "P1",
+      "status": "missing",
+      "trigger": "foreground match after user-enabled audio",
+      "timingMs": "fade in 600; fade out 250 on background",
+      "variations": { "minimumLoops": 2, "durationSeconds": "60-90" },
+      "relativeGainDb": -22,
+      "ducking": "-6 dB from shot release through 350 ms after final material collision; 250 ms release",
+      "caption": "[low pub room tone]",
+      "captionFrequency": "only on start or material change",
+      "contentRule": "no intelligible speech, names, private conversation, broadcast audio or recognisable music",
+      "acquisition": "controlled permissioned original recording preferred"
+    },
+    {
+      "id": "handover.material_detail",
+      "priority": "P2",
+      "status": "missing-optional",
+      "trigger": "between-shot handover only; maximum one detail per handover",
+      "timingMs": "after balls settle; stop/yield immediately when next shot begins",
+      "variations": { "families": ["chalk", "glass_on_wood", "chair_shift", "door_latch", "coin_or_return_mechanism"], "minimumPerFamily": 4 },
+      "relativeGainDb": -14,
+      "caption": null,
+      "contentRule": "use only a family supported by visible or established context; coin cue does not imply payment",
+      "acquisition": "original recording preferred; CC0 or CC BY isolated fallback"
+    },
+    {
+      "id": "handover.betty_interruption",
+      "priority": "P2",
+      "status": "missing-optional-dialogue-and-trigger-open",
+      "trigger": "between shots only; requires a separately agreed narrative/game-state trigger",
+      "timingMs": "after balls settle; never delay shot readiness without a visible skip/continue route",
+      "variations": { "minimum": 0 },
+      "relativeGainDb": -12,
+      "caption": "[Betty interrupts]",
+      "contentRule": "no supplied voice or likeness; do not synthesize or acquire a voice in issue #6; do not cause sudden match loss or invent dialogue",
+      "acquisition": "none planned until the user approves dialogue, trigger, performance and rights"
+    }
+  ],
+  "excludedFromCore": [
+    "continuous commentary",
+    "stadium or crowd bed",
+    "sting after every shot",
+    "mandatory music",
+    "unapproved friend, computer-counterpart or Betty voices"
+  ],
+  "resumePolicy": {
+    "autoplay": false,
+    "unlock": "deliberate Enter match or Resume match gesture",
+    "matchModel": "one live turn-based resumable match",
+    "replayHistoricalTurnEvents": false,
+    "backgroundBehaviour": "fade and suspend ambience",
+    "fallback": "silent playback with captions and visible sound control"
+  }
+}
