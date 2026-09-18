@@ -72,6 +72,7 @@ async (page) => {
     }
     return await observe();
   };
+  // CDP touchEnd points identify contacts to release; [] releases all contacts.
   const dispatch = async (name, type, points) => {
     remember({ kind: "action", name, type, points });
     const before = await observe();
@@ -203,7 +204,7 @@ async (page) => {
       "second-touch movement cannot rotate aim or steal ownership");
     const heldScreenshot = `${artifactPrefix}-second-finger-lock.png`;
     await page.screenshot({ path: heldScreenshot, timeout: 2500 }); screenshots.push(heldScreenshot);
-    observation = await dispatch("lift second touch only", "touchEnd", [primary]);
+    observation = await dispatch("lift second touch only", "touchEnd", [secondary]);
     check(observation.gesture?.lockPointerId === null && !observation.gesture.locked && observation.shotId === 0,
       "second lift releases angle hold without shooting");
     primary = await angled(-Math.PI / 2 + .5, 110);
@@ -217,10 +218,10 @@ async (page) => {
     observation = await dispatch("introduce third touch", "touchStart", [primary, secondary, third]);
     check(observation.gesture.lockPointerId === trackedSecond && observation.gesture.pointerId === primaryPointer,
       "third touch cannot replace tracked angle-holding second touch");
-    observation = await dispatch("lift third touch only", "touchEnd", [primary, secondary]);
+    observation = await dispatch("lift third touch only", "touchEnd", [third]);
     check(observation.gesture.lockPointerId === trackedSecond && observation.gesture.locked,
       "third lift does not release second-touch hold");
-    observation = await dispatch("release primary while second remains", "touchEnd", [secondary]);
+    observation = await dispatch("release primary while second remains", "touchEnd", [primary]);
     check(observation.shotId === 1 && observation.phase === "rolling" && !observation.gesture,
       "primary-first release shoots exactly once and ends ownership");
     secondary = { ...secondary, x: secondary.x - 20 };
@@ -238,11 +239,16 @@ async (page) => {
     await dispatch("arm primary before capture lifecycle probe", "touchMove", [primary]);
     secondary = { x: points.center.x + 60, y: points.center.y - 40, id: 1 };
     observation = await dispatch("second before capture lifecycle probe", "touchStart", [primary, secondary]);
+    // Process pending second capture before explicitly losing an established capture.
+    secondary = { ...secondary, y: secondary.y + 1 };
+    observation = await dispatch("establish second capture with movement", "touchMove", [primary, secondary]);
     const captureOwner = observation.gesture.pointerId;
     const captureSecond = observation.gesture.lockPointerId;
     check(captureSecond != null, "second pointer is tracked before capture lifecycle probe");
     remember({ kind: "action", name: "DOM lifecycle probe: release second pointer capture", pointerId: captureSecond });
     await bounded(() => page.locator('#table').evaluate((table, id) => table.releasePointerCapture(id), captureSecond), 3500, 'release second capture');
+    // A changed coordinate emits a native pointermove to process pending capture.
+    secondary = { ...secondary, x: secondary.x + 1 };
     observation = await dispatch("process second capture loss", "touchMove", [primary, secondary]);
     check(observation.gesture?.pointerId === captureOwner && observation.gesture.lockPointerId === null && !observation.gesture.locked && observation.shotId === 0,
       "second lost-capture releases hold while primary continues");
