@@ -192,33 +192,60 @@ async (page) => {
       x: center.x - direction.x * initialRadius,
       y: center.y - direction.y * initialRadius,
     };
+    let end = {
+      x: center.x - direction.x * (initialRadius + pullDistance),
+      y: center.y - direction.y * (initialRadius + pullDistance),
+    };
     if (precise && page.context().browser().browserType().name() === 'webkit') {
-      // WebKit rounds mouse coordinates to screen pixels. Choose a reachable
-      // aiming point on the felt, allowing short radii when the white is near a rail.
-      let best = Infinity;
-      const viewport = page.viewportSize();
+      // WebKit rounds mouse coordinates to screen pixels. Aim now follows the
+      // release point, so choose its integer angle first and pair it with a
+      // reachable felt contact that supplies the requested radial power travel.
+      // The first contact can rotate freely before release; it need not lie on
+      // the final ray. This is ordinary pointer input, with no model mutation.
+      const viewport = page.viewportSize(), starts = [];
+      const det = matrix.a * matrix.d - matrix.b * matrix.c;
       for (let x = Math.max(1, Math.ceil(center.x - 110)); x <= Math.min(viewport.width - 1, center.x + 110); x++) {
         for (let y = Math.max(65, Math.ceil(center.y - 110)); y <= Math.min(viewport.height - 23, center.y + 110); y++) {
           const radius = Math.hypot(x - center.x, y - center.y);
           if (radius < 10 || radius > 110) continue;
-          const alignment = ((center.x - x) * direction.x + (center.y - y) * direction.y) / radius;
-          const det = matrix.a * matrix.d - matrix.b * matrix.c;
           const wx = (matrix.d * (x - matrix.e) - matrix.c * (y - matrix.f)) / det;
           const wy = (-matrix.b * (x - matrix.e) + matrix.a * (y - matrix.f)) / det;
-          if (wx < 12 || wx > 988 || wy < 12 || wy > 488) continue;
-          const error = 1 - alignment;
-          if (error < best) { best = error; start = { x, y }; initialRadius = radius; }
+          if (wx >= 12 && wx <= 988 && wy >= 12 && wy <= 488) starts.push({ x, y, radius });
         }
       }
-      if (!Number.isFinite(best) || best > 0.000002) throw new Error('HARNESS: no sufficiently aligned reachable aiming point');
+      starts.sort((a, b) => a.radius - b.radius);
+      let best = Infinity;
+      const reach = 110 + pullDistance;
+      for (let x = Math.max(1, Math.ceil(center.x - reach)); x <= Math.min(viewport.width - 1, center.x + reach); x++) {
+        for (let y = Math.max(65, Math.ceil(center.y - reach)); y <= Math.min(viewport.height - 23, center.y + reach); y++) {
+          const radius = Math.hypot(x - center.x, y - center.y), wantedStart = radius - pullDistance;
+          if (wantedStart < 10 || wantedStart > 110 || radius <= observation.tuning.lockDistance) continue;
+          const angularError = Math.abs(Math.atan2((center.x - x) * direction.y - (center.y - y) * direction.x,
+            (center.x - x) * direction.x + (center.y - y) * direction.y));
+          if (angularError > .002) continue;
+          let low = 0, high = starts.length;
+          while (low < high) { const mid = (low + high) >>> 1; if (starts[mid].radius < wantedStart) low = mid + 1; else high = mid; }
+          for (const candidate of [starts[low - 1], starts[low]]) {
+            if (!candidate) continue;
+            const travelError = Math.abs(candidate.radius - wantedStart);
+            if (travelError > .2) continue;
+            const error = angularError / .0002 + travelError / .1;
+            if (error < best) { best = error; start = candidate; end = { x, y }; }
+          }
+        }
+      }
+      if (!Number.isFinite(best)) throw new Error('HARNESS: no sufficiently precise reachable release point');
     }
-    const end = {
-      x: center.x + (start.x - center.x) * (initialRadius + pullDistance) / initialRadius,
-      y: center.y + (start.y - center.y) * (initialRadius + pullDistance) / initialRadius,
-    };
     await page.mouse.move(start.x, start.y);
     await page.mouse.down();
     await page.mouse.move(end.x, end.y, { steps: precise ? 1 : 5 });
+    if (precise) {
+      const actual = await observe();
+      const requestedPower = Math.max(0, Math.min(1, (pullDistance - 12) / 115)) ** 2;
+      if (angleDistance(actual.aimAngle, angle) > .002 || Math.abs(actual.power - requestedPower) > .004) {
+        throw new Error(`HARNESS: pointer fixture missed requested angle/power (${actual.aimAngle}, ${actual.power}; wanted ${angle}, ${requestedPower})`);
+      }
+    }
     if (release) await page.mouse.up();
     return { center, direction, start, end };
   };
