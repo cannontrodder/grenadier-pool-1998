@@ -20,7 +20,7 @@ parser.add_argument("--url", default="http://127.0.0.1:8765/practice/")
 parser.add_argument("--browser", choices=["webkit", "chrome"], default="webkit")
 parser.add_argument(
     "--case",
-    choices=["interaction", "pot", "keyboard", "native", "tuning"],
+    choices=["interaction", "pot", "keyboard", "native", "tuning", "placement", "placement-keyboard", "placement-cancel", "placement-native"],
     default="interaction",
 )
 parser.add_argument("--session")
@@ -31,7 +31,7 @@ parser.add_argument("--corner-angle", type=float, default=-2.5722794624891314)
 parser.add_argument("--corner-pull", type=float, default=69.5)
 args = parser.parse_args()
 
-if args.case == "native" and args.browser != "chrome":
+if args.case in ["native", "placement-native"] and args.browser != "chrome":
     parser.error("--case native requires --browser chrome")
 if args.fault and args.case == "native":
     parser.error("fault injection is supported by the browser suites, not native touch")
@@ -129,6 +129,8 @@ try:
     script = (
         "scripts/practice/native-touch.js"
         if args.case == "native"
+        else "scripts/practice/placement-check.js"
+        if args.case.startswith("placement")
         else "scripts/practice/browser-check.js"
     )
     raw = invoke(["run-code", "--filename", script])

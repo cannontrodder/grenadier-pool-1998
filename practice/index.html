@@ -12,7 +12,7 @@
 <main id="game">
   <header class="broadcast"><b class="badge">G</b><div>GRENADIER <span>1998</span><small>THREE-BALL PRACTICE</small></div><output id="count" aria-label="Object balls potted">0/3</output></header>
   <nav aria-label="Practice controls"><button id="reset">Re-rack</button><button id="menu-open" aria-haspopup="dialog">Menu</button></nav>
-  <svg id="table" viewBox="0 0 1120 620" role="img" aria-label="Pool practice table. Drag away from the white and release to shoot. Keyboard shot controls are in Menu.">
+  <svg id="table" viewBox="0 0 1120 620" role="img" aria-label="Pool practice table. Drag away from the white and release to shoot. After a scratch, release on clear felt to place the white. Keyboard shot and placement controls are in Menu.">
     <defs>
       <radialGradient id="felt"><stop stop-color="#16735b"/><stop offset="1" stop-color="#09513d"/></radialGradient>
       <radialGradient id="white-ball" cx="32%" cy="26%"><stop stop-color="#fffef5"/><stop offset=".7" stop-color="#f4f0df"/><stop offset="1" stop-color="#c4c2b5"/></radialGradient>
@@ -22,7 +22,7 @@
       <rect x="0" y="0" width="1000" height="500" fill="url(#felt)"/>
       <g id="pockets"></g><g id="rails"></g><g id="jaws"></g>
       <g id="aim" pointer-events="none"><line id="aim-line" stroke="#f4f0df" stroke-width="2" stroke-dasharray="7 8" opacity=".65"/><circle id="contact-marker" fill="none" stroke="#f2c14e" stroke-width="2"/><line id="cue" stroke="#d5b477" stroke-width="5" stroke-linecap="round"/><circle id="neutral" fill="none" stroke="#f2c14e" stroke-width="1.5" stroke-dasharray="5 5"/></g>
-      <g id="balls"></g>
+      <g id="balls"></g><circle id="placement-preview" r="12" pointer-events="none"/>
       <text x="500" y="280" class="table-mark" text-anchor="middle" pointer-events="none">GRENADIER · 1998</text>
     </g>
   </svg>
@@ -30,6 +30,14 @@
   <footer><span>STRAIGHT POTS</span><small id="build">P1 · local</small></footer>
   <dialog id="menu" aria-labelledby="menu-title">
     <div class="menu-heading"><h1 id="menu-title">Practice menu</h1><button id="menu-close" aria-label="Close menu">Close</button></div>
+    <section id="placement-controls" hidden aria-labelledby="placement-title">
+      <h2 id="placement-title">Place the white</h2>
+      <p>Position along the long table (X) and across it (Y). Arrow keys adjust by one unit.</p>
+      <label for="placement-x">White position X (0–1000)</label><input id="placement-x" type="number" min="0" max="1000" step="1" aria-describedby="placement-feedback">
+      <label for="placement-y">White position Y (0–500)</label><input id="placement-y" type="number" min="0" max="500" step="1" aria-describedby="placement-feedback">
+      <p id="placement-feedback" role="status" aria-live="polite"></p>
+      <button id="placement-confirm" class="primary">Place white</button>
+    </section>
     <label for="strength">Shot strength <output id="strength-value">1.8×</output></label>
     <input id="strength" type="range" min="0.5" max="3" step="0.1" value="1.8">
     <p>0.5–3×. Default 1.8×. Full pull stays the same distance. Return your finger inward before lifting to abort.</p>

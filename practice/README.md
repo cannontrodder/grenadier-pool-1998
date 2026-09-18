@@ -2,8 +2,8 @@
 
 One fixed, versioned four-ball layout, real pockets, the accepted single-finger
 shot, and explicit Re-rack recovery. This is the foundation for the three-layout
-flow (#25) and white-placement UI (#26). The model already owns placement and
-clear-state admission; those tickets add their player-facing flows.
+flow (#25). White placement after a scratch is implemented in #26. The model
+owns placement validity and clear-state admission.
 
 ## Run
 
@@ -62,8 +62,7 @@ reload resets it to 1.8 and restores the default layout.
 Only the model decides `ready → rolling → ready|placing-white|cleared`. All
 live balls must settle before this decision. No remaining objects takes
 precedence over an absent white. Scratch is a capture event while rolling;
-shooting remains disabled until valid placement or Re-rack. #24 offers Re-rack
-for recovery. Capture events carry epoch, sequence, tick, shot, ball and pocket.
+shooting remains disabled until valid placement or Re-rack. Capture events carry epoch, sequence, tick, shot, ball and pocket.
 
 ## Input, rendering and time
 
@@ -103,8 +102,8 @@ It includes model state plus `contractVersion`, `buildRevision`, `frame`,
 `strength`, `aimAngle`, `pull`, `power`, `gesture`, `placement`, and `geometry`.
 Geometry includes the world-to-screen affine `matrix` and all rails/jaws/pockets.
 An active gesture projects the model's `ready` as `aiming`; `gesture.armed`
-records arming. Admission remains in the model. Placement is `null` until #26
-adds its candidate UI.
+records arming. Admission remains in the model. Placement is `null` before a
+scratch and after a reset; #26 adds its candidate and commit observation below.
 
 `frame` and `observedAt` advance even when balls are stationary, so idle is
 distinguishable from stale observations. `tick` advances only during rolling;
@@ -151,3 +150,35 @@ the single geometry source for simulation, rendering and the guide.
 Observations add `pocketScale`, `tuning`, `guide` and `gesture.locked` to the
 existing version-1 contract. `tuning.mjs` owns menu bounds/defaults;
 `guide.mjs` owns first-contact ray geometry.
+
+## White placement · issue #26
+
+After a scratch, remaining balls settle before **Place the white** appears.
+The ghost white previews a legal position in gold or an invalid position in red,
+with text explaining an occupied spot, cushion or pocket. Touch clear felt,
+adjust the position if needed, and release to place the white at rest. The
+placement contact cannot aim or shoot; start a fresh contact for the next shot.
+
+Placement reserves **0.01 world units** of clearance from balls, cushion faces,
+jaws and the pocket exclusion boundary. The pure model decides validity using
+the currently applied pocket geometry. A scratch with the last object ball
+potted resolves to Table cleared, without asking for placement.
+
+Menu shows labelled X/Y position controls during placement. Arrow keys adjust
+by one world unit; **Place white** confirms a legal candidate and closes Menu.
+The initial candidate is table centre when clear, or the first legal point in a
+bounded 50-unit felt grid. Invalid or empty values disable confirmation. Keyboard
+shot controls remain a separate action.
+
+Pointer cancellation, lost capture, focus/page/visibility changes, resize,
+rotation, Menu/settings and Re-rack cancel the placement contact. Secondary
+contacts cannot take ownership. Epoch checks reject stale commits after reset.
+Rotation preserves world coordinates; the preview uses the same screen matrix
+as the white.
+
+The version-1 observation adds `placement: {pending, candidate: {x,y}, valid,
+reason, epoch, pointerId, committed}`. `pending` means the model awaits placement;
+`pointerId` is non-null only while a placement contact owns input. `committed`
+contains the accepted `{x,y,epoch}` until reset or the next scratch. A candidate
+with an empty numeric field is invalid and its preview is hidden. The interface
+remains read-only. Verification: [placement evidence](../docs/verification/practice-placement-26.md).

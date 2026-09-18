@@ -1,0 +1,68 @@
+{
+  "result": {
+    "status": "PASS",
+    "suite": "placement",
+    "buildRevision": "371ad99fa95e0c944c011bedb1032fcef3c3c48f-dirty",
+    "contractVersion": 1,
+    "scenarioId": "straight-pots",
+    "scenarioVersion": 1,
+    "epoch": 1,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "assertions": 4,
+    "checks": [
+      "white remains absent after scratch",
+      "placement starts with a usable candidate",
+      "placement prompt is visible",
+      "browser emitted no errors"
+    ],
+    "screenshots": []
+  },
+  "commands": [
+    {
+      "command": [
+        "close"
+      ],
+      "durationMs": 533,
+      "returncode": 0,
+      "stdout": "Browser 'placement-green' is not open.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:8766/practice/?harnessCase=placement&cornerAngle=-2.5722794624891314&cornerPull=69.5",
+        "--browser",
+        "webkit"
+      ],
+      "durationMs": 1186,
+      "returncode": 0,
+      "stdout": "### Browser `placement-green` opened with pid 66243.\n### Ran Playwright code\n```js\nawait page.goto('http://127.0.0.1:8766/practice/?harnessCase=placement&cornerAngle=-2.5722794624891314&cornerPull=69.5');\n```\n### Page\n- Page URL: http://127.0.0.1:8766/practice/?harnessCase=placement&cornerAngle=-2.5722794624891314&cornerPull=69.5\n- Page Title: Grenadier 1998 \u00b7 Practice table\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026-09-18T21-31-17-110Z.yml)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "resize",
+        "390",
+        "844"
+      ],
+      "durationMs": 539,
+      "returncode": 0,
+      "stdout": "### Ran Playwright code\n```js\nawait page.setViewportSize({ width: 390, height: 844 });\n```\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "run-code",
+        "--filename",
+        "scripts/practice/placement-check.js"
+      ],
+      "durationMs": 1928,
+      "returncode": 0,
+      "stdout": "### Result\n{\"status\":\"PASS\",\"suite\":\"placement\",\"buildRevision\":\"371ad99fa95e0c944c011bedb1032fcef3c3c48f-dirty\",\"contractVersion\":1,\"scenarioId\":\"straight-pots\",\"scenarioVersion\":1,\"epoch\":1,\"viewport\":{\"width\":390,\"height\":844},\"assertions\":4,\"checks\":[\"white remains absent after scratch\",\"placement starts with a usable candidate\",\"placement prompt is visible\",\"browser emitted no errors\"],\"screenshots\":[]}\n### Ran Playwright code\n```js\nawait (async (page) => {\n  const harnessParameters = await page.evaluate(() =>\n    Object.fromEntries(new URLSearchParams(location.search)),\n  );\n  const suite = harnessParameters.harnessCase || \"interaction\";\n  const injectedFault = harnessParameters.harnessFault || null;\n  let injectedFrozenObservation = null;\n  const checks = [];\n  const history = [];\n  const errors = [];\n  const screenshots = [];\n  let identity = null;\n  const pointerStartRadius = 18;\n  const artifactPrefix = `output/playwright/practice/${suite}-${page.viewportSize().width}-${Date.now()}`;\n\n  page.setDefaultTimeout(3500);\n  page.on(\"pageerror\", (error) => errors.push(`pageerror: ${String(error)}`));\n  page.on(\"console\", (message) => {\n    if (message.type() === \"error\") errors.push(`console: ${message.text()}`);\n  });\n  page.on(\"requestfailed\", (request) =>\n    errors.push(`requestfailed: ${request.url()} ${request.failure()?.errorText || \"\"}`),\n  );\n\n  const remember = (entry) => {\n    history.push({ at: Date.now(), ...entry });\n    if (history.length > 16) history.shift();\n  };\n  const action = async (name, operation) => {\n    remember({ kind: \"action\", name });\n    return await operation();\n  };\n  const check = (condition, name, detail) => {\n    if (!condition) {\n      throw new Error(`GAME: ${name}${detail ? ` (${detail})` : \"\"}`);\n    }\n    checks.push(name);\n  };\n  const observe = async () => {\n    let observation;\n    try {\n      observation = await page.evaluate(() => window.practice?.observe());\n      if (injectedFault === \"missing\") observation = null;\n      if (injectedFault === \"stale\") {\n        if (!injectedFrozenObservation) injectedFrozenObservation = observation;\n        observation = injectedFrozenObservation;\n      }\n    } catch (error) {\n      throw new Error(`HARNESS: browser observation failed: ${String(error)}`);\n    }\n    if (\n      !observation ||\n      !Number.isFinite(observation.frame) ||\n      !Number.isFinite(observation.observedAt) ||\n      !observation.health\n    ) {\n      throw new Error(\"HARNESS: missing or malformed observation\");\n    }\n    remember({\n      kind: \"observation\",\n      buildRevision: observation.buildRevision,\n      scenarioId: observation.scenarioId,\n      scenarioVersion: observation.scenarioVersion,\n      frame: observation.frame,\n      observedAt: observation.observedAt,\n      epoch: observation.epoch,\n      tick: observation.tick,\n      stateRevision: observation.stateRevision,\n      phase: observation.phase,\n      shotId: observation.shotId,\n      health: observation.health,\n      balls: observation.balls?.map(({ id, status, x, y, vx, vy, pocketId }) => ({\n        id,\n        status,\n        x,\n        y,\n        vx,\n        vy,\n        pocketId,\n      })),\n      events: observation.events,\n      aimAngle: observation.aimAngle, tuning: observation.tuning, gesture: observation.gesture,\n    });\n    return observation;\n  };\n  const waitForFreshness = async (before, timeout = 2000) => {\n    if (injectedFault === \"stale\") {\n      await page.waitForTimeout(Math.min(timeout, 100));\n      const after = await observe();\n      if (after.frame <= before.frame || after.observedAt <= before.observedAt) {\n        throw new Error(\"HARNESS: stale observation stream: injected frozen sample\");\n      }\n      return after;\n    }\n    try {\n      await page.waitForFunction(\n        ({ frame, observedAt }) => {\n          const next = window.practice?.observe?.();\n          return next && next.frame > frame + 1 && next.observedAt > observedAt;\n        },\n        { frame: before.frame, observedAt: before.observedAt },\n        { timeout },\n      );\n      return await observe();\n    } catch (error) {\n      throw new Error(`HARNESS: stale observation stream: ${String(error)}`);\n    }\n  };\n  const waitForGame = async (name, predicate, argument, timeout = 5000) => {\n    try {\n      await page.waitForFunction(predicate, argument, { timeout });\n      return await observe();\n    } catch (original) {\n      let before;\n      try {\n        before = await observe();\n        const after = await waitForFreshness(before, 1200);\n        if (!after.health.ok || after.health.fault) {\n          throw new Error(`observer health=${JSON.stringify(after.health)}`);\n        }\n      } catch (healthError) {\n        throw new Error(\n          `UNCERTAIN: ${name} timed out and observer health could not be proved; ` +\n            `${String(healthError)}; original=${String(original)}`,\n        );\n      }\n      throw new Error(`GAME: ${name} did not complete within ${timeout}ms`);\n    }\n  };\n  const screenshot = async (label) => {\n    const path = `${artifactPrefix}-${label}.png`;\n    await page.screenshot({ path, timeout: 2500 });\n    screenshots.push(path);\n  };\n  const screenPoint = (x, y, matrix) => ({\n    x: matrix.a * x + matrix.c * y + matrix.e,\n    y: matrix.b * x + matrix.d * y + matrix.f,\n  });\n  const screenDirection = (angle, matrix) => {\n    const x = matrix.a * Math.cos(angle) + matrix.c * Math.sin(angle);\n    const y = matrix.b * Math.cos(angle) + matrix.d * Math.sin(angle);\n    const length = Math.hypot(x, y);\n    if (!Number.isFinite(length) || length < 0.0001) {\n      throw new Error(\"HARNESS: invalid world-to-screen matrix\");\n    }\n    return { x: x / length, y: y / length };\n  };\n  const gesture = async (angle, pullDistance, release = false, precise = false) => {\n    const observation = await observe();\n    const cue = observation.balls.find(\n      (candidate) => candidate.role === \"cue\" && candidate.status === \"live\",\n    );\n    if (!cue) throw new Error(\"HARNESS: no live cue ball for pointer action\");\n    const matrix = observation.geometry?.matrix;\n    if (!matrix) throw new Error(\"HARNESS: observation has no geometry matrix\");\n    const center = screenPoint(cue.x, cue.y, matrix);\n    const direction = screenDirection(angle, matrix);\n    let initialRadius = pointerStartRadius;\n    let start = {\n      x: center.x - direction.x * initialRadius,\n      y: center.y - direction.y * initialRadius,\n    };\n    if (precise) {\n      // WebKit rounds mouse coordinates to screen pixels. Choose a reachable\n      // aiming point further from the white, avoiding subpixel angle assumptions.\n      let best = Infinity;\n      const viewport = page.viewportSize();\n      for (let x = Math.max(1, Math.ceil(center.x - 110)); x <= Math.min(viewport.width - 1, center.x + 110); x++) {\n        for (let y = Math.max(65, Math.ceil(center.y - 110)); y <= Math.min(viewport.height - 23, center.y + 110); y++) {\n          const radius = Math.hypot(x - center.x, y - center.y);\n          if (radius < 60 || radius > 110) continue;\n          const alignment = ((center.x - x) * direction.x + (center.y - y) * direction.y) / radius;\n          const det = matrix.a * matrix.d - matrix.b * matrix.c;\n          const wx = (matrix.d * (x - matrix.e) - matrix.c * (y - matrix.f)) / det;\n          const wy = (-matrix.b * (x - matrix.e) + matrix.a * (y - matrix.f)) / det;\n          if (wx < 12 || wx > 988 || wy < 12 || wy > 488) continue;\n          const error = 1 - alignment;\n          if (error < best) { best = error; start = { x, y }; initialRadius = radius; }\n        }\n      }\n      if (!Number.isFinite(best)) throw new Error('HARNESS: no reachable aiming point');\n    }\n    const end = {\n      x: center.x + (start.x - center.x) * (initialRadius + pullDistance) / initialRadius,\n      y: center.y + (start.y - center.y) * (initialRadius + pullDistance) / initialRadius,\n    };\n    await page.mouse.move(start.x, start.y);\n    await page.mouse.down();\n    await page.mouse.move(end.x, end.y, { steps: precise ? 1 : 5 });\n    if (release) await page.mouse.up();\n    return { center, direction, start, end };\n  };\n  try {\n    const initial = await observe();\n    identity = { buildRevision: initial.buildRevision, scenarioId: initial.scenarioId, epoch: initial.epoch };\n    await waitForFreshness(initial);\n    await action('scratch using the primary pull/release', () => gesture(Math.PI / 2, 58, true));\n    const placed = await waitForGame('scratch settles', () => window.practice.observe().phase === 'placing-white', null, 10000);\n    check(placed.balls.find(b => b.role === 'cue').status === 'potted', 'white remains absent after scratch');\n    check(placed.placement?.pending && placed.placement.valid, 'placement starts with a usable candidate');\n    check(await page.locator('#status').textContent() === 'Place the white', 'placement prompt is visible');\n    check(errors.length === 0, \"browser emitted no errors\", errors.join(\"; \"));\n    const finalObservation = await observe();\n    return {\n      status: \"PASS\",\n      suite,\n      buildRevision: finalObservation.buildRevision,\n      contractVersion: finalObservation.contractVersion,\n      scenarioId: finalObservation.scenarioId,\n      scenarioVersion: finalObservation.scenarioVersion,\n      epoch: finalObservation.epoch,\n      viewport: page.viewportSize(),\n      assertions: checks.length,\n      checks,\n      screenshots,\n    };\n  } catch (error) {\n    const text = String(error);\n    const classification = text.includes(\"GAME:\")\n      ? \"game-failure\"\n      : text.includes(\"UNCERTAIN:\")\n        ? \"uncertain\"\n        : \"harness-failure\";\n    const diagnosticScreenshot = `${artifactPrefix}-failure.png`;\n    try {\n      await page.screenshot({ path: diagnosticScreenshot, timeout: 2000 });\n    } catch (screenshotError) {\n      errors.push(`diagnostic screenshot: ${String(screenshotError)}`);\n    }\n    return {\n      status: \"FAIL\",\n      identity,\n      suite,\n      classification,\n      error: text,\n      diagnosticScreenshot,\n      checks,\n      history,\n      errors,\n      screenshots,\n    };\n  }\n}\n)(page);\n```\n",
+      "stderr": ""
+    }
+  ]
+}

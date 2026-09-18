@@ -1,0 +1,290 @@
+TAP version 13
+# Subtest: CSS travel preserves arm/saturation and squared response
+ok 1 - CSS travel preserves arm/saturation and squared response
+  ---
+  duration_ms: 0.463042
+  type: 'test'
+  ...
+# Subtest: exclusive pointer ownership, abort/rearm and epoch invalidation
+ok 2 - exclusive pointer ownership, abort/rearm and epoch invalidation
+  ---
+  duration_ms: 0.474792
+  type: 'test'
+  ...
+# Subtest: public command admission, immutable snapshots, calibration and epoch invalidation
+ok 3 - public command admission, immutable snapshots, calibration and epoch invalidation
+  ---
+  duration_ms: 10.785791
+  type: 'test'
+  ...
+# Subtest: default fixture has normal side and corner object pots and continues after settling
+ok 4 - default fixture has normal side and corner object pots and continues after settling
+  ---
+  duration_ms: 33.425375
+  type: 'test'
+  ...
+# Subtest: full 3× head-on contact transfers velocity without tunnelling
+ok 5 - full 3× head-on contact transfers velocity without tunnelling
+  ---
+  duration_ms: 55.818583
+  type: 'test'
+  ...
+# Subtest: full 3× grazing contact deflects and exchanges momentum
+ok 6 - full 3× grazing contact deflects and exchanges momentum
+  ---
+  duration_ms: 69.346667
+  type: 'test'
+  ...
+# Subtest: full 3× symmetric simultaneous contacts are stable and independent of storage order
+ok 7 - full 3× symmetric simultaneous contacts are stable and independent of storage order
+  ---
+  duration_ms: 89.967583
+  type: 'test'
+  ...
+# Subtest: full 3× collinear touching simultaneous contacts are stable and independent of storage order
+ok 8 - full 3× collinear touching simultaneous contacts are stable and independent of storage order
+  ---
+  duration_ms: 222.580292
+  type: 'test'
+  ...
+# Subtest: full 3× top cushion cannot be tunnelled
+ok 9 - full 3× top cushion cannot be tunnelled
+  ---
+  duration_ms: 23.963375
+  type: 'test'
+  ...
+# Subtest: full 3× bottom cushion cannot be tunnelled
+ok 10 - full 3× bottom cushion cannot be tunnelled
+  ---
+  duration_ms: 23.800708
+  type: 'test'
+  ...
+# Subtest: full 3× left cushion cannot be tunnelled
+ok 11 - full 3× left cushion cannot be tunnelled
+  ---
+  duration_ms: 33.820959
+  type: 'test'
+  ...
+# Subtest: full 3× right cushion cannot be tunnelled
+ok 12 - full 3× right cushion cannot be tunnelled
+  ---
+  duration_ms: 33.629042
+  type: 'test'
+  ...
+# Subtest: full 3× top-left mouth offset matrix: capture / jaw / rail
+ok 13 - full 3× top-left mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 97.341875
+  type: 'test'
+  ...
+# Subtest: full 3× top-middle mouth offset matrix: capture / jaw / rail
+ok 14 - full 3× top-middle mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 99.730916
+  type: 'test'
+  ...
+# Subtest: full 3× top-right mouth offset matrix: capture / jaw / rail
+ok 15 - full 3× top-right mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 91.458959
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-left mouth offset matrix: capture / jaw / rail
+ok 16 - full 3× bottom-left mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 92.502792
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-middle mouth offset matrix: capture / jaw / rail
+ok 17 - full 3× bottom-middle mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 101.294917
+  type: 'test'
+  ...
+# Subtest: full 3× bottom-right mouth offset matrix: capture / jaw / rail
+ok 18 - full 3× bottom-right mouth offset matrix: capture / jaw / rail
+  ---
+  duration_ms: 90.646916
+  type: 'test'
+  ...
+# Subtest: dark-pocket overlap outside capture boundary is not a pot
+ok 19 - dark-pocket overlap outside capture boundary is not a pot
+  ---
+  duration_ms: 0.878167
+  type: 'test'
+  ...
+# Subtest: free roll monotonically damps and settles for 30 fixed ticks with no five-second stop
+ok 20 - free roll monotonically damps and settles for 30 fixed ticks with no five-second stop
+  ---
+  duration_ms: 1.177291
+  type: 'test'
+  ...
+# Subtest: scratch waits for all motion and only then allows legal placement
+ok 21 - scratch waits for all motion and only then allows legal placement
+  ---
+  duration_ms: 4.239917
+  type: 'test'
+  ...
+# Subtest: scratch and final pot in one rolling interval resolve only to cleared
+ok 22 - scratch and final pot in one rolling interval resolve only to cleared
+  ---
+  duration_ms: 0.549708
+  type: 'test'
+  ...
+# Subtest: tick batching / repeat runs produce identical snapshots and event order
+ok 23 - tick batching / repeat runs produce identical snapshots and event order
+  ---
+  duration_ms: 39.029833
+  type: 'test'
+  ...
+# Subtest: reset during motion restores fixture and clears old shot and event state
+ok 24 - reset during motion restores fixture and clears old shot and event state
+  ---
+  duration_ms: 5.819458
+  type: 'test'
+  ...
+# Subtest: shallow full-speed corner entries cannot escape behind a jaw
+ok 25 - shallow full-speed corner entries cannot escape behind a jaw
+  ---
+  duration_ms: 94.16425
+  type: 'test'
+  ...
+# Subtest: unrecoverable invalid state reports a fault instead of readiness
+ok 26 - unrecoverable invalid state reports a fault instead of readiness
+  ---
+  duration_ms: 0.25725
+  type: 'test'
+  ...
+# Subtest: a real maximum shot remains rolling beyond five seconds and settles naturally
+ok 27 - a real maximum shot remains rolling beyond five seconds and settles naturally
+  ---
+  duration_ms: 70.7955
+  type: 'test'
+  ...
+# Subtest: bounded full-speed angle sweep has no escape, fault or missed settle
+ok 28 - bounded full-speed angle sweep has no escape, fault or missed settle
+  ---
+  duration_ms: 1555.312125
+  type: 'test'
+  ...
+# 32 full-3960 shots; no faults/escapes/energy growth; maximum settle 654 ticks
+# Subtest: pocket size is finite, bounded, immutable and retained by re-racking
+ok 29 - pocket size is finite, bounded, immutable and retained by re-racking
+  ---
+  duration_ms: 7.153167
+  type: 'test'
+  ...
+# Subtest: 0.9× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 30 - 0.9× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 551.290708
+  type: 'test'
+  ...
+# Subtest: 0.9× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 31 - 0.9× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 3341.583084
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 655 ticks
+# Subtest: 1.1× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 32 - 1.1× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 647.020792
+  type: 'test'
+  ...
+# Subtest: 1.1× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 33 - 1.1× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 3297.40025
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 654 ticks
+# Subtest: 1.3× pockets: all six mouths capture centrally and reject jaw / rail near misses
+ok 34 - 1.3× pockets: all six mouths capture centrally and reject jaw / rail near misses
+  ---
+  duration_ms: 520.920459
+  type: 'test'
+  ...
+# Subtest: 1.3× pockets: bounded full-speed sweep preserves collision and energy safety
+ok 35 - 1.3× pockets: bounded full-speed sweep preserves collision and energy safety
+  ---
+  duration_ms: 2835.111167
+  type: 'test'
+  ...
+# 64 angles at 3960 world units/s; longest settle 654 ticks
+# Subtest: widening each pocket admits an off-centre shot previously rejected by its jaw
+ok 36 - widening each pocket admits an off-centre shot previously rejected by its jaw
+  ---
+  duration_ms: 144.937208
+  type: 'test'
+  ...
+# Subtest: white placement respects the currently enlarged corner mouths
+ok 37 - white placement respects the currently enlarged corner mouths
+  ---
+  duration_ms: 0.249542
+  type: 'test'
+  ...
+# Subtest: 1.1× practice default preserves the straight side and corner example shots
+ok 38 - 1.1× practice default preserves the straight side and corner example shots
+  ---
+  duration_ms: 16.701542
+  type: 'test'
+  ...
+# Subtest: placement requires 0.01 world units of clearance from cushions, pockets and balls
+ok 39 - placement requires 0.01 world units of clearance from cushions, pockets and balls
+  ---
+  duration_ms: 1.98075
+  type: 'test'
+  ...
+# Subtest: menu defaults are bounded and invalid numeric settings fall back safely
+ok 40 - menu defaults are bounded and invalid numeric settings fall back safely
+  ---
+  duration_ms: 1.031167
+  type: 'test'
+  ...
+# Subtest: aim lock freezes pre-pull direction through sideways drift and release
+ok 41 - aim lock freezes pre-pull direction through sideways drift and release
+  ---
+  duration_ms: 0.616208
+  type: 'test'
+  ...
+# Subtest: neutral return unlocks for re-aim, abort, and rearm without stale lock
+ok 42 - neutral return unlocks for re-aim, abort, and rearm without stale lock
+  ---
+  duration_ms: 0.098958
+  type: 'test'
+  ...
+# Subtest: turning lock off preserves free aim even at maximum pull
+ok 43 - turning lock off preserves free aim even at maximum pull
+  ---
+  duration_ms: 0.064125
+  type: 'test'
+  ...
+# Subtest: guide stops cue centre at first ball contact, skips potted balls, obeys length
+ok 44 - guide stops cue centre at first ball contact, skips potted balls, obeys length
+  ---
+  duration_ms: 0.510542
+  type: 'test'
+  ...
+# Subtest: guide sees cushion faces and jaws while clear pocket mouths remain open
+ok 45 - guide sees cushion faces and jaws while clear pocket mouths remain open
+  ---
+  duration_ms: 0.101708
+  type: 'test'
+  ...
+# Subtest: a cushion-touching cue can aim away, but towards the cushion contacts immediately
+ok 46 - a cushion-touching cue can aim away, but towards the cushion contacts immediately
+  ---
+  duration_ms: 0.345625
+  type: 'test'
+  ...
+1..46
+# tests 46
+# suites 0
+# pass 46
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14362.48325

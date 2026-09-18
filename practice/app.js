@@ -13,6 +13,7 @@ let frame = 0, observedAt = performance.now(), buildRevision = 'local-unbuilt';
 let previous = null, accumulator = 0, paused = document.hidden, fault = null;
 let seenEvent = 0, feedbackUntil = performance.now() + 5000, feedback = null;
 let observation;
+let placement = null, placementContact = null;
 const ballNodes = new Map();
 const namespace = 'http://www.w3.org/2000/svg';
 function node(tag, attrs, parent) {
@@ -62,7 +63,41 @@ function pointerData(event) {
 function cancel() {
   const active = gesture.snapshot();
   gesture.cancel();
+  const placing = placementContact; placementContact = null;
+  if (placing && table.hasPointerCapture(placing.pointerId)) table.releasePointerCapture(placing.pointerId);
   if (active && table.hasPointerCapture(active.pointerId)) table.releasePointerCapture(active.pointerId);
+}
+function setPlacementCandidate(x, y) {
+  const state = simulation.snapshot();
+  placement = { pending: true, candidate: { x, y }, ...simulation.placementValidity({ x, y }),
+    epoch: state.epoch, committed: null };
+}
+function preparePlacement(state) {
+  if (placement?.epoch !== state.epoch) placement = null;
+  if (state.phase !== 'placing-white') return;
+  if (placement?.pending) return;
+  // Centre first, then a bounded felt grid. Four balls cannot occupy every spot.
+  const candidates = [{ x: 500, y: 250 }];
+  for (let y = 50; y <= 450; y += 50) for (let x = 50; x <= 950; x += 50) candidates.push({ x, y });
+  const candidate = candidates.find(p => simulation.placementValidity(p).valid) || candidates[0];
+  setPlacementCandidate(candidate.x, candidate.y);
+  syncPlacementControls();
+}
+function syncPlacementControls() {
+  if (!placement?.pending) return;
+  $('placement-x').value = placement.candidate.x.toFixed(2);
+  $('placement-y').value = placement.candidate.y.toFixed(2);
+}
+function commitPlacement(epoch) {
+  if (!placement?.pending || paused || fault || !simulation.placeWhite({ ...placement.candidate, epoch })) return false;
+  placement = { ...placement, pending: false, committed: { ...placement.candidate, epoch }, valid: true, reason: null };
+  feedbackUntil = performance.now() + 5000;
+  return true;
+}
+function placementHint() {
+  if (placement?.valid) return 'Clear spot · release to place · Menu for keyboard controls';
+  return { occupied: 'Ball in the way · choose a clear spot', cushion: 'Too close to a cushion · move onto clear felt',
+    pocket: 'Too close to a pocket · move onto clear felt', 'invalid-coordinate': 'Enter a position on the table' }[placement?.reason] || 'Choose clear felt';
 }
 function layout() {
   cancel();
@@ -88,6 +123,19 @@ function line(id, x1, y1, x2, y2) {
 }
 function render() {
   const state = simulation.snapshot(), active = gesture.snapshot();
+  preparePlacement(state);
+  const placing = state.phase === 'placing-white' && !fault;
+  const visibleCandidate = placing && Number.isFinite(placement.candidate.x) && Number.isFinite(placement.candidate.y);
+  $('placement-preview').style.display = visibleCandidate ? '' : 'none';
+  if (visibleCandidate) {
+    $('placement-preview').setAttribute('cx', placement.candidate.x);
+    $('placement-preview').setAttribute('cy', placement.candidate.y);
+    $('placement-preview').classList.toggle('invalid', !placement.valid);
+  }
+  $('placement-controls').hidden = !placing;
+  $('placement-confirm').disabled = !placing || !placement.valid || paused;
+  const keyboardPlacementHint = placement?.valid ? 'Clear spot · choose Place white to confirm' : placementHint();
+  if (placing && $('placement-feedback').textContent !== keyboardPlacementHint) $('placement-feedback').textContent = keyboardPlacementHint;
   for (const b of state.balls) {
     if (!ballNodes.has(b.id)) ballNodes.set(b.id, node('circle', { id: `ball-${b.id}`, r: b.r, fill: b.role === 'cue' ? 'url(#white-ball)' : 'url(#red-ball)', stroke: '#05231d', 'stroke-width': 1 }, $('balls')));
     const el = ballNodes.get(b.id);
@@ -121,7 +169,7 @@ function render() {
   const messages = {
     ready: ['Straight pots', 'Drag away from the white · release to shoot'],
     rolling: ['Balls rolling', 'Wait for the table to settle'],
-    'placing-white': ['White potted', 'Re-rack to continue practice'],
+    'placing-white': ['Place the white', placementHint()],
     cleared: ['Table cleared', 'Re-rack when you’re ready'],
     fault: ['Practice paused', 'The table could not progress safely. Re-rack to recover.'],
   };
@@ -140,12 +188,22 @@ function render() {
     phase: fault ? 'fault' : active && state.phase === 'ready' ? 'aiming' : state.phase,
     shotReady: state.phase === 'ready' && !paused && !fault && !active,
     strength, tuning: { ...settings }, guide, aimAngle, pull: active?.pull || 0, power: active?.power || 0, gesture: active,
-    paused, placement: null, health: { ok: !fault && state.phase !== 'fault', paused, fault: fault || state.fault || null },
+    paused, placement: placement ? { ...placement, pointerId: placementContact?.pointerId ?? null } : null, health: { ok: !fault && state.phase !== 'fault', paused, fault: fault || state.fault || null },
     geometry: { matrix: m, width: TABLE.width, height: TABLE.height, ballRadius: TABLE.ballRadius, rails: TABLE.rails, jaws: TABLE.jaws, pockets: TABLE.pockets },
   });
 }
 table.addEventListener('pointerdown', event => {
-  if (!event.isPrimary || event.button !== 0 || $('menu').open || paused || fault || simulation.snapshot().phase !== 'ready') return;
+  if (!event.isPrimary || event.button !== 0 || $('menu').open || paused || fault) return;
+  const state = simulation.snapshot();
+  if (state.phase === 'placing-white') {
+    if (placementContact) return;
+    const p = worldPoint(event.clientX, event.clientY);
+    placementContact = { pointerId: event.pointerId, epoch: state.epoch };
+    setPlacementCandidate(p.x, p.y); syncPlacementControls();
+    table.setPointerCapture(event.pointerId);
+    positionFeedback({ x: event.clientX, y: event.clientY }); render(); return;
+  }
+  if (state.phase !== 'ready') return;
   const p = worldPoint(event.clientX, event.clientY);
   if (p.x < 0 || p.x > TABLE.width || p.y < 0 || p.y > TABLE.height) return;
   const d = pointerData(event);
@@ -156,12 +214,25 @@ table.addEventListener('pointerdown', event => {
   }
 });
 table.addEventListener('pointermove', event => {
+  if (placementContact?.pointerId === event.pointerId) {
+    const p = worldPoint(event.clientX, event.clientY);
+    setPlacementCandidate(p.x, p.y); syncPlacementControls();
+    positionFeedback({ x: event.clientX, y: event.clientY }); render(); return;
+  }
   if (gesture.snapshot()?.pointerId !== event.pointerId) return;
   const d = pointerData(event);
   gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
   positionFeedback({ x: event.clientX, y: event.clientY }); render();
 });
 table.addEventListener('pointerup', event => {
+  if (placementContact?.pointerId === event.pointerId) {
+    const contact = placementContact; placementContact = null;
+    const p = worldPoint(event.clientX, event.clientY);
+    setPlacementCandidate(p.x, p.y); syncPlacementControls();
+    commitPlacement(contact.epoch);
+    if (table.hasPointerCapture(event.pointerId)) table.releasePointerCapture(event.pointerId);
+    positionFeedback(); render(); return;
+  }
   if (gesture.snapshot()?.pointerId !== event.pointerId) return;
   const d = pointerData(event);
   gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
@@ -171,7 +242,7 @@ table.addEventListener('pointerup', event => {
   positionFeedback(); render();
 });
 for (const event of ['pointercancel', 'lostpointercapture']) table.addEventListener(event, e => {
-  if (gesture.snapshot()?.pointerId === e.pointerId) { cancel(); render(); }
+  if (gesture.snapshot()?.pointerId === e.pointerId || placementContact?.pointerId === e.pointerId) { cancel(); render(); }
 });
 window.addEventListener('blur', () => { cancel(); render(); });
 window.addEventListener('pagehide', () => { cancel(); paused = true; previous = null; accumulator = 0; render(); });
@@ -182,7 +253,7 @@ document.addEventListener('visibilitychange', () => {
   cancel(); paused = document.hidden; previous = null; accumulator = 0; render();
 });
 $('menu-open').addEventListener('click', () => {
-  cancel(); syncSettings(); $('angle').value = String(Math.round(aimAngle * 180 / Math.PI * 1000) / 1000);
+  cancel(); syncSettings(); syncPlacementControls(); $('angle').value = String(Math.round(aimAngle * 180 / Math.PI * 1000) / 1000);
   $('menu').showModal(); positionFeedback(); render();
 });
 $('menu-close').addEventListener('click', () => $('menu').close());
@@ -225,6 +296,16 @@ $('defaults').addEventListener('click', () => {
   rerack(); syncSettings(); $('menu').close();
 });
 syncSettings();
+for (const id of ['placement-x', 'placement-y']) $(id).addEventListener('input', () => {
+  cancel();
+  if (simulation.snapshot().phase !== 'placing-white') return;
+  setPlacementCandidate($('placement-x').valueAsNumber, $('placement-y').valueAsNumber); render();
+});
+$('placement-confirm').addEventListener('click', () => {
+  cancel();
+  if (commitPlacement(simulation.snapshot().epoch)) $('menu').close();
+  positionFeedback(); render();
+});
 $('angle').addEventListener('input', () => {
   cancel(); if (Number.isFinite($('angle').valueAsNumber)) aimAngle = $('angle').valueAsNumber * Math.PI / 180;
   render();

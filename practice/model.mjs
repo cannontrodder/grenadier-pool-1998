@@ -1,6 +1,8 @@
 import { TABLE, createTable, nearestOnRail, pocketCoordinates } from './geometry.mjs';
 
 export { TABLE } from './geometry.mjs';
+// A small explicit gap avoids numerically touching placement contacts.
+export const PLACEMENT_CLEARANCE = 0.01;
 export const PHYSICS = Object.freeze({ tickSeconds: 1 / 120, maxTravel: 0.75,
   ballRestitution: 0.96, cushionRestitution: 0.82,
   rollingDrag: 0.45, rollingFriction: 90, settleSpeed: 2, settleTicks: 30,
@@ -81,18 +83,18 @@ export function createPractice({ scenario = DEFAULT_SCENARIO, pocketScale = 1 } 
   }
   function placementValidity({ x, y } = {}) {
     if (![x, y].every(Number.isFinite)) return { valid: false, reason: 'invalid-coordinate' };
-    if (x < table.ballRadius || x > table.width - table.ballRadius ||
-        y < table.ballRadius || y > table.height - table.ballRadius) return { valid: false, reason: 'cushion' };
+    if (x < table.ballRadius + PLACEMENT_CLEARANCE || x > table.width - table.ballRadius - PLACEMENT_CLEARANCE ||
+        y < table.ballRadius + PLACEMENT_CLEARANCE || y > table.height - table.ballRadius - PLACEMENT_CLEARANCE) return { valid: false, reason: 'cushion' };
     for (const pocket of table.pockets) {
       const local = pocketCoordinates(x, y, pocket);
-      if (local.depth > -table.ballRadius && Math.abs(local.lateral) < pocket.mouth.halfWidth + table.ballRadius) {
+      if (local.depth > -table.ballRadius - PLACEMENT_CLEARANCE && Math.abs(local.lateral) < pocket.mouth.halfWidth + table.ballRadius) {
         return { valid: false, reason: 'pocket' };
       }
     }
-    if (table.jaws.some(jaw => Math.hypot(x - jaw.x, y - jaw.y) < table.ballRadius + jaw.r)) {
+    if (table.jaws.some(jaw => Math.hypot(x - jaw.x, y - jaw.y) < table.ballRadius + jaw.r + PLACEMENT_CLEARANCE)) {
       return { valid: false, reason: 'cushion' };
     }
-    if (liveBalls().some(ball => ball.role !== 'cue' && Math.hypot(x - ball.x, y - ball.y) < 2 * table.ballRadius + 0.01)) {
+    if (liveBalls().some(ball => ball.role !== 'cue' && Math.hypot(x - ball.x, y - ball.y) < 2 * table.ballRadius + PLACEMENT_CLEARANCE)) {
       return { valid: false, reason: 'occupied' };
     }
     return { valid: true, reason: null };

@@ -52,3 +52,8 @@ summary { min-height: 44px; font-weight: bold; }
 details { margin-top: 16px; }
 #defaults { width: 100%; margin-top: 20px; }
 #aim.locked #aim-line { stroke: #f2c14e; opacity: .9; }
+
+#placement-preview { fill: #f4f0df99; stroke: #f2c14e; stroke-width: 3; stroke-dasharray: 5 3; }
+#placement-preview.invalid { fill: #d92e3d88; stroke: #ff8590; }
+#placement-controls { border-bottom: 1px solid #ffffff30; padding-bottom: 20px; }
+#placement-title { font-size: 18px; margin: 0; }
