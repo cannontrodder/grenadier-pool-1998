@@ -215,3 +215,10 @@ except (Exception, subprocess.TimeoutExpired) as error:  # noqa: BLE001 - classi
         )
     )
     sys.exit(1)
+finally:
+    # Each case owns its browser. Do not leave idle animation loops competing
+    # with later simulation/browser checks after evidence has been retained.
+    try:
+        invoke(["close"], checked=False, record=False)
+    except (Exception, subprocess.TimeoutExpired):
+        pass
