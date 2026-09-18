@@ -12,11 +12,14 @@ async (page) => {
     if (recent.length > 12) recent.shift();
     return o;
   };
-  const touch = async (type, p) =>
-    cdp.send("Input.dispatchTouchEvent", {
+  const touch = async (type, p) => {
+    const frame = (await observe()).frame;
+    await cdp.send("Input.dispatchTouchEvent", {
       type,
       touchPoints: p ? [{ x: p.x, y: p.y, id: 0, radiusX: 9, radiusY: 9 }] : [],
     });
+    await page.waitForFunction(f => touchStudy.observe().frame > f + 2, frame, {timeout: 2000});
+  };
   try {
     await page.locator("#reset").click();
     const c = (await page.evaluate(() => touchStudy.geometry())).cue;
@@ -57,7 +60,7 @@ async (page) => {
     const path =
       "output/playwright/touch-study/native-failure-" + Date.now() + ".png";
     await page.screenshot({ path });
-    return { status: "FAIL", error: String(e), recent, checks, path };
+    return { status: "FAIL", classification: String(e).includes("GAME:")?"game-failure":"harness-failure", error: String(e), recent, checks, path };
   } finally {
     await cdp.detach();
   }

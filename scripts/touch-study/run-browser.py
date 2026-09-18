@@ -31,15 +31,15 @@ try:
     evidence.write_text(json.dumps({'result':payload,'commands':records},indent=2))
     if payload['status']=='FAIL':
         # Preserve original diagnostics. Recovery only checks restored health, never upgrades failure to pass.
-        if payload['classification']=='harness-failure':
+        if payload.get('classification','uncertain')=='harness-failure':
             try:
                 call('reload')
                 health=call('eval','() => window.touchStudy?.health()')
                 (output/f'recovery-{run}.json').write_text(json.dumps({'health':health,'original':str(evidence)}))
             except Exception as exc:
                 (output/f'recovery-{run}.json').write_text(json.dumps({'error':str(exc),'original':str(evidence)}))
-        print(json.dumps({'status':'EXPECTED HARNESS FAILURE' if args.fault and payload['classification']=='harness-failure' else 'FAIL','error':payload['error'],'evidence':str(evidence)}))
-        sys.exit(0 if args.fault and payload['classification']=='harness-failure' else 1)
+        print(json.dumps({'status':'EXPECTED HARNESS FAILURE' if args.fault and payload.get('classification','uncertain')=='harness-failure' else 'FAIL','classification':payload.get('classification','uncertain'),'error':payload['error'],'evidence':str(evidence)}))
+        sys.exit(0 if args.fault and payload.get('classification','uncertain')=='harness-failure' else 1)
     if args.fault: raise RuntimeError('Injected harness fault was not detected')
     print(json.dumps({'status':'PASS','assertions':payload.get('assertions',len(payload.get('checks',[]))),'revision':payload['revision'],'viewport':payload.get('viewport',{'width':args.width,'height':args.height}),'evidence':str(evidence)}))
 except (Exception,subprocess.TimeoutExpired) as exc:

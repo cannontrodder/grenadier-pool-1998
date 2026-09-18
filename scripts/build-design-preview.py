@@ -7,6 +7,8 @@ import subprocess
 
 root = Path(__file__).resolve().parents[1]
 source = root / 'docs' / 'design'
+if subprocess.check_output(['git', 'status', '--porcelain', '--', 'docs/design', 'scripts'], cwd=root, text=True).strip():
+    raise SystemExit('Commit source changes before building a revision-labelled preview')
 output = root / 'out'
 if not (source / 'index.html').is_file():
     raise SystemExit('Missing design preview entry point')

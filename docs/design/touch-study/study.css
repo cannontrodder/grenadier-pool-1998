@@ -23,6 +23,7 @@ a {
 button,
 select {
   min-height: 44px;
+  min-width: 44px;
   border: 1px solid #a8b5bd;
   background: var(--navy);
   color: var(--paper);
