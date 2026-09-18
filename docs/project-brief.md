@@ -20,7 +20,7 @@ After the competitive result, allow an unscored knockabout with remaining balls,
 
 Explore pub pullbacks between shots, with people seated or stepping up; no finished 3D model exists. The user's relative room plan places the bar on the bottom/back wall, pool to its left, seats beyond/around it, foyer immediately above the bar with toilets either side, and seating without a pool table on the right. Betty is the formidable landlady, with a possible humorous barring interlude whose trigger/effect remain open.
 
-Sound should evoke a 1990s pub, led by normal pool sounds. See [selected direction S1.3](design/selected-direction.md) and raw feedback for precise decisions and superseded ideas.
+Sound should evoke a 1990s pub, led by normal pool sounds. See [selected direction S1.4](design/selected-direction.md) and raw feedback for precise decisions and superseded ideas.
 
 ## Feedback and delivery
 
@@ -53,3 +53,5 @@ On failure, retain a bounded diagnostic bundle containing recent actions and obs
 ## Current design-only boundary
 
 The user confirmed that this work remains planning and look-and-feel design, not app implementation. Friend portraits should be pixel-art caricatures, with selective pixelation elsewhere under the Sports Broadcast direction. #17 captures the initial C1 treatment. Playable study #7 remains future work; this revision does not start it.
+
+Room correction approved in #18: entrance doors sit on the far/top wall, with toilets immediately left and right there. A long foyer extends down into the room and opens toward the bar on the opposite bottom/back wall. Pool and other seating remain as previously drawn.

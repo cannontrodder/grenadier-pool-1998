@@ -78,3 +78,7 @@ User: “So right now can we just be clear: are you still in the planning phase,
 User: “I really would like it to have almost a pixelated look at times, not just for the pool table itself, but definitely for our photos. They need to be caricatures”.
 
 Interpretation: remain in planning/look-and-feel design; no app implementation in this revision. Adopt selective pixelation and recognisable caricature portraits, retaining the selected broadcast framing. First generated concept C1 is a proposal, not approved final likeness. Supersedes straight photo crops in M1.
+
+## Floor-plan correction and design approval
+
+The user approved the floor plan except the entrance/toilet arrangement: move both toilets to the far/top wall beside the entrance doors, with a long foyer opening into the room toward the bottom/back-wall bar. Everything else was described as great. They also said the mockups are really good and the pixelated group shot is great, and requested individual player avatars from it.
