@@ -36,7 +36,7 @@ The user selected **three object balls plus the white**, in repeatable practice 
 10. As a keyboard user, I can take shots, choose layouts, tune strength and replace the white using named controls.
 11. As a tester, I can play through normal UI actions and verify positions, motion, pocket outcomes and readiness from concise observations.
 12. As a tester, I receive a bounded diagnostic failure when the game or harness stops progressing, rather than a false pass.
-13. As the product owner, I can open a tested private phone link and accept or correct this phase on a physical device.
+13. As the product owner, I can open a tested shareable phone link and accept or correct this phase on a physical device.
 
 ## Accepted interaction contract
 
@@ -99,7 +99,7 @@ Start from the prototype safeguards: 3.5s action deadline, 2s freshness deadline
 | A6 | A scratch waits for settling, then permits legal white placement. Occupied, rail and pocket locations fail visibly. Valid placement consumes its pointer; only a fresh gesture can shoot. Keyboard placement works. White plus final-object capture clears without a placement prompt. |
 | A7 | WebKit at 390×844, 844×390 and 320×568, plus Chromium at 412×839, pass normal-input journeys, including a full primary one-finger pull/release clear in every layout, one representative scratch → invalid/legal placement → fresh shot journey, and a separate keyboard path. Native touch dispatch covers pointer ownership/cancellation. Rotation preserves world positions and disarms. Hidden-page motion pauses/resumes without catch-up. Targeted ready/armed/moving/pot/placement screenshots and timed motion samples match observations within 1 CSS px for ball centers; mouth/jaw geometry also matches. |
 | A8 | Same fixtures and committed shot parameters replay with declared tolerances; varying render cadence does not alter fixed-step outcomes. Missing/stale observations, action/progress timeouts and disconnection fault checks fail promptly with original diagnostics retained; recovery cannot turn them green. |
-| A9 | A private deployed build passes hosted health/revision and representative normal-input checks. The owner opens it on a physical phone and explicitly accepts that deployed revision. Corrections keep delivery open until fixed, reviewed, regression-tested, redeployed and accepted. Record device/browser/orientation when supplied; emulation is not physical evidence. Accepted touch study does not substitute for this new phase feedback. |
+| A9 | A deployed build passes hosted health/revision and representative normal-input checks. The owner opens it on a physical phone and explicitly accepts that deployed revision. Corrections keep delivery open until fixed, reviewed, regression-tested, redeployed and accepted. Record device/browser/orientation when supplied; emulation is not physical evidence. Accepted touch study does not substitute for this new phase feedback. |
 
 ## Delivery sequence
 
@@ -122,6 +122,14 @@ Native GitHub blockers and milestone membership are recorded on the published is
 | [#29 — Deploy the first playable table and record phone feedback](https://github.com/cannontrodder/grenadier-pool-1998/issues/29) | #28 | gpt-5.6-sol / medium |
 
 Start with #24. Issues #25 and #26 can run in parallel once #24 is complete. #29 remains open until the new deployed phase receives physical-phone acceptance; #10 is natively blocked by #29.
+
+## Hosting update during #24
+
+The owner requested a friends' preview on GitHub Pages and authorized making the
+repository public if required. [#30](https://github.com/cannontrodder/grenadier-pool-1998/issues/30)
+publishes the tested #24 foundation early. The [hosting guide](../practice-hosting.md)
+records the public runtime build. This updates the earlier private-link preference;
+it does not waive the remaining gameplay, review or physical-phone acceptance in #29.
 
 ## Out of scope
 

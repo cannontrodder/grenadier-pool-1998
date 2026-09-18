@@ -4,3 +4,4 @@
 !.env.example
 .playwright-cli/
 out/
+out-public/

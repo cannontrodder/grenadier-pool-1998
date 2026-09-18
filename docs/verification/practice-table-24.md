@@ -1,7 +1,7 @@
 # Working practice table · #24
 
 This evidence covers the foundation issue, not completion or physical-device
-acceptance of Phase 3. Three layouts, placement UI, integrated review and private
+acceptance of Phase 3. Three layouts, placement UI, integrated review and full-phase
 deployment remain #25–#29.
 
 Application revision tested: `f8e4f09ebc8fc2cbc28ba0d7e4318f24b1b5a369`.
