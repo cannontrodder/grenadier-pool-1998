@@ -1,0 +1,100 @@
+[
+  {
+    "status": "PASS",
+    "case": "tuning",
+    "assertions": 48,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-tuning-390x844-1789770331266517000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "tuning",
+    "assertions": 48,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-tuning-landscape-844x390-1789770366424798000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "pot",
+    "assertions": 40,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-pot-390x844-1789770613926768000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "placement",
+    "assertions": 23,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-placement-fixed-390x844-1789770366387518000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "interaction",
+    "assertions": 64,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-interaction-fixed-844x390-1789770366401314000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "native",
+    "assertions": 37,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "evidence": "aim33-native-capture-fixed-412x839-1789770442970216000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-straight-pots-390x844-1789770564838966000.json",
+    "layout": "straight-pots"
+  },
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-cut-pots-390x844-1789770564856244000.json",
+    "layout": "cut-pots"
+  },
+  {
+    "status": "PASS",
+    "case": "layouts",
+    "assertions": 70,
+    "buildRevision": "2e7b399941ce24df715bc122482a445efb087a95",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/aim33-final-cushion-practice-390x844-1789770564825564000.json",
+    "layout": "cushion-practice"
+  }
+]

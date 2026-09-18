@@ -74,3 +74,8 @@ exceeds0.002rad or power error exceeds0.004. Three final layout runs passed70
 assertions each; index: `aim33-layout-release-summary.json`. Final successful
 local coverage is nine cases/470 assertions, excluding superseded attempts.
 The runtime remains `2e7b399`; later commits change harness/evidence only.
+
+The final endpoint fixture (`1797b54...26def42`) also received independent
+Standards approval with zero findings: search bounds are finite, observations
+remain read-only, and executed input is checked before release. The compact
+final nine-case index is `aim33-final-index.json`.
