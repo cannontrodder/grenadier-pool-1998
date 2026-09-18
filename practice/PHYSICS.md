@@ -58,3 +58,28 @@ The routine suite includes 32 full-speed angles and specific shallow-entry regre
 The broad sweep has a 90-second total wall-time bound; each angle still has a 1200-tick simulation bound. The initial 45-second total budget completed only 799/1000 cases on the development machine, so that incomplete harness run was not reported as a pass. The 90-second suite bound is separate from the browser harness’s per-scenario process deadline.
 
 Final retained-command verification: **26/26 tests passed**, including all **1000** full-3960 sweep shots; sweep runtime **61.7 seconds**, total **63.3 seconds**, maximum settle **656 ticks**, with no faults/escapes/energy-growth failures. This is local Node model evidence, not browser or physical-device evidence.
+
+## Adjustable pockets · #32
+
+`createTable(pocketScale=1)` clamps finite input to 0.9–1.3 and uses 1 for
+non-finite input. It returns deeply frozen geometry. `createPractice` accepts
+that scale and exposes its current frozen geometry as `table`.
+`resetScenario(next?, {pocketScale?})` changes geometry only with a fresh reset
+epoch; omission retains the existing size. The app chooses 1.1 by default.
+Rails, jaw positions, mouth widths and bowl radii change together. Corner mouth
+centres and capture depths scale with the opening; side capture depth remains
+14. Ball radius, jaw radius, energy, friction and all solver bounds stay fixed.
+
+The extended pocket suite ran 1,000 maximum-strength angles at each of 0.9,
+1.1 and 1.3: 3,000 shots with per-tick collision, finite-bound and energy checks.
+Longest settling was 657/656/656 ticks respectively (under 5.48 seconds).
+Central captures, jaw/rail misses, off-centre widening comparisons and placement
+exclusion are covered at all six mouths. Reproduce with:
+
+```sh
+PRACTICE_POCKET_SWEEP=1000 node --test scripts/practice/model.test.mjs
+```
+
+Each scale has a 90-second sweep deadline and 1,200-tick per-shot bound; the
+normal test suite uses 64 angles per scale. This verifies the allowed sizes,
+not a claim that a particular size feels best to a human player.

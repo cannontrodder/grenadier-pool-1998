@@ -29,4 +29,4 @@ Choosing a clear playable spot for the white after a scratch. The placement cont
 All three object balls have been potted and remaining motion has settled; the player can explicitly re-rack.
 
 **Re-rack**:
-Restore the selected practice layout, resetting balls and shot state while retaining the current strength setting within the page.
+Restore the selected practice layout, resetting balls and shot state while retaining the current practice tuning settings within the page.

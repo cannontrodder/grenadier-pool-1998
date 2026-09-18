@@ -8,14 +8,18 @@ export function pullAt(radius, startRadius) {
 export function createGesture() {
   let active = null;
   return {
-    begin(pointerId, startRadius, epoch) {
+    begin(pointerId, startRadius, epoch, { lockAim = false, lockDistance = 28, angle = 0 } = {}) {
       if (active) return false;
-      active = { pointerId, startRadius, epoch, active: true, angle: 0, ...pullAt(startRadius, startRadius) };
+      active = { pointerId, startRadius, epoch, active: true, angle, lockAim, lockDistance: Number.isFinite(lockDistance) ? clamp(lockDistance, 20, 60) : 28, locked: false, ...pullAt(startRadius, startRadius) };
       return true;
     },
     move(pointerId, radius, angle) {
       if (active?.pointerId !== pointerId) return false;
-      Object.assign(active, pullAt(radius, active.startRadius), { angle });
+      const travel = radius - active.startRadius;
+      if (travel <= 12) active.locked = false;
+      else if (active.lockAim && travel >= active.lockDistance) active.locked = true;
+      if (!active.locked) active.angle = angle;
+      Object.assign(active, pullAt(radius, active.startRadius));
       return true;
     },
     release(pointerId, epoch) {

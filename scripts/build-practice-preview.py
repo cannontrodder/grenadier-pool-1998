@@ -7,7 +7,7 @@ import subprocess
 
 root = Path(__file__).resolve().parents[1]
 output = root / 'out-public'
-runtime = ['index.html', 'app.js', 'style.css', 'input.mjs', 'model.mjs', 'geometry.mjs']
+runtime = ['index.html', 'app.js', 'style.css', 'input.mjs', 'model.mjs', 'geometry.mjs', 'tuning.mjs', 'guide.mjs']
 for name in runtime:
     source = root / 'practice' / name
     if not source.is_file() or source.is_symlink():

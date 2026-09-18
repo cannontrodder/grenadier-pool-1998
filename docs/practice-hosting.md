@@ -22,7 +22,7 @@ python3 scripts/build-practice-preview.py
 python3 -m http.server 8766 --bind 127.0.0.1 --directory out-public
 ```
 
-The dedicated build copies an allowlist of six runtime files plus the favicon,
+The dedicated build copies an allowlist of eight runtime files plus the favicon,
 revision marker and `.nojekyll`. It does not copy design pages, friend photos,
 documentation or diagnostic bundles into the hosted site. All game URLs are
 relative so the repository path works without configuration.

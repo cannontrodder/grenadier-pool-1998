@@ -1,11 +1,14 @@
 import { createPractice } from './model.mjs';
-import { TABLE } from './geometry.mjs';
-import { createGesture, clamp } from './input.mjs';
+import { TUNING, DEFAULT_TUNING, boundedSetting } from './tuning.mjs';
+import { aimGuide } from './guide.mjs';
+import { createGesture } from './input.mjs';
 
 const $ = (id) => document.getElementById(id);
 const table = $('table'), world = $('world'), game = $('game');
-const simulation = createPractice(), gesture = createGesture();
-let strength = 1.8, aimAngle = -Math.PI / 2;
+const settings = { ...DEFAULT_TUNING };
+const simulation = createPractice({ pocketScale: settings.pocketSize / 100 }), gesture = createGesture();
+let TABLE = simulation.table;
+let strength = settings.strength, aimAngle = -Math.PI / 2;
 let frame = 0, observedAt = performance.now(), buildRevision = 'local-unbuilt';
 let previous = null, accumulator = 0, paused = document.hidden, fault = null;
 let seenEvent = 0, feedbackUntil = performance.now() + 5000, feedback = null;
@@ -18,22 +21,26 @@ function node(tag, attrs, parent) {
   parent.append(element);
   return element;
 }
-for (const p of TABLE.pockets) {
-  const { x, y, nx, ny, tx, ty, halfWidth } = p.mouth;
-  const corners = [-1, 1].map(sign => [x + sign * tx * halfWidth, y + sign * ty * halfWidth]);
-  const back = corners.map(([px, py]) => [px + nx * p.captureDepth, py + ny * p.captureDepth]);
-  node('polygon', { id: `mouth-${p.id}`, points: [...corners, ...back.reverse()].map(p => p.join(',')).join(' '), fill: '#020b0b' }, $('pockets'));
-  node('circle', { id: `pocket-${p.id}`, cx: p.x, cy: p.y, r: p.r, fill: '#020b0b', stroke: '#9a753b', 'stroke-width': 2 }, $('pockets'));
+function drawGeometry() {
+  for (const id of ['pockets', 'rails', 'jaws']) $(id).replaceChildren();
+  for (const p of TABLE.pockets) {
+    const { x, y, nx, ny, tx, ty, halfWidth } = p.mouth;
+    const corners = [-1, 1].map(sign => [x + sign * tx * halfWidth, y + sign * ty * halfWidth]);
+    const back = corners.map(([px, py]) => [px + nx * p.captureDepth, py + ny * p.captureDepth]);
+    node('polygon', { id: `mouth-${p.id}`, points: [...corners, ...back.reverse()].map(p => p.join(',')).join(' '), fill: '#020b0b' }, $('pockets'));
+    node('circle', { id: `pocket-${p.id}`, cx: p.x, cy: p.y, r: p.r, fill: '#020b0b', stroke: '#9a753b', 'stroke-width': 2 }, $('pockets'));
+  }
+  for (const r of TABLE.rails) {
+    const ox = r.x1 === r.x2 ? (r.x1 === 0 ? -12 : 12) : 0;
+    const oy = r.y1 === r.y2 ? (r.y1 === 0 ? -12 : 12) : 0;
+    node('polygon', { points: [[r.x1, r.y1], [r.x2, r.y2], [r.x2 + ox, r.y2 + oy], [r.x1 + ox, r.y1 + oy]].map(p => p.join(',')).join(' '), fill: '#063f30' }, $('rails'));
+    node('line', { id: `rail-${r.id}`, x1: r.x1, y1: r.y1, x2: r.x2, y2: r.y2, stroke: '#2a8e6b', 'stroke-width': 1 }, $('rails'));
+  }
+  for (const j of TABLE.jaws) {
+    node('circle', { id: `jaw-${j.id}`, cx: j.x, cy: j.y, r: j.r, fill: '#063f30' }, $('jaws'));
+  }
 }
-for (const r of TABLE.rails) {
-  const ox = r.x1 === r.x2 ? (r.x1 === 0 ? -12 : 12) : 0;
-  const oy = r.y1 === r.y2 ? (r.y1 === 0 ? -12 : 12) : 0;
-  node('polygon', { points: [[r.x1, r.y1], [r.x2, r.y2], [r.x2 + ox, r.y2 + oy], [r.x1 + ox, r.y1 + oy]].map(p => p.join(',')).join(' '), fill: '#063f30' }, $('rails'));
-  node('line', { id: `rail-${r.id}`, x1: r.x1, y1: r.y1, x2: r.x2, y2: r.y2, stroke: '#2a8e6b', 'stroke-width': 1 }, $('rails'));
-}
-for (const j of TABLE.jaws) {
-  node('circle', { id: `jaw-${j.id}`, cx: j.x, cy: j.y, r: j.r, fill: '#063f30' }, $('jaws'));
-}
+drawGeometry();
 function freeze(value) {
   if (value && typeof value === 'object' && !Object.isFrozen(value)) {
     Object.values(value).forEach(freeze);
@@ -60,8 +67,8 @@ function cancel() {
 function layout() {
   cancel();
   const portrait = innerHeight > innerWidth;
-  table.setAttribute('viewBox', portrait ? '0 0 600 1100' : '0 0 1100 600');
-  world.setAttribute('transform', portrait ? 'translate(550 50) rotate(90)' : 'translate(50 50)');
+  table.setAttribute('viewBox', portrait ? '0 0 620 1120' : '0 0 1120 620');
+  world.setAttribute('transform', portrait ? 'translate(560 60) rotate(90)' : 'translate(60 60)');
   render();
 }
 function positionFeedback(pointer) {
@@ -89,7 +96,12 @@ function render() {
   }
   const cue = state.balls.find(b => b.role === 'cue'), dx = Math.cos(aimAngle), dy = Math.sin(aimAngle);
   const pull = active?.pull || 0;
-  line('aim-line', cue.x, cue.y, cue.x + dx * 200, cue.y + dy * 200);
+  const guide = aimGuide(cue, state.balls, TABLE, aimAngle, TABLE.width * settings.guideLength / 100);
+  line('aim-line', cue.x, cue.y, guide.x, guide.y);
+  $('contact-marker').setAttribute('cx', guide.x); $('contact-marker').setAttribute('cy', guide.y);
+  $('contact-marker').setAttribute('r', cue.r);
+  $('contact-marker').style.display = settings.contactMarker && guide.hit ? '' : 'none';
+  $('aim').classList.toggle('locked', !!active?.locked);
   line('cue', cue.x - dx * (28 + pull * 65), cue.y - dy * (28 + pull * 65), cue.x - dx * (180 + pull * 65), cue.y - dy * (180 + pull * 65));
   $('neutral').setAttribute('cx', cue.x); $('neutral').setAttribute('cy', cue.y);
   const m = matrix();
@@ -115,7 +127,7 @@ function render() {
   };
   let [title, hint] = messages[phase] || messages.fault;
   if (paused) { title = 'Practice paused'; hint = 'Return to the table to continue'; }
-  if (active) { title = active.armed ? `Release to shoot · ${Math.round(active.power * 100)}%` : 'Aim · pull to add power'; hint = 'Return inward and lift to abort'; }
+  if (active) { title = active.armed ? `Release to shoot · ${Math.round(active.power * 100)}%` : 'Aim · pull to add power'; hint = active.locked ? 'Aim locked · return inward to re-aim or abort' : 'Aim freely · return inward and lift to abort'; }
   else if (feedback && performance.now() < feedbackUntil && phase === 'rolling') title = feedback;
   if ($('status').textContent !== title) $('status').textContent = title;
   if ($('hint').textContent !== hint) $('hint').textContent = hint;
@@ -127,7 +139,7 @@ function render() {
     fault: fault || state.fault || null,
     phase: fault ? 'fault' : active && state.phase === 'ready' ? 'aiming' : state.phase,
     shotReady: state.phase === 'ready' && !paused && !fault && !active,
-    strength, aimAngle, pull: active?.pull || 0, power: active?.power || 0, gesture: active,
+    strength, tuning: { ...settings }, guide, aimAngle, pull: active?.pull || 0, power: active?.power || 0, gesture: active,
     paused, placement: null, health: { ok: !fault && state.phase !== 'fault', paused, fault: fault || state.fault || null },
     geometry: { matrix: m, width: TABLE.width, height: TABLE.height, ballRadius: TABLE.ballRadius, rails: TABLE.rails, jaws: TABLE.jaws, pockets: TABLE.pockets },
   });
@@ -137,22 +149,22 @@ table.addEventListener('pointerdown', event => {
   const p = worldPoint(event.clientX, event.clientY);
   if (p.x < 0 || p.x > TABLE.width || p.y < 0 || p.y > TABLE.height) return;
   const d = pointerData(event);
-  if (gesture.begin(event.pointerId, d.radius, simulation.snapshot().epoch)) {
+  if (gesture.begin(event.pointerId, d.radius, simulation.snapshot().epoch, { ...settings, angle: d.angle })) {
     table.setPointerCapture(event.pointerId);
-    gesture.move(event.pointerId, d.radius, d.angle); aimAngle = d.angle;
+    gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
     positionFeedback({ x: event.clientX, y: event.clientY }); render();
   }
 });
 table.addEventListener('pointermove', event => {
   if (gesture.snapshot()?.pointerId !== event.pointerId) return;
   const d = pointerData(event);
-  gesture.move(event.pointerId, d.radius, d.angle); aimAngle = d.angle;
+  gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
   positionFeedback({ x: event.clientX, y: event.clientY }); render();
 });
 table.addEventListener('pointerup', event => {
   if (gesture.snapshot()?.pointerId !== event.pointerId) return;
   const d = pointerData(event);
-  gesture.move(event.pointerId, d.radius, d.angle); aimAngle = d.angle;
+  gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
   const shot = gesture.release(event.pointerId, simulation.snapshot().epoch);
   if (table.hasPointerCapture(event.pointerId)) table.releasePointerCapture(event.pointerId);
   if (shot && !paused && !fault) { simulation.shoot({ ...shot, strength }); accumulator = 0; previous = null; }
@@ -170,16 +182,49 @@ document.addEventListener('visibilitychange', () => {
   cancel(); paused = document.hidden; previous = null; accumulator = 0; render();
 });
 $('menu-open').addEventListener('click', () => {
-  cancel(); $('angle').value = String(Math.round(aimAngle * 180 / Math.PI * 1000) / 1000);
+  cancel(); syncSettings(); $('angle').value = String(Math.round(aimAngle * 180 / Math.PI * 1000) / 1000);
   $('menu').showModal(); positionFeedback(); render();
 });
 $('menu-close').addEventListener('click', () => $('menu').close());
 $('menu').addEventListener('cancel', cancel);
 $('menu').addEventListener('close', () => { cancel(); render(); });
-$('strength').addEventListener('input', () => {
-  cancel(); strength = clamp(Number($('strength').value), 0.5, 3);
-  $('strength-value').textContent = `${strength.toFixed(1)}×`; render();
+function syncSettings() {
+  for (const [key, id, suffix] of [
+    ['strength', 'strength', '×'], ['guideLength', 'guide-length', '%'],
+    ['lockDistance', 'lock-distance', ' px'], ['pocketSize', 'pocket-size', '%'],
+  ]) {
+    const spec = TUNING[key];
+    Object.assign($(id), { min: spec.min, max: spec.max, step: spec.step, value: settings[key] });
+    $(`${id}-value`).textContent = `${key === 'strength' ? settings[key].toFixed(1) : settings[key]}${suffix}`;
+  }
+  $('lock-aim').checked = settings.lockAim; $('contact-toggle').checked = settings.contactMarker;
+  $('lock-distance').disabled = !settings.lockAim;
+  $('pocket-apply').disabled = true;
+}
+for (const [key, id, suffix] of [
+  ['strength', 'strength', '×'], ['guideLength', 'guide-length', '%'], ['lockDistance', 'lock-distance', ' px'],
+]) $(id).addEventListener('input', () => {
+  cancel(); settings[key] = boundedSetting(key, Number($(id).value)); strength = settings.strength;
+  $(`${id}-value`).textContent = `${key === 'strength' ? settings[key].toFixed(1) : settings[key]}${suffix}`;
+  render();
 });
+for (const [key, id] of [['lockAim', 'lock-aim'], ['contactMarker', 'contact-toggle']]) $(id).addEventListener('change', () => {
+  cancel(); settings[key] = $(id).checked; $('lock-distance').disabled = !settings.lockAim; render();
+});
+$('pocket-size').addEventListener('input', () => {
+  cancel(); const size = boundedSetting('pocketSize', Number($('pocket-size').value));
+  $('pocket-size-value').textContent = `${size}%`;
+  $('pocket-apply').disabled = size === settings.pocketSize;
+});
+$('pocket-apply').addEventListener('click', () => {
+  settings.pocketSize = boundedSetting('pocketSize', Number($('pocket-size').value));
+  rerack(); syncSettings(); $('menu').close();
+});
+$('defaults').addEventListener('click', () => {
+  Object.assign(settings, DEFAULT_TUNING); strength = settings.strength;
+  rerack(); syncSettings(); $('menu').close();
+});
+syncSettings();
 $('angle').addEventListener('input', () => {
   cancel(); if (Number.isFinite($('angle').valueAsNumber)) aimAngle = $('angle').valueAsNumber * Math.PI / 180;
   render();
@@ -191,11 +236,13 @@ $('shoot').addEventListener('click', () => {
     $('menu').close(); previous = null; accumulator = 0; render();
   }
 });
-$('reset').addEventListener('click', () => {
-  cancel(); simulation.resetScenario(); fault = null; previous = null; accumulator = 0;
+function rerack() {
+  cancel(); simulation.resetScenario(undefined, { pocketScale: settings.pocketSize / 100 });
+  TABLE = simulation.table; drawGeometry(); fault = null; previous = null; accumulator = 0;
   aimAngle = -Math.PI / 2; $('angle').value = '-90'; seenEvent = 0; feedback = null; feedbackUntil = performance.now() + 5000;
   positionFeedback(); render();
-});
+}
+$('reset').addEventListener('click', rerack);
 Object.defineProperty(window, 'practice', { value: Object.freeze({ observe: () => observation }), writable: false, configurable: false });
 fetch('./revision.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(value => {
   if (value?.revision) { buildRevision = value.revision; $('build').textContent = `P1 · ${buildRevision.slice(0, 7)}`; render(); }

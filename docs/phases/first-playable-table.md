@@ -143,3 +143,7 @@ These are phase deferrals, not removal of product requirements. In particular, t
 - [Accepted touch-study findings](../prototypes/touch-study-findings.md), [selected direction](../design/selected-direction.md).
 - [Simulation and harness research](../research/phase3-simulation-harness.md), including primary sources and the engine fallback tradeoff.
 - [Preserved prototype and evidence](https://github.com/cannontrodder/grenadier-pool-1998/tree/059a7e8212999c966da0e8bacfc445acc6502c5d), [accepted private study](https://grenadier-pool-1998-design.cannontrodder.chatgpt.site/touch-study/).
+
+## Friend-feedback amendment · #32
+
+On 18 September 2026 the owner requested bounded tuning in the existing strength menu after friends found aiming too difficult. The implementation adds a longer first-contact guide, optional marker and pull-triggered aim locking, plus real pocket-opening adjustment. Defaults, bounds and the inward-unlock gesture are documented in [practice/README.md](../../practice/README.md#friend-feedback-tuning--issue-32). This explicitly extends the original aiming guide/control scope; it preserves the accepted power curve, abort travel, ownership and cancellation. Settings last within the page, and geometry changes require an explicit re-rack. Friends’ feedback on these defaults remains useful; it does not replace the final physical-phone acceptance in #29.

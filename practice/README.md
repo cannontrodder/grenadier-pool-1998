@@ -67,8 +67,8 @@ for recovery. Capture events carry epoch, sequence, tick, shot, ball and pocket.
 
 ## Input, rendering and time
 
-The SVG world is translated by (50,50) in landscape. Portrait uses
-`translate(550 50) rotate(90)` in a 600×1100 viewBox. SVG's actual screen matrix
+The SVG world is translated by (60,60) in landscape. Portrait uses
+`translate(560 60) rotate(90)` in a 620×1120 viewBox. SVG's actual screen matrix
 handles viewport letterboxing; its inverse maps input to world coordinates.
 Rotation changes the view only. Balls, rails and jaws are rendered directly
 from the same model geometry. Rail artwork extends outward from the collision
@@ -111,3 +111,43 @@ distinguishable from stale observations. `tick` advances only during rolling;
 `stateRevision` tracks simulation changes. `epoch` increments on reset while
 shot/tick/event sequence restart. Harness actions compare epochs before making
 progress assumptions. A reported fault is a failed run, never a passing settle.
+
+## Friend-feedback tuning · issue #32
+
+The Menu has session-only settings with bounded ranges:
+
+| Setting | Default | Range |
+| --- | --- | --- |
+| Shot strength | 1.8× | 0.5–3× |
+| Guide length | 60% of table length | 10–100% |
+| First-contact marker | On | On/off |
+| Lock aim while adding power | On | On/off |
+| Pull before aim locks | 28 CSS pixels | 20–60 pixels |
+| Pocket opening | 110% of original | 90–130% |
+
+Guide length is a maximum. The line stops at the first cue-ball contact with a
+live object ball, cushion face or jaw, or at the cloth edge through an open
+pocket. The ring shows the white's centre at that contact; it does not predict
+rebounds or guarantee a pot. The guide and marker are purely visual.
+
+Aim locking freezes the last aiming direction before the selected pull
+threshold. It stays fixed through sideways motion and release. Returning to
+within 12 pixels of the starting radius unlocks and disarms, allowing re-aim,
+abort or another pull. Small armed shots below the lock threshold remain freely
+aimed. Locking does not change the existing squared power curve or full travel.
+
+Pocket changes are pending until **Apply pocket size & re-rack** is pressed.
+Closing the menu discards a pending pocket change. Applied size changes move
+actual rail ends, jaws, mouths and bowls together; there is no attraction or
+invisible capture assist. Applying or restoring defaults increments the epoch,
+resets the balls and cancels any previous gesture. Re-rack keeps all tuning;
+reload restores defaults. These starting values await friends' feel feedback.
+
+`createPractice({scenario?, pocketScale=1})` and
+`resetScenario(scenario?, {pocketScale?})` accept a scale clamped to 0.9–1.3.
+The pure model retains its historical 1.0 default; the app explicitly chooses
+1.1. Plain model resets preserve the chosen scale. Its frozen `table` getter is
+the single geometry source for simulation, rendering and the guide.
+Observations add `pocketScale`, `tuning`, `guide` and `gesture.locked` to the
+existing version-1 contract. `tuning.mjs` owns menu bounds/defaults;
+`guide.mjs` owns first-contact ray geometry.

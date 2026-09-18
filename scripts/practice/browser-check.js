@@ -79,6 +79,7 @@ async (page) => {
         pocketId,
       })),
       events: observation.events,
+      aimAngle: observation.aimAngle, tuning: observation.tuning, gesture: observation.gesture,
     });
     return observation;
   };
@@ -161,7 +162,7 @@ async (page) => {
     }
     return { x: x / length, y: y / length };
   };
-  const gesture = async (angle, pullDistance, release = false) => {
+  const gesture = async (angle, pullDistance, release = false, precise = false) => {
     const observation = await observe();
     const cue = observation.balls.find(
       (candidate) => candidate.role === "cue" && candidate.status === "live",
@@ -171,18 +172,38 @@ async (page) => {
     if (!matrix) throw new Error("HARNESS: observation has no geometry matrix");
     const center = screenPoint(cue.x, cue.y, matrix);
     const direction = screenDirection(angle, matrix);
-    const initialRadius = pointerStartRadius;
-    const start = {
+    let initialRadius = pointerStartRadius;
+    let start = {
       x: center.x - direction.x * initialRadius,
       y: center.y - direction.y * initialRadius,
     };
+    if (precise) {
+      // WebKit rounds mouse coordinates to screen pixels. Choose a reachable
+      // aiming point further from the white, avoiding subpixel angle assumptions.
+      let best = Infinity;
+      const viewport = page.viewportSize();
+      for (let x = Math.max(1, Math.ceil(center.x - 110)); x <= Math.min(viewport.width - 1, center.x + 110); x++) {
+        for (let y = Math.max(65, Math.ceil(center.y - 110)); y <= Math.min(viewport.height - 23, center.y + 110); y++) {
+          const radius = Math.hypot(x - center.x, y - center.y);
+          if (radius < 60 || radius > 110) continue;
+          const alignment = ((center.x - x) * direction.x + (center.y - y) * direction.y) / radius;
+          const det = matrix.a * matrix.d - matrix.b * matrix.c;
+          const wx = (matrix.d * (x - matrix.e) - matrix.c * (y - matrix.f)) / det;
+          const wy = (-matrix.b * (x - matrix.e) + matrix.a * (y - matrix.f)) / det;
+          if (wx < 12 || wx > 988 || wy < 12 || wy > 488) continue;
+          const error = 1 - alignment;
+          if (error < best) { best = error; start = { x, y }; initialRadius = radius; }
+        }
+      }
+      if (!Number.isFinite(best)) throw new Error('HARNESS: no reachable aiming point');
+    }
     const end = {
-      x: center.x - direction.x * (initialRadius + pullDistance),
-      y: center.y - direction.y * (initialRadius + pullDistance),
+      x: center.x + (start.x - center.x) * (initialRadius + pullDistance) / initialRadius,
+      y: center.y + (start.y - center.y) * (initialRadius + pullDistance) / initialRadius,
     };
     await page.mouse.move(start.x, start.y);
     await page.mouse.down();
-    await page.mouse.move(end.x, end.y, { steps: 5 });
+    await page.mouse.move(end.x, end.y, { steps: precise ? 1 : 5 });
     if (release) await page.mouse.up();
     return { center, direction, start, end };
   };
@@ -620,7 +641,7 @@ async (page) => {
       await setStrength(1.8);
       const before = await observe();
       await action(`${journey.name} pocket primary gesture`, () =>
-        gesture(journey.angle, journey.pull),
+        gesture(journey.angle, journey.pull, false, true),
       );
       let observation = await observe();
       check(
@@ -706,6 +727,87 @@ async (page) => {
     }
   };
 
+  const runTuning = async (initial) => {
+    check(initial.tuning.guideLength === 60 && initial.tuning.lockDistance === 28 && initial.tuning.pocketSize === 110 && initial.tuning.lockAim && initial.tuning.contactMarker, 'helpful defaults are observable');
+    check(initial.guide.hit?.id === 'object-1' && closeEnough(initial.guide.y, 204), 'guide previews first cue-ball contact');
+    await validateRenderedGeometry(initial);
+    await page.locator('#menu-open').click();
+    const limits = await page.locator('#strength, #guide-length, #lock-distance, #pocket-size').evaluateAll(els => els.map(e => [e.id, e.min, e.max, e.value]));
+    check(JSON.stringify(limits) === JSON.stringify([['strength','0.5','3','1.8'],['guide-length','10','100','60'],['lock-distance','20','60','28'],['pocket-size','90','130','110']]), 'menu displays bounded defaults');
+    check(await page.locator('#menu').evaluate(e => e.scrollWidth <= e.clientWidth), 'phone menu has no horizontal overflow');
+    await screenshot('tuning-menu');
+    await page.locator('#guide-length').fill('10');
+    let o = await observe();
+    check(o.guide.hit === null && closeEnough(o.guide.distance, 100), 'short guide respects selected length');
+    await page.locator('#guide-length').fill('100');
+    check((await observe()).guide.hit?.id === 'object-1', 'long guide stops at first contact');
+    await page.locator('#contact-toggle').uncheck();
+    check(await page.locator('#contact-marker').evaluate(e => e.style.display === 'none'), 'marker can be hidden');
+    await page.locator('#contact-toggle').check();
+    await page.locator('#lock-distance').fill('20');
+    await page.locator('#menu-close').click();
+    const pull = await gesture(-Math.PI / 2, 70);
+    o = await observe();
+    check(o.gesture.locked, 'pull beyond configured threshold locks aim');
+    const lockedAngle = o.aimAngle;
+    await page.mouse.move(pull.end.x + pull.direction.y * 10, pull.end.y - pull.direction.x * 10);
+    o = await observe();
+    check(angleDistance(o.aimAngle, lockedAngle) < 1e-9, 'sideways power drift cannot change locked aim');
+    check(await page.locator('#aim').evaluate(e => e.classList.contains('locked')), 'lock is visibly indicated');
+    await screenshot('locked-guide');
+    await page.mouse.up();
+    o = await observe();
+    check(o.phase === 'rolling' && o.shotId === 1 && angleDistance(o.aimAngle, lockedAngle) < 1e-9, 'release preserves aim and shoots once');
+    await reset();
+    check((await observe()).tuning.guideLength === 100 && (await observe()).tuning.lockDistance === 20, 're-rack retains tuning');
+    const nextPull = await gesture(-Math.PI / 2, 70);
+    await page.mouse.move(nextPull.start.x, nextPull.start.y);
+    o = await observe();
+    check(!o.gesture.locked && !o.gesture.armed, 'neutral return unlocks and disarms');
+    await page.mouse.move(nextPull.center.x - nextPull.direction.y * 18, nextPull.center.y + nextPull.direction.x * 18);
+    o = await observe();
+    check(angleDistance(o.aimAngle, lockedAngle) > 1, 'neutral contact can aim in a new direction');
+    await page.mouse.up();
+    check((await observe()).shotId === 0, 'inward release aborts after re-aim');
+    await page.locator('#menu-open').click();
+    await page.locator('#lock-aim').uncheck();
+    check(await page.locator('#lock-distance').isDisabled(), 'lock-distance disabled when free aim selected');
+    await page.locator('#menu-close').click();
+    const freePull = await gesture(-Math.PI / 2, 70);
+    const freeAngle = (await observe()).aimAngle;
+    await page.mouse.move(freePull.end.x + freePull.direction.y * 15, freePull.end.y - freePull.direction.x * 15);
+    o = await observe();
+    check(!o.gesture.locked && angleDistance(o.aimAngle, freeAngle) > .05, 'free aim follows pointer while pulled');
+    await page.mouse.move(freePull.start.x, freePull.start.y); await page.mouse.up();
+    for (const size of [90, 130]) {
+      const before = await observe();
+      await page.locator('#menu-open').click();
+      if (!(await page.locator('#pocket-settings').evaluate(e => e.open))) await page.locator('#pocket-settings summary').click();
+      await page.locator('#pocket-size').fill(String(size));
+      o = await observe();
+      check(o.epoch === before.epoch && o.pocketScale === before.pocketScale, `pending ${size}% does not mutate the playing table`);
+      await page.locator('#pocket-apply').click();
+      o = await observe();
+      check(o.epoch === before.epoch + 1 && o.pocketScale === size / 100 && o.tuning.pocketSize === size && o.shotReady, `apply ${size}% re-racks with matching tuning`);
+      await validateRenderedGeometry(o);
+      const middle = o.geometry.pockets.find(p => p.id === 'top-middle');
+      check(closeEnough(middle.mouth.halfWidth, 34 * size / 100), `physical mouth scales to ${size}%`);
+    }
+    await page.locator('#menu-open').click();
+    await page.locator('#pocket-size').fill('90');
+    await page.locator('#menu-close').click(); await page.locator('#menu-open').click();
+    check((await page.locator('#pocket-size').inputValue()) === '130', 'closing menu discards unapplied pocket preview');
+    await page.locator('#defaults').click();
+    o = await observe();
+    check(o.shotReady && o.tuning.strength === 1.8 && o.tuning.guideLength === 60 && o.tuning.lockDistance === 28 && o.tuning.pocketSize === 110 && o.tuning.lockAim && o.tuning.contactMarker, 'restore defaults resets all tuning and re-racks');
+    await validateRenderedGeometry(o);
+    await screenshot('defaults-table');
+    await page.locator('#menu-open').click(); await page.locator('#guide-length').fill('10'); await page.locator('#menu-close').click();
+    await page.reload();
+    await page.waitForFunction(() => window.practice?.observe()?.health?.ok);
+    check((await observe()).tuning.guideLength === 60, 'reload returns to session defaults');
+  };
+
   const runKeyboard = async () => {
     await reset();
     await action("open keyboard shot controls", async () => {
@@ -750,6 +852,7 @@ async (page) => {
     const initial = await validateContract();
     if (suite === "interaction") await runInteraction(initial);
     else if (suite === "pot") await runPot();
+    else if (suite === "tuning") await runTuning(initial);
     else if (suite === "keyboard") await runKeyboard();
     else throw new Error(`HARNESS: unknown browser suite ${suite}`);
     check(errors.length === 0, "browser emitted no errors", errors.join("; "));

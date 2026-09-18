@@ -20,7 +20,7 @@ parser.add_argument("--url", default="http://127.0.0.1:8765/practice/")
 parser.add_argument("--browser", choices=["webkit", "chrome"], default="webkit")
 parser.add_argument(
     "--case",
-    choices=["interaction", "pot", "keyboard", "native"],
+    choices=["interaction", "pot", "keyboard", "native", "tuning"],
     default="interaction",
 )
 parser.add_argument("--session")
