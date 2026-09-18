@@ -17,3 +17,6 @@ Track implementation work in [GitHub Issues](https://github.com/cannontrodder/gr
 - [Design foundation](docs/design/brief.md), [visual boards](docs/design/boards/README.md), and [wireframe rationale](docs/design/wireframes/rationale.md).
 - [Preview verification and remaining physical-device review](docs/design/verification.md).
 - [Local preview and redeployment instructions](docs/design/deployment.md).
+
+- [Design closeout and preservation audit](docs/handoffs/design-closeout.md).
+- [Next-agent touch-study prompt](docs/handoffs/next-agent-touch-study.md).

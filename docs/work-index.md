@@ -16,7 +16,7 @@ Each issue is a separate piece of work suitable for a fresh agent. Read its bloc
 
 ## Starting work
 
-The design foundation (#1), direction boards (#2), wireframes (#3), selected direction (#5), and photo intake (#14) are complete. #4 retains the outstanding physical iPhone check. Selected mockups (#6) and their publication (#15) follow S1.2; the playable touch study is tracked separately in #7.
+The design foundation (#1), direction boards (#2), wireframes (#3), selected direction (#5), and photo intake (#14) are complete. #4 retains the outstanding physical iPhone check. Selected mockups (#6), their publication (#15), caricatures (#17), corrected room (#18), and avatars (#19) are complete. The playable touch study is tracked separately in #7.
 
 Additional work: [#14 — Supplied photo and names](https://github.com/cannontrodder/grenadier-pool-1998/issues/14), [#15 — Selected-direction publication](https://github.com/cannontrodder/grenadier-pool-1998/issues/15), and [#16 — Pub-room reference and handover planning](https://github.com/cannontrodder/grenadier-pool-1998/issues/16).
 
@@ -29,3 +29,5 @@ Native GitHub blocking relationships describe the current graph. Later planning 
 #17 adds the approved pixel-caricature group direction; #18 corrects the pub entrance/foyer; #19 provides individual avatars. The user requests final review of these latest changes only, with no further blocking design choices. #7 remains future playable study, not part of current design-only delivery.
 
 [#20 — Final visual design sign-off](https://github.com/cannontrodder/grenadier-pool-1998/issues/20) covers only the individual avatars and corrected room plan.
+
+[#21 — Preservation audit and implementation handoff](https://github.com/cannontrodder/grenadier-pool-1998/issues/21) records closeout. Use [the next-agent prompt](handoffs/next-agent-touch-study.md) to begin #7, then #8.
