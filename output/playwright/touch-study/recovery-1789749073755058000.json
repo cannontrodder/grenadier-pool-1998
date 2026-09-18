@@ -1,0 +1,1 @@
+{"health": "### Result\n{\n  \"ok\": true,\n  \"frame\": 38,\n  \"scenario\": \"two-ball-centre-v1\",\n  \"revision\": \"development\"\n}\n### Ran Playwright code\n```js\nawait page.evaluate('() => window.touchStudy?.health()');\n```\n", "original": "/private/tmp/grenadier-touch-7/output/playwright/touch-study/touch-webkit-390-1789749073755058000.json"}

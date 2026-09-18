@@ -91,6 +91,7 @@ async (page) => {
       {},
       { timeout: 4000 },
     );
+    await observe();
     await page.waitForFunction(
       () => /^[a-f0-9]{40}$/.test(touchStudy.observe()?.revision),
       {},

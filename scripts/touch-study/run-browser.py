@@ -23,6 +23,7 @@ try:
     call('resize',str(args.width),str(args.height))
     call('reload')
     if args.fault:
+        call('run-code', 'async page => { await page.waitForFunction(()=>/^[a-f0-9]{40}$/.test(window.touchStudy?.observe()?.revision), {}, {timeout:5000}); return {readyForFault:true}; }')
         code="() => { const original=touchStudy; const frozen=original.observe(); window.touchStudy={...original,observe:()=>"+('null' if args.fault=='missing' else 'frozen')+"}; }"
         call('eval',code)
     result=call('run-code','--filename','scripts/touch-study/native-touch.js' if args.native else 'scripts/touch-study/browser-check.js')
