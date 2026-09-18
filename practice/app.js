@@ -124,6 +124,7 @@ function render() {
   game.classList.toggle('quiet', phase === 'ready' && !active && performance.now() > feedbackUntil);
   $('shoot').disabled = phase !== 'ready' || paused;
   observation = freeze({ ...state, contractVersion: 1, buildRevision, frame, observedAt,
+    fault: fault || state.fault || null,
     phase: fault ? 'fault' : active && state.phase === 'ready' ? 'aiming' : state.phase,
     shotReady: state.phase === 'ready' && !paused && !fault && !active,
     strength, aimAngle, pull: active?.pull || 0, power: active?.power || 0, gesture: active,
