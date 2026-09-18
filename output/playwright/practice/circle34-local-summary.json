@@ -1,0 +1,35 @@
+[
+  {
+    "status": "PASS",
+    "case": "tuning",
+    "assertions": 53,
+    "buildRevision": "83bf30f7ea596afa894f29fe191c4ea14d93c227-dirty",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/circle34-portrait-390x844-1789771531806354000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "tuning",
+    "assertions": 53,
+    "buildRevision": "83bf30f7ea596afa894f29fe191c4ea14d93c227-dirty",
+    "viewport": {
+      "width": 844,
+      "height": 390
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/circle34-landscape-844x390-1789771531826169000.json"
+  },
+  {
+    "status": "PASS",
+    "case": "native",
+    "assertions": 37,
+    "buildRevision": "83bf30f7ea596afa894f29fe191c4ea14d93c227-dirty",
+    "viewport": {
+      "width": 412,
+      "height": 839
+    },
+    "evidence": "/Users/neil/projects/grenadier-pool-1998/output/playwright/practice/circle34-native-412x839-1789771531845738000.json"
+  }
+]

@@ -120,7 +120,7 @@ The Menu has session-only settings with bounded ranges:
 | Shot strength | 1.8× | 0.5–3× |
 | Guide length | 60% of table length | 10–100% |
 | First-contact marker | On | On/off |
-| Protect aim near the white | On | On/off |
+| Precision locking circle | Off | On/off |
 | Precision circle radius | 60 CSS pixels | 20–100 pixels |
 | Pocket opening | 110% of original | 90–130% |
 
@@ -129,7 +129,9 @@ live object ball, cushion face or jaw, or at the cloth edge through an open
 pocket. The ring shows the white's centre at that contact; it does not predict
 rebounds or guarantee a pot. The guide and marker are purely visual.
 
-Issue #33 supersedes #32's outward-pull lock. Outside the precision circle,
+Issue #34 makes the precision locking circle opt-in; it is hidden and aiming
+stays free at any distance by default. Enable it in Menu to revisit radius tuning.
+When enabled, issue #33 supersedes #32's outward-pull lock. Outside the precision circle,
 aiming follows the first finger at any power. Inside it, the last direction is
 held for gentle shots; an initial inside contact retains the displayed aim.
 The circle uses a fixed CSS-pixel radius around the white, independent of initial
@@ -139,7 +141,7 @@ arming/abort boundary, not angle locking.
 A second touch on the table holds the current direction at any radius, even
 with near-white protection disabled. The original finger still controls power
 and shoots on release. Lifting/cancelling the second touch frees the angle
-unless the original finger is inside the precision circle. A third touch is
+unless the precision circle is enabled and the original finger is inside it. A third touch is
 ignored. Releasing the original finger ends both ownership and the lock; an
 already-down contact cannot inherit the shot. Menu, reset and lifecycle
 interruptions clear both captures. Returning inward still disarms for abort.

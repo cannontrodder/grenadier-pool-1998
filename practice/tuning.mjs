@@ -7,7 +7,7 @@ export const TUNING = Object.freeze({
 });
 export const DEFAULT_TUNING = Object.freeze({
   ...Object.fromEntries(Object.entries(TUNING).map(([key, spec]) => [key, spec.default])),
-  lockAim: true, contactMarker: true,
+  lockAim: false, contactMarker: true,
 });
 export function boundedSetting(key, value) {
   const spec = TUNING[key];

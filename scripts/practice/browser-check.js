@@ -778,7 +778,16 @@ async (page) => {
   };
 
   const runTuning = async (initial) => {
-    check(initial.tuning.guideLength === 60 && initial.tuning.lockDistance === 60 && initial.tuning.pocketSize === 110 && initial.tuning.lockAim && initial.tuning.contactMarker, 'helpful defaults are observable');
+    check(initial.tuning.guideLength === 60 && initial.tuning.lockDistance === 60 && initial.tuning.pocketSize === 110 && !initial.tuning.lockAim && initial.tuning.contactMarker, 'precision circle is off in observable defaults');
+    const defaultPull = await gesture(-Math.PI / 2, 10);
+    const defaultAngle = (await observe()).aimAngle;
+    await page.mouse.move(defaultPull.center.x - defaultPull.direction.x * 42 + defaultPull.direction.y * 8, defaultPull.center.y - defaultPull.direction.y * 42 - defaultPull.direction.x * 8);
+    const defaultObservation = await observe();
+    check(!defaultObservation.gesture.locked && !defaultObservation.gesture.nearLocked && angleDistance(defaultObservation.aimAngle, defaultAngle) > .1, 'default aiming stays free inside the optional circle radius');
+    check(await page.locator('#precision').evaluate(e => getComputedStyle(e).display === 'none'), 'precision circle stays hidden during default aiming');
+    await screenshot('default-free-aim');
+    await page.mouse.move(defaultPull.start.x, defaultPull.start.y); await page.mouse.up();
+    check((await observe()).shotId === 0, 'default free aiming still supports inward abort');
     check(initial.guide.hit?.id === 'object-1' && closeEnough(initial.guide.y, 204), 'guide previews first cue-ball contact');
     await validateRenderedGeometry(initial);
     await page.locator('#menu-open').click();
@@ -786,6 +795,9 @@ async (page) => {
     check(JSON.stringify(limits) === JSON.stringify([['strength','0.5','3','1.8'],['guide-length','10','100','60'],['lock-distance','20','100','60'],['pocket-size','90','130','110']]), 'menu displays bounded defaults');
     check(await page.locator('#menu').evaluate(e => e.scrollWidth <= e.clientWidth), 'phone menu has no horizontal overflow');
     await screenshot('tuning-menu');
+    check(!(await page.locator('#lock-aim').isChecked()) && await page.locator('#lock-distance').isDisabled(), 'menu defaults to circle off with radius disabled');
+    await page.locator('#lock-aim').check();
+    check(!(await page.locator('#lock-distance').isDisabled()), 'enabling the circle enables radius tuning');
     await page.locator('#guide-length').fill('10');
     let o = await observe();
     check(o.guide.hit === null && closeEnough(o.guide.distance, 100), 'short guide respects selected length');
@@ -866,15 +878,17 @@ async (page) => {
     await page.locator('#pocket-size').fill('90');
     await page.locator('#menu-close').click(); await page.locator('#menu-open').click();
     check((await page.locator('#pocket-size').inputValue()) === '130', 'closing menu discards unapplied pocket preview');
+    await page.locator('#lock-aim').check();
     await page.locator('#defaults').click();
     o = await observe();
-    check(o.shotReady && o.tuning.strength === 1.8 && o.tuning.guideLength === 60 && o.tuning.lockDistance === 60 && o.tuning.pocketSize === 110 && o.tuning.lockAim && o.tuning.contactMarker, 'restore defaults resets all tuning and re-racks');
+    check(o.shotReady && o.tuning.strength === 1.8 && o.tuning.guideLength === 60 && o.tuning.lockDistance === 60 && o.tuning.pocketSize === 110 && !o.tuning.lockAim && o.tuning.contactMarker, 'restore defaults resets all tuning with circle off and re-racks');
     await validateRenderedGeometry(o);
     await screenshot('defaults-table');
-    await page.locator('#menu-open').click(); await page.locator('#guide-length').fill('10'); await page.locator('#menu-close').click();
+    await page.locator('#menu-open').click(); await page.locator('#guide-length').fill('10'); await page.locator('#lock-aim').check(); await page.locator('#menu-close').click();
     await page.reload();
     await waitForBuild(initial.buildRevision);
-    check((await observe()).tuning.guideLength === 60, 'reload returns to session defaults');
+    const reloaded = await observe();
+    check(reloaded.tuning.guideLength === 60 && !reloaded.tuning.lockAim, 'reload returns to session defaults with circle off');
   };
 
   const runLayouts = async (initial) => {

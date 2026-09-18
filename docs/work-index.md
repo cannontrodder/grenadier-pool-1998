@@ -50,3 +50,8 @@ responds to the owner's #29 feedback: free aiming outside a fixed precision
 circle, angle protection close to the white, and a momentary second-finger hold.
 It supersedes #32's outward-pull aim lock. #29 remains the phone-feedback gate
 for the revised controls.
+
+[#34 — Optional precision locking circle](https://github.com/cannontrodder/grenadier-pool-1998/issues/34)
+makes the circle off by default following further owner feedback. It can be
+enabled again in Menu; second-finger hold remains available. See
+[verification](verification/practice-circle-34.md). #29 remains the phone-feedback gate.

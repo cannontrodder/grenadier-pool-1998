@@ -54,10 +54,10 @@
       <input id="guide-length" type="range" min="10" max="100" step="5" value="60" aria-describedby="guide-help">
       <p id="guide-help">10–100% of the table length. Default 60%. Stops where the white first meets a ball or cushion.</p>
       <label class="toggle" for="contact-toggle"><span>Show first-contact marker</span><input id="contact-toggle" type="checkbox" checked></label>
-      <label class="toggle" for="lock-aim"><span>Protect aim near the white</span><input id="lock-aim" type="checkbox" checked></label>
+      <label class="toggle" for="lock-aim"><span>Precision locking circle</span><input id="lock-aim" type="checkbox" aria-describedby="lock-help"></label>
       <label for="lock-distance">Precision circle radius <output id="lock-distance-value">60 px</output></label>
-      <input id="lock-distance" type="range" min="20" max="100" step="1" value="60" aria-describedby="lock-help">
-      <p id="lock-help">Aim freely outside the circle; move inside to hold the angle for a gentle shot. Hold a second finger on the table to lock at any distance; lift it to re-aim. Return the first finger inward and lift to abort.</p>
+      <input id="lock-distance" type="range" min="20" max="100" step="1" value="60" aria-describedby="lock-help" disabled>
+      <p id="lock-help">Off by default for free aiming at any distance. Turn on to hold the angle inside the circle. With either setting, hold a second finger on the table to lock the angle; lift it to re-aim. Return the first finger inward and lift to abort.</p>
     </details>
     <details id="pocket-settings"><summary>Pocket size</summary>
       <label for="pocket-size">Pocket opening <output id="pocket-size-value">110%</output></label>
