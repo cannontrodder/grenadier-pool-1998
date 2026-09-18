@@ -147,3 +147,15 @@ These are phase deferrals, not removal of product requirements. In particular, t
 ## Friend-feedback amendment · #32
 
 On 18 September 2026 the owner requested bounded tuning in the existing strength menu after friends found aiming too difficult. The implementation adds a longer first-contact guide, optional marker and pull-triggered aim locking, plus real pocket-opening adjustment. Defaults, bounds and the inward-unlock gesture are documented in [practice/README.md](../../practice/README.md#friend-feedback-tuning--issue-32). This explicitly extends the original aiming guide/control scope; it preserves the accepted power curve, abort travel, ownership and cancellation. Settings last within the page, and geometry changes require an explicit re-rack. Friends’ feedback on these defaults remains useful; it does not replace the final physical-phone acceptance in #29.
+
+
+## Aiming feedback amendment · #33
+
+The owner's feedback on the deployed loop requests free wide-radius aiming,
+near-white angle protection and a second-finger lock. This supersedes #32's
+automatic outward-pull lock and earlier blanket ignoring of secondary contacts.
+A second touch now holds angle only, while the first retains exclusive shot and
+power ownership. Hold is momentary; lifting frees aim outside the precision
+circle. The inner protection radius defaults to60 CSS pixels (Menu20–100).
+Calibration, inward abort, epoch safety and placement isolation remain intact.
+#29 stays open for acceptance of the revised feel; no device metadata is inferred.

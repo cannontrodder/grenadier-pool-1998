@@ -120,8 +120,8 @@ The Menu has session-only settings with bounded ranges:
 | Shot strength | 1.8× | 0.5–3× |
 | Guide length | 60% of table length | 10–100% |
 | First-contact marker | On | On/off |
-| Lock aim while adding power | On | On/off |
-| Pull before aim locks | 28 CSS pixels | 20–60 pixels |
+| Protect aim near the white | On | On/off |
+| Precision circle radius | 60 CSS pixels | 20–100 pixels |
 | Pocket opening | 110% of original | 90–130% |
 
 Guide length is a maximum. The line stops at the first cue-ball contact with a
@@ -129,11 +129,21 @@ live object ball, cushion face or jaw, or at the cloth edge through an open
 pocket. The ring shows the white's centre at that contact; it does not predict
 rebounds or guarantee a pot. The guide and marker are purely visual.
 
-Aim locking freezes the last aiming direction before the selected pull
-threshold. It stays fixed through sideways motion and release. Returning to
-within 12 pixels of the starting radius unlocks and disarms, allowing re-aim,
-abort or another pull. Small armed shots below the lock threshold remain freely
-aimed. Locking does not change the existing squared power curve or full travel.
+Issue #33 supersedes #32's outward-pull lock. Outside the precision circle,
+aiming follows the first finger at any power. Inside it, the last direction is
+held for gentle shots; an initial inside contact retains the displayed aim.
+The circle uses a fixed CSS-pixel radius around the white, independent of initial
+touch radius and orientation. The separate dashed yellow ring still marks the
+arming/abort boundary, not angle locking.
+
+A second touch on the table holds the current direction at any radius, even
+with near-white protection disabled. The original finger still controls power
+and shoots on release. Lifting/cancelling the second touch frees the angle
+unless the original finger is inside the precision circle. A third touch is
+ignored. Releasing the original finger ends both ownership and the lock; an
+already-down contact cannot inherit the shot. Menu, reset and lifecycle
+interruptions clear both captures. Returning inward still disarms for abort.
+The squared power curve and full pull travel are unchanged.
 
 Pocket changes are pending until **Apply pocket size & re-rack** is pressed.
 Closing the menu discards a pending pocket change. Applied size changes move
@@ -147,7 +157,7 @@ reload restores defaults. These starting values await friends' feel feedback.
 The pure model retains its historical 1.0 default; the app explicitly chooses
 1.1. Plain model resets preserve the chosen scale. Its frozen `table` getter is
 the single geometry source for simulation, rendering and the guide.
-Observations add `pocketScale`, `tuning`, `guide` and `gesture.locked` to the
+Observations add `pocketScale`, `tuning`, `guide` and `gesture.locked`, `gesture.nearLocked` and `gesture.lockPointerId` to the
 existing version-1 contract. `tuning.mjs` owns menu bounds/defaults;
 `guide.mjs` owns first-contact ray geometry.
 

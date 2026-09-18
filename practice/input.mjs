@@ -8,18 +8,27 @@ export function pullAt(radius, startRadius) {
 export function createGesture() {
   let active = null;
   return {
-    begin(pointerId, startRadius, epoch, { lockAim = false, lockDistance = 28, angle = 0 } = {}) {
+    begin(pointerId, startRadius, epoch, { lockAim = false, lockDistance = 60, angle = 0 } = {}) {
       if (active) return false;
-      active = { pointerId, startRadius, epoch, active: true, angle, lockAim, lockDistance: Number.isFinite(lockDistance) ? clamp(lockDistance, 20, 60) : 28, locked: false, ...pullAt(startRadius, startRadius) };
+      active = { pointerId, startRadius, epoch, active: true, angle, lockAim, lockDistance: Number.isFinite(lockDistance) ? clamp(lockDistance, 20, 100) : 60, lockPointerId: null, nearLocked: false, locked: false, ...pullAt(startRadius, startRadius) };
       return true;
     },
     move(pointerId, radius, angle) {
       if (active?.pointerId !== pointerId) return false;
-      const travel = radius - active.startRadius;
-      if (travel <= 12) active.locked = false;
-      else if (active.lockAim && travel >= active.lockDistance) active.locked = true;
+      active.nearLocked = active.lockAim && radius <= active.lockDistance;
+      active.locked = active.nearLocked || active.lockPointerId !== null;
       if (!active.locked) active.angle = angle;
       Object.assign(active, pullAt(radius, active.startRadius));
+      return true;
+    },
+    hold(pointerId) {
+      if (!active || pointerId === active.pointerId || active.lockPointerId !== null) return false;
+      active.lockPointerId = pointerId; active.locked = true;
+      return true;
+    },
+    unhold(pointerId) {
+      if (!active || active.lockPointerId !== pointerId) return false;
+      active.lockPointerId = null; active.locked = active.nearLocked;
       return true;
     },
     release(pointerId, epoch) {

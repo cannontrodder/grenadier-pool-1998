@@ -68,6 +68,7 @@ function cancel() {
   const placing = placementContact; placementContact = null;
   if (placing && table.hasPointerCapture(placing.pointerId)) table.releasePointerCapture(placing.pointerId);
   if (active && table.hasPointerCapture(active.pointerId)) table.releasePointerCapture(active.pointerId);
+  if (active?.lockPointerId != null && table.hasPointerCapture(active.lockPointerId)) table.releasePointerCapture(active.lockPointerId);
 }
 function setPlacementCandidate(x, y) {
   const state = simulation.snapshot();
@@ -155,6 +156,9 @@ function render() {
   line('cue', cue.x - dx * (28 + pull * 65), cue.y - dy * (28 + pull * 65), cue.x - dx * (180 + pull * 65), cue.y - dy * (180 + pull * 65));
   $('neutral').setAttribute('cx', cue.x); $('neutral').setAttribute('cy', cue.y);
   const m = matrix();
+  $('precision').setAttribute('cx', cue.x); $('precision').setAttribute('cy', cue.y);
+  $('precision').setAttribute('r', settings.lockDistance / Math.hypot(m.a, m.b));
+  $('precision').style.display = active && settings.lockAim ? '' : 'none';
   $('neutral').setAttribute('r', active ? (active.startRadius + 18.9) / Math.hypot(m.a, m.b) : 0);
   $('aim').style.display = state.phase === 'ready' && !fault ? '' : 'none';
   $('neutral').style.display = active ? '' : 'none';
@@ -178,7 +182,7 @@ function render() {
   };
   let [title, hint] = messages[phase] || messages.fault;
   if (paused) { title = 'Practice paused'; hint = 'Return to the table to continue'; }
-  if (active) { title = active.armed ? `Release to shoot · ${Math.round(active.power * 100)}%` : 'Aim · pull to add power'; hint = active.locked ? 'Aim locked · return inward to re-aim or abort' : 'Aim freely · return inward and lift to abort'; }
+  if (active) { title = active.armed ? `Release to shoot · ${Math.round(active.power * 100)}%` : 'Aim · pull to add power'; hint = active.lockPointerId !== null ? 'Angle held · lift second finger to re-aim' : active.nearLocked ? 'Angle held near white · move outside circle to aim' : 'Aim freely · add second finger to hold angle'; }
   else if (feedback && performance.now() < feedbackUntil && phase === 'rolling') title = feedback;
   if ($('status').textContent !== title) $('status').textContent = title;
   if ($('hint').textContent !== hint) $('hint').textContent = hint;
@@ -196,6 +200,10 @@ function render() {
   });
 }
 table.addEventListener('pointerdown', event => {
+  if (event.pointerType === 'touch' && gesture.snapshot() && !$('menu').open && !paused && !fault) {
+    if (gesture.hold(event.pointerId)) { table.setPointerCapture(event.pointerId); render(); }
+    return;
+  }
   if (!event.isPrimary || event.button !== 0 || $('menu').open || paused || fault) return;
   const state = simulation.snapshot();
   if (state.phase === 'placing-white') {
@@ -210,7 +218,7 @@ table.addEventListener('pointerdown', event => {
   const p = worldPoint(event.clientX, event.clientY);
   if (p.x < 0 || p.x > TABLE.width || p.y < 0 || p.y > TABLE.height) return;
   const d = pointerData(event);
-  if (gesture.begin(event.pointerId, d.radius, simulation.snapshot().epoch, { ...settings, angle: d.angle })) {
+  if (gesture.begin(event.pointerId, d.radius, simulation.snapshot().epoch, { ...settings, angle: settings.lockAim && d.radius <= settings.lockDistance ? aimAngle : d.angle })) {
     table.setPointerCapture(event.pointerId);
     gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
     positionFeedback({ x: event.clientX, y: event.clientY }); render();
@@ -228,6 +236,10 @@ table.addEventListener('pointermove', event => {
   positionFeedback({ x: event.clientX, y: event.clientY }); render();
 });
 table.addEventListener('pointerup', event => {
+  if (gesture.unhold(event.pointerId)) {
+    if (table.hasPointerCapture(event.pointerId)) table.releasePointerCapture(event.pointerId);
+    render(); return;
+  }
   if (placementContact?.pointerId === event.pointerId) {
     const contact = placementContact; placementContact = null;
     const p = worldPoint(event.clientX, event.clientY);
@@ -239,13 +251,18 @@ table.addEventListener('pointerup', event => {
   if (gesture.snapshot()?.pointerId !== event.pointerId) return;
   const d = pointerData(event);
   gesture.move(event.pointerId, d.radius, d.angle); aimAngle = gesture.snapshot().angle;
+  const lockPointerId = gesture.snapshot().lockPointerId;
   const shot = gesture.release(event.pointerId, simulation.snapshot().epoch);
+  if (lockPointerId !== null && table.hasPointerCapture(lockPointerId)) table.releasePointerCapture(lockPointerId);
   if (table.hasPointerCapture(event.pointerId)) table.releasePointerCapture(event.pointerId);
   if (shot && !paused && !fault) { simulation.shoot({ ...shot, strength }); accumulator = 0; previous = null; }
   positionFeedback(); render();
 });
 for (const event of ['pointercancel', 'lostpointercapture']) table.addEventListener(event, e => {
-  if (gesture.snapshot()?.pointerId === e.pointerId || placementContact?.pointerId === e.pointerId) { cancel(); render(); }
+  if (gesture.unhold(e.pointerId)) {
+    if (table.hasPointerCapture(e.pointerId)) table.releasePointerCapture(e.pointerId);
+    render();
+  } else if (gesture.snapshot()?.pointerId === e.pointerId || placementContact?.pointerId === e.pointerId) { cancel(); render(); }
 });
 window.addEventListener('blur', () => { cancel(); render(); });
 window.addEventListener('pagehide', () => { cancel(); paused = true; previous = null; accumulator = 0; render(); });

@@ -14,30 +14,23 @@ test('menu defaults are bounded and invalid numeric settings fall back safely', 
     assert.equal(DEFAULT_TUNING[key], spec.default);
   }
 });
-test('aim lock freezes pre-pull direction through sideways drift and release', () => {
-  for (const lockDistance of [20, 28, 60]) {
-    const g = createGesture();
-    g.begin(1, 18, 2, { lockAim: true, lockDistance, angle: -1 });
-    g.move(1, 18 + lockDistance - 1, -.9);
-    assert.equal(g.snapshot().locked, false);
-    g.move(1, 18 + lockDistance, -.8);
-    assert.equal(g.snapshot().locked, true);
-    g.move(1, 145, -.5);
-    assert.deepEqual(g.release(1, 2), { angle: -.9, power: 1, epoch: 2 });
-  }
-});
-test('neutral return unlocks for re-aim, abort, and rearm without stale lock', () => {
+test('wide-radius aim remains free; moving near the white preserves the last direction', () => {
   const g = createGesture();
-  g.begin(1, 30, 1, { lockAim: true, angle: 1 });
-  g.move(1, 90, 2); assert.equal(g.snapshot().angle, 1);
-  g.move(1, 42, 2); assert.equal(g.snapshot().locked, false);
-  assert.equal(g.snapshot().angle, 2); assert.equal(g.snapshot().armed, false);
-  g.move(1, 90, 3); assert.equal(g.snapshot().angle, 2);
-  g.move(1, 30, 3); assert.equal(g.release(1, 1), null);
-  g.begin(1, 30, 2, { lockAim: true, angle: -2 });
-  g.move(1, 90, 2); g.cancel(); assert.equal(g.release(1, 2), null);
-  g.begin(1, 30, 3, { lockAim: true, angle: -3 }); g.move(1, 90, 2);
-  assert.equal(g.release(1, 2), null);
+  g.begin(1, 18, 2, { lockAim: true, lockDistance: 60, angle: -1 });
+  g.move(1, 145, 1); assert.equal(g.snapshot().locked, false);
+  g.move(1, 145, 2); assert.equal(g.snapshot().angle, 2);
+  g.move(1, 55, 2.4); assert.equal(g.snapshot().locked, true);
+  g.move(1, 45, -2); assert.equal(g.snapshot().angle, 2);
+  assert.equal(g.snapshot().armed, true);
+  assert.equal(g.release(1, 2).angle, 2);
+});
+test('inside start retains preview, outside re-aims, and inward release still aborts', () => {
+  const g = createGesture();
+  g.begin(1, 18, 1, { lockAim: true, lockDistance: 60, angle: 1 });
+  g.move(1, 25, -2); assert.equal(g.snapshot().angle, 1);
+  g.move(1, 80, 2); assert.equal(g.snapshot().angle, 2);
+  g.move(1, 18, 3); assert.equal(g.snapshot().armed, false);
+  assert.equal(g.release(1, 1), null);
 });
 test('turning lock off preserves free aim even at maximum pull', () => {
   const g = createGesture(); g.begin(1, 30, 1, { lockAim: false });

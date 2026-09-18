@@ -21,7 +21,7 @@
     <g id="world"><rect class="wood" x="-54" y="-54" width="1108" height="608" rx="44"/>
       <rect x="0" y="0" width="1000" height="500" fill="url(#felt)"/>
       <g id="pockets"></g><g id="rails"></g><g id="jaws"></g>
-      <g id="aim" pointer-events="none"><line id="aim-line" stroke="#f4f0df" stroke-width="2" stroke-dasharray="7 8" opacity=".65"/><circle id="contact-marker" fill="none" stroke="#f2c14e" stroke-width="2"/><line id="cue" stroke="#d5b477" stroke-width="5" stroke-linecap="round"/><circle id="neutral" fill="none" stroke="#f2c14e" stroke-width="1.5" stroke-dasharray="5 5"/></g>
+      <g id="aim" pointer-events="none"><line id="aim-line" stroke="#f4f0df" stroke-width="2" stroke-dasharray="7 8" opacity=".65"/><circle id="contact-marker" fill="none" stroke="#f2c14e" stroke-width="2"/><line id="cue" stroke="#d5b477" stroke-width="5" stroke-linecap="round"/><circle id="precision" fill="none" stroke="#b4dad0" stroke-width="1" opacity=".55"/><circle id="neutral" fill="none" stroke="#f2c14e" stroke-width="1.5" stroke-dasharray="5 5"/></g>
       <g id="balls"></g><circle id="placement-preview" r="12" pointer-events="none"/>
       <text x="500" y="280" class="table-mark" text-anchor="middle" pointer-events="none">GRENADIER · 1998</text>
     </g>
@@ -54,10 +54,10 @@
       <input id="guide-length" type="range" min="10" max="100" step="5" value="60" aria-describedby="guide-help">
       <p id="guide-help">10–100% of the table length. Default 60%. Stops where the white first meets a ball or cushion.</p>
       <label class="toggle" for="contact-toggle"><span>Show first-contact marker</span><input id="contact-toggle" type="checkbox" checked></label>
-      <label class="toggle" for="lock-aim"><span>Lock aim while adding power</span><input id="lock-aim" type="checkbox" checked></label>
-      <label for="lock-distance">Pull before aim locks <output id="lock-distance-value">28 px</output></label>
-      <input id="lock-distance" type="range" min="20" max="60" step="1" value="28" aria-describedby="lock-help">
-      <p id="lock-help">20–60 screen pixels. Default 28. Smaller locks sooner. Return inward to re-aim or lift to abort.</p>
+      <label class="toggle" for="lock-aim"><span>Protect aim near the white</span><input id="lock-aim" type="checkbox" checked></label>
+      <label for="lock-distance">Precision circle radius <output id="lock-distance-value">60 px</output></label>
+      <input id="lock-distance" type="range" min="20" max="100" step="1" value="60" aria-describedby="lock-help">
+      <p id="lock-help">Aim freely outside the circle; move inside to hold the angle for a gentle shot. Hold a second finger on the table to lock at any distance; lift it to re-aim. Return the first finger inward and lift to abort.</p>
     </details>
     <details id="pocket-settings"><summary>Pocket size</summary>
       <label for="pocket-size">Pocket opening <output id="pocket-size-value">110%</output></label>

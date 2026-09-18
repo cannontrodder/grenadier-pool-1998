@@ -26,3 +26,28 @@ test('exclusive pointer ownership, abort/rearm and epoch invalidation', () => {
   g.begin(1, 30, 5); g.move(1, 157, 1); g.cancel();
   assert.equal(g.release(1, 5), null);
 });
+
+test('second contact holds angle while the owner changes power; lifting resumes free aim', () => {
+  const g = createGesture();
+  g.begin(1, 18, 7, { angle: 0 }); g.move(1, 80, 1);
+  assert.equal(g.hold(2), true);
+  assert.equal(g.hold(3), false);
+  g.move(1, 145, 2); assert.equal(g.snapshot().angle, 1);
+  assert.equal(g.snapshot().power, 1);
+  assert.equal(g.release(2, 7), null);
+  assert.equal(g.unhold(3), false);
+  assert.equal(g.unhold(2), true);
+  g.move(1, 145, 2);
+  assert.deepEqual(g.release(1, 7), { angle: 2, power: 1, epoch: 7 });
+  assert.equal(g.hold(2), false);
+});
+test('held angle ends with owner release or cancellation and cannot transfer ownership', () => {
+  const g = createGesture();
+  g.begin(1, 18, 7, { angle: 0 }); g.move(1, 80, 1); g.hold(2);
+  g.move(1, 145, 2);
+  assert.deepEqual(g.release(1, 7), { angle: 1, power: 1, epoch: 7 });
+  assert.equal(g.release(2, 7), null); assert.equal(g.snapshot(), null);
+  g.begin(1, 18, 7); g.hold(2); g.cancel(); assert.equal(g.snapshot(), null);
+  g.begin(1, 18, 8); g.move(1, 145, 1); g.hold(2);
+  assert.equal(g.release(1, 7), null);
+});
