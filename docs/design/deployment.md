@@ -22,4 +22,4 @@ For this environment the helper is `/Users/neil/.codex/plugins/cache/openai-cura
 
 ## Review identity
 
-The current visible identifiers are P2 / S1.2 / M1. The historical D1 / B1 / W1 artifacts remain available with superseded-control notices. The exact source commit and successful deployment identity are recorded in the issue #15 handoff; initial publication evidence remains in #4. Browser captures and limitations are recorded in `verification.md`. The selected direction comes from explicit user feedback captured in #5.
+The current visible identifiers are P2 / S1.4 / M1.2 / C1 / A1. The historical D1 / B1 / W1 artifacts remain available with superseded-control notices. The exact source commit and successful deployment identity are recorded in the issue #15 handoff; initial publication evidence remains in #4. Browser captures and limitations are recorded in `verification.md`. The selected direction comes from explicit user feedback captured in #5.

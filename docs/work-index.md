@@ -23,3 +23,9 @@ Additional work: [#14 — Supplied photo and names](https://github.com/cannontro
 Issues #1–#8 deliver design artifacts, previews, the touch study, and user review. Issues #9–#13 are bounded planning tasks for later phases. They must create smaller implementation issues after resolving the relevant decisions; completing a planning issue does not mean its phase has been delivered.
 
 Native GitHub blocking relationships describe the current graph. Later planning tasks must add dependencies on actual delivery issues as those are created. Each phase must finish with a tested deployment and phone feedback.
+
+## Final visual design review
+
+#17 adds the approved pixel-caricature group direction; #18 corrects the pub entrance/foyer; #19 provides individual avatars. The user requests final review of these latest changes only, with no further blocking design choices. #7 remains future playable study, not part of current design-only delivery.
+
+[#20 — Final visual design sign-off](https://github.com/cannontrodder/grenadier-pool-1998/issues/20) covers only the individual avatars and corrected room plan.

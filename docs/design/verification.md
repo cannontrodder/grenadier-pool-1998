@@ -3,7 +3,7 @@
 Historical P1 evidence for issue #4. Artifacts: foundation D1, boards B1, wireframes W1. This file distinguishes browser evidence from physical-device feedback.
 
 
-## P2 / S1.2 selected-direction publication · issue #15
+## P2 / S1.4 selected-direction publication · issue #15
 
 - The user-selected Sports Broadcast direction replaces the open-choice homepage. Historical boards and wireframes visibly link to the current mockups and label their old controls as superseded.
 - Primary-session WebKit checks: overview, historical comparison and wireframe explorer at 390px, 320px and 844px widths. Fixed document overflow in the historical comparison and landscape explorer at 844px; oversized reference content now scrolls within its own region. Final affected checks passed with cache disabled.
@@ -58,3 +58,9 @@ All checks above used the local HTTP preview of the published static source. Hos
 Open the deployed preview in Safari on a physical iPhone while signed into the owning account. Inspect boards, compare both wireframe orientations, check browser chrome and safe areas, zoom text, and judge thumb reach and table legibility. Record the model, iOS/Safari version, viewport/orientation, exact preview revision, screenshots where useful, and the user's actual observations.
 
 Issue #4 remains open until its direct iPhone Safari check is complete. Issue #5 is complete: the user explicitly selected Sports Broadcast for gameplay and personas. S1.2 records subsequent fullscreen, single-live-match, spin, knockabout, pub-layout and Betty feedback. The playable touch study remains separate work in #7; these mockups do not implement game physics or persistence.
+
+## Final design review · M1.2 / C1 / A1
+
+User approved the overall mockups and pixel group treatment. Added four individual generated avatar assets and corrected the entrance/toilets/long foyer. Final review and avatar mockup passed WebKit at 390×844, 844×390 and 320×568 with no missing images, horizontal document overflow or JavaScript errors. Captures: `output/playwright/selected/avatars-*-webkit.png` and `output/playwright/final-review-webkit.png`. Four generated portraits were visually inspected individually and in the compact persona screen. Final review is limited to recent changes; no app implementation started. Physical iPhone evidence remains outstanding, separately from this visual sign-off.
+
+Final page also passed Chrome / Pixel 7 at 412px with all images decoded, no missing images and no horizontal overflow. Static verification: 12 HTML files, 116 local links/assets, zero missing targets; JavaScript syntax, SVG XML and whitespace checks pass. Final sign-off is tracked separately in #20; none is inferred.
